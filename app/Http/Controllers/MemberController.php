@@ -18,6 +18,37 @@ class MemberController extends Controller
         ]);
     }
 
+    public function profile($id)
+    {
+        $users = DB::table('view_profile')->where('id', $id)->get();
+        foreach($users as $user)
+            $profile = $user;
+        return view('member.profile', ['user' => $profile]);
+    }
+
+    public function editProfile($id)
+    {
+        $provinsi = DB::table('provinsi')->get();
+        $kabupaten = DB::table('kabupaten')->get();
+        $kecamatan = DB::table('kecamatan')->get();
+        $users = DB::table('view_profile')->where('id', $id)->get();
+        
+        foreach($users as $user)
+            $profile = $user;
+
+        return view('member.edit_profile', [
+            'user' => $profile,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            ]);
+    }
+
+    public function updateProfile(Type $var = null)
+    {
+        # code...
+    }
+
     
 
 }

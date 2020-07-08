@@ -142,11 +142,11 @@ class ProductController extends Controller
     public function details($id)
     {
         $product = Product::find($id);
-        $image = DB::table('view_images')->where('id', $id)->get();
-        // dd($image);
+        $images = DB::table('view_product_images')->where('product_id', $id)->get();
+        // dd($images);
         return view('products.detail', [
             'product' => $product,
-            'image' => $image,
+            'images' => $images,
         ]);
     }
 

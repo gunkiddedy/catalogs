@@ -91,8 +91,8 @@
                             <ul class="list-group">
                                 <a href="/product/add" class="list-group-item member-navigation">Add Product</a>
                                 <a href="" class="list-group-item member-navigation">Category</a>
-                                <a href="" class="list-group-item member-navigation">Profile</a>
-                                <a href="/product" target="_blank" class="list-group-item member-navigation">Preview</a>
+                                <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
+                                <a href="/product" class="list-group-item member-navigation">Preview</a>
                             </ul>
                         </div>
                         

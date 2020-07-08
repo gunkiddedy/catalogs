@@ -25,14 +25,26 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">   
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <div class="d-flex">
-                        <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>
-                        <div class="pl-3 ml-3 pt-2" style="border-left:1px solid rgba(0, 0, 0, 0.5); font-size:1.5rem;">
-                            {{ config('app.AppName', 'Catalog') }}
+                @guest
+                    <a class="navbar-brand" href="{{ url('/product') }}">
+                        <div class="d-flex">
+                            <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>
+                            <div class="pl-3 ml-3 pt-2" style="border-left:1px solid rgba(0, 0, 0, 0.5); font-size:1.5rem;">
+                                {{ config('app.AppName', 'Catalog') }}
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <div class="d-flex">
+                            <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>
+                            <div class="pl-3 ml-3 pt-2" style="border-left:1px solid rgba(0, 0, 0, 0.5); font-size:1.5rem;">
+                                {{ config('app.AppName', 'Catalog') }}
+                            </div>
+                        </div>
+                    </a>
+                @endguest
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -141,9 +153,35 @@
 
 @yield('script')
 <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
 
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    }
+
+    
     $(document).ready(function(){
-
         filter_data('');
 
         function filter_data(query='')

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -30,11 +30,25 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo()
     {
-        if (Auth::user()->role == 'member') {
-            return 'dashboard';
-        }
-        else {
-            return '/';
+        // if (Auth::user()->role == 'member') {
+        //     return 'dashboard';
+        // }
+        // else {
+        //     return '/';
+        // }
+        switch (Auth::user()->role) {
+            case 'admin':
+                $this->redirectTo = '/admin';
+                return $this->redirectTo;
+                break;
+            case 'member':
+                $this->redirectTo = '/member';
+                return $this->redirectTo;
+                break;
+            default:
+                $this->redirectTo = '/guest';
+                return $this->redirectTo;
+                break;
         }
     }
 
