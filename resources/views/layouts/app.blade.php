@@ -153,92 +153,63 @@
 
 @yield('script')
 <script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
+$(document).ready(function(){
+    filter_data('');
 
-    function plusSlides(n) {
-    showSlides(slideIndex += n);
+    function filter_data(query='')
+    {
+        var search=JSON.stringify(query);
+        var price =JSON.stringify($('#pricerange').val());
+        var gender =JSON.stringify(get_filter('gender')); 
+        var brand =JSON.stringify(get_filter('brand'));
+        $.ajax({
+            // url:"route('product.filter')",
+            method:'GET',
+            data:{
+                query:search,
+                price:price,
+                gender:gender,
+                brand:brand,
+                },
+            dataType:'json',
+            success:function(data)
+            {
+                $('#products').html(data.table_data);
+            }
+        })
     }
 
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    }
-
-    
-    $(document).ready(function(){
-        filter_data('');
-
-        function filter_data(query='')
-        {
-            var search=JSON.stringify(query);
-            var price =JSON.stringify($('#pricerange').val());
-            var gender =JSON.stringify(get_filter('gender')); 
-            var brand =JSON.stringify(get_filter('brand'));
-            $.ajax({
-                // url:"route('product.filter')",
-                method:'GET',
-                data:{
-                    query:search,
-                    price:price,
-                    gender:gender,
-                    brand:brand,
-                    },
-                dataType:'json',
-                success:function(data)
-                {
-                    $('#products').html(data.table_data);
-                }
-            })
-        }
-
-        function get_filter(class_name)
-        {
-            var filter=[];
-            $('.'+class_name+':checked').each(function(){
-                filter.push($(this).val());
-            });
-            return filter;
-        }
-
-        $(document).on('keyup','#search',function(){
-            var query = $(this).val();
-            filter_data(query);
+    function get_filter(class_name)
+    {
+        var filter=[];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
         });
+        return filter;
+    }
 
-        $('.selector').click(function(){
-            var query = $('#search').val();
-            filter_data(query);
-        });
-
-        $(document).on('input','#pricerange',function(){
-            var range = $(this).val();
-            $('#currentrange').html(range);
-        });
-
-        $(document).on('change','#size-dropdown',function(){
-            var size = $(this).val();
-            document.cookie="shoes_size="+size+";"+"path=/";
-            $('#add-to-cart').removeClass('disabled');
-        });
-
+    $(document).on('keyup','#search',function(){
+        var query = $(this).val();
+        filter_data(query);
     });
-    
+
+    $('.selector').click(function(){
+        var query = $('#search').val();
+        filter_data(query);
+    });
+
+    $(document).on('input','#pricerange',function(){
+        var range = $(this).val();
+        $('#currentrange').html(range);
+    });
+
+    $(document).on('change','#size-dropdown',function(){
+        var size = $(this).val();
+        document.cookie="shoes_size="+size+";"+"path=/";
+        $('#add-to-cart').removeClass('disabled');
+    });
+
+});
 </script>
 
 </html>

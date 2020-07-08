@@ -4,8 +4,8 @@
 
 <div class="container p-0">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-4 col-5 pl-4 filter">
-            <div class="fixedfilter">
+        {{-- <div class="col-lg-3 col-md-3 col-sm-4 pl-4 filter hidden-xs"> --}}
+            <div class="col-lg-3 col-md-3">
                 <h3><i class="fa fa-filter"></i> Filter </h3>
                 <input class="mt-3 mb-2" type="text" id="search" placeholder="Enter product name" style="width:100%;">
                 <div class="filterprice card mb-2">
@@ -36,23 +36,38 @@
                     </div>
                 </div>
             </div>
-        </div>
+            {{-- <div class="fixedfilter">
+                
+            </div> --}}
+        {{-- </div> --}}
         {{-- end of filter ============================= --}}
-        <div class="col-lg-9 col-md-9 col-sm-8 col-7 pr-4">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <h3>Product</h3>
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 col-sm-12 pt-3">
                     <div class="card">
                         <a href="{{ route('product.detail', $product->id) }}">
+                            <div class="card-header">
+                                <h5>
+                                    <i class="fa fa-bookmark" style="color: rgb(29, 75, 204)"></i> 
+                                    {{ strtoupper($product->product_brand) }}
+                                </h5>
+                            </div>
                             <div class="card-body ">
                                 <div class="product-info">
-                                    <div class="info-1"><img src="{{ asset('/storage/'.$product->image_path) }}" alt=""></div>
-                                    <div class="info-2">
+                                    {{-- <div class="info-1"> --}}
+                                        <img class="card-img" src="{{ asset('/storage/'.$product->image_path) }}" alt="">
+                                    {{-- </div> --}}
+                                    <div class="info-2 mt-4">
                                         <h4>{{ strtoupper($product->product_name) }}</h4>
                                         <hr>
-                                        <h5><i class="fa fa-get-pocket" style="color: rgb(29, 75, 204)"></i> {{ strtoupper($product->product_brand) }}</h5>
+                                        <h6>
+                                            <i class="fa fa-tag" style="color: rgb(29, 75, 204)"></i>
+                                            @currency($product->price)
+                                        </h6>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </a>
