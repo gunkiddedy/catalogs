@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
 {
-    protected $table = 'product_images';
+    // protected $table = 'product_images';
 
     protected $fillable = ['name', 'product_id', 'image_path'];
 
-    public function post()
+    public function product()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Product', 'product_id');
     }
 }

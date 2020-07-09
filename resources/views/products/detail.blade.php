@@ -18,7 +18,7 @@
         <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" >
             <div class="card-body">
                 @foreach ($images as $image)
-                <img class="mr-5 mb-5 card-img" src="{{ asset('/storage/'.$image->image_path) }}" alt="image">
+                <img class="mr-5 mb-5 img-thumbnail" src="{{ asset('/storage/'.$image->image_path) }}" alt="image">
                 @endforeach
                 <table class="table table-sm">
                     <thead>

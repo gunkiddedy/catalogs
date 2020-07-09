@@ -5,9 +5,9 @@
 <div class="col-12 col-md-12 col-sm-12 col-lg-10">
     <h3>Edit Product</h3>
     <hr>
-    <form method="POST" action="{{ route('product.update', $product->id) }}">
+    <form method="POST" action="{{ route('product.update', $product->id) }}" >
         @csrf 
-        @method('PUT')
+        @method('PATCH')
         <div class="row ">
             <div class="col-12">
                 <div class="form-row">
@@ -75,12 +75,12 @@
                 </div>
             </div>
 
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <div class="form-group">
                     <input type="file" id="images" name="images[]"  multiple>
                 </div>
             </div>
-            <div class="input-images"></div>
+            <div class="input-images"></div> --}}
         </div>
         
         <button type="submit" class="btn btn-success" style="float: right">Update product</button>

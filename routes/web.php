@@ -36,7 +36,7 @@ Route::get('/member', 'MemberController@index')->middleware('auth', 'member');
 Route::get('/product/add', 'ProductController@create')->middleware('auth', 'member');
 Route::post('/product/store', 'ProductController@store')->name('product.store')->middleware('auth', 'member');
 Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit')->middleware('auth', 'member');
-Route::put('/product/update/{id}', 'ProductController@update')->name('product.update')->middleware('auth', 'member');
+Route::patch('/product/update/{id}', 'ProductController@update')->name('product.update')->middleware('auth', 'member');
 Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('product.delete')->middleware('auth', 'member');
 // ===============================end Product Area======================================================
 

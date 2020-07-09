@@ -20,7 +20,7 @@
                 <thead>
                     <th>Name</th>
                     <th>Brand</th>
-                    <th>Category</th>
+                    {{-- <th>Category</th> --}}
                     {{-- <th>Sub Cat</th> --}}
                     <th>Image</th>
                     <th>Action</th>
@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{ $product->product_name }}</td>
                         <td>{{ $product->brand }}</td>
-                        <td>{{ $product->category_name }}</td>
+                        {{-- <td>{{ $product->category_name }}</td> --}}
                         {{-- <td>{{ $product->subcategory_name }}</td> --}}
                         <td>
                         @foreach (DB::table('view_product_images')->where('product_id', $product->product_id)->get() as $image)

@@ -66,7 +66,7 @@ class ProfileController extends Controller
         $users->additional_info =  $request->get('additional_info');
         $users->save();
         
-        return redirect()->route('profile.show', $id)->with('success', 'data updated successfully');
+        return redirect()->route('profile.show', $id)->with('success', 'data updated successfully!');
     }
 
     public function updateAvatar(Request $request, $id)
@@ -79,6 +79,6 @@ class ProfileController extends Controller
             User::find($id)->update(['avatar' => $path]);
         }
         
-        return redirect()->back()->with('success', 'avatar was updated');
+        return redirect()->back()->with('success', 'Avatar updated successfully!');
     }
 }

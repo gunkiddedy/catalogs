@@ -44,6 +44,7 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=> 'required',
+            'images' => 'required',
         ]); 
 
         DB::transaction(function () use ($request) {
@@ -79,7 +80,7 @@ class ProductController extends Controller
                     // dd($filename);
                     // $imagePath = Storage::disk('product_images')->put($product->name, $image);
                     // $imagePath = storeAs('images', $filename, 'public');
-                    $path = $image->storeAs('images', $filename, 'public');
+                    $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
                     // dd($imagePath);
                     ProductImage::create([
                         'name' => $product->name,
@@ -91,7 +92,7 @@ class ProductController extends Controller
 
         });
 
-        return redirect('/dashboard');
+        return redirect('/member')->with('success', 'data added successfully!');
     }
 
     public function edit($id)
@@ -123,8 +124,40 @@ class ProductController extends Controller
         $product->subcategory_id =  $request->get('subcategory_id');
         $product->description = $request->get('description');
         $product->save();
+        
+        
+        // $images = $request->images;
+        // // // check if has file
+        // if($request->hasfile('images')) {
 
-        return redirect('/dashboard')->with('success', 'data updated successfully');
+        //     // $imgs = ProductImage::where('product_id', $id)->get();
+        //     // foreach($imgs as $img){
+        //     //     Storage::disk('public')->delete($img->image_path);
+        //     // }
+
+        //     foreach($images as $image) {
+        //         $filename = $image->getClientOriginalName();
+        //         $path = $image->storeAs('images', $id.'-'.$filename, 'public');
+        //         ProductImage::where('product_id', $id)
+        //             ->update([
+        //                 'name' => $product->name,
+        //                 'image_path' => $path,
+        //         ]);
+
+        //         // $product->images()->saveMany([
+        //         //     new ProductImage([
+        //         //         'image_path' => $path,
+        //         //         'name' => $product->name
+        //         //     ]),
+        //         // ]);
+        //     }
+        // }
+        
+        ProductImage::where('product_id', $id)->update([
+            'name' => $product->name
+        ]);
+
+        return redirect('/member')->with('success', 'data updated successfully');
     }
 
     public function destroy($id)
@@ -136,7 +169,7 @@ class ProductController extends Controller
 
         ProductImage::where('product_id', $id)->delete();
         Product::where('id', $id)->delete();
-        return redirect('/dashboard')->with('success', 'data deleted successfully');
+        return redirect('/member')->with('success', 'data deleted successfully');
     }
 
     public function details($id)
