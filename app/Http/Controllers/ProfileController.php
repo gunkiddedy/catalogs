@@ -67,10 +67,18 @@ class ProfileController extends Controller
         $users->save();
         
         return redirect()->route('profile.show', $id)->with('success', 'data updated successfully');
-        // return back()->withInput();
-        // if(Auth::user()->role=='admin')
-            // return redirect('/profile')->with('success', 'data updated successfully');
-        // else
-        //     return redirect('/member')->with('success', 'data updated successfully');
+    }
+
+    public function updateAvatar(Request $request, $id)
+    {
+        // check if has file
+        if($request->hasfile('avatar')) {
+            $filename = $request->avatar->getClientOriginalName();
+            $path = $request->avatar->storeAs('images', $filename, 'public');
+            // dd($path);
+            User::find($id)->update(['avatar' => $path]);
+        }
+        
+        return redirect()->back()->with('success', 'avatar was updated');
     }
 }

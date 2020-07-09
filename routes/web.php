@@ -26,6 +26,7 @@ Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile.show')->middleware('auth');
 Route::get('/profile/edit/{id}', 'ProfileController@editProfile')->name('profile.edit')->middleware('auth');
 Route::patch('/profile/update/{id}', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
+Route::patch('/avatar/update/{id}', 'ProfileController@updateAvatar')->name('avatar.update')->middleware('auth');
 
 // ================================MEMBER AREA========================================================
 Route::get('/member', 'MemberController@index')->middleware('auth', 'member');
