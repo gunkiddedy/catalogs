@@ -1,1 +1,9 @@
-<h1>admin</h1>
+@extends('layouts.member')
+
+@section ('content')
+
+<div class="container">
+    
+</div>    
+
+@endsection

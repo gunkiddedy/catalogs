@@ -14,8 +14,6 @@
     </div>
     @endif
 
-
-    {{ Auth::user()->role }}
     <div class="row">
         <div class="col-12">
             <table class="table table-hover striped" style="overflow: scroll">

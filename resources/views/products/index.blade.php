@@ -41,7 +41,7 @@
             </div> --}}
         {{-- </div> --}}
         {{-- end of filter ============================= --}}
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 rspnv">
             <h3>Product</h3>
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
