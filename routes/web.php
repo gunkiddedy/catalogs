@@ -20,15 +20,15 @@ Route::get('/', 'ProductController@index');
 
 // =================================ADMIN AREA ======================================================
 Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
+
 // =================================ENDADMIN AREA ======================================================
 
+Route::get('/profile/{id}', 'ProfileController@profile')->name('profile.show')->middleware('auth');
+Route::get('/profile/edit/{id}', 'ProfileController@editProfile')->name('profile.edit')->middleware('auth');
+Route::patch('/profile/update/{id}', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 
 // ================================MEMBER AREA========================================================
-// Route::get('/', 'MemberController@index')->middleware('auth', 'member');
 Route::get('/member', 'MemberController@index')->middleware('auth', 'member');
-Route::get('/profile/{id}', 'MemberController@profile')->middleware('auth', 'member');
-Route::get('/profile/edit/{id}', 'MemberController@editProfile')->name('profile.edit')->middleware('auth', 'member');
-Route::patch('/profile/update/{id}', 'MemberController@updateProfile')->name('profile.update')->middleware('auth', 'member');
 // =============================end member area-----------------========================================
 
 // ===============================Product Area==========================================================
