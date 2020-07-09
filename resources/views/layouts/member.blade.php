@@ -85,7 +85,7 @@
                     <div class="col-12 col-md-12 col-lg-2 col-md-2 col-sm-12 pb-2">
                         <div class="card">
                             <div class="card-header">
-                                NAVIGATION ADMIN
+                                NAVIGATION
                             </div>
                             <ul class="list-group">
                                 <a href="" class="list-group-item member-navigation">About Us</a>

@@ -57,6 +57,7 @@ class ProfileController extends Controller
         $users->name =  $request->get('name');
         $users->email =  $request->get('email');
         $users->phone =  $request->get('phone');
+        $users->tkdn =  $request->get('tkdn');
         $users->provinsi_id =  $request->get('provinsi_id');
         $users->kabupaten_id =  $request->get('kabupaten_id');
         $users->kecamatan_id = $request->get('kecamatan_id');

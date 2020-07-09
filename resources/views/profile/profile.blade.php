@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- <div class="row"> --}}
-    <div class="col-6">
+    <div class="col-5">
         @if(Session::has('success'))
         <div class="row sccs">
             <div class="col-12">
@@ -27,51 +27,51 @@
             </div>
           </div>
     </div>
-    <div class="col-4">
-                <table class="table table-sm">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Name</th>
-                        <td>{{ $user->name }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Email</th>
-                        <td>{{ $user->email }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Phone</th>
-                        <td>{{ $user->phone }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Tkdn</th>
-                        <td>{{ $user->tkdn }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Provinsi</th>
-                        <td>{{ $user->provinsi_name }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Kabupaten</th>
-                        <td>{{ $user->kabupaten_name }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Kecamatan</th>
-                        <td>{{ $user->kecamatan_name }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Zipcode</th>
-                        <td>{{ $user->zipcode }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Address</th>
-                        <td>{{ $user->address }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Nib</th>
-                        <td>{{ $user->nib }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+    <div class="col-5">
+    <table class="table table-sm">
+        <tbody>
+            <tr>
+            <th scope="row">Name</th>
+            <td>{{ $user->name }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Email</th>
+            <td>{{ $user->email }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Phone</th>
+            <td>{{ $user->phone }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Address</th>
+            <td>{{ $user->address }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Tkdn</th>
+            <td>{{ $user->tkdn }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Provinsi</th>
+            <td>{{ $user->provinsi_name }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Kabupaten</th>
+            <td>{{ $user->kabupaten_name }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Kecamatan</th>
+            <td>{{ $user->kecamatan_name }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Zipcode</th>
+            <td>{{ $user->zipcode }}</td>
+            </tr>
+            <tr>
+            <th scope="row">Nib</th>
+            <td>{{ $user->nib }}</td>
+            </tr>
+        </tbody>
+        </table>
     </div>
   {{-- </div> --}}
     

@@ -11,11 +11,16 @@
             <div class="form-group col-md-12">
                 <label for="name">Name</label>
                 <input value="{{ old('name') ?? $user->name }}" type="name" class="form-control" id="inputEmail4" placeholder="Name" name="name">
+                @error('name')
+                    <div class="alert text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label for="email">Email</label>
                 <input value="{{ old('email') ?? $user->email }}" type="email" class="form-control" id="" placeholder="Email" name="email">
                 @error('email')
@@ -24,7 +29,7 @@
                     </div>
                 @enderror
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label for="inputCity">Phone</label>
                 <input value="{{ old('phone') ?? $user->phone }}" type="text" class="form-control" id="" name="phone">
                 @error('phone')
@@ -33,7 +38,18 @@
                     </div>
                 @enderror
             </div>
-            <div class="form-group col-md-4">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">TKDN</label>
+                <input value="{{ old('tkdn') ?? $user->tkdn }}" type="text" class="form-control" id="" name="tkdn">
+                @error('tkdn')
+                    <div class="alert text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
                 <label for="inputCity">NIB</label>
                 <input value="{{ old('nib') ?? $user->nib }}" type="text" class="form-control" id="" name="nib">
                 @error('nib')
