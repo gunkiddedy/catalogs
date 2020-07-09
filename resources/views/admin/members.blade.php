@@ -13,6 +13,7 @@
     @endif
     <div class="row">
         <div class="col-12">
+            <h3>Member list</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -32,7 +33,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-                        <td>{{ $user->propinsi_name }}</td>
+                        <td>{{ $user->provinsi_name }}</td>
                         <td>{{ $user->kabupaten_name }}</td>
                         <td>{{ $user->kecamatan_name }}</td>
                     </tr>

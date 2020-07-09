@@ -19,15 +19,15 @@
         </div>
         <div class="card-body">
             @if (Auth::user()->avatar !== null)
-                <img class="img-circle" 
+                <img class="img-thumbnail" 
                 style="width: 50%" 
                 src="{{ asset('/storage/'.$user->avatar)}}"
-                alt="Card image cap">
+                alt="user-avatar">
             @else
-                <img class="img-circle" 
+                <img class="img-thumbnail" 
                     style="width: 50%" 
                     src="{{ asset('/storage/images/default-avatar.png') }}" 
-                    alt="Card image cap">
+                    alt="user-avatar">
             @endif
             <p class="card-text mt-2">
                 <span class="badge badge-secondary">Additional info</span><br>
@@ -94,7 +94,7 @@
         </tbody>
     </table>
     <div>
-        <a href="/profile/edit/{{ Auth::id() }}" class="btn btn-primary text-white">Edit Profile</a>
+        <a href="/profile/edit/{{ Auth::id() }}" style="float: right" class="btn btn-primary text-white">Edit Profile</a>
     </div>
 </div>
   {{-- </div> --}}

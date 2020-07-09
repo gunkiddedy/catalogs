@@ -20,7 +20,7 @@ Route::get('/', 'ProductController@index');
 
 // =================================ADMIN AREA ======================================================
 Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
-
+Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
 // =================================ENDADMIN AREA ======================================================
 
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile.show')->middleware('auth');

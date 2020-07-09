@@ -88,9 +88,9 @@
                                 NAVIGATION
                             </div>
                             <ul class="list-group">
-                                <a href="" class="list-group-item member-navigation">About Us</a>
+                                <a href="" class="list-group-item member-navigation">About</a>
                                 <a href="" class="list-group-item member-navigation">Contact</a>
-                                <a href="" class="list-group-item member-navigation">Members</a>
+                                <a href="{{ route('member.list') }}" class="list-group-item member-navigation">Members</a>
                                 <a href="" class="list-group-item member-navigation">Provinsi</a>
                                 <a href="" class="list-group-item member-navigation">Kabupaten</a>
                                 <a href="" class="list-group-item member-navigation">Kecamatan</a>
