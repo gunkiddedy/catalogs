@@ -18,6 +18,7 @@ class ProductController extends Controller
         $subcategory = DB::table('subcategories')->get();
         $minPrice = DB::table('products')->min('price');
         $maxPrice = DB::table('products')->max('price');
+        $brands = Product::all()->take(7);
         // dd($maxPrice);
         return view('products.index', [
             'products' => $products,
@@ -25,6 +26,7 @@ class ProductController extends Controller
             'subcategory' => $subcategory,
             'minPrice' => $minPrice,
             'maxPrice' => $maxPrice,
+            'brands' => $brands,
         ]);
     }
 

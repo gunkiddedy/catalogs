@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', 'ProductController@index');
-
+Route::get('/', 'PageController@product');
+Route::get('/about', 'PageController@about');
+Route::get('/contact', 'PageController@contact');
+// showing product catalog for guest or public access
+Route::get('/guest', 'ProductController@index');
+Route::get('/product', 'ProductController@index');
+Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
 
 
 // =================================ADMIN AREA ======================================================
 Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
+Route::get('/admin/about', 'AdminController@about')->name('about.index')->middleware('auth', 'admin');
+Route::get('/about/edit/{id}', 'AdminController@editAbout')->name('about.edit')->middleware('auth', 'admin');
+Route::patch('/about/update/{id}', 'AdminController@updateAbout')->name('about.update')->middleware('auth', 'admin');
 Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
 // =================================ENDADMIN AREA ======================================================
 
@@ -40,10 +48,6 @@ Route::patch('/product/update/{id}', 'ProductController@update')->name('product.
 Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('product.delete')->middleware('auth', 'member');
 // ===============================end Product Area======================================================
 
-// showing product catalog for guest or public access
-Route::get('/guest', 'ProductController@index');
-Route::get('/product', 'ProductController@index');
-Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
 
 
 

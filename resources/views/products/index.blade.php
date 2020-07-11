@@ -17,6 +17,16 @@
                 </div>
                 <div class="filtergender card mb-2">
                     <div class="card-body">
+                        <h5 class="card-title">Brand</h5>
+                        <hr>
+                        @foreach ($brands as $brand)
+                        <input type="checkbox" id="brand" class="gender selector" name="brand" value="{{ $brand->brand }}" >
+                        <label for="Gender">{{ ucfirst($brand->brand) }}</label><br>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="filtergender card mb-2">
+                    <div class="card-body">
                         <h5 class="card-title">Category</h5>
                         <hr>
                         @foreach ($category as $cat)

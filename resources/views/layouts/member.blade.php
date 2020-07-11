@@ -88,7 +88,7 @@
                                 NAVIGATION
                             </div>
                             <ul class="list-group">
-                                <a href="" class="list-group-item member-navigation">About</a>
+                                <a href="{{ route('about.index') }}" class="list-group-item member-navigation">About</a>
                                 <a href="" class="list-group-item member-navigation">Contact</a>
                                 <a href="{{ route('member.list') }}" class="list-group-item member-navigation">Members</a>
                                 <a href="" class="list-group-item member-navigation">Provinsi</a>
