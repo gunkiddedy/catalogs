@@ -58,6 +58,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        {{-- link menu for this catalogs --}}
                         <li class="nav-item">
                             <a class="nav-link" href="/">Catalog</a>
                         </li>
@@ -67,6 +68,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -84,6 +86,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->role=='admin')
+                                    <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                    @else
+                                    <a href="{{ route('member.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                    @endif
+
                                     <a href="{{ route('profile.edit', Auth::id()) }}" class="dropdown-item">Edit Profile</a>
                                     
                                     @if(Auth::user()->role == 'Customer')

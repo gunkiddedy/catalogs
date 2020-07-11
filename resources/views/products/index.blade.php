@@ -15,13 +15,27 @@
                         <p class="p-0 m-0">Max: Rp <span id="currentrange">{{ $minPrice }}</span></p>
                     </div>
                 </div>
+
+                {{-- <div class="filtergender card mb-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="same-address">
+                        <label class="custom-control-label" for="same-address">Address</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="save-info">
+                        <label class="custom-control-label" for="save-info">Save</label>
+                    </div>
+                </div> --}}
+
                 <div class="filtergender card mb-2">
                     <div class="card-body">
                         <h5 class="card-title">Brand</h5>
                         <hr>
                         @foreach ($brands as $brand)
-                        <input type="checkbox" id="brand" class="gender selector" name="brand" value="{{ $brand->brand }}" >
-                        <label for="Gender">{{ ucfirst($brand->brand) }}</label><br>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="{{ $brand->brand }}" class="custom-control-input" name="{{ $brand->brand }}" value="{{ $brand->brand }}" >
+                            <label class="custom-control-label" for="{{ $brand->brand }}">{{ ucfirst($brand->brand) }}</label>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -30,26 +44,28 @@
                         <h5 class="card-title">Category</h5>
                         <hr>
                         @foreach ($category as $cat)
-                        <input type="checkbox" id="category" class="gender selector" name="category_id" value="{{ $cat->name }}" >
-                        <label for="Gender">{{ ucfirst($cat->name) }}</label><br>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="{{ $cat->name }}" class="custom-control-input" name="{{ $cat->name }}" value="{{ $cat->name }}" >
+                            <label class="custom-control-label" for="{{ $cat->name }}">{{ ucfirst($cat->name) }}</label>
+                        </div>
                         @endforeach
                     </div>
                 </div>
                 <div class="filtergender card mb-2">
                     <div class="card-body">
-                    <h5 class="card-title">Sub Category</h5>
+                        <h5 class="card-title">Category</h5>
                         <hr>
                         @foreach ($subcategory as $subcat)
-                        <input type="checkbox" id="category" class="gender selector" name="subcategory_id" value="{{ $subcat->name }}" >
-                        <label for="Gender">{{ ucfirst($subcat->name) }}</label><br>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="{{ $subcat->name }}" class="custom-control-input" name="{{ $subcat->name }}" value="{{ $subcat->name }}" >
+                            <label class="custom-control-label" for="{{ $subcat->name }}">{{ ucfirst($subcat->name) }}</label>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
-            {{-- <div class="fixedfilter">
-                
-            </div> --}}
         {{-- </div> --}}
+        
         {{-- end of filter ============================= --}}
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 rspnv">
             <h3>Product</h3>

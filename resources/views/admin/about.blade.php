@@ -14,9 +14,7 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-header">
-              About
-            </div>
+            <div class="card-header">About</div>
             <div class="card-body">
                 <table class="table table-sm">
                     <tbody>
@@ -38,7 +36,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                <a href="/about/edit/{{ $about->id}}" class="btn btn-primary">Edit About</a>
+                <a href="/about/edit/{{ $about->id}}" class="btn btn-primary text-white">Edit About</a>
             </div>
           </div>
         

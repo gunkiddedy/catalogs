@@ -24,20 +24,30 @@ Route::get('/product/detail/{id}', 'ProductController@details')->name('product.d
 
 
 // =================================ADMIN AREA ======================================================
-Route::get('/admin', 'AdminController@index')->middleware('auth', 'admin');
+Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('auth', 'admin');
+
 Route::get('/admin/about', 'AdminController@about')->name('about.index')->middleware('auth', 'admin');
 Route::get('/about/edit/{id}', 'AdminController@editAbout')->name('about.edit')->middleware('auth', 'admin');
 Route::patch('/about/update/{id}', 'AdminController@updateAbout')->name('about.update')->middleware('auth', 'admin');
-Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
-// =================================ENDADMIN AREA ======================================================
 
+Route::get('/admin/contact', 'AdminController@contact')->name('contact.index')->middleware('auth', 'admin');
+Route::get('/contact/edit/{id}', 'AdminController@editContact')->name('contact.edit')->middleware('auth', 'admin');
+Route::patch('/contact/update/{id}', 'AdminController@updateContact')->name('contact.update')->middleware('auth', 'admin');
+
+Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
+// =================================END ADMIN AREA ======================================================
+
+
+// ============================PROFILE AREA=====================================
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile.show')->middleware('auth');
 Route::get('/profile/edit/{id}', 'ProfileController@editProfile')->name('profile.edit')->middleware('auth');
 Route::patch('/profile/update/{id}', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 Route::patch('/avatar/update/{id}', 'ProfileController@updateAvatar')->name('avatar.update')->middleware('auth');
+//=================END PROFILE AREA-================================================ 
+
 
 // ================================MEMBER AREA========================================================
-Route::get('/member', 'MemberController@index')->middleware('auth', 'member');
+Route::get('/member', 'MemberController@index')->name('member.dashboard')->middleware('auth', 'member');
 // =============================end member area-----------------========================================
 
 // ===============================Product Area==========================================================

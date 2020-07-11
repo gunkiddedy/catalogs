@@ -59,6 +59,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (Auth::user()->role=='admin')
+                                <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                @else
+                                <a href="{{ route('member.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                @endif
                                 <a href="{{ route('profile.edit', Auth::id()) }}" class="dropdown-item">Edit Profile</a>
                                                                 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -89,7 +94,7 @@
                             </div>
                             <ul class="list-group">
                                 <a href="{{ route('about.index') }}" class="list-group-item member-navigation">About</a>
-                                <a href="" class="list-group-item member-navigation">Contact</a>
+                                <a href="{{ route('contact.index') }}" class="list-group-item member-navigation">Contact</a>
                                 <a href="{{ route('member.list') }}" class="list-group-item member-navigation">Members</a>
                                 <a href="" class="list-group-item member-navigation">Provinsi</a>
                                 <a href="" class="list-group-item member-navigation">Kabupaten</a>
