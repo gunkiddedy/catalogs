@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\About;
 use App\Contact;
+use App\ViewProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
