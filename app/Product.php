@@ -18,6 +18,16 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class);
+    }
+
     // satu product mempunyai banyak image (one to many)
     public function images()
     {
