@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Product;
 use App\ProductImage;
 use Illuminate\Http\Request;
@@ -35,10 +36,12 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $images = DB::table('view_product_images')->where('product_id', $id)->get();
-        // dd($images);
+        $owner = Product::find($id)->user;
+        // dd($owner);
         return view('products.detail', [
             'product' => $product,
             'images' => $images,
+            'owner' => $owner,
         ]);
     }
 

@@ -39,6 +39,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class);
+    // }
+
     // user hanya memiliki satu provinsi (inverse from provinsi)
     public function provinsi()
     {
@@ -62,5 +67,6 @@ class User extends Authenticatable
     {
         return ucwords($value);
     }
+
     
 }

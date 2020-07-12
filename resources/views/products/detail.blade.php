@@ -40,7 +40,7 @@
             <div class="card-body">
                 <div class="row">
 
-                    <div class="col-md-7 col-sm-12 col-xs-12 mb-1">
+                    <div class="col-md-7 col-sm-12 col-xs-12 mb-5">
                         <div class="main-image mb-2">
                             {{-- @foreach ($images as $image) --}}
                             <img class="card-img" 
@@ -63,13 +63,44 @@
                     
                     <div class="col-md-5 col-sm-12 col-xs-12">
                         <hr class="prdct_dtl">
-                        <h6>Product Description <span class="badge badge-secondary">New</span></h6>
+                        <h3> 
+                            <span class="badge badge-secondary">
+                                <i class="fa fa-bookmark" style="color: rgb(250, 229, 135)"></i>
+                                {{ $product->brand }}
+                            </span>
+                            {{-- <span class="badge badge-secondary">
+                                <i class="fa fa-bolt" style="color: rgb(250, 229, 135)"></i>
+                                {{ $product->hs_code }}
+                            </span> --}}
+                        </h3>
                         <div class="card">
                             <div class="card-body">
-                                <p>
-                                    This webpage requires data that you entered earlier in order to be properly displayed. You can send this data again, but by doing so you will repeat any action this page previously performed. Press the reload button to resubmit the data needed to load the page.
-                                    ERR_CACHE_MISS
-                                </p>
+                                <h3>
+                                    <span class="badge badge-secondary">
+                                        <i class="fa fa-lightbulb-o" style="color: rgb(250, 229, 135)"></i>
+                                        {{ $product->name }}
+                                    </span>
+                                    <span class="badge badge-secondary">
+                                        <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
+                                        @currency($product->price)
+                                    </span>
+                                </h3>
+                                <hr>
+                                <p>{{ $product->description }}</p>
+                                <h6>
+                                    <span class="badge badge-secondary">
+                                        <i class="fa fa-user" style="color: rgb(250, 229, 135)"></i>
+                                        {{ $owner->name }}
+                                    </span>
+                                    <span class="badge badge-secondary">
+                                        <i class="fa fa-phone-square" style="color: rgb(250, 229, 135)"></i>
+                                        {{ $owner->phone }}
+                                    </span>
+                                    <span class="badge badge-secondary">
+                                        <i class="fa fa-envelope" style="color: rgb(250, 229, 135)"></i>
+                                        {{ $owner->email }}
+                                    </span>
+                                </h6>
                             </div>
                         </div>
                     </div>
