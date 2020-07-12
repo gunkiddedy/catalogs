@@ -10,8 +10,9 @@ class ProductImage extends Model
 
     protected $fillable = ['name', 'product_id', 'image_path'];
 
+    // inverse from product
     public function product()
     {
-        return $this->belongsTo('App\Product', 'product_id');
+        return $this->belongsTo(Product::class);
     }
 }

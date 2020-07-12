@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+
+
+
+
 Route::get('/', 'PageController@product');
 Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
@@ -60,6 +64,55 @@ Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('produc
 // ===============================end Product Area======================================================
 
 
+// Route::get('product/{product}/user/{user}', function ($productId, $userId) {
+//     return App\Product::where('id', '=', $productId)
+//         ->orWhere('user_id', '=', $userId)
+//         ->get();
+// });
 
+// Route::get('api/products/{products:name}', function (App\Product $products) {
+//     return $products;
+// });
+
+
+// Route::get('users/{id}', function ($id) {
+//     return App\User::find($id)->name;
+// });
+
+// ==================ELOQUENT TESTING=========================
+
+// Route::get('user_in_provinsi', function () {
+//     $users = App\Provinsi::find(1)->users;
+//     dd($users);
+// });
+// Route::get('user_in_kab', function () {
+//     $users = App\Kabupaten::find(1)->users;
+//     // select * from `users` where `users`.`user_id` = 1 and `users`.`user_id`
+//     dd($users);
+// });
+// Route::get('user_in_kec', function () {
+//     $users = App\Kecamatan::find(1)->users;
+//     // select * from `users` where `users`.`user_id` = 1 and `users`.`user_id`
+//     dd($users);
+// });
+
+// Route::get('kecamatan_have_kab', function () {
+//     $kecamatans = App\Kabupaten::find(2)->kecamatans;
+//     dd($kecamatans);
+// });
+// Route::get('kab_have_kec', function () {
+//     $kabupaten = App\Kecamatan::find(1)->kabupaten;
+//     dd($kabupaten);
+// });
+
+// Route::get('images_product/{id}', function ($id) {
+//     $images = App\Product::find($id)->images;
+//     dd($images);
+// });
+
+// Route::get('productnya/{id}', function ($id) {
+//     $product = App\ProductImage::find($id)->product;
+//     dd($product);
+// });
 
 

@@ -1,6 +1,9 @@
 @extends('layouts.member')
 
+@section('title', 'member list')
+
 @section ('content')
+
 <div class="col-12 col-md-12 col-sm-12 col-lg-10">
     @if(Session::has('success'))
     <div class="row sccs">

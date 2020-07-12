@@ -1,5 +1,7 @@
 @extends('layouts.member')
 
+@section('title', 'Member index')
+
 @section ('content')
 
 <div class="col-12 col-md-12 col-sm-12 col-lg-10">

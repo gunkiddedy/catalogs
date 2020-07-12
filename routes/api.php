@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Resources\User as UserResource;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// test resource
+Route::get('/user/{id}', function ($id) {
+    return new UserResource(User::find($id));
+});
+
+Route::get('/user', function () {
+    return UserResource::collection(User::all());
 });

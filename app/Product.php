@@ -18,9 +18,10 @@ class Product extends Model
     //     return $this->belongsTo('App\User');
     // }
 
+    // satu product mempunyai banyak image (one to many)
     public function images()
     {
-        return $this->hasMany('App\ProductImage', 'product_id', 'id');
+        return $this->hasMany(ProductImage::class);
     }
     
 }

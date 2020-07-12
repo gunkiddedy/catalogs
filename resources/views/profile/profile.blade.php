@@ -1,5 +1,7 @@
 @extends('layouts.member')
 
+@section('title', 'member profile')
+
 @section('content')
 
 {{-- <div class="row"> --}}

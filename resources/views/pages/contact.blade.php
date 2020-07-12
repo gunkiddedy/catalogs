@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'contact')
+
 @section('content')
     <!-- START THE FEATURETTES -->
 <div class="container">

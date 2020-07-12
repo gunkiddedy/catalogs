@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'about')
+
 @section('content')
+
     <!-- START THE FEATURETTES -->
 <div class="container">
     <h3>About Us</h3>

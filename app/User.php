@@ -38,4 +38,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // user hanya memiliki satu provinsi (inverse from provinsi)
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class);
+    }
+
+    // user hanya memiliki satu kabupaten (inverse from kabupaten)
+    public function kabupaten()
+    {
+        return $this->belongsTo(Kabupaten::class);
+    }
+
+    // user hanya memiliki satu kecamatan (inverse from kecamatan)
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
+
+    // accessor function
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+    
 }

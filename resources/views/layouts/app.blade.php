@@ -7,7 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.AppName', 'Catalog') }}</title>
+    {{-- <title>{{ config('app.AppName', 'Catalog') }}</title> --}}
+
+    <title>@yield('title')</title>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,7 +34,7 @@
                         <div class="d-flex">
                             <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>
                             <div class="pl-3 ml-3 pt-2" style="border-left:1px solid rgba(0, 0, 0, 0.5); font-size:1.5rem;">
-                                {{ config('APP_NAME', 'Catalog') }}
+                                {{ config('app.name') }}
                             </div>
                         </div>
                     </a>
@@ -40,7 +43,7 @@
                         <div class="d-flex">
                             <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>
                             <div class="pl-3 ml-3 pt-2" style="border-left:1px solid rgba(0, 0, 0, 0.5); font-size:1.5rem;">
-                                {{ config('APP_NAME', 'Catalog') }}
+                                {{ config('app.name') }}
                             </div>
                         </div>
                     </a>
@@ -72,11 +75,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link {{ request()->is('register') ? 'active' : ''}}" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -122,21 +125,21 @@
 
     </div>
 
-    <footer>
+    {{-- <footer>
         <div class='container-fluid footer'>
             <div class='container p-0 pt-3'>
                 <div class='row'>
-                    {{-- <div class='col-md-4 col-sm-12 pt-3'>
+                    <div class='col-md-4 col-sm-12 pt-3'>
                         <h3>Contact Information</h3>
                         <p>Catalog <br> Indonesia <br> +123456789 <br> catalog@gmail.com</p>
                     </div>
                     <div class='col-md-4 col-sm-12 pt-3'>
                         <h3>Follow Us On</h3>
                         <ul>
-                            <li><a href='https://facebook.com/' target='_blank'>
-                                <i class="fa fa-instagram"></i></a></li>
-                            <li><a href='https://instagram.com/' target='_blank'>
-                                <i class="fa fa-facebook"></i></a>
+                            <li>
+                                <a href='https://facebook.com/' target='_blank'>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
                             </li>
                         </ul>
 
@@ -145,15 +148,15 @@
                         <h3>Newsletter</h3>
                         <p>Sign up for our newsletter.</p>
                         <div class='newsletter-form p-0'>
-                            <form action='{{ route('newsletter.add') }}' method='post' id='newsletter-validate-detail'>
+                            <form action='#' method='post' id='newsletter-validate-detail'>
                                 @csrf
                                 <input type='email' name='email' id='newsletter-footer' class=''
                                     placeholder='Enter your email'>
                                 <button type='submit' id='signup-newsletter-footer' class='button'>SIGN UP</button>
                             </form>
                         </div>
-                    </div> --}}
-                    {{-- <div class='col-12 divider-footer p-0'></div> --}}
+                    </div>
+                    <hr/>
                     <div class='col-md-6 col-sm-12 copyright'>
                         <p>Catalog &copy; 2019. All Rights Reserved</p>
                     </div>
@@ -161,7 +164,27 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}
+    
+    {{-- <nav class="navbar {{ request()->is(['login', 'register']) ? 'fixed-bottom' : ''}} navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Bottom navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </nav> --}}
+
+    <!-- FOOTER -->
+    @include('layouts.footer-app')
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
