@@ -15,11 +15,21 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name" >Product Name</label>
-                        <input placeholder="Enter product name" type="text" class="form-control " name="name" value="" required autocomplete="name" autofocus>
+                        <input placeholder="Product name" type="text" class="form-control " name="name" value="" autofocus>
+                        @error('name')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="brand" >Brand</label>
                         <input type="text" name="brand" placeholder="Enter brand name" class="form-control">
+                        @error('brand')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -29,10 +39,20 @@
                     <div class="form-group col-md-6">
                         <label for="price" >Price</label>
                         <input type="text" name="price" placeholder="Enter price" class="form-control">
+                        @error('price')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="hs_code" >HS Code</label>
                         <input type="text" name="hs_code" placeholder="Enter Hs Code" class="form-control">
+                        @error('hs_code')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -62,24 +82,33 @@
                 <label for="price" >Product Description</label>
                 <div class="form-group">
                     <div>
-                        <textarea name="description"  cols="30" rows="5" class="form-control"></textarea>
+                        <textarea name="description" rows="10" class="form-control"></textarea>
+                        @error('description')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
 
             <div class="col-12 mb-2">
-                <div class="form-check form-check-inline">
+                {{-- <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="sni" value="1" name="sni">
                     <label class="form-check-label" for="inlineCheckbox1">SNI</label>
+                </div> --}}
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" >
+                    <label class="custom-control-label" for="sni">SNI</label>
                 </div>
             </div>
 
             <div class="col-12">
+                <label for="photos">Choose 5 Images</label>
                 <div class="form-group">
-                    <input type="file" id="images" name="images[]"  multiple>
+                    <div class="dropzone" id="document-dropzone"></div>
                 </div>
             </div>
-            <div class="input-images"></div>
         </div>
         
         <button type="submit" class="btn btn-primary" style="float: right">Submit product</button>
@@ -88,5 +117,5 @@
 </div>
 
 
-    
+
 @endsection

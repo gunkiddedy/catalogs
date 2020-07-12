@@ -4,6 +4,7 @@
         <div class='container'>
             <div class='row'>
                 <div class='col-md-4 col-sm-12 pt-3'>
+                    <h3>Categories</h3>
                     <ul class="list-group list-group-flush">
                         <li style="list-style-type: none;">Cras justo odio</li>
                         <li style="list-style-type: none;">Dapibus ac facilisis in</li>
@@ -13,6 +14,7 @@
                     </ul>
                 </div>
                 <div class='col-md-4 col-sm-12 pt-3'>
+                    <h3>Brands</h3>
                     <ul class="list-group list-group-flush">
                         <li style="list-style-type: none;">Cras justo odio</li>
                         <li style="list-style-type: none;">Dapibus ac facilisis in</li>
@@ -22,6 +24,7 @@
                     </ul>
                 </div>
                 <div class='col-md-4 col-sm-12 pt-3'>
+                    <h3>Members</h3>
                     <ul class="list-group list-group-flush">
                         <li style="list-style-type: none;">Cras justo odio</li>
                         <li style="list-style-type: none;">Dapibus ac facilisis in</li>

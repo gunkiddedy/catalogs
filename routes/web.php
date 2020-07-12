@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
+Route::view('index1', 'products.index1');
 
 
 
@@ -23,10 +24,9 @@ Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
 // showing product catalog for guest or public access
 Route::get('/guest', 'ProductController@index');
-Route::get('/product', 'ProductController@index');
+Route::get('/products', 'ProductController@index');
 Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
 
-Route::view('index1', 'products.index1');
 
 // =================================ADMIN AREA ======================================================
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('auth', 'admin');

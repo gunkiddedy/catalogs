@@ -21,18 +21,18 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ asset('external-css/style.css') }}" rel="stylesheet">
-
-        {{-- SELECR SEARCH --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
-
-    {{-- image preview --}}
     
+    {{-- SELECR SEARCH --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+    
+
 
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">   
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> --}}
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-light">
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <div class="d-flex">
@@ -104,7 +104,7 @@
                                 <a href="" class="list-group-item member-navigation">Kecamatan</a>
                                 <a href="" class="list-group-item member-navigation">Category</a>
                                 <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
-                                <a href="/product" class="list-group-item member-navigation">Preview</a>
+                                <a href="/products" class="list-group-item member-navigation">Preview</a>
                             </ul>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                                 <a href="/product/add" class="list-group-item member-navigation">Add Product</a>
                                 <a href="" class="list-group-item member-navigation">Category</a>
                                 <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
-                                <a href="/product" class="list-group-item member-navigation">Preview</a>
+                                <a href="/products" class="list-group-item member-navigation">Preview</a>
                             </ul>
                         </div>
                     </div>
@@ -148,41 +148,6 @@
 {{-- SELECT SEARCH --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js" defer></script>
 
-{{-- img preview --}}
-
-@yield('script')
-
-<script>
-    
-
-    $(document).ready( function () {
-        $('.sccs').delay(3000).fadeOut('slow');
-        $("select").select2();
-    });
-
-    function product_size()
-    {
-        var id =JSON.stringify($('#product-list').val());
-        
-        $.ajax({
-            url: 'hehe',
-            method:'GET',
-            data:{
-                        id:id,
-                },
-            dataType:'json',
-            success:function(data)
-            {
-                $('#stock-list').html(data.table_data);
-            }
-        })
-    }
-
-    $(document).on('change','#product-list',function(){
-        product_size();
-    });
-    
-</script>
-
+<script src="{{ asset('external-js/style.js') }}"></script>
 </html>
 

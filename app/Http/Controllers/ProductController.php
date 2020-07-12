@@ -30,6 +30,19 @@ class ProductController extends Controller
         ]);
     }
 
+
+    public function details($id)
+    {
+        $product = Product::find($id);
+        $images = DB::table('view_product_images')->where('product_id', $id)->get();
+        // dd($images);
+        return view('products.detail', [
+            'product' => $product,
+            'images' => $images,
+        ]);
+    }
+
+
     public function create()
     {
         $category = DB::table('categories')->get();
@@ -45,7 +58,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'description'=> 'required',
+            'brand' => 'required',
+            'price' => 'required',
+            'hs_code' => 'required|min:3',
+            'description'=> 'required|min:20',
             'images' => 'required',
         ]); 
 
@@ -125,39 +141,38 @@ class ProductController extends Controller
         $product->category_id =  $request->get('category_id');
         $product->subcategory_id =  $request->get('subcategory_id');
         $product->description = $request->get('description');
+
+        $images = $request->file('images');
+        
         $product->save();
         
-        
-        // $images = $request->images;
-        // // // check if has file
-        // if($request->hasfile('images')) {
-
-        //     // $imgs = ProductImage::where('product_id', $id)->get();
-        //     // foreach($imgs as $img){
-        //     //     Storage::disk('public')->delete($img->image_path);
-        //     // }
-
-        //     foreach($images as $image) {
-        //         $filename = $image->getClientOriginalName();
-        //         $path = $image->storeAs('images', $id.'-'.$filename, 'public');
-        //         ProductImage::where('product_id', $id)
-        //             ->update([
-        //                 'name' => $product->name,
-        //                 'image_path' => $path,
-        //         ]);
-
-        //         // $product->images()->saveMany([
-        //         //     new ProductImage([
-        //         //         'image_path' => $path,
-        //         //         'name' => $product->name
-        //         //     ]),
-        //         // ]);
-        //     }
-        // }
-        
-        ProductImage::where('product_id', $id)->update([
-            'name' => $product->name
-        ]);
+        // check if has image
+        if($request->hasFile('images')) {
+            $imgp = DB::table('product_images')->where('product_id', $id)->get();
+            for($i=0; $i<count($imgp); $i++){
+                if($imgp[$i]->image_path){
+                    Storage::delete('/public/'.$imgp[$i]->image_path);
+                }
+            }
+            foreach($images as $image) {
+                $filename = $image->getClientOriginalName();
+                $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
+                // ProductImage::where('product_id', $id)->update([
+                //     'name' => $product->name,
+                //     'image_path' => $path,
+                // ]);
+                DB::table('product_images')
+                ->updateOrInsert(
+                    ['name' => $product->name],
+                    ['image_path' => $path]
+                );
+            }
+        }
+        else{
+            DB::table('product_images')->update([
+                'name' => $product->name
+            ]);
+        }
 
         return redirect('/member')->with('success', 'data updated successfully');
     }
@@ -174,15 +189,5 @@ class ProductController extends Controller
         return redirect('/member')->with('success', 'data deleted successfully');
     }
 
-    public function details($id)
-    {
-        $product = Product::find($id);
-        $images = DB::table('view_product_images')->where('product_id', $id)->get();
-        // dd($images);
-        return view('products.detail', [
-            'product' => $product,
-            'images' => $images,
-        ]);
-    }
-
+    
 }
