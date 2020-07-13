@@ -61,15 +61,22 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="category_id" >Category</label>
-                        <select class="form-control" name="category_id" required id="category_id">
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option value="" selected>Choose...</option>
                             @foreach($category as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name}}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="subcategory_id" >Sub Category</label>
-                        <select class="form-control" name="subcategory_id" required id="category_id">
+                        <select class="form-control" name="subcategory_id" id="subcategory_id">
+                            <option value="" selected>Choose...</option>
                             @foreach($subcat as $subc)
                                 <option value="{{ $subc->id }}">{{ $subc->name}}</option>
                             @endforeach

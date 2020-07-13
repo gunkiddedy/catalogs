@@ -31,7 +31,7 @@
                 data-toggle="collapse" 
                 data-target="#collapseOne" 
                 aria-expanded="true" 
-                aria-controls="collapseOne"><h6>Product details</h6>
+                aria-controls="collapseOne"><h6 class="text-dark"><i class="fa fa-bell"></i> Product details</h6>
                 </button>
             </h5>
         </div>

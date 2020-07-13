@@ -70,6 +70,7 @@ class ProductController extends Controller
             'price' => 'required',
             'hs_code' => 'required|min:3',
             'description'=> 'required|min:20',
+            'category_id' => 'required',
             'images' => 'required',
         ]); 
 
