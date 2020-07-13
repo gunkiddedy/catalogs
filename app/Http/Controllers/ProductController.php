@@ -14,7 +14,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = DB::table('view_images')->orderBy('id', 'desc')->get();
+        // $products = DB::table('view_images')->orderBy('id', 'desc')->get();
+        $products = DB::table('view_images')->orderBy('id', 'desc')->paginate(9);
         $category = DB::table('categories')->get();
         $subcategory = DB::table('subcategories')->get();
         $minPrice = DB::table('products')->min('price');

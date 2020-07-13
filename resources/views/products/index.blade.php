@@ -104,7 +104,9 @@
                 @endforeach
             </div>
         </div>
-        
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 offset-md-3 rspnv">
+            {{ $products->links() }}
+        </div>
     </div>
 </div>
 

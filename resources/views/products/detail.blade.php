@@ -31,7 +31,7 @@
                 data-toggle="collapse" 
                 data-target="#collapseOne" 
                 aria-expanded="true" 
-                aria-controls="collapseOne"><h6>Product Images</h6>
+                aria-controls="collapseOne"><h6>Product details</h6>
                 </button>
             </h5>
         </div>
@@ -114,6 +114,7 @@
             </div>
         </div>
     </div>
+    <x-product-terkait></x-product-terkait>
 </div>
 
 @endsection
