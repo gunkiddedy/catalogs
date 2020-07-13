@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->mediumText('address')->nullable();
             $table->string('nib')->nullable();
             $table->string('additional_info')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
