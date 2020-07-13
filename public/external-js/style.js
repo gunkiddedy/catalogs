@@ -1,17 +1,17 @@
 ///////////////// fixed menu on scroll for desktop
-if ($(window).width() > 992) {
-    $(window).scroll(function(){  
-        if ($(this).scrollTop() > 50) {
-            $('.navbar').addClass("fixed-top");
-            // add padding top to show content behind navbar
-            $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
-        }else{
-            $('.navbar').removeClass("fixed-top");
-            // remove padding top from body
-            $('body').css('padding-top', '0');
-        }   
-    });
-}
+// if ($(window).width() > 992) {
+//     $(window).scroll(function(){  
+//         if ($(this).scrollTop() > 50) {
+//             $('.navbar').addClass("fixed-top");
+//             // add padding top to show content behind navbar
+//             $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+//         }else{
+//             $('.navbar').removeClass("fixed-top");
+//             // remove padding top from body
+//             $('body').css('padding-top', '0');
+//         }   
+//     });
+// }
 
 // hide show navbar when scroll up
 // var lastScrollTop = 0;

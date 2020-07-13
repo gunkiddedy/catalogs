@@ -5,7 +5,7 @@
         @foreach ($products as $product)
         <div class="col-lg-3 col-md-6 col-sm-12 pt-3">
             <div class="card">
-                <a href="{{ route('product.detail', $product->id) }}">
+                {{-- <a href="{{ route('product.detail', $product->id) }}"> --}}
                     <div class="card-header">
                         <h5>
                             <i class="fa fa-bookmark" style="color: rgb(29, 75, 204)"></i> 
@@ -21,14 +21,18 @@
                                 <h4>{{ strtoupper($product->product_name) }}</h4>
                                 <hr>
                                 <h6>
-                                    <i class="fa fa-tag" style="color: rgb(29, 75, 204)"></i>
-                                    @currency($product->price)
+                                    {{-- <i class="fa fa-tag" style="color: rgb(250, 209, 29)"></i>
+                                    @currency($product->price) --}}
+                                    <a href="{{ route('product.detail', $product->id) }}" 
+                                        class="btn btn-sm btn-warning text-white">
+                                        <i class="fa fa-info-circle"></i> Details product
+                                    </a>
                                 </h6>
                             </div>
                             
                         </div>
                     </div>
-                </a>
+                {{-- </a> --}}
             </div>
         </div>
         @endforeach
