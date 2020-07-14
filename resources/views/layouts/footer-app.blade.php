@@ -1,6 +1,6 @@
 <div class="container-fluid bg-light text-dark pt-2" style="margin-top:100px">
-    <div class="container bg-light text-dark">
-        {{-- <div class="p-3 mb-2 bg-light text-dark">.bg-light</div> --}}
+    {{-- <div class="container bg-light text-dark">
+        <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
         <div class='container'>
             <div class='row'>
                 <div class='col-md-4 col-sm-12 pt-3'>
@@ -35,12 +35,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <hr>
+    </div> --}}
+    {{-- <hr> --}}
     <div class="container">
         <div class="row">
             <div class='col-md-4 col-sm-12 pt-3'>
-                <p>&copy {{ date('Y') }} {{ config('app.name') }}</p>
+                <p>copyright {{ date('Y') }} {{ config('app.name') }}</p>
             </div>
         </div>
     </div>
