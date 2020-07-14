@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light text-dark pt-2" style="margin-top:100px">
+<div class="container-fluid bg-light text-dark pt-2 {{ request()->is(['/', 'products']) ? '' : 'fixed-bottom'}} " style="margin-top:100px;border-top:1px solid #e6dede;">
     {{-- <div class="container bg-light text-dark">
         <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
         <div class='container'>
