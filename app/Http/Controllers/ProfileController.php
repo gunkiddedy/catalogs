@@ -24,9 +24,9 @@ class ProfileController extends Controller
         // $users = DB::table('view_profile')->where('id', $id)->get();
         $user = User::find($id);
 
-        $provinsi = DB::table('provinsi')->get();
-        $kabupaten = DB::table('kabupaten')->get();
-        $kecamatan = DB::table('kecamatan')->get();
+        $provinsi = DB::table('provinsis')->get();
+        $kabupaten = DB::table('kabupatens')->get();
+        $kecamatan = DB::table('kecamatans')->get();
         
         // foreach($users as $user) $profile = $user;
 

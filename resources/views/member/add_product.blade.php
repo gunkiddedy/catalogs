@@ -111,9 +111,9 @@
             </div>
 
             <div class="col-12">
-                <label for="photos">Choose 5 Images</label>
+                <label for="photos">Choose images</label>
                 <div class="form-group">
-                    <div class="dropzone" id="document-dropzone"></div>
+                    <input type="file" name="images[]" id="images" multiple>
                 </div>
             </div>
         </div>
