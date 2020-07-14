@@ -14,8 +14,16 @@ class ProfileController extends Controller
     public function profile($id)
     {        
         // $user = User::find($id);
-        $user = ViewProfile::find($id);
-        return view('profile.profile', ['user' => $user]);
+        $user = User::find($id);
+        $provinsi = User::find($id)->provinsi;
+        $kabupaten = User::find($id)->kabupaten;
+        $kecamatan = User::find($id)->kecamatan;
+        return view('profile.profile', [
+            'user' => $user,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+        ]);
     }
 
     // edit profile member

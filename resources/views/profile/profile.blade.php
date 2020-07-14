@@ -34,7 +34,11 @@
             <p class="card-text mt-2">
                 <span class="badge badge-secondary">Additional info</span><br>
                 <div class="alert alert-primary">
-                    {{ $user->additional_info }}
+                    @if (!empty($user->additional_info))
+                        {{ $user->additional_info }}
+                    @else
+                        <p>No info found</p>
+                    @endif
                 </div>
             </p>
         </div>
@@ -63,35 +67,67 @@
             </tr>
             <tr>
                 <th scope="row">Phone</th>
-                <td>{{ $user->phone }}</td>
+                @if (!empty($user->phone))
+                    <td>{{ $user->phone }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Address</th>
-                <td>{{ $user->address }}</td>
+                @if (!empty($user->address))
+                    <td>{{ $user->address }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Tkdn</th>
-                <td>{{ $user->tkdn }}</td>
+                @if (!empty($user->tkdn))
+                    <td>{{ $user->tkdn }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Provinsi</th>
-                <td>{{ $user->provinsi_name }}</td>
+                @if (!empty($provinsi))
+                    <td>{{ $provinsi->name }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Kabupaten</th>
-                <td>{{ $user->kabupaten_name }}</td>
+                @if (!empty($kabupaten))
+                    <td>{{ $kabupaten->name }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Kecamatan</th>
-                <td>{{ $user->kecamatan_name }}</td>
+                @if (!empty($kecamatan))
+                    <td>{{ $kecamatan->name }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Zipcode</th>
-                <td>{{ $user->zipcode }}</td>
+                @if (!empty($kecamatan))
+                    <td>{{ $kecamatan->zipcode }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
             <tr>
                 <th scope="row">Nib</th>
-                <td>{{ $user->nib }}</td>
+                @if (!empty($user->nib))
+                    <td>{{ $user->nib }}</td>
+                @else
+                    <td>-</td>
+                @endif
             </tr>
         </tbody>
     </table>

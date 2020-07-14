@@ -86,6 +86,7 @@
             </div>
         </nav>
 
+        {{-- IF ADMIN ROLE --}}
         @if (Auth::user()->role == 'admin')
         <main class="py-4">
             <div class="container">
@@ -123,7 +124,7 @@
                             </div>
                             <ul class="list-group">
                                 <a href="/product/add" class="list-group-item member-navigation">Add Product</a>
-                                <a href="" class="list-group-item member-navigation">Category</a>
+                                <a href="/category/add" class="list-group-item member-navigation">Category</a>
                                 <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
                                 <a href="/products" class="list-group-item member-navigation">Preview</a>
                             </ul>
