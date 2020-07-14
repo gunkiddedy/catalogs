@@ -76,7 +76,7 @@
                     <div class="form-group col-md-6">
                         <label for="subcategory_id" >Sub Category</label>
                         <select class="form-control" name="subcategory_id" id="subcategory_id">
-                            <option value="" selected>Choose...</option>
+                            <option value="99" selected>Choose...</option>
                             @foreach($subcat as $subc)
                                 <option value="{{ $subc->id }}">{{ $subc->name}}</option>
                             @endforeach

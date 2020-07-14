@@ -21,9 +21,9 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->unsignedBigInteger('user_id');
             //$table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->default(99);
             //$table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('subcategory_id')->default(99);
             // $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->string('hs_code');
             $table->boolean('sni');

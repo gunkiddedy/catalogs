@@ -126,7 +126,7 @@
                                 <a href="/product/add" class="list-group-item member-navigation">Add Product</a>
                                 <a href="/category/add" class="list-group-item member-navigation">Category</a>
                                 <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
-                                <a href="/products" class="list-group-item member-navigation">Preview</a>
+                                <a href="/products" class="list-group-item member-navigation">Catalogs</a>
                             </ul>
                         </div>
                     </div>

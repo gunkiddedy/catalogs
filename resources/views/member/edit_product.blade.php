@@ -43,6 +43,7 @@
                     <div class="form-group col-md-6">
                         <label for="category_id" >Category</label>
                         <select class="form-control" name="category_id" required id="category_id">
+                            <option value="" selected>Choose...</option>
                             @foreach($category as $cat)
                                 <option value="{{ $cat->id }}" {{$product->category_id == $cat->id  ? 'selected' : ''}}>{{ $cat->name}}</option>
                             @endforeach
@@ -50,7 +51,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="subcategory_id" >Sub Category</label>
-                        <select class="form-control" name="subcategory_id" required id="category_id">
+                        <select class="form-control" name="subcategory_id" id="category_id">
+                            <option value="99" disabled>Choose...</option>
                             @foreach($subcat as $subc)
                                 <option value="{{ $subc->id }}" {{$product->subcategory_id == $subc->id  ? 'selected' : ''}}>{{ $subc->name}}</option>
                             @endforeach

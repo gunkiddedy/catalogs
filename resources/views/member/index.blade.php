@@ -31,25 +31,28 @@
                 @if (count($products) > 0)
                     @foreach ($products as $product)
                     <tr>
-                        <td>{{ $product->product_name }}</td>
+                        <td>{{ $product->name }}</td>
                         <td>{{ $product->brand }}</td>
                         {{-- <td>{{ $product->category_name }}</td> --}}
                         {{-- <td>{{ $product->subcategory_name }}</td> --}}
                         <td>
-                        @foreach (DB::table('view_product_images')->where('product_id', $product->product_id)->get() as $image)
+                        @foreach (DB::table('view_product_images')->where('product_id', $product->id)->get() as $image)
                             <img src="{{ asset('/storage/'.$image->image_path) }}" alt="images" width="60" height="60" class="img-thumbnail">
                         @endforeach
                         </td>
                         <td>
-                            <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-sm btn-primary">
-                                Edit <i class="fa fa-pencil"></i></a>
-                            <form action="{{ route('product.delete', $product->product_id) }}" method="POST">
-                                @csrf 
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-warning">
-                                    Delete <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+                            <div class="d-flex justify-content-start">
+                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary mr-1">
+                                    Edit <i class="fa fa-pencil"></i>
+                                </a>
+                                <form action="{{ route('product.delete', $product->id) }}" method="POST">
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-warning">
+                                        Delete <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

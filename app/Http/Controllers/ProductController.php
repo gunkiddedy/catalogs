@@ -178,12 +178,12 @@ class ProductController extends Controller
             }
         }
         else{
-            DB::table('product_images')->update([
+            DB::table('product_images')->where('product_id', $id)->update([
                 'name' => $product->name
             ]);
         }
 
-        return redirect('/member')->with('success', 'data updated successfully');
+        return redirect('/member')->with('success', 'product '.$product->name.' updated successfully');
     }
 
     public function destroy($id)
