@@ -17,6 +17,7 @@ class CreateKecamatansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('kabupaten_id');
             $table->string('name');
+            $table->string('zipcode');
             $table->foreign('kabupaten_id')->references('id')->on('kabupatens')->onDelete('cascade');
             $table->timestamps();
         });
