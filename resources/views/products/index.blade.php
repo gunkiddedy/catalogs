@@ -28,17 +28,19 @@
                         <div class="card-body ">
                             <div class="product-info">
                                 {{-- <div class="info-1"> --}}
-                                    <a href="#"><img class="card-img" src="{{ asset('/storage/'.$product->image_path) }}" alt="img-product"></a>
+                                    <a href="/product/detail/{{ $product->id }}">
+                                        <img class="card-img" 
+                                        src="{{ asset('/storage/'.$product->image_path) }}" 
+                                        alt="img-product">
+                                    </a>
                                 {{-- </div> --}}
                                 <div class="info-2 mt-4">
                                     <h4>{{ strtoupper($product->product_name) }}</h4>
                                     <hr>
                                     <h6>
-                                        {{-- <i class="fa fa-tag" style="color: rgb(250, 209, 29)"></i>
-                                        @currency($product->price) --}}
-                                        <a href="{{ route('product.detail', $product->id) }}" 
+                                        <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
                                             class="btn btn-sm btn-warning text-white">
-                                            <i class="fa fa-vcard"></i> {{ \App\Product::find($product->id)->user->name }}
+                                            <i class="fa fa-code-fork"></i> {{ \App\Product::find($product->id)->user->name }}
                                         </a>
                                     </h6>
                                 </div>

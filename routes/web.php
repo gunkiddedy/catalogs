@@ -15,20 +15,21 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::view('index1', 'products.index1');
-
 
 
 Route::get('/', 'PageController@product');
 Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
-// showing product catalog for guest or public access
 Route::get('/guest', 'ProductController@index');
 Route::get('/products', 'ProductController@index');
 Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
 
 
-// =================================ADMIN AREA ======================================================
+// =======================================COMPANY PROFILE======================================
+Route::get('/company/detail/{id}', 'CompanyController@detail')->name('company.detail');
+
+
+// =================================ADMIN =========================================================================
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('auth', 'admin');
 
 Route::get('/admin/about', 'AdminController@about')->name('about.index')->middleware('auth', 'admin');
@@ -40,28 +41,25 @@ Route::get('/contact/edit/{id}', 'AdminController@editContact')->name('contact.e
 Route::patch('/contact/update/{id}', 'AdminController@updateContact')->name('contact.update')->middleware('auth', 'admin');
 
 Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
-// =================================END ADMIN AREA ======================================================
 
 
-// ============================PROFILE AREA=====================================
+// ============================MEMBER PROFILE ===============================================================================
 Route::get('/profile/{id}', 'ProfileController@profile')->name('profile.show')->middleware('auth');
 Route::get('/profile/edit/{id}', 'ProfileController@editProfile')->name('profile.edit')->middleware('auth');
 Route::patch('/profile/update/{id}', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 Route::patch('/avatar/update/{id}', 'ProfileController@updateAvatar')->name('avatar.update')->middleware('auth');
-//=================END PROFILE AREA-================================================ 
 
 
-// ================================MEMBER AREA========================================================
+// ================================MEMBER=======================================================
 Route::get('/member', 'MemberController@index')->name('member.dashboard')->middleware('auth', 'member');
-// =============================end member area-----------------========================================
 
-// ===============================Product Area==========================================================
+
+// ===============================Member Product==========================================================
 Route::get('/product/add', 'ProductController@create')->middleware('auth', 'member');
 Route::post('/product/store', 'ProductController@store')->name('product.store')->middleware('auth', 'member');
 Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit')->middleware('auth', 'member');
 Route::patch('/product/update/{id}', 'ProductController@update')->name('product.update')->middleware('auth', 'member');
 Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('product.delete')->middleware('auth', 'member');
-// ===============================end Product Area======================================================
 
 
 // Route::get('product/{product}/user/{user}', function ($productId, $userId) {
