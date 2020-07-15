@@ -25,14 +25,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $images = DB::table('view_product_images')->where('product_id', $id)->get();
-        $owner = Product::find($id)->user;
+        $company = Product::find($id)->user;
         $category = Product::find($id)->category;
         $subcategory = Product::find($id)->subcategory;
-        // dd($subcategory);
         return view('products.detail', [
             'product' => $product,
             'images' => $images,
-            'owner' => $owner,
+            'company' => $company,
             'category' => $category,
             'subcategory' => $subcategory,
         ]);

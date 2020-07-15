@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
 
-class ProductTerkait extends Component
+class RelatedProduct extends Component
 {
     /**
      * Create a new component instance.
@@ -24,7 +24,7 @@ class ProductTerkait extends Component
      */
     public function render()
     {
-        return view('components.product-terkait');
+        return view('components.related-product');
     }
 
     public function products()

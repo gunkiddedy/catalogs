@@ -25,13 +25,13 @@
 
 <div class="container">
     <div class="card border-light">
-        <div class="card-header" id="headingOne">
+        <div class="card-header bg-white" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn btn-sm btn-link" 
                 data-toggle="collapse" 
                 data-target="#collapseOne" 
                 aria-expanded="true" 
-                aria-controls="collapseOne"><h6 class="text-dark"><i class="fa fa-bell"></i> Product details</h6>
+                aria-controls="collapseOne"><h6 class="text-dark">Product details</h6>
                 </button>
             </h5>
         </div>
@@ -39,8 +39,8 @@
         <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" >
             <div class="card-body">
                 <div class="row">
-
-                    <div class="col-md-7 col-sm-12 col-xs-12 mb-5">
+                    {{-- PRODUCT IMAGE --}}
+                    <div class="col-md-6 col-sm-12 col-xs-12 mb-5">
                         <div class="main-image mb-2">
                             {{-- @foreach ($images as $image) --}}
                             <img class="card-img" 
@@ -60,61 +60,82 @@
                             @endforeach
                         </div>
                     </div>
+                    {{-- =========================================END PRODUCT IMAGE --}}
                     
-                    <div class="col-md-5 col-sm-12 col-xs-12">
+                    {{-- PRODUCT DESC --}}
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <hr class="prdct_dtl">
-                        <h3> 
-                            <span class="badge badge-secondary">
-                                <i class="fa fa-rocket" style="color: rgb(250, 229, 135)"></i>
-                                {{ $product->brand }}
-                            </span>
-                            <span class="badge badge-secondary">
-                                <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
-                                {{ $category->name }}
-                            </span>
-                            <span class="badge badge-secondary">
-                                <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
-                                {{ $subcategory->name }}
-                            </span>
-                        </h3>
+                        <h3>{{ $product->name }}</h3>
+                        <h5>
+                            <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
+                            {{ $category->name }}
+                            <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
+                            {{ $subcategory->name }}
+                        </h5>
+                        
                         <div class="card">
                             <div class="card-body">
                                 <h3>
-                                    <span class="badge badge-secondary">
+                                    {{-- <span class="badge badge-secondary">
                                         <i class="fa fa-lightbulb-o" style="color: rgb(250, 229, 135)"></i>
                                         {{ $product->name }}
                                     </span>
                                     <span class="badge badge-secondary">
                                         <i class="fa fa-money" style="color: rgb(250, 229, 135)"></i>
                                         @currency($product->price).-
-                                    </span>
+                                    </span> --}}
+                                    Product Description
                                 </h3>
                                 <hr>
                                 <p>{{ $product->description }}</p>
                                 <h6>
                                     <span class="badge badge-secondary">
-                                        <i class="fa fa-user" style="color: rgb(250, 229, 135)"></i>
-                                        {{ $owner->name }}
-                                    </span>
-                                    <span class="badge badge-secondary">
                                         <i class="fa fa-phone-square" style="color: rgb(250, 229, 135)"></i>
-                                        {{ $owner->phone }}
+                                        {{ $company->phone }}
                                     </span>
                                     <span class="badge badge-secondary">
                                         <i class="fa fa-envelope" style="color: rgb(250, 229, 135)"></i>
-                                        {{ $owner->email }}
+                                        {{ $company->email }}
                                     </span>
                                 </h6>
+                                <hr>
+                                <h5>Hs Code : {{ $product->hs_code }}</h5>
                             </div>
                         </div>
                     </div>
+                    {{-- ====================================END PRODUCT DESC --}}
 
                 </div><!--.row-->
 
             </div>
+            <hr>
+            {{-- COMPANY NAME, PROV, KAB --}}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 mb-5">
+                        <h4>
+                            <a href="/company/detail/{{ $company->id }}">
+                                <span class="badge badge-secondary">
+                                    <i class="fa fa-code-fork" style="color: rgb(250, 229, 135)"></i> 
+                                    {{ $company->name }}
+                                </span>
+                            </a>
+                            <span class="badge badge-secondary">
+                                <i class="fa fa-flag" style="color: rgb(250, 229, 135)"></i> 
+                                {{ \App\User::find($company->id)->provinsi->name }}
+                            </span>
+                            <span class="badge badge-secondary">
+                                <i class="fa fa-flag-o" style="color: rgb(250, 229, 135)"></i> 
+                                {{ \App\User::find($company->id)->kabupaten->name }}
+                            </span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {{-- END COMPANY --}}
         </div>
     </div>
-    <x-product-terkait></x-product-terkait>
+    {{-- <x-related-product></x-related-product> --}}
 </div>
 
 @endsection

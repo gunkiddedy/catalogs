@@ -19,32 +19,32 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 pt-3">
                     <div class="card">
                         {{-- <a href="{{ route('product.detail', $product->id) }}"> --}}
-                            <div class="card-header">
-                                <h6>
-                                    <i class="fa fa-bookmark" style="color: rgb(250, 209, 29)"></i> 
-                                    {{ strtoupper($product->product_brand) }}
-                                </h6>
-                            </div>
-                            <div class="card-body ">
-                                <div class="product-info">
-                                    {{-- <div class="info-1"> --}}
-                                        <img class="card-img" src="{{ asset('/storage/'.$product->image_path) }}" alt="">
-                                    {{-- </div> --}}
-                                    <div class="info-2 mt-4">
-                                        <h4>{{ strtoupper($product->product_name) }}</h4>
-                                        <hr>
-                                        <h6>
-                                            {{-- <i class="fa fa-tag" style="color: rgb(250, 209, 29)"></i>
-                                            @currency($product->price) --}}
-                                            <a href="{{ route('product.detail', $product->id) }}" 
-                                                class="btn btn-sm btn-warning text-white">
-                                               <i class="fa fa-info-circle"></i> Details product
-                                            </a>
-                                        </h6>
-                                    </div>
-                                    
+                        {{-- <div class="card-header">
+                            <h6>
+                                <i class="fa fa-bookmark" style="color: rgb(250, 209, 29)"></i> 
+                                {{ strtoupper($product->product_brand) }}
+                            </h6>
+                        </div> --}}
+                        <div class="card-body ">
+                            <div class="product-info">
+                                {{-- <div class="info-1"> --}}
+                                    <a href="#"><img class="card-img" src="{{ asset('/storage/'.$product->image_path) }}" alt="img-product"></a>
+                                {{-- </div> --}}
+                                <div class="info-2 mt-4">
+                                    <h4>{{ strtoupper($product->product_name) }}</h4>
+                                    <hr>
+                                    <h6>
+                                        {{-- <i class="fa fa-tag" style="color: rgb(250, 209, 29)"></i>
+                                        @currency($product->price) --}}
+                                        <a href="{{ route('product.detail', $product->id) }}" 
+                                            class="btn btn-sm btn-warning text-white">
+                                            <i class="fa fa-vcard"></i> {{ \App\Product::find($product->id)->user->name }}
+                                        </a>
+                                    </h6>
                                 </div>
+                                
                             </div>
+                        </div>
                         {{-- </a> --}}
                     </div>
                 </div>
