@@ -116,17 +116,25 @@
                         <h4>
                             <a href="/company/detail/{{ $company->id }}">
                                 <span class="badge badge-secondary">
-                                    <i class="fa fa-code-fork" style="color: rgb(250, 229, 135)"></i> 
+                                    <i class="fa fa-code-fork" style="color: rgb(250, 229, 135)"></i>
                                     {{ $company->name }}
                                 </span>
                             </a>
                             <span class="badge badge-secondary">
-                                <i class="fa fa-flag" style="color: rgb(250, 229, 135)"></i> 
-                                {{ \App\User::find($company->id)->provinsi->name }}
+                                <i class="fa fa-flag" style="color: rgb(250, 229, 135)"></i>
+                                @if (!empty(\App\User::find($company->id)->provinsi->name))
+                                    {{ \App\User::find($company->id)->provinsi->name }}
+                                @else
+                                    -
+                                @endif
                             </span>
                             <span class="badge badge-secondary">
-                                <i class="fa fa-flag-o" style="color: rgb(250, 229, 135)"></i> 
-                                {{ \App\User::find($company->id)->kabupaten->name }}
+                                <i class="fa fa-flag-o" style="color: rgb(250, 229, 135)"></i>
+                                @if (!empty(\App\User::find($company->id)->provinsi->name))
+                                    {{ \App\User::find($company->id)->kabupaten->name }}
+                                @else
+                                    -
+                                @endif
                             </span>
                         </h4>
                     </div>

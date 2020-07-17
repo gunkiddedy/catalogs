@@ -18,24 +18,15 @@
                 @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 col-sm-12 pt-3">
                     <div class="card">
-                        {{-- <a href="{{ route('product.detail', $product->id) }}"> --}}
-                        {{-- <div class="card-header">
-                            <h6>
-                                <i class="fa fa-bookmark" style="color: rgb(250, 209, 29)"></i> 
-                                {{ strtoupper($product->product_brand) }}
-                            </h6>
-                        </div> --}}
                         <div class="card-body ">
                             <div class="product-info">
-                                {{-- <div class="info-1"> --}}
-                                    <a href="/product/detail/{{ $product->id }}">
-                                        <img class="card-img" 
-                                        src="{{ asset('/storage/'.$product->image_path) }}" 
-                                        alt="img-product">
-                                    </a>
-                                {{-- </div> --}}
+                                @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image)
+                                <a href="/product/detail/{{ $product->id }}">
+                                    <img class="card-img" src="{{ asset('/storage/'.$image->image_path) }}" alt="img-product">
+                                </a>
+                                @endforeach
                                 <div class="info-2 mt-4">
-                                    <h4>{{ strtoupper($product->product_name) }}</h4>
+                                    <h4>{{ strtoupper($product->name) }}</h4>
                                     <hr>
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
@@ -47,13 +38,12 @@
                                 
                             </div>
                         </div>
-                        {{-- </a> --}}
                     </div>
                 </div>
                 @endforeach
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5" style="margin-top: 50px;">
-                {{ $products->links() }}
+                {{-- {{ $products->links() }} --}}
             </div>            
         </div>
     </div>

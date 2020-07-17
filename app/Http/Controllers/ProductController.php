@@ -14,7 +14,15 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = DB::table('view_images')->orderBy('id', 'desc')->paginate(9);
+        // $products = DB::table('view_images')->orderBy('id', 'desc')->paginate(9);
+        // return view('products.index', [
+        //     'products' => $products,
+        // ]);
+
+        $products = Product::all();
+        // $user = User::find(1);
+        // $images = Product::find(2)->images->first();
+        // dd($images);
         return view('products.index', [
             'products' => $products,
         ]);
