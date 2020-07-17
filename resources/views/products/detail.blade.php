@@ -70,7 +70,11 @@
                             <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
                             {{ $category->name }}
                             <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
-                            {{ $subcategory->name }}
+                            @if (!empty($subcategory->name))
+                                {{ $subcategory->name }}
+                            @else
+                                -
+                            @endif
                         </h5>
                         
                         <div class="card">
