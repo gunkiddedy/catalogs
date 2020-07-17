@@ -18,4 +18,9 @@ class SubCategory extends Model
     {
         return strtoupper($value);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

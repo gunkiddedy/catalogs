@@ -137,11 +137,15 @@
         </div>
     </div>
 
-
     {{-- SEARCH --}}
     <div class="row">
-        <div class="col-md-12">
-            <input type="search" name="" id="" class="form-control" placeholder="Search product...">
+        <div class="col-md-12"><div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <input type="search" name="search" id="search" class="form-control" placeholder="Search product...">
         </div>
     </div>
 
