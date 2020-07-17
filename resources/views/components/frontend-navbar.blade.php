@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light shadow-sm bg-white"> 
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white"> 
     <div class="container">
         <a class="navbar-brand" href="/">
             <div class="d-flex">

@@ -25,4 +25,10 @@ class Kabupaten extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    // accessor function
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }

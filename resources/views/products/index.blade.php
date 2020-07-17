@@ -9,7 +9,7 @@
 
         <x-frontend-sidebar></x-frontend-sidebar>
 
-        <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12 rspnv">
+        <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 rspnv">
             {{-- <h3>
                 <i class="fa fa-bullhorn"></i>
                 Our Catalogs here

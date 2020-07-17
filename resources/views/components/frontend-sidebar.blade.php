@@ -1,6 +1,6 @@
-<div class="col-lg-3 col-md-3 col-sm-6">
+<div class="col-lg-3 col-md-4 col-sm-6 frontend-sidebar">
     {{-- <h3><i class="fa fa-filter"></i> Filter </h3> --}}
-    <input class="mt-3 mb-2" type="text" id="search" placeholder="Enter product name" style="width:100%;">
+    <input class="mt-3 mb-2" type="text" id="search" placeholder="search product or company..." style="width:100%;">
     {{-- <div class="filterprice card mb-2">
         <div class="card-body">
             <h5 class="card-title">Price</h5>
@@ -56,6 +56,6 @@
             @endforeach
         </div>
     </div>
-    
+
 </div>
 {{-- end of filter ============================= --}}

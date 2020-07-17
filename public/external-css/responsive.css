@@ -8,6 +8,9 @@
     .input-srch{
         width: auto;
     }
+    .frontend-sidebar {
+        display: none;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -17,6 +20,9 @@
     }
     .input-srch{
         width: auto;
+    }
+    .frontend-sidebar {
+        display: none;
     }
 }
 
@@ -28,6 +34,7 @@
     .input-srch{
         width: 400px;
     }
+    
 }
 
 /* // Large devices (desktops, 992px and up) */

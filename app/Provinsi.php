@@ -19,5 +19,11 @@ class Provinsi extends Model
     {
         return $this->hasMany(Kabupaten::class);
     }
+
+    // ACCESSOR function
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
     
 }
