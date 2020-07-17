@@ -14,14 +14,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $products = DB::table('view_images')->orderBy('id', 'desc')->paginate(9);
-        // return view('products.index', [
-        //     'products' => $products,
-        // ]);
-
-        $products = Product::all();
-        // $user = User::find(1);
-        // $images = Product::find(2)->images->first();
+        $products = Product::with('user')->get();
+        // $images = ProductImage::where('product_id', 2)->with('product')->first();
         // dd($images);
         return view('products.index', [
             'products' => $products,
@@ -32,7 +26,9 @@ class ProductController extends Controller
     public function details($id)
     {
         $product = Product::find($id);
-        $images = DB::table('view_product_images')->where('product_id', $id)->get();
+        // $images = DB::table('view_product_images')->where('product_id', $id)->get();
+        $images = ProductImage::where('product_id', $id)->with('product')->get();
+        // dd($images);
         $company = Product::find($id)->user;
         $category = Product::find($id)->category;
         $subcategory = Product::find($id)->subcategory;

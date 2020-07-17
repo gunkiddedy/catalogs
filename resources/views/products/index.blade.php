@@ -20,11 +20,11 @@
                     <div class="card">
                         <div class="card-body ">
                             <div class="product-info">
-                                @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image)
+                                {{-- @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image) --}}
                                 <a href="/product/detail/{{ $product->id }}">
-                                    <img class="card-img" src="{{ asset('/storage/'.$image->image_path) }}" alt="img-product">
+                                    <img class="card-img" src="{{ asset('/storage/'.\App\ProductImage::where('product_id', $product->id)->with('product')->first()->image_path) }}" alt="img-product">
                                 </a>
-                                @endforeach
+                                {{-- @endforeach --}}
                                 <div class="info-2 mt-4">
                                     <h4>{{ strtoupper($product->name) }}</h4>
                                     <hr>
