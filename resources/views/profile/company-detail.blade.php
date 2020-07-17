@@ -28,7 +28,7 @@
                     @else
                         <img class="img-thumbnail" 
                             style="width: 50%" 
-                            src="{{ asset('/storage/images/default-avatar.png') }}" 
+                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
                             alt="user-avatar">
                     @endif
                     {{-- <p class="card-text mt-2">
