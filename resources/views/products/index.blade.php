@@ -26,7 +26,7 @@
                                 </a>
                                 {{-- @endforeach --}}
                                 <div class="info-2 mt-4">
-                                    <h4>{{ strtoupper($product->name) }}</h4>
+                                    <h4>{{ strtoupper($product->name) }} </h4>
                                     <hr>
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
@@ -43,7 +43,7 @@
                 @endforeach
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5" style="margin-top: 50px;">
-                {{-- {{ $products->links() }} --}}
+                {{ $products->links() }}
             </div>            
         </div>
     </div>

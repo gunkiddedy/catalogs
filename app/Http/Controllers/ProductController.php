@@ -14,9 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('user')->get();
-        // $images = ProductImage::where('product_id', 2)->with('product')->first();
-        // dd($images);
+        $products = Product::with('user')->paginate();
         return view('products.index', [
             'products' => $products,
         ]);
