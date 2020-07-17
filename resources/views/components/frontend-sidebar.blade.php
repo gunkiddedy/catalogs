@@ -12,10 +12,10 @@
         <div class="card-body">
             <h5 class="card-title">Provinsi</h5>
             <hr>
-            @foreach ($brands as $brand)
+            @foreach ($provinsis as $provinsi)
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="{{ $brand->brand }}" class="custom-control-input" name="{{ $brand->brand }}" value="{{ $brand->brand }}" >
-                <label class="custom-control-label" for="{{ $brand->brand }}">{{ ucfirst($brand->brand) }}</label>
+                <input type="checkbox" id="{{ $provinsi->name }}" class="custom-control-input" name="{{ $provinsi->name }}" value="{{ $provinsi->name }}" >
+                <label class="custom-control-label" for="{{ $provinsi->name }}">{{ ucfirst($provinsi->name) }}</label>
             </div>
             @endforeach
         </div>
@@ -24,10 +24,10 @@
         <div class="card-body">
             <h5 class="card-title">Kabupaten</h5>
             <hr>
-            @foreach ($brands as $brand)
+            @foreach ($kabupatens as $kabupaten)
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="{{ $brand->brand }}" class="custom-control-input" name="{{ $brand->brand }}" value="{{ $brand->brand }}" >
-                <label class="custom-control-label" for="{{ $brand->brand }}">{{ ucfirst($brand->brand) }}</label>
+                <input type="checkbox" id="{{ $kabupaten->name }}" class="custom-control-input" name="{{ $kabupaten->name }}" value="{{ $kabupaten->name }}" >
+                <label class="custom-control-label" for="{{ $kabupaten->name }}">{{ ucfirst($kabupaten->name) }}</label>
             </div>
             @endforeach
         </div>
@@ -56,5 +56,6 @@
             @endforeach
         </div>
     </div>
+    
 </div>
 {{-- end of filter ============================= --}}

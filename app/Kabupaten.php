@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kabupaten extends Model
 {
-    protected $illable = ['provinsi_id', 'name'];
+    protected $fillable = ['provinsi_id', 'name'];
 
     // inverse realationship (kabupaten hanya memiliki satu propinsi)
     public function provinsi()

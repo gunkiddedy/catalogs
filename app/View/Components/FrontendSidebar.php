@@ -27,28 +27,38 @@ class FrontendSidebar extends Component
         return view('components.frontend-sidebar');
     }
 
-    public function minPrice()
+    // public function minPrice()
+    // {
+    //     return DB::table('products')->min('price');
+    // }
+
+    // public function maxPrice()
+    // {   
+    //     return DB::table('products')->max('price');
+    // }
+
+    function provinsis()
     {
-        return DB::table('products')->min('price');
+        return \App\Provinsi::all();
     }
 
-    public function maxPrice()
-    {   
-        return DB::table('products')->max('price');
+    public function kabupatens()
+    {
+        return \App\Kabupaten::all();
     }
 
     public function category()
     {
-        return DB::table('categories')->get();
+        return \App\Category::all();
     }
 
     public function subcategory()
     {
-        return DB::table('subcategories')->get();
+        return \App\SubCategory::all();
     }
 
     public function brands()
     {
-        return \App\Product::all()->take(7);
+        return \App\Product::all();
     }
 }
