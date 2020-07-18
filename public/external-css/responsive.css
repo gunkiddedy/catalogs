@@ -5,11 +5,12 @@
     .img-thumbnail{
         width: 100%;
     }
-    .input-srch{
-        width: auto;
-    }
     .frontend-sidebar {
         display: none;
+    }
+    .rspnv{
+        padding-left: 20px;
+        padding-right: 20px;;
     }
 }
 
@@ -17,9 +18,6 @@
 @media (min-width: 576px) and (max-width: 767.98px) {
     .img-thumbnail{
         width: 100%;
-    }
-    .input-srch{
-        width: auto;
     }
     .frontend-sidebar {
         display: none;
@@ -34,7 +32,9 @@
     .input-srch{
         width: 400px;
     }
-    
+    .frontend-sidebar {
+        display: none;
+    }
 }
 
 /* // Large devices (desktops, 992px and up) */

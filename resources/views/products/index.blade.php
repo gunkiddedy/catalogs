@@ -9,14 +9,10 @@
 
         <x-frontend-sidebar></x-frontend-sidebar>
 
-        <div class="col-lg-9 col-md-3 col-sm-12 col-xs-12 rspnv">
-            {{-- <h3>
-                <i class="fa fa-bullhorn"></i>
-                Our Catalogs here
-            </h3> --}}
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
-                <div class="col-md-3 col-sm-12 pt-3 col-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6">
                     <div class="card">
                         <div class="card-body ">
                             <div class="product-info">

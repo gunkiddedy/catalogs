@@ -24,9 +24,9 @@
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Propinsi</th>
-                        <th scope="col">Kabupaten</th>
                         <th scope="col">Kecamatan</th>
+                        <th scope="col">Kabupaten</th>
+                        <th scope="col">Propinsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,9 +36,15 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-                        <td>{{ $user->provinsi_name }}</td>
-                        <td>{{ $user->kabupaten_name }}</td>
-                        <td>{{ $user->kecamatan_name }}</td>
+                        <td>
+                            {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}}
+                        </td>
+                        <td>
+                            {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}}
+                        </td>
+                        <td>
+                            {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

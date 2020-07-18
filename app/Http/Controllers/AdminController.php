@@ -17,8 +17,9 @@ class AdminController extends Controller
 
     public function memberList()
     {
-        $users = ViewProfile::where('role', 'member')->get();
-        // dd($users);
+        $users = \App\User::where('role', 'member')->get();
+        // $kecamatan = \App\User::find(1)->kecamatan->name;
+        // dd($kecamatan);
         return view('admin.members', [
             'users' =>$users
         ]);

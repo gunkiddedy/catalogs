@@ -30,8 +30,8 @@
 
 
 </head>
-<body>
-    <div id="app">
+<body >
+    <div id="app" class="overflow-hidden">
         <x-frontend-navbar></x-frontend-navbar>
         
         <main class="py-4">

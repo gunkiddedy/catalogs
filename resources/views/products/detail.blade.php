@@ -64,20 +64,7 @@
                     
                     {{-- PRODUCT DESC --}}
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <hr class="prdct_dtl">
-
-                        {{-- <h3>{{ $product->name }}</h3>
-                        <h5>
-                            <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
-                            {{ $category->name }}
-                            <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
-                            @if (!empty($subcategory->name))
-                                {{ $subcategory->name }}
-                            @else
-                                -
-                            @endif --}}
-                        </h5>
-                        
+                        <hr class="prdct_dtl">                        
                         <div class="card bg-white border-white">
                             <div class="card-body">
                                 <h3>{{ $product->name }}</h3>
