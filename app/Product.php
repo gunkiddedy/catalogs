@@ -37,12 +37,12 @@ class Product extends Model
     // accessor function
     public function getNameAttribute($value)
     {
-        return strtoupper($value);
+        return ucfirst($value);
     }
 
     public function getBrandAttribute($value)
     {
-        return strtoupper($value);
+        return ucfirst($value);
     }
     
 }

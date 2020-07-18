@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-4 col-sm-6 frontend-sidebar">
+<div class="col-lg-3 col-md-3 col-sm-6 frontend-sidebar">
     {{-- <h3><i class="fa fa-filter"></i> Filter </h3> --}}
     <input class="mt-3 mb-2" type="text" id="search" placeholder="search product or company..." style="width:100%;">
     {{-- <div class="filterprice card mb-2">
@@ -11,16 +11,36 @@
     <div class="filtergender card mb-2">
         <div class="card-body">
             <h5 class="card-title">Provinsi</h5>
-            <hr>
-            @foreach ($provinsis as $provinsi)
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="{{ $provinsi->name }}" class="custom-control-input" name="{{ $provinsi->name }}" value="{{ $provinsi->name }}" >
-                <label class="custom-control-label" for="{{ $provinsi->name }}">{{ ucfirst($provinsi->name) }}</label>
+            {{-- <hr> --}}
+            <div class="inline">
+                {{-- <input type="checkbox" id="{{ $provinsi->name }}" class="custom-control-input" name="{{ $provinsi->name }}" value="{{ $provinsi->name }}" > --}}
+                <select name="provinsi_id" id="" class="form-control">
+                    <option value="" selected>Choose...</option>
+                    @foreach ($provinsis as $provinsi)
+                    <option value="{{ $provinsi->id }}">{{ $provinsi->name }}</option>
+                    @endforeach
+                </select>
+                {{-- <label class="custom-control-label" for="{{ $provinsi->name }}">{{ ucfirst($provinsi->name) }}</label> --}}
             </div>
-            @endforeach
         </div>
     </div>
     <div class="filtergender card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Kabupaten</h5>
+            {{-- <hr> --}}
+            <div class="inline">
+                {{-- <input type="checkbox" id="{{ $provinsi->name }}" class="custom-control-input" name="{{ $provinsi->name }}" value="{{ $provinsi->name }}" > --}}
+                <select name="kabupaten_id" id="" class="form-control">
+                    <option value="" selected>Choose...</option>
+                    @foreach ($kabupatens as $kabupaten)
+                    <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
+                    @endforeach
+                </select>
+                {{-- <label class="custom-control-label" for="{{ $provinsi->name }}">{{ ucfirst($provinsi->name) }}</label> --}}
+            </div>
+        </div>
+    </div>
+    {{-- <div class="filtergender card mb-2">
         <div class="card-body">
             <h5 class="card-title">Kabupaten</h5>
             <hr>
@@ -31,11 +51,11 @@
             </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
     <div class="filtergender card mb-2">
         <div class="card-body">
             <h5 class="card-title">Categories</h5>
-            <hr>
+            {{-- <hr> --}}
             @foreach ($category as $cat)
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="{{ $cat->name }}" class="custom-control-input" name="{{ $cat->name }}" value="{{ $cat->name }}" >
@@ -47,7 +67,7 @@
     <div class="filtergender card mb-2">
         <div class="card-body">
             <h5 class="card-title">Sub Categories</h5>
-            <hr>
+            {{-- <hr> --}}
             @foreach ($subcategory as $subcat)
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="{{ $subcat->name }}" class="custom-control-input" name="{{ $subcat->name }}" value="{{ $subcat->name }}" >

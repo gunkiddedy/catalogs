@@ -9,29 +9,27 @@
 
         <x-frontend-sidebar></x-frontend-sidebar>
 
-        <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 rspnv">
+        <div class="col-lg-9 col-md-3 col-sm-12 col-xs-12 rspnv">
             {{-- <h3>
                 <i class="fa fa-bullhorn"></i>
                 Our Catalogs here
             </h3> --}}
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
-                <div class="col-lg-4 col-md-6 col-sm-12 pt-3">
+                <div class="col-md-3 col-sm-12 pt-3 col-6">
                     <div class="card">
                         <div class="card-body ">
                             <div class="product-info">
-                                {{-- @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image) --}}
                                 <a href="/product/detail/{{ $product->id }}">
                                     <img class="card-img" src="{{ asset('/storage/'.\App\ProductImage::where('product_id', $product->id)->with('product')->first()->image_path) }}" alt="img-product">
                                 </a>
-                                {{-- @endforeach --}}
-                                <div class="info-2 mt-4">
-                                    <h4>{{ strtoupper($product->name) }} </h4>
-                                    <hr>
+                                <div class="mt-2">
+                                    <p>{{ ucwords($product->name) }} </p>
+                                    {{-- <hr> --}}
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
-                                            class="btn btn-sm btn-warning text-white">
-                                            <i class="fa fa-code-fork"></i> {{ \App\Product::find($product->id)->user->name }}
+                                            class="btn-sm btn btn-warning text-white">
+                                            {{ \App\Product::find($product->id)->user->name }}
                                         </a>
                                     </h6>
                                 </div>

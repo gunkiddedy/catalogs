@@ -14,11 +14,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('user')->orderBy('id', 'desc')->paginate();
+        $products = Product::with('user')->orderBy('id', 'desc')->paginate(16);
 
-        return view('products.index', [
-            'products' => $products,
-        ]);
+        return view('products.index', ['products' => $products]);
     }
 
 
