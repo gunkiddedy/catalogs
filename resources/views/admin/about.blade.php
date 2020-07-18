@@ -22,11 +22,11 @@
                     <tbody>
                         <tr>
                             <th scope="row">Title</th>
-                            <td>{{ $about->title }}</td>
+                            <td>{{ $about ? $about->title : '' }}</td>
                         </tr>
                         <tr>
                             <th scope="row">Description</th>
-                            <td>{{ $about->description }}</td>
+                            <td>{{ $about ? $about->description : '' }}</td>
                         </tr>
                         <tr>
                             <th scope="row">Image</th>
