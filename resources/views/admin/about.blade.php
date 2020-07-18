@@ -30,9 +30,15 @@
                         </tr>
                         <tr>
                             <th scope="row">Image</th>
+                            @if (!empty($about->image))
                             <td>
                                 <img src="{{ asset('storage/'.$about->image) }}" alt="" class="img-thumbnail">
+                            </td>  
+                            @else
+                            <td>
+                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" class="img-thumbnail">
                             </td>
+                            @endif
                         </tr>
                     </tbody>
                 </table>
