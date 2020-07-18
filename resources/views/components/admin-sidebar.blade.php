@@ -7,14 +7,14 @@
                         NAVIGATION
                     </div>
                     <ul class="list-group">
-                        <a href="{{ route('about.index') }}" class="list-group-item member-navigation">About</a>
-                        <a href="{{ route('contact.index') }}" class="list-group-item member-navigation">Contact</a>
-                        <a href="{{ route('member.list') }}" class="list-group-item member-navigation">Members</a>
+                        <a href="{{ route('member.list') }}" class="list-group-item member-navigation">Users</a>
+                        <a href="" class="list-group-item member-navigation">Category</a>
                         <a href="" class="list-group-item member-navigation">Provinsi</a>
                         <a href="" class="list-group-item member-navigation">Kabupaten</a>
                         <a href="" class="list-group-item member-navigation">Kecamatan</a>
-                        <a href="" class="list-group-item member-navigation">Category</a>
                         <a href="/profile/{{ Auth::id() }}" class="list-group-item member-navigation">Profile</a>
+                        <a href="{{ route('about.index') }}" class="list-group-item member-navigation">About</a>
+                        <a href="{{ route('contact.index') }}" class="list-group-item member-navigation">Contact</a>
                         <a href="/products" class="list-group-item member-navigation">Preview</a>
                     </ul>
                 </div>

@@ -32,7 +32,7 @@ class LoginController extends Controller
     {
         switch (Auth::user()->role) {
             case 'admin':
-                $this->redirectTo = '/admin';
+                $this->redirectTo = '/members';
                 return $this->redirectTo;
                 break;
             case 'member':
