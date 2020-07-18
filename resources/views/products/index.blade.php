@@ -20,11 +20,11 @@
                                     <img class="card-img" src="{{ asset('/storage/'.\App\ProductImage::where('product_id', $product->id)->with('product')->first()->image_path) }}" alt="img-product">
                                 </a>
                                 <div class="mt-2">
-                                    <p>{{ ucwords($product->name) }} </p>
+                                    <p class="prdct_name">{{ ucwords($product->name) }} </p>
                                     {{-- <hr> --}}
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
-                                            class="text-warning" style="font-size: 13px;">
+                                            class="text-warning" style="font-size: 14px;">
                                             {{ \App\Product::find($product->id)->user->name }}
                                         </a>
                                     </h6>
