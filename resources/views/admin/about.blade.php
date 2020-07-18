@@ -44,7 +44,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                <a href="/about/edit/{{ $about->id}}" class="btn btn-primary text-white">Edit About</a>
+                <a href="/about/edit/{{ $about ? $about->id : ''}}" class="btn btn-primary text-white">Edit About</a>
             </div>
           </div>
         
