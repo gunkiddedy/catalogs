@@ -17,7 +17,7 @@ class Category extends Model
         return strtoupper($value);
     }
 
-    public function categories()
+    public function subcategories()
     {
         return $this->hasMany(SubCategory::class);
     }

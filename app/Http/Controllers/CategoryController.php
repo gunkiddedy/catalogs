@@ -6,5 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    //
+    public function index()
+    {
+        $categories = \App\Category::all();
+        $subcategories = \App\SubCategory::all();
+        // dd($categories);
+        return view('admin.category', [
+            'categories' => $categories,
+            'subcategories' => $subcategories,
+        ]);
+    }
 }

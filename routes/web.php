@@ -32,11 +32,37 @@ Route::get('/company/detail/{id}', 'CompanyController@detail')->name('company.de
 // =================================ADMIN =========================================================================
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('auth', 'admin');
 
-Route::get('/admin/about', 'AdminController@about')->name('about.index')->middleware('auth', 'admin');
+Route::get('/category', 'CategoryController@index')->name('category.index')->middleware('auth', 'admin');
+Route::get('/category/edit/{id}', 'CategoryController@edit')->name('category.edit')->middleware('auth', 'admin');
+Route::patch('/category/update/{id}', 'CategoryController@update')->name('category.update')->middleware('auth', 'admin');
+Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('category.delete')->middleware('auth', 'admin');
+
+Route::get('/subcategory', 'CategoryController@index')->name('subcategory.index')->middleware('auth', 'admin');
+Route::get('/subcategory/edit/{id}', 'CategoryController@edit')->name('subcategory.edit')->middleware('auth', 'admin');
+Route::patch('/subcategory/update/{id}', 'CategoryController@update')->name('subcategory.update')->middleware('auth', 'admin');
+Route::delete('/subcategory/delete/{id}', 'CategoryController@destroy')->name('subcategory.delete')->middleware('auth', 'admin');
+
+Route::get('/provinsi', 'ProvinsiController@index')->name('provinsi.index')->middleware('auth', 'admin');
+Route::get('/provinsi/edit/{id}', 'ProvinsiController@edit')->name('provinsi.edit')->middleware('auth', 'admin');
+Route::patch('/provinsi/update/{id}', 'ProvinsiController@update')->name('provinsi.update')->middleware('auth', 'admin');
+Route::delete('/provinsi/delete/{id}', 'ProvinsiController@destroy')->name('provinsi.delete')->middleware('auth', 'admin');
+
+Route::get('/kabupaten', 'KabupatenController@index')->name('kabupaten.index')->middleware('auth', 'admin');
+Route::get('/kabupaten/edit/{id}', 'KabupatenController@edit')->name('kabupaten.edit')->middleware('auth', 'admin');
+Route::patch('/kabupaten/update/{id}', 'KabupatenController@update')->name('kabupaten.update')->middleware('auth', 'admin');
+Route::delete('/kabupaten/delete/{id}', 'KabupatenController@destroy')->name('kabupaten.delete')->middleware('auth', 'admin');
+
+Route::get('/kecamatan', 'KecamatanController@index')->name('kecamatan.index')->middleware('auth', 'admin');
+Route::get('/kecamatan/edit/{id}', 'KecamatanController@edit')->name('kecamatan.edit')->middleware('auth', 'admin');
+Route::patch('/kecamatan/update/{id}', 'KecamatanController@update')->name('kecamatan.update')->middleware('auth', 'admin');
+Route::delete('/kecamatan/delete/{id}', 'KecamatanController@destroy')->name('kecamatan.delete')->middleware('auth', 'admin');
+
+
+Route::get('/about', 'AdminController@about')->name('about.index')->middleware('auth', 'admin');
 Route::get('/about/edit/{id}', 'AdminController@editAbout')->name('about.edit')->middleware('auth', 'admin');
 Route::patch('/about/update/{id}', 'AdminController@updateAbout')->name('about.update')->middleware('auth', 'admin');
 
-Route::get('/admin/contact', 'AdminController@contact')->name('contact.index')->middleware('auth', 'admin');
+Route::get('/contact', 'AdminController@contact')->name('contact.index')->middleware('auth', 'admin');
 Route::get('/contact/edit/{id}', 'AdminController@editContact')->name('contact.edit')->middleware('auth', 'admin');
 Route::patch('/contact/update/{id}', 'AdminController@updateContact')->name('contact.update')->middleware('auth', 'admin');
 
