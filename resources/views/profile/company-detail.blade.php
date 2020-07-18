@@ -54,6 +54,12 @@
                 </div> --}}
             </div>
         </div>
+        <style>
+            .table td,
+            .table th {
+                border: 0;
+            }
+        </style>
         <div class="col-md-8 col-sm-12 col-xs-12">
             <table class="table table-sm">
                 <tbody>
@@ -62,7 +68,7 @@
                         <td colspan="2"><h3>{{ $user->name }}</h3></td>
                     </tr>
                     <tr>
-                        <th scope="row">Address</th>
+                        {{-- <th scope="row">Address</th> --}}
                             <td>
                                 {{ $user ? $user->address : '-' }}
                                 {{ $kecamatan ? $kecamatan->name : '' }}
@@ -72,9 +78,9 @@
                             </td>
                     </tr>
                     <tr>
-                        <th scope="row">Phone / Email</th>
+                        {{-- <th scope="row">Phone / Email</th> --}}
                         <td>
-                            {{ $user ? $user->phone : ''}},
+                            {{ $user ? $user->phone : ''}} - 
                             {{ $user ? $user->email : ''}}
                         </td>
                     </tr>
@@ -112,11 +118,11 @@
                         @endif
                     </tr> --}}
                     <tr>
-                        <th scope="row">Additional info</th>
+                        {{-- <th scope="row">Additional info</th> --}}
                         @if ( !empty($user->additional_info))
                             <td>{{ $user->additional_info }}</td>
                         @else
-                            <td>-</td>
+                            <td></td>
                         @endif
                     </tr>
                     {{-- <tr>

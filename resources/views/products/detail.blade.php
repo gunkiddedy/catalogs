@@ -24,8 +24,8 @@
 </style>
 
 <div class="container">
-    <div class="card border-light">
-        <div class="card-header bg-white" id="headingOne">
+    <div class="card border-white">
+        <div class="card-header bg-white border-white" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn btn-sm btn-link" 
                 data-toggle="collapse" 
@@ -65,7 +65,8 @@
                     {{-- PRODUCT DESC --}}
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <hr class="prdct_dtl">
-                        <h3>{{ $product->name }}</h3>
+
+                        {{-- <h3>{{ $product->name }}</h3>
                         <h5>
                             <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
                             {{ $category->name }}
@@ -74,20 +75,23 @@
                                 {{ $subcategory->name }}
                             @else
                                 -
-                            @endif
+                            @endif --}}
                         </h5>
                         
-                        <div class="card">
+                        <div class="card bg-white border-white">
                             <div class="card-body">
+                                <h3>{{ $product->name }}</h3>
+                                <h6>
+                                    <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
+                                    {{ $category->name }}
+                                    <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
+                                    @if (!empty($subcategory->name))
+                                        {{ $subcategory->name }}
+                                    @else
+                                        -
+                                    @endif
+                                </h6>
                                 <h3>
-                                    {{-- <span class="badge badge-secondary">
-                                        <i class="fa fa-lightbulb-o" style="color: rgb(250, 229, 135)"></i>
-                                        {{ $product->name }}
-                                    </span>
-                                    <span class="badge badge-secondary">
-                                        <i class="fa fa-money" style="color: rgb(250, 229, 135)"></i>
-                                        @currency($product->price).-
-                                    </span> --}}
                                     Product Description
                                 </h3>
                                 <hr>
@@ -112,7 +116,7 @@
                 </div><!--.row-->
 
             </div>
-            <hr>
+            {{-- <hr> --}}
             {{-- COMPANY NAME, PROV, KAB --}}
             <div class="card-body">
                 <div class="row">

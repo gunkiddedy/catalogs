@@ -28,7 +28,7 @@
                                     {{-- <hr> --}}
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
-                                            class="text-primary">
+                                            class="text-warning" style="font-size: 13px;">
                                             {{ \App\Product::find($product->id)->user->name }}
                                         </a>
                                     </h6>
