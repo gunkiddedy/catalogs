@@ -24,50 +24,50 @@
                     <tbody>
                         <tr>
                             <th scope="row">Company Name</th>
-                            <td>{{ $contact->company_name }}</td>
+                            <td>{{ $contact ? $contact->company_name : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Phone</th>
-                            <td>{{ $contact->company_phone }}</td>
+                            <td>{{ $contact ? $contact->company_phone : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Email</th>
-                            <td>{{ $contact->company_email }}</td>
+                            <td>{{ $contact ? $contact->company_email : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Address</th>
-                            <td>{{ $contact->company_address }}</td>
+                            <td>{{ $contact ? $contact->company_address : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Country</th>
-                            <td>{{ $contact->company_country }}</td>
+                            <td>{{ $contact ? $contact->company_country : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Whatsapp</th>
-                            <td>{{ $contact->company_whatsapp }}</td>
+                            <td>{{ $contact ? $contact->company_whatsapp : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Telegram</th>
-                            <td>{{ $contact->company_telegram }}</td>
+                            <td>{{ $contact ? $contact->company_telegram : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Facebook</th>
-                            <td>{{ $contact->company_facebook }}</td>
+                            <td>{{ $contact ? $contact->company_facebook : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Instagram</th>
-                            <td>{{ $contact->company_instagram }}</td>
+                            <td>{{ $contact ? $contact->company_instagram : ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Twitter</th>
-                            <td>{{ $contact->company_twitter }}</td>
+                            <td>{{ $contact ? $contact->company_twitter : ''}}</td>
                         </tr>
                         
                     </tbody>
                 </table>
             </div>
             <div class="card-footer">
-                <a href="/contact/edit/{{ $contact->id}}" class="btn btn-primary text-white">Edit Contact</a>
+                <a href="/contact/edit/{{ $contact ? $contact->id : ''}}" class="btn btn-primary text-white">Edit Contact</a>
             </div>
           </div>
         
