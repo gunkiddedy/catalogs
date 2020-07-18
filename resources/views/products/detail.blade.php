@@ -25,7 +25,7 @@
 
 <div class="container">
     <div class="card border-white">
-        <div class="card-header bg-white border-white" id="headingOne">
+        {{-- <div class="card-header bg-white border-white" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn btn-sm btn-link" 
                 data-toggle="collapse" 
@@ -34,9 +34,9 @@
                 aria-controls="collapseOne"><h6 class="text-dark">Product details</h6>
                 </button>
             </h5>
-        </div>
+        </div> --}}
     
-        <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" >
+        {{-- <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" > --}}
             <div class="card-body">
                 <div class="row">
                     {{-- PRODUCT IMAGE --}}
@@ -81,7 +81,7 @@
                                 <h3>
                                     Product Description
                                 </h3>
-                                <hr>
+                                {{-- <hr> --}}
                                 <p>{{ $product->description }}</p>
                                 <h6>
                                     <span class="badge badge-secondary">
@@ -94,7 +94,7 @@
                                     </span>
                                 </h6>
                                 <hr>
-                                <h5>Hs Code : {{ $product->hs_code }}</h5>
+                                <h6>Hs Code : {{ $product->hs_code }}</h6>
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                 </div>
             </div>
             {{-- END COMPANY --}}
-        </div>
+        {{-- </div> --}}
     </div>
     {{-- <x-related-product></x-related-product> --}}
 </div>
