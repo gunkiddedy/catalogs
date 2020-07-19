@@ -12,7 +12,7 @@
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6">
                     <div class="card">
-                        <div class="card-body ">
+                        <div class="card-body rspnv-card-body">
                             <div class="product-info">
                                 <a href="/product/detail/{{ $product->id }}">
                                     <img class="card-img" src="{{ asset('/storage/'.\App\ProductImage::where('product_id', $product->id)->with('product')->first()->image_path) }}" alt="img-product">

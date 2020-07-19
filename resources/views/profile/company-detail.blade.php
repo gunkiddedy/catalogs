@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container bg-white">
+<div class="container bg-white rspnv-container-prdct-detail">
     <div class="row">
         <div class="col-md-5 col-sm-12 col-xs-12 mb-4">
             @if(Session::has('success'))
@@ -20,7 +20,7 @@
                 {{-- <div class="card-header">
                     {{ Auth::user()->role=='admin' ? 'Admin ' : 'Member '}}Profile
                 </div> --}}
-                <div class="card-body">
+                <div class="card-body rspnv-card-body">
                     @if ($user->avatar !== null)
                         <img class="card-img" 
                         src="{{ asset('/storage/'.$user->avatar)}}"
@@ -162,7 +162,7 @@
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3">
                     <div class="card">
-                        <div class="card-body ">
+                        <div class="card-body rspnv-card-body">
                             <div class="product-info">
                                 @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image)
                                 <a href="/product/detail/{{ $product->id }}">

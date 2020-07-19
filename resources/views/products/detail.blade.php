@@ -23,7 +23,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container rspnv-container-prdct-detail">
     <div class="card border-white">
         {{-- <div class="card-header bg-white border-white" id="headingOne">
             <h5 class="mb-0">
@@ -37,7 +37,7 @@
         </div> --}}
     
         {{-- <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" > --}}
-            <div class="card-body">
+            <div class="card-body rspnv-card-body">
                 <div class="row">
                     {{-- PRODUCT IMAGE --}}
                     <div class="col-md-6 col-sm-12 col-xs-12 mb-5">
@@ -66,7 +66,7 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <hr class="prdct_dtl">                        
                         <div class="card bg-white border-white">
-                            <div class="card-body">
+                            <div class="card-body rspnv-card-body">
                                 <h3>{{ $product->name }}</h3>
                                 <h6>
                                     <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
@@ -105,7 +105,7 @@
             </div>
             {{-- <hr> --}}
             {{-- COMPANY NAME, PROV, KAB --}}
-            <div class="card-body">
+            <div class="card-body rspnv-card-body">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12 mb-5">
                         <h4>

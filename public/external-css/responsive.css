@@ -9,8 +9,14 @@
         display: none;
     }
     .rspnv{
-        padding-left: 20px;
-        padding-right: 20px;;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .rspnv-card-body{
+        padding: 0.25rem;
+    }
+    .rspnv-container-prdct-detail {
+        padding:0px;
     }
 }
 
