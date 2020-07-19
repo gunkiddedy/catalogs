@@ -160,7 +160,7 @@
         {{-- <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6 rspnv"> --}}
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
-                <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3 rspnv-image">
                     <div class="card">
                         <div class="card-body rspnv-card-body">
                             <div class="product-info">
