@@ -18,6 +18,13 @@
     .rspnv-container-prdct-detail {
         padding:0px;
     }
+    .rspnv-image{
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+    .pagination-mobile{
+        margin-left: 25%;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */

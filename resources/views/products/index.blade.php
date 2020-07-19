@@ -10,7 +10,7 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
-                <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image">
                     <div class="card">
                         <div class="card-body rspnv-card-body">
                             <div class="product-info">
@@ -34,7 +34,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5" style="margin-top: 50px;">
+            <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5 pagination-mobile" style="margin-top: 50px;">
                 {{ $products->links() }}
             </div>            
         </div>
