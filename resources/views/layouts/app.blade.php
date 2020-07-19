@@ -34,7 +34,7 @@
     <div id="app" class="overflow-hidden">
         <x-frontend-navbar></x-frontend-navbar>
         
-        <main class="py-4">
+        <main class="container-fluid py-4 bg-white">
             @yield('content')
         </main>
 

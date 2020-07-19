@@ -4,11 +4,9 @@
 
 @section ('content')
 
-<div class="container p-0">
+<div class="container-fluid bg-white">
     <div class="row">
-
         <x-frontend-sidebar></x-frontend-sidebar>
-
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
@@ -24,7 +22,7 @@
                                     {{-- <hr> --}}
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
-                                            class="text-warning" style="font-size: 14px;">
+                                            class="prdct_company">
                                             {{ \App\Product::find($product->id)->user->name }}
                                         </a>
                                     </h6>
@@ -41,7 +39,6 @@
             </div>            
         </div>
     </div>
-    
 </div>
 
 

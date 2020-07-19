@@ -4,9 +4,9 @@
 
 @section('content')
 
-<div class="container">
+<div class="container bg-white">
     <div class="row">
-        <div class="col-md-4 col-sm-12 col-xs-12 mb-4">
+        <div class="col-md-5 col-sm-12 col-xs-12 mb-4">
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">
@@ -60,7 +60,7 @@
                 border: 0;
             }
         </style>
-        <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="col-md-7 col-sm-12 col-xs-12">
             <table class="table table-sm">
                 <tbody>
                     <tr>
@@ -160,7 +160,7 @@
         {{-- <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6 rspnv"> --}}
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
-                <div class="col-lg-2 col-md-6 col-sm-6 col-6 pt-3">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3">
                     <div class="card">
                         <div class="card-body ">
                             <div class="product-info">
@@ -169,8 +169,18 @@
                                     <img class="card-img" src="{{ asset('/storage/'.$image->image_path) }}" alt="img-product">
                                 </a>
                                 @endforeach
-                                <div class="info-3 mt-4">
+                                {{-- <div class="info-3 mt-4">
                                     <h5>{{ strtoupper($product->name) }}</h5>
+                                </div> --}}
+                                <div class="mt-2">
+                                    <p class="prdct_name">{{ ucwords($product->name) }} </p>
+                                    {{-- <hr> --}}
+                                    <h6>
+                                        <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
+                                            class="prdct_company">
+                                            {{ \App\Product::find($product->id)->user->name }}
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>

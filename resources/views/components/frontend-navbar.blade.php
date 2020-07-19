@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white"> 
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white">
+    <div class="container-fluid bg-white">
         <a class="navbar-brand" href="/">
             <div class="d-flex">
                 <div><img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt=""></div>

@@ -37,7 +37,7 @@
         </div>
     </div> --}}
     {{-- <hr> --}}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class='col-md-4 col-sm-12 pt-3'>
                 <p>copyright {{ date('Y') }} {{ config('app.name') }}</p>

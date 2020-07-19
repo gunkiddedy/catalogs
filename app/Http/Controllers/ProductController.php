@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('user')->orderBy('id', 'desc')->paginate(16);
+        $products = Product::with('user')->orderBy('id', 'desc')->paginate();
 
         return view('products.index', ['products' => $products]);
     }
@@ -88,21 +89,64 @@ class ProductController extends Controller
             ]);
 
             // check if has file
-            if($request->hasfile('images')) {
-                // store each image into table product_image
+            // if($request->hasfile('images')) {
+            //     foreach($images as $image) {
+            //         $filename = $image->getClientOriginalName();
+            //         $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
+            //         ProductImage::create([
+            //             'name' => $product->name,
+            //             'product_id' => $product->id,
+            //             'image_path' => $path,
+            //         ]);
+            //     }
+            // }
+
+            if($request->hasFile('images')) {
                 foreach($images as $image) {
-                    $filename = $image->getClientOriginalName();
-                    // dd($filename);
-                    // $imagePath = Storage::disk('product_images')->put($product->name, $image);
-                    // $imagePath = storeAs('images', $filename, 'public');
-                    $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
-                    // dd($imagePath);
+                    //get filename with extension
+                    $filenamewithextension = $image->getClientOriginalName();
+            
+                    //get filename without extension
+                    $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            
+                    //get file extension
+                    $extension = $image->getClientOriginalExtension();
+            
+                    //filename to store
+                    $filenametostore = $filename.'_'.time().'.'.$extension;
+            
+                    //Upload File
+                    $image->storeAs('public/images', $filenametostore);
+                    // $image->storeAs('public/images/thumbnail', $filenametostore);
+            
+                    //Resize image here
+                    // $thumbnailpath = public_path('storage/images/thumbnail/'.$filenametostore);
+                    $imagePath = public_path('storage/images/'.$filenametostore);
+                    
+
+                    // $img = Image::make($thumbnailpath)->resize(100, 100, function($constraint) {
+                    //     $constraint->aspectRatio();
+                    // });
+                    // $img2 = Image::make($imagePath)->resize(null, 225, function($constraint) {
+                    //     $constraint->aspectRatio();
+                    // });
+
+                    $imgSave = Image::make($imagePath)->fit(300);
+
+                    // crop image
+                    // $imgSave = Image::make($imagePath)->crop(200, 200, 5, 5);
+
+                    // $path = $imgSave->storeAs('images', $product->id.'-'.$filenametostore, 'public');
+
+                    // $img->save($thumbnailpath);
+                    $imgSave->save($imagePath);
+                    
                     ProductImage::create([
                         'name' => $product->name,
                         'product_id' => $product->id,
-                        'image_path' => $path,
+                        'image_path' => 'images/'.$filenametostore,
                     ]);
-                }
+                }         
             }
 
         });
