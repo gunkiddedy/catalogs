@@ -25,6 +25,18 @@
     .pagination-mobile{
         margin-left: 25%;
     }
+
+    /* custom font */
+    .prdct_name {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+    }
+
+    .prdct_company {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: small;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
