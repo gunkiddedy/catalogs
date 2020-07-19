@@ -11,7 +11,7 @@
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image">
-                    <div class="card">
+                    <div class="card text-center">
                         <div class="card-body rspnv-card-body">
                             <div class="product-info">
                                 <a href="/product/detail/{{ $product->id }}">

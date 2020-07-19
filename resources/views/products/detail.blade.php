@@ -37,7 +37,7 @@
         </div> --}}
     
         {{-- <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne" > --}}
-            <div class="card-body rspnv-card-body">
+            <div class="card-body rspnv-card-body text-center">
                 <div class="row">
                     {{-- PRODUCT IMAGE --}}
                     <div class="col-md-6 col-sm-12 col-xs-12 mb-5">

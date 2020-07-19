@@ -161,7 +161,7 @@
             <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3 rspnv-image">
-                    <div class="card">
+                    <div class="card text-center">
                         <div class="card-body rspnv-card-body">
                             <div class="product-info">
                                 @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image)
