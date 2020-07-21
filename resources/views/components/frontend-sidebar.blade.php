@@ -1,10 +1,11 @@
 <div class="col-lg-3 col-md-3 col-sm-6 frontend-sidebar">
-    
+
     <form action="{{ route('product.search') }}" method="GET">
         <input class="mt-3 mb-2" type="text" name="query" 
             id="search" 
             placeholder="search product or company..." 
             style="width:100%;"
+            value="{{ request()->get('query') }}"
         >
     </form>
 

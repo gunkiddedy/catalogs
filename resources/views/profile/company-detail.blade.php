@@ -169,17 +169,12 @@
                                     <img class="card-img" src="{{ asset('/storage/'.$image->image_path) }}" alt="img-product">
                                 </a>
                                 @endforeach
-                                {{-- <div class="info-3 mt-4">
-                                    <h5>{{ strtoupper($product->name) }}</h5>
-                                </div> --}}
                                 <div class="mt-2">
                                     <p class="prdct_name">{{ ucwords($product->name) }} </p>
-                                    {{-- <hr> --}}
+                                    <hr>
                                     <h6>
                                         <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
-                                            class="prdct_company">
-                                            {{ \App\Product::find($product->id)->user->name }}
-                                        </a>
+                                            class="prdct_company"><i class="fa fa-flag mr-1"></i>{{ \App\Product::find($product->id)->user->name }}</a>
                                     </h6>
                                 </div>
                             </div>
