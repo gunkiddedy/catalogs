@@ -48,6 +48,9 @@
     .frontend-sidebar {
         display: none;
     }
+    .rspnv-card-body{
+        padding: 0.25rem;
+    }
 }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -61,6 +64,9 @@
     .frontend-sidebar {
         display: none;
     }
+    .rspnv-card-body{
+        padding: 0.25rem;
+    }
 }
 
 /* // Large devices (desktops, 992px and up) */
@@ -71,6 +77,9 @@
     .input-srch{
         width: 400px;
     }
+    .rspnv-card-body{
+        padding: 0.25rem;
+    }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -80,5 +89,8 @@
     }
     .input-srch{
         width: 400px;
+    }
+    .rspnv-card-body{
+        padding: 0.25rem;
     }
 }

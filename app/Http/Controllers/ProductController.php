@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('user')->orderBy('id', 'desc')->paginate(16);
+        $products = Product::with('user')->orderBy('id', 'desc')->paginate(20);
 
         return view('products.index', ['products' => $products]);
     }
@@ -228,6 +228,15 @@ class ProductController extends Controller
         ProductImage::where('product_id', $id)->delete();
         Product::where('id', $id)->delete();
         return redirect('/member')->with('success', 'data deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'like', '%$query%')->get();
+        // dd($products);
+        return view('products.search-result')->with('products', $products);
     }
 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'product list')
+@section('title', 'search result')
 
 @section ('content')
 
@@ -19,8 +19,13 @@
                                 </a>
                                 <div class="mt-2">
                                     <p class="prdct_name">{{ ucwords($product->name) }}</p>
-                                    <h6><a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" class="prdct_company">{{ \App\Product::find($product->id)->user->name }}</a></h6>
+                                    {{-- <hr> --}}
+                                    <h6>
+                                        <a href="{{ route('company.detail', \App\Product::find($product->id)->user->id) }}" 
+                                            class="prdct_company">{{ \App\Product::find($product->id)->user->name }}</a>
+                                    </h6>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -28,12 +33,10 @@
                 @endforeach
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5 pagination-mobile" style="margin-top: 50px;">
-                {{ $products->links() }}
+                {{-- {{ $products->links() }} --}}
             </div>            
         </div>
     </div>
 </div>
-
-
 
 @endsection
