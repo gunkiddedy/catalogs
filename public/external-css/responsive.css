@@ -22,9 +22,6 @@
         padding-right: 4px;
         padding-left: 4px;
     }
-    .pagination-mobile{
-        /* margin-left: 0%; */
-    }
 
     /* custom font */
     .prdct_name {
@@ -78,7 +75,7 @@
         width: 400px;
     }
     .rspnv-card-body{
-        padding: 0.25rem;
+        padding: 0.5rem;
     }
 }
 
@@ -91,6 +88,6 @@
         width: 400px;
     }
     .rspnv-card-body{
-        padding: 0.25rem;
+        padding: 0.5rem;
     }
 }

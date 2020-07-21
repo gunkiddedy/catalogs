@@ -27,7 +27,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 pt-3 offset-5 pagination-mobile" style="margin-top: 50px;">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2rem;">
                 {{ $products->links() }}
             </div>            
         </div>
