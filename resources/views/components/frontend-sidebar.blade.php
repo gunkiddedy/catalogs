@@ -58,8 +58,8 @@
             {{-- <hr> --}}
             @foreach ($category as $cat)
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="{{ $cat->name }}" class="custom-control-input" name="{{ $cat->name }}" value="{{ $cat->name }}" >
-                <label class="custom-control-label" for="{{ $cat->name }}">{{ ucfirst($cat->name) }}</label>
+                <input type="checkbox" id="{{ $cat->id }}" class="custom-control-input category" name="{{ $cat->id }}" value="{{ $cat->name }}" >
+                <label class="custom-control-label" for="{{ $cat->id }}">{{ ucfirst($cat->name) }}</label>
             </div>
             @endforeach
         </div>
@@ -70,8 +70,8 @@
             {{-- <hr> --}}
             @foreach ($subcategory as $subcat)
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="{{ $subcat->name }}" class="custom-control-input" name="{{ $subcat->name }}" value="{{ $subcat->name }}" >
-                <label class="custom-control-label" for="{{ $subcat->name }}">{{ ucfirst($subcat->name) }}</label>
+                <input type="checkbox" id="s{{ $subcat->id }}" class="custom-control-input subcategory" name="{{ $subcat->id }}" value="{{ $subcat->name }}" >
+                <label class="custom-control-label" for="s{{ $subcat->id }}">{{ ucfirst($subcat->name) }}</label>
             </div>
             @endforeach
         </div>

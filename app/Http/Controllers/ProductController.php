@@ -230,5 +230,4 @@ class ProductController extends Controller
         return redirect('/member')->with('success', 'data deleted successfully');
     }
 
-    
 }

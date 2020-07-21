@@ -23,6 +23,7 @@ Route::get('/contact', 'PageController@contact');
 Route::get('/guest', 'ProductController@index');
 Route::get('/products', 'ProductController@index');
 Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
+Route::get('/product/filter', 'ProductController@filter')->name('product.filter');
 
 
 // =======================================COMPANY PROFILE======================================

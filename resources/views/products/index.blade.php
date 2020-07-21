@@ -8,7 +8,7 @@
     <div class="row">
         <x-frontend-sidebar></x-frontend-sidebar>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
-            <div class="row d-flex justify-content-start" id="productsXXX">
+            <div class="row d-flex justify-content-start" id="productsfilter">
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image">
                     <div class="card text-center">
