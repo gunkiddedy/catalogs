@@ -54,5 +54,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js" defer></script>
 
 <script src="{{ asset('external-js/style.js') }}"></script>
+
+<script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 </html>
 
