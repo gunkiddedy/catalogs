@@ -4,7 +4,11 @@
 
 @section ('content')
 
-<div class="container-fluid bg-white">
+<div id="product">
+    <product-page></product-page>
+</div>
+
+{{-- <div class="container-fluid bg-white">
     <div class="row">
         <x-frontend-sidebar></x-frontend-sidebar>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
@@ -33,7 +37,7 @@
             </div>            
         </div>
     </div>
-</div>
+</div> --}}
 
 
 

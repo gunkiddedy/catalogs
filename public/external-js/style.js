@@ -33,25 +33,23 @@ $(document).ready(function(){
 
     filter_data('');
 
-    function filter_data(query='')
-    {
+    function filter_data(query=''){
         var search=JSON.stringify(query);
-        var price =JSON.stringify($('#pricerange').val());
-        var gender =JSON.stringify(get_filter('gender')); 
-        var brand =JSON.stringify(get_filter('brand'));
+        // var price =JSON.stringify($('#pricerange').val());
+        var category = JSON.stringify(get_filter('category')); 
+        var subcategory = JSON.stringify(get_filter('subcategory'));
         $.ajax({
-            // url:"route('product.filter')",
+            url:'product/filter',
             method:'GET',
             data:{
                 query:search,
-                price:price,
-                gender:gender,
-                brand:brand,
-                },
+                category:category,
+                subcategory:subcategory,
+            },
             dataType:'json',
             success:function(data)
             {
-                $('#products').html(data.table_data);
+                $('#productsfilter').html(data.view_data);
             }
         })
     }
@@ -62,6 +60,7 @@ $(document).ready(function(){
         $('.'+class_name+':checked').each(function(){
             filter.push($(this).val());
         });
+        // alert(filter);
         return filter;
     }
 
@@ -75,15 +74,15 @@ $(document).ready(function(){
         filter_data(query);
     });
 
-    $(document).on('input','#pricerange',function(){
-        var range = $(this).val();
-        $('#currentrange').html(range);
-    });
+    // $(document).on('input','#pricerange',function(){
+    //     var range = $(this).val();
+    //     $('#currentrange').html(range);
+    // });
 
-    $(document).on('change','#size-dropdown',function(){
-        var size = $(this).val();
-        document.cookie="shoes_size="+size+";"+"path=/";
-        $('#add-to-cart').removeClass('disabled');
-    });
+    // $(document).on('change','#size-dropdown',function(){
+    //     var size = $(this).val();
+    //     document.cookie="shoes_size="+size+";"+"path=/";
+    //     $('#add-to-cart').removeClass('disabled');
+    // });
 
 });

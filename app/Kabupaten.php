@@ -20,6 +20,11 @@ class Kabupaten extends Model
         return $this->hasMany(Kecamatan::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     // kabupaten memiliki banyak users
     public function users()
     {

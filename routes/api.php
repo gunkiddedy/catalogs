@@ -19,11 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// test resource
-Route::get('/user/{id}', function ($id) {
-    return new UserResource(User::find($id));
-});
 
-Route::get('/user', function () {
-    return UserResource::collection(User::all());
-});
+Route::get('categories', 'Api\CategoryController@index');
+Route::get('subcategories', 'Api\SubCategoryController@index');
+Route::get('provinsis', 'Api\ProvinsiController@index');
+Route::get('kabupatens', 'Api\KabupatenController@index');
+Route::get('products', 'Api\ProductController@index');
+Route::get('details', 'Api\ProductDetailsController@index');
+
+// test resource
+// Route::get('/user/{id}', function ($id) {
+//     return new UserResource(User::find($id));
+// });
+
+// Route::get('/user', function () {
+//     return UserResource::collection(User::all());
+// });

@@ -20,6 +20,13 @@ class ProductController extends Controller
         return view('products.index', ['products' => $products]);
     }
 
+    // public function index()
+    // {
+    //     $products = Product::withFilters()->get();
+
+    //     return ProductResource::collection($products);
+    // }
+
 
     public function details($id)
     {
@@ -65,6 +72,10 @@ class ProductController extends Controller
 
         DB::transaction(function () use ($request) {
             $user_id = Auth::id();
+            $provinsi_id = Auth::user()->provinsi_id;
+            $kabupaten_id = Auth::user()->kabupaten_id;
+            $kecamatan_id = Auth::user()->kecamatan_id;
+            $company = Auth::user()->name;
             $name = $request->name;
             $brand = $request->brand;
             $price = $request->price;
@@ -73,35 +84,41 @@ class ProductController extends Controller
             $subcategory_id = $request->subcategory_id;
             $hs_code = $request->hs_code;
             $sni = $request->sni;
+
             $images = $request->images;
 
-            // insert to table product
-            $product = Product::create([
-                'name' => $name,
-                'brand' => $brand,
-                'price' => $price,
-                'description' => $description,
-                'category_id' => $category_id,
-                'subcategory_id' => $subcategory_id,
-                'user_id' => $user_id,
-                'hs_code' => $hs_code,
-                'sni' => $sni
-            ]);
-
-            // check if has file
-            // if($request->hasfile('images')) {
-            //     foreach($images as $image) {
-            //         $filename = $image->getClientOriginalName();
-            //         $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
-            //         ProductImage::create([
-            //             'name' => $product->name,
-            //             'product_id' => $product->id,
-            //             'image_path' => $path,
-            //         ]);
-            //     }
-            // }
-
             if($request->hasFile('images')) {
+
+                foreach($images as $imagex){}
+                // insert to table product
+                $filenamewithextension = $imagex->getClientOriginalName();
+            
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        
+                //get file extension
+                $extension = $imagex->getClientOriginalExtension();
+        
+                //filename to store
+                $filenametostore = $filename.'_'.time().'.'.$extension;
+
+                $product = Product::create([
+                    'name' => $name,
+                    'brand' => $brand,
+                    'price' => $price,
+                    'description' => $description,
+                    'category_id' => $category_id,
+                    'subcategory_id' => $subcategory_id,
+                    'user_id' => $user_id,
+                    'company_name' => $company,
+                    'provinsi_id' => $provinsi_id,
+                    'kabupaten_id' => $kabupaten_id,
+                    'kecamatan_id' => $kecamatan_id,
+                    'hs_code' => $hs_code,
+                    'sni' => $sni,
+                    'image_path' => 'images/'.$filenametostore
+                ]);
+
                 foreach($images as $image) {
                     //get filename with extension
                     $filenamewithextension = $image->getClientOriginalName();
@@ -146,8 +163,12 @@ class ProductController extends Controller
                         'product_id' => $product->id,
                         'image_path' => 'images/'.$filenametostore,
                     ]);
-                }         
+                }
+                
+                
+                
             }
+            
 
         });
 
@@ -230,13 +251,84 @@ class ProductController extends Controller
         return redirect('/member')->with('success', 'data deleted successfully');
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
 
-        $products = Product::where('name', 'like', '%'.$query.'%')->get();
-        // dd($products);
-        return view('products.search-result')->with('products', $products);
+    //     $products = Product::where('name', 'like', '%'.$query.'%')->get();
+    //     // dd($products);
+    //     return view('products.search-result')->with('products', $products);
+    // }
+
+    public function filter(Request $request)
+    {
+        if($request->ajax())
+        {
+            $products= Product::all();
+            $query = json_decode($request->get('query'));
+            $category = json_decode($request->get('category'));
+            $subcategory = json_decode($request->get('subcategory'));
+            
+            if(!empty($query))
+            {
+                $products= $products->where('name','like','%'.$query.'%');        
+            }
+            if(!empty($category))
+            {
+                $products = $products->whereIn('category_id', $category);
+            }   
+            if(!empty($subcategory))
+            {
+                $products = $products->whereIn('subcategory_id', $subcategory);
+            }
+
+            $products = $products;
+            
+
+            $total_row = $products->count();
+            if($total_row > 0){
+                $output ='';
+                foreach($products as $product)
+                {
+                    $output .='
+                    <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image">
+                        <div class="card text-center">
+                            <div class="card-body rspnv-card-body">
+                                <div class="product-info">
+                                    <a href="/product/detail/"'.$product->id.'">
+                                        <img class="card-img" src="'.asset('/storage/'.\App\ProductImage::where('product_id', $product->id)->with('product')->first()->image_path).'" alt="img-product">
+                                    </a>
+                                    <div class="mt-2">
+                                        <p class="prdct_name">'.ucwords($product->name).'</p>
+                                        <hr>
+                                        <h6><a href="'.route('company.detail', \App\Product::find($product->id)->user->id).'" class="prdct_company"><i class="fa fa-flag mr-1"></i>'.\App\Product::find($product->id)->user->name.'</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                }
+                // $output .='
+                //     <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2rem;">
+                //         '.$products->links().'
+                //     </div>
+                // ';
+            }
+            else
+            {
+                $output='
+                <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
+                    <h4>No Data Found</h4>
+                </div>
+                ';
+            }
+            $data = array(
+                'view_data' =>$output
+            );
+
+            echo json_encode($data);
+        
+        }
     }
 
 }

@@ -20,6 +20,11 @@ class Provinsi extends Model
         return $this->hasMany(Kabupaten::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     // ACCESSOR function
     public function getNameAttribute($value)
     {
