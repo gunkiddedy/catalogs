@@ -103,18 +103,39 @@
                 </div><!--.row-->
 
             </div>
-            {{-- <hr> --}}
+            <h3 class="mt-4">Company Info</h3>
+            <hr>
             {{-- COMPANY NAME, PROV, KAB --}}
             <div class="card-body rspnv-card-body">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 mb-5">
-                        <h4>
-                            <a href="/company/detail/{{ $company->id }}">
-                                <span class="badge badge-secondary">
-                                    <i class="fa fa-code-fork" style="color: rgb(250, 229, 135)"></i>
-                                    {{ $company->name }}
-                                </span>
-                            </a>
+                    <div class="col-md-4 col-sm-4 col-xs-12 mb-5">
+                        <div>
+                            @if ($company->avatar !== null)
+                            <img class="img-thumbnail"
+                                src="{{ asset('/storage/'.$company->avatar)}}"
+                                alt="user-avatar">
+                            @else
+                                <img class="img-thumbnail" 
+                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
+                                    alt="user-avatar">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 mb-5">
+                        <h3>
+                            <a href="/company/detail/{{ $company->id }}">{{ $company->name }}</a>
+                        </h3>
+                        <h6>
+                            {{ $company->address }}
+                        </h6>
+                        <h6>
+                            {{ $company->email }} | {{ $company->phone }}
+                        </h6>
+                        <h6>
+                            {{ \App\User::find($company->id)->kabupaten->name ? \App\User::find($company->id)->kabupaten->name : '' }}, 
+                            {{ \App\User::find($company->id)->provinsi->name ? \App\User::find($company->id)->provinsi->name : '' }}
+                        </h6>
+                        {{-- <h4>
                             <span class="badge badge-secondary">
                                 <i class="fa fa-flag" style="color: rgb(250, 229, 135)"></i>
                                 @if (!empty(\App\User::find($company->id)->provinsi->name))
@@ -131,7 +152,7 @@
                                     -
                                 @endif
                             </span>
-                        </h4>
+                        </h4> --}}
                     </div>
                 </div>
             </div>

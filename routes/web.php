@@ -18,6 +18,7 @@ Auth::routes();
 
 
 // Route::view('/', 'index');
+// =======================================PUBLIC PAGE======================================
 
 Route::view('/', 'products.index');
 
@@ -25,12 +26,14 @@ Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
 Route::get('/guest', 'ProductController@index');
 Route::get('/products', 'ProductController@index');
+// Route::get('/products', function(){
+//     dd(\App\Product::with('user')->first());
+// });
 Route::get('/product/detail/{id}', 'ProductController@details')->name('product.detail');
+Route::get('/company/detail/{id}', 'CompanyController@detail')->name('company.detail');
 // Route::get('/product/search', 'ProductController@search')->name('product.search');
 // Route::get('/product/filter', 'ProductController@filter')->name('product.filter');
 
-// =======================================COMPANY PROFILE======================================
-Route::get('/company/detail/{id}', 'CompanyController@detail')->name('company.detail');
 
 
 // =================================ADMIN =========================================================================
