@@ -2,14 +2,38 @@
     <div class="container-fluid bg-white" :class="{'loading': loading}">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 frontend-sidebar">
-                <input class="mt-3 mb-2" type="text" name="query" 
-                    id="search" 
-                    placeholder="search product or company..." 
-                    style="width:100%;"
-                    value=""
-                >
+                <input type="text" class="form-control mt-3 mb-2" >
+                
                 <div class="category card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" style="max-height:250px;overflow:scroll">
+                        <h5 class="mt-2">Provinsi</h5>
+                        <div class="form-group">
+                            <select class="form-control" v-model="selected.provinsis" @change="loadKabupatens">
+                                <option value="" selected>Choose...</option>
+                                <option v-for="(provinsi, index) in provinsis" 
+                                    :key="index" 
+                                    :value="provinsi.id">
+                                    {{ provinsi.name }} ({{ provinsi.products_count }})</option>
+                            </select>
+                            <span>Selected: {{ selected.provinsis }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="category card mb-2">
+                    <div class="card-body" style="max-height:250px;overflow:scroll">
+                        <h5 class="mt-2">Kabupaten</h5>
+                        <div class="form-group">
+                            <select class="form-control" v-model="selected.kabupatens">
+                                <option value="" selected>Choose...</option>
+                                <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="kabupaten.id">
+                                    {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
+                            </select>
+                            <span>Selected: {{ selected.kabupatens }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="category card mb-2">
+                    <div class="card-body" style="max-height:250px;overflow:scroll">
                         <h5 class="mt-2">Provinsi</h5>
                         <hr>
                         <div class="custom-control custom-checkbox" v-for="(provinsi, index) in provinsis" :key="provinsi.id">
@@ -21,7 +45,7 @@
                     </div>
                 </div>
                 <div class="category card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" style="max-height:250px;overflow:scroll">
                         <h5 class="mt-2">Kabupaten</h5>
                         <hr>
                         <div class="custom-control custom-checkbox" v-for="(kabupaten, index) in kabupatens" :key="kabupaten.id">
@@ -31,13 +55,13 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="category card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" style="overflow:scroll">
                         <h5 class="mt-2">Categories</h5>
                         <hr>
-                        <div class="custom-control custom-checkbox" v-for="(category, index) in categories" :key="category.id">
-                            <input class="custom-control-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">
+                        <div class="custom-control custom-checkbox" v-for="(category, index) in category_items" :key="category.id">
+                            <input class="custom-control-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.category_items">
                             <label class="custom-control-label" :for="'category'+index">
                                 {{ category.name }} ({{ category.products_count }})
                             </label>
@@ -45,16 +69,16 @@
                     </div>
                 </div>
                 <div class="subcategory card mb-2">
-                    <div class="card-body">
+                    <div class="card-body" style="overflow:scroll">
                         <h5 class="mt-2">Sub Categories</h5>
                         <hr>
-                        <div class="custom-control custom-checkbox" v-for="(subcategory, index) in subcategories" :key="subcategory.id">
+                        <div class="custom-control custom-checkbox" v-for="(subcategory, index) in subcategory_items" :key="subcategory.id">
                             <input 
                                 class="custom-control-input" 
                                 type="checkbox" 
                                 :value="subcategory.id" 
                                 :id="'subcategory'+index" 
-                                v-model="selected.subcategories"
+                                v-model="selected.subcategory_items"
                             >
                             <label class="custom-control-label" :for="'subcategory'+index">
                                 {{ subcategory.name }} ({{ subcategory.products_count }})
@@ -98,17 +122,17 @@
 
 <script>
     export default {
-        data: function () {
+        data: function() {
             return {
-                categories: [],
-                subcategories: [],
+                loading: true,
+                products: {},
+                category_items: [],
+                subcategory_items: [],
                 provinsis: [],
                 kabupatens: [],
-                products: {},
-                loading: true,
                 selected: {
-                    categories: [],
-                    subcategories: [],
+                    category_items: [],
+                    subcategory_items: [],
                     provinsis: [],
                     kabupatens: []
                 }
@@ -116,13 +140,15 @@
         },
 
         mounted() {
-            this.loadCategories();
-            this.loadSubCategories();
-            this.loadProvinsis();
-            this.loadKabupatens();
             this.loadProducts();
             this.getResults();
-            // this.loadDetails();
+            this.loadCategories();
+            this.loadSubCategories();
+            // this.loadProvinsis();
+        },
+
+        created(){
+            this.loadProvinsis();
         },
 
         watch: {
@@ -130,95 +156,122 @@
                 handler: function () {
                     this.loadCategories();
                     this.loadSubCategories();
-                    this.loadProvinsis();
-                    this.loadKabupatens();
                     this.loadProducts();
-                    // this.loadDetails();
+                    this.loadProvinsis();
                 },
                 deep: true
             }
         },
 
         methods: {
-            loadProvinsis: function () {
-                axios.get('/api/provinsis', {
-                        params: _.omit(this.selected, 'provinsis')
-                    })
-                    .then((response) => {
-                        this.provinsis = response.data.data;
-                        this.loading = false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            loadKabupatens: function () {
-                axios.get('/api/kabupatens', {
-                        params: _.omit(this.selected, 'kabupatens')
-                    })
-                    .then((response) => {
-                        this.kabupatens = response.data.data;
-                        this.loading = false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            loadCategories: function () {
-                axios.get('/api/categories', {
-                        params: _.omit(this.selected, 'categories')
-                    })
-                    .then((response) => {
-                        this.categories = response.data.data;
-                        this.loading = false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            loadSubCategories: function () {
-                axios.get('/api/subcategories', {
-                        params: _.omit(this.selected, 'subcategories')
-                    })
-                    .then((response) => {
-                        this.subcategories = response.data.data;
-                        this.loading = false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            getResults(page = 1) {
-                axios.get('/api/products?page=' + page)
-                    .then(response => {
-                        this.products = response.data;
-                        this.loading = false;
-                    });
-            },
             loadProducts: function () {
                 axios.get('/api/products', {
                         params: this.selected
-                    })
-                    .then((response) => {
-                        this.products = response.data;
-                        this.loading = false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                })
+                .then((response) => {
+                    this.products = response.data;
+                    this.loading = false;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+
+            loadProvinsis: function(){
+                axios.get('/api/getprovinsis')
+                .then( (response) => {
+                    this.provinsis = response.data.data;
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+
+            loadKabupatens: function(){
+                axios.get('/api/getkabupatens', {
+                    params: {
+                        provinsi_id: this.selected.provinsis
+                    }
+                })
+                .then((response) => {
+                    this.kabupatens = response.data.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+
+            loadCategories: function () {
+                axios.get('/api/categories', {
+                    params: _.omit(this.selected, 'category_items')
+                })
+                .then((response) => {
+                    this.category_items = response.data.data;
+                    this.loading = false;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+
+            loadSubCategories: function () {
+                axios.get('/api/subcategories', {
+                        params: _.omit(this.selected, 'subcategory_items')
+                })
+                .then((response) => {
+                    this.subcategory_items = response.data.data;
+                    this.loading = false;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+
+            getResults(page = 1) {
+                axios.get('/api/products?page=' + page)
+                .then((response) => {
+                    this.products = response.data;
+                    this.loading = false;
+                });
             }
-            // loadDetails: function () {
-            //     axios.get('api/details')
-            //         .then(response => {
-            //             this.details = response.data;
+            // searchProductsOrCompany: function(){
+            //     axios.get('api/search', {
+            //         params: _.omit(this.selected, 'search')
+            //     })
+            //     .then((response) => {
+            //         this.search = response.data.data;
+            //         this.loading = false;
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     });
+            // },
+            // loadProvinsis: function () {
+            //     axios.get('/api/provinsis', {
+            //             params: _.omit(this.selected, 'provinsis')
+            //         })
+            //         .then((response) => {
+            //             this.provinsis = response.data.data;
             //             this.loading = false;
-            //             console.log(response.data.data[0])
             //         })
             //         .catch(function (error) {
             //             console.log(error);
             //         });
-            // }
-
+            // },
+            // loadKabupatens: function () {
+            //     axios.get('/api/kabupatens', {
+            //             params: _.omit(this.selected, 'kabupatens')
+            //         })
+            //         .then((response) => {
+            //             this.kabupatens = response.data.data;
+            //             this.loading = false;
+            //         })
+            //         .catch(function (error) {
+            //             console.log(error);
+            //         });
+            // },
+            
         }
     }
 

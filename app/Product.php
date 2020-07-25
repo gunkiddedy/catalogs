@@ -58,11 +58,11 @@ class Product extends Model
 
     public function scopeWithFilters($query)
     {
-        return $query->when(count(request()->input('categories', [])), function ($query) {
-                $query->whereIn('category_id', request()->input('categories'));
+        return $query->when(count(request()->input('category_items', [])), function ($query) {
+                $query->whereIn('category_id', request()->input('category_items'));
             })
-            ->when(count(request()->input('subcategories', [])), function ($query) {
-                $query->whereIn('subcategory_id', request()->input('subcategories'));
+            ->when(count(request()->input('subcategory_items', [])), function ($query) {
+                $query->whereIn('subcategory_id', request()->input('subcategory_items'));
             })
             ->when(count(request()->input('provinsis', [])), function ($query) {
                 $query->whereIn('provinsi_id', request()->input('provinsis'));

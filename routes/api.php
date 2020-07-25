@@ -22,8 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('categories', 'Api\CategoryController@index');
 Route::get('subcategories', 'Api\SubCategoryController@index');
-Route::get('provinsis', 'Api\ProvinsiController@index');
-Route::get('kabupatens', 'Api\KabupatenController@index');
+Route::get('search', 'Api\SearchController@search');
+// Route::get('kabupatens', 'Api\KabupatenController@index');
+Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
+Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
 Route::get('products', 'Api\ProductController@index');
 Route::get('details', 'Api\ProductDetailsController@index');
 

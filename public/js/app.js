@@ -2006,123 +2006,171 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      categories: [],
-      subcategories: [],
+      loading: true,
+      products: {},
+      category_items: [],
+      subcategory_items: [],
       provinsis: [],
       kabupatens: [],
-      products: {},
-      loading: true,
       selected: {
-        categories: [],
-        subcategories: [],
+        category_items: [],
+        subcategory_items: [],
         provinsis: [],
         kabupatens: []
       }
     };
   },
   mounted: function mounted() {
-    this.loadCategories();
-    this.loadSubCategories();
-    this.loadProvinsis();
-    this.loadKabupatens();
     this.loadProducts();
-    this.getResults(); // this.loadDetails();
+    this.getResults();
+    this.loadCategories();
+    this.loadSubCategories(); // this.loadProvinsis();
+  },
+  created: function created() {
+    this.loadProvinsis();
   },
   watch: {
     selected: {
       handler: function handler() {
         this.loadCategories();
         this.loadSubCategories();
+        this.loadProducts();
         this.loadProvinsis();
-        this.loadKabupatens();
-        this.loadProducts(); // this.loadDetails();
       },
       deep: true
     }
   },
   methods: {
-    loadProvinsis: function loadProvinsis() {
+    loadProducts: function loadProducts() {
       var _this = this;
 
-      axios.get('/api/provinsis', {
-        params: _.omit(this.selected, 'provinsis')
+      axios.get('/api/products', {
+        params: this.selected
       }).then(function (response) {
-        _this.provinsis = response.data.data;
+        _this.products = response.data;
         _this.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadKabupatens: function loadKabupatens() {
+    loadProvinsis: function loadProvinsis() {
       var _this2 = this;
 
-      axios.get('/api/kabupatens', {
-        params: _.omit(this.selected, 'kabupatens')
-      }).then(function (response) {
-        _this2.kabupatens = response.data.data;
+      axios.get('/api/getprovinsis').then(function (response) {
+        _this2.provinsis = response.data.data;
         _this2.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadCategories: function loadCategories() {
+    loadKabupatens: function loadKabupatens() {
       var _this3 = this;
 
-      axios.get('/api/categories', {
-        params: _.omit(this.selected, 'categories')
+      axios.get('/api/getkabupatens', {
+        params: {
+          provinsi_id: this.selected.provinsis
+        }
       }).then(function (response) {
-        _this3.categories = response.data.data;
-        _this3.loading = false;
+        _this3.kabupatens = response.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadSubCategories: function loadSubCategories() {
+    loadCategories: function loadCategories() {
       var _this4 = this;
 
-      axios.get('/api/subcategories', {
-        params: _.omit(this.selected, 'subcategories')
+      axios.get('/api/categories', {
+        params: _.omit(this.selected, 'category_items')
       }).then(function (response) {
-        _this4.subcategories = response.data.data;
+        _this4.category_items = response.data.data;
         _this4.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    getResults: function getResults() {
+    loadSubCategories: function loadSubCategories() {
       var _this5 = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/api/products?page=' + page).then(function (response) {
-        _this5.products = response.data;
-        _this5.loading = false;
-      });
-    },
-    loadProducts: function loadProducts() {
-      var _this6 = this;
-
-      axios.get('/api/products', {
-        params: this.selected
+      axios.get('/api/subcategories', {
+        params: _.omit(this.selected, 'subcategory_items')
       }).then(function (response) {
-        _this6.products = response.data;
-        _this6.loading = false;
+        _this5.subcategory_items = response.data.data;
+        _this5.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
-    } // loadDetails: function () {
-    //     axios.get('api/details')
-    //         .then(response => {
-    //             this.details = response.data;
+    },
+    getResults: function getResults() {
+      var _this6 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/products?page=' + page).then(function (response) {
+        _this6.products = response.data;
+        _this6.loading = false;
+      });
+    } // searchProductsOrCompany: function(){
+    //     axios.get('api/search', {
+    //         params: _.omit(this.selected, 'search')
+    //     })
+    //     .then((response) => {
+    //         this.search = response.data.data;
+    //         this.loading = false;
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
+    // },
+    // loadProvinsis: function () {
+    //     axios.get('/api/provinsis', {
+    //             params: _.omit(this.selected, 'provinsis')
+    //         })
+    //         .then((response) => {
+    //             this.provinsis = response.data.data;
     //             this.loading = false;
-    //             console.log(response.data.data[0])
     //         })
     //         .catch(function (error) {
     //             console.log(error);
     //         });
-    // }
+    // },
+    // loadKabupatens: function () {
+    //     axios.get('/api/kabupatens', {
+    //             params: _.omit(this.selected, 'kabupatens')
+    //         })
+    //         .then((response) => {
+    //             this.kabupatens = response.data.data;
+    //             this.loading = false;
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // },
 
   }
 });
@@ -38327,208 +38375,176 @@ var render = function() {
           { staticClass: "col-lg-3 col-md-3 col-sm-6 frontend-sidebar" },
           [
             _c("input", {
-              staticClass: "mt-3 mb-2",
-              staticStyle: { width: "100%" },
-              attrs: {
-                type: "text",
-                name: "query",
-                id: "search",
-                placeholder: "search product or company...",
-                value: ""
-              }
+              staticClass: "form-control mt-3 mb-2",
+              attrs: { type: "text" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "category card mb-2" }, [
               _c(
                 "div",
-                { staticClass: "card-body" },
+                {
+                  staticClass: "card-body",
+                  staticStyle: { "max-height": "250px", overflow: "scroll" }
+                },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Provinsi")]),
                   _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _vm._l(_vm.provinsis, function(provinsi, index) {
-                    return _c(
-                      "div",
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
                       {
-                        key: provinsi.id,
-                        staticClass: "custom-control custom-checkbox"
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.selected.provinsis,
+                            expression: "selected.provinsis"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.selected,
+                                "provinsis",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.loadKabupatens
+                          ]
+                        }
                       },
                       [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.selected.provinsis,
-                              expression: "selected.provinsis"
-                            }
-                          ],
-                          staticClass: "custom-control-input",
-                          attrs: { type: "checkbox", id: "provinsi" + index },
-                          domProps: {
-                            value: provinsi.id,
-                            checked: Array.isArray(_vm.selected.provinsis)
-                              ? _vm._i(_vm.selected.provinsis, provinsi.id) > -1
-                              : _vm.selected.provinsis
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.selected.provinsis,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = provinsi.id,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.selected,
-                                      "provinsis",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.selected,
-                                      "provinsis",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.selected, "provinsis", $$c)
-                              }
-                            }
-                          }
-                        }),
+                        _c("option", { attrs: { value: "", selected: "" } }, [
+                          _vm._v("Choose...")
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "custom-control-label",
-                            attrs: { for: "provinsi" + index }
-                          },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(provinsi.name) +
-                                " (" +
-                                _vm._s(provinsi.products_count) +
-                                ")\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  })
-                ],
-                2
+                        _vm._l(_vm.provinsis, function(provinsi, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: provinsi.id } },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(provinsi.name) +
+                                  " (" +
+                                  _vm._s(provinsi.products_count) +
+                                  ")"
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v("Selected: " + _vm._s(_vm.selected.provinsis))
+                    ])
+                  ])
+                ]
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "category card mb-2" }, [
               _c(
                 "div",
-                { staticClass: "card-body" },
+                {
+                  staticClass: "card-body",
+                  staticStyle: { "max-height": "250px", overflow: "scroll" }
+                },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Kabupaten")]),
                   _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _vm._l(_vm.kabupatens, function(kabupaten, index) {
-                    return _c(
-                      "div",
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
                       {
-                        key: kabupaten.id,
-                        staticClass: "custom-control custom-checkbox"
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.selected.kabupatens,
+                            expression: "selected.kabupatens"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.selected,
+                              "kabupatens",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
                       },
                       [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.selected.kabupatens,
-                              expression: "selected.kabupatens"
-                            }
-                          ],
-                          staticClass: "custom-control-input",
-                          attrs: { type: "checkbox", id: "kabupaten" + index },
-                          domProps: {
-                            value: kabupaten.id,
-                            checked: Array.isArray(_vm.selected.kabupatens)
-                              ? _vm._i(_vm.selected.kabupatens, kabupaten.id) >
-                                -1
-                              : _vm.selected.kabupatens
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.selected.kabupatens,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = kabupaten.id,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.selected,
-                                      "kabupatens",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.selected,
-                                      "kabupatens",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.selected, "kabupatens", $$c)
-                              }
-                            }
-                          }
-                        }),
+                        _c("option", { attrs: { value: "", selected: "" } }, [
+                          _vm._v("Choose...")
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "custom-control-label",
-                            attrs: { for: "kabupaten" + index }
-                          },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(kabupaten.name) +
-                                " (" +
-                                _vm._s(kabupaten.products_count) +
-                                ")\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  })
-                ],
-                2
+                        _vm._l(_vm.kabupatens, function(kabupaten, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: kabupaten.id } },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(kabupaten.name) +
+                                  " (" +
+                                  _vm._s(kabupaten.products_count) +
+                                  ")"
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v("Selected: " + _vm._s(_vm.selected.kabupatens))
+                    ])
+                  ])
+                ]
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "category card mb-2" }, [
               _c(
                 "div",
-                { staticClass: "card-body" },
+                {
+                  staticClass: "card-body",
+                  staticStyle: { overflow: "scroll" }
+                },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Categories")]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
-                  _vm._l(_vm.categories, function(category, index) {
+                  _vm._l(_vm.category_items, function(category, index) {
                     return _c(
                       "div",
                       {
@@ -38541,22 +38557,24 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.selected.categories,
-                              expression: "selected.categories"
+                              value: _vm.selected.category_items,
+                              expression: "selected.category_items"
                             }
                           ],
                           staticClass: "custom-control-input",
                           attrs: { type: "checkbox", id: "category" + index },
                           domProps: {
                             value: category.id,
-                            checked: Array.isArray(_vm.selected.categories)
-                              ? _vm._i(_vm.selected.categories, category.id) >
-                                -1
-                              : _vm.selected.categories
+                            checked: Array.isArray(_vm.selected.category_items)
+                              ? _vm._i(
+                                  _vm.selected.category_items,
+                                  category.id
+                                ) > -1
+                              : _vm.selected.category_items
                           },
                           on: {
                             change: function($event) {
-                              var $$a = _vm.selected.categories,
+                              var $$a = _vm.selected.category_items,
                                 $$el = $event.target,
                                 $$c = $$el.checked ? true : false
                               if (Array.isArray($$a)) {
@@ -38566,21 +38584,21 @@ var render = function() {
                                   $$i < 0 &&
                                     _vm.$set(
                                       _vm.selected,
-                                      "categories",
+                                      "category_items",
                                       $$a.concat([$$v])
                                     )
                                 } else {
                                   $$i > -1 &&
                                     _vm.$set(
                                       _vm.selected,
-                                      "categories",
+                                      "category_items",
                                       $$a
                                         .slice(0, $$i)
                                         .concat($$a.slice($$i + 1))
                                     )
                                 }
                               } else {
-                                _vm.$set(_vm.selected, "categories", $$c)
+                                _vm.$set(_vm.selected, "category_items", $$c)
                               }
                             }
                           }
@@ -38613,13 +38631,16 @@ var render = function() {
             _c("div", { staticClass: "subcategory card mb-2" }, [
               _c(
                 "div",
-                { staticClass: "card-body" },
+                {
+                  staticClass: "card-body",
+                  staticStyle: { overflow: "scroll" }
+                },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Sub Categories")]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
-                  _vm._l(_vm.subcategories, function(subcategory, index) {
+                  _vm._l(_vm.subcategory_items, function(subcategory, index) {
                     return _c(
                       "div",
                       {
@@ -38632,8 +38653,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.selected.subcategories,
-                              expression: "selected.subcategories"
+                              value: _vm.selected.subcategory_items,
+                              expression: "selected.subcategory_items"
                             }
                           ],
                           staticClass: "custom-control-input",
@@ -38643,16 +38664,18 @@ var render = function() {
                           },
                           domProps: {
                             value: subcategory.id,
-                            checked: Array.isArray(_vm.selected.subcategories)
+                            checked: Array.isArray(
+                              _vm.selected.subcategory_items
+                            )
                               ? _vm._i(
-                                  _vm.selected.subcategories,
+                                  _vm.selected.subcategory_items,
                                   subcategory.id
                                 ) > -1
-                              : _vm.selected.subcategories
+                              : _vm.selected.subcategory_items
                           },
                           on: {
                             change: function($event) {
-                              var $$a = _vm.selected.subcategories,
+                              var $$a = _vm.selected.subcategory_items,
                                 $$el = $event.target,
                                 $$c = $$el.checked ? true : false
                               if (Array.isArray($$a)) {
@@ -38662,21 +38685,21 @@ var render = function() {
                                   $$i < 0 &&
                                     _vm.$set(
                                       _vm.selected,
-                                      "subcategories",
+                                      "subcategory_items",
                                       $$a.concat([$$v])
                                     )
                                 } else {
                                   $$i > -1 &&
                                     _vm.$set(
                                       _vm.selected,
-                                      "subcategories",
+                                      "subcategory_items",
                                       $$a
                                         .slice(0, $$i)
                                         .concat($$a.slice($$i + 1))
                                     )
                                 }
                               } else {
-                                _vm.$set(_vm.selected, "subcategories", $$c)
+                                _vm.$set(_vm.selected, "subcategory_items", $$c)
                               }
                             }
                           }
