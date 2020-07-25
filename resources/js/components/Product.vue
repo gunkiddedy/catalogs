@@ -15,7 +15,7 @@
                                     :value="provinsi.id">
                                     {{ provinsi.name }} ({{ provinsi.products_count }})</option>
                             </select>
-                            <span>Selected: {{ selected.provinsis }}</span>
+                            <!-- <span>Selected: {{ selected.provinsis }}</span> -->
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                                 <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="kabupaten.id">
                                     {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
                             </select>
-                            <span>Selected: {{ selected.kabupatens }}</span>
+                            <!-- <span>Selected: {{ selected.kabupatens }}</span> -->
                         </div>
                     </div>
                 </div>

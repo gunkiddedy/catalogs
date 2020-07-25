@@ -38447,11 +38447,7 @@ var render = function() {
                         })
                       ],
                       2
-                    ),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v("Selected: " + _vm._s(_vm.selected.provinsis))
-                    ])
+                    )
                   ])
                 ]
               )
@@ -38522,11 +38518,7 @@ var render = function() {
                         })
                       ],
                       2
-                    ),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v("Selected: " + _vm._s(_vm.selected.kabupatens))
-                    ])
+                    )
                   ])
                 ]
               )
