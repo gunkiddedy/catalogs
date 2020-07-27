@@ -26,7 +26,8 @@
 
     <link href="{{ asset('external-css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('external-css/responsive.css') }}">
-    <link href="{{ asset('css/loading.css') }}" rel="stylesheet">
+
+    {{-- <link href="{{ asset('css/loading.css') }}" rel="stylesheet"> --}}
 
 
 </head>
