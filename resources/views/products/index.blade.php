@@ -5,7 +5,7 @@
 @section ('content')
 
 <div id="product">
-    <product-page></product-page> <!-- VUE COMPONENT-->
+    <index-page></index-page> <!-- VUE COMPONENT-->
 </div>
 
 @endsection

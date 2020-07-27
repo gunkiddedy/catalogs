@@ -181,7 +181,7 @@
                 axios.get('/api/getprovinsis')
                 .then( (response) => {
                     this.provinsis = response.data.data;
-                    this.loading = false;
+                    // this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -208,7 +208,7 @@
                 })
                 .then((response) => {
                     this.category_items = response.data.data;
-                    this.loading = false;
+                    // this.loading = false;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -221,7 +221,7 @@
                 })
                 .then((response) => {
                     this.subcategory_items = response.data.data;
-                    this.loading = false;
+                    // this.loading = false;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -232,7 +232,7 @@
                 axios.get('/api/products?page=' + page)
                 .then((response) => {
                     this.products = response.data;
-                    this.loading = false;
+                    // this.loading = false;
                 });
             }
             // searchProductsOrCompany: function(){
