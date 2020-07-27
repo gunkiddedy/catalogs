@@ -5,7 +5,7 @@
                 <input type="text" class="form-control mt-3 mb-2" >
                 
                 <div class="category card mb-2">
-                    <div class="card-body" style="max-height:250px;overflow:scroll">
+                    <div class="card-body">
                         <h5 class="mt-2">Provinsi</h5>
                         <div class="form-group">
                             <select class="form-control" v-model="selected.provinsis" @change="loadKabupatens">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="category card mb-2">
-                    <div class="card-body" style="max-height:250px;overflow:scroll">
+                    <div class="card-body">
                         <h5 class="mt-2">Kabupaten</h5>
                         <div class="form-group">
                             <select class="form-control" v-model="selected.kabupatens">
@@ -57,7 +57,7 @@
                     </div>
                 </div> -->
                 <div class="category card mb-2">
-                    <div class="card-body" style="overflow:scroll">
+                    <div class="card-body" >
                         <h5 class="mt-2">Categories</h5>
                         <hr>
                         <div class="custom-control custom-checkbox" v-for="(category, index) in category_items" :key="category.id">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="subcategory card mb-2">
-                    <div class="card-body" style="overflow:scroll">
+                    <div class="card-body" >
                         <h5 class="mt-2">Sub Categories</h5>
                         <hr>
                         <div class="custom-control custom-checkbox" v-for="(subcategory, index) in subcategory_items" :key="subcategory.id">

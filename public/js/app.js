@@ -38376,104 +38376,25 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "category card mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "card-body",
-                  staticStyle: { "max-height": "250px", overflow: "scroll" }
-                },
-                [
-                  _c("h5", { staticClass: "mt-2" }, [_vm._v("Provinsi")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.selected.provinsis,
-                            expression: "selected.provinsis"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.selected,
-                                "provinsis",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                            _vm.loadKabupatens
-                          ]
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "mt-2" }, [_vm._v("Provinsi")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selected.provinsis,
+                          expression: "selected.provinsis"
                         }
-                      },
-                      [
-                        _c("option", { attrs: { value: "", selected: "" } }, [
-                          _vm._v("Choose...")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.provinsis, function(provinsi, index) {
-                          return _c(
-                            "option",
-                            { key: index, domProps: { value: provinsi.id } },
-                            [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(provinsi.name) +
-                                  " (" +
-                                  _vm._s(provinsi.products_count) +
-                                  ")"
-                              )
-                            ]
-                          )
-                        })
                       ],
-                      2
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "category card mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "card-body",
-                  staticStyle: { "max-height": "250px", overflow: "scroll" }
-                },
-                [
-                  _c("h5", { staticClass: "mt-2" }, [_vm._v("Kabupaten")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.selected.kabupatens,
-                            expression: "selected.kabupatens"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        on: {
-                          change: function($event) {
+                      staticClass: "form-control",
+                      on: {
+                        change: [
+                          function($event) {
                             var $$selectedVal = Array.prototype.filter
                               .call($event.target.options, function(o) {
                                 return o.selected
@@ -38484,49 +38405,111 @@ var render = function() {
                               })
                             _vm.$set(
                               _vm.selected,
-                              "kabupatens",
+                              "provinsis",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
                             )
-                          }
+                          },
+                          _vm.loadKabupatens
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.provinsis, function(provinsi, index) {
+                        return _c(
+                          "option",
+                          { key: index, domProps: { value: provinsi.id } },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(provinsi.name) +
+                                " (" +
+                                _vm._s(provinsi.products_count) +
+                                ")"
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "category card mb-2" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "mt-2" }, [_vm._v("Kabupaten")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selected.kabupatens,
+                          expression: "selected.kabupatens"
                         }
-                      },
-                      [
-                        _c("option", { attrs: { value: "", selected: "" } }, [
-                          _vm._v("Choose...")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.kabupatens, function(kabupaten, index) {
-                          return _c(
-                            "option",
-                            { key: index, domProps: { value: kabupaten.id } },
-                            [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(kabupaten.name) +
-                                  " (" +
-                                  _vm._s(kabupaten.products_count) +
-                                  ")"
-                              )
-                            ]
-                          )
-                        })
                       ],
-                      2
-                    )
-                  ])
-                ]
-              )
+                      staticClass: "form-control",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.selected,
+                            "kabupatens",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.kabupatens, function(kabupaten, index) {
+                        return _c(
+                          "option",
+                          { key: index, domProps: { value: kabupaten.id } },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(kabupaten.name) +
+                                " (" +
+                                _vm._s(kabupaten.products_count) +
+                                ")"
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "category card mb-2" }, [
               _c(
                 "div",
-                {
-                  staticClass: "card-body",
-                  staticStyle: { overflow: "scroll" }
-                },
+                { staticClass: "card-body" },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Categories")]),
                   _vm._v(" "),
@@ -38619,10 +38602,7 @@ var render = function() {
             _c("div", { staticClass: "subcategory card mb-2" }, [
               _c(
                 "div",
-                {
-                  staticClass: "card-body",
-                  staticStyle: { overflow: "scroll" }
-                },
+                { staticClass: "card-body" },
                 [
                   _c("h5", { staticClass: "mt-2" }, [_vm._v("Sub Categories")]),
                   _vm._v(" "),
