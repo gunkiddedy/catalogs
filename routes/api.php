@@ -27,6 +27,7 @@ Route::get('search', 'Api\SearchController@search');
 Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
 Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
 Route::get('products', 'Api\ProductController@index');
+Route::get('products/search', 'Api\ProductController@search');
 Route::get('details', 'Api\ProductDetailsController@index');
 
 // test resource

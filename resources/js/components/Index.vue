@@ -8,8 +8,12 @@
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 class="">Search here</h5>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Product or company">
+                                <div class="form-group d-flex justify-content-start">
+                                    <input type="search" 
+                                        class="form-control mr-1" 
+                                        placeholder="write and enter to search"
+                                        v-model="search"
+                                        v-on:keyup.enter="searchProduct">
                                 </div>
                             </div>
                         </div>
@@ -122,7 +126,10 @@
                 select_provinsi: [],
                 select_kabupaten: [],
                 selected_value: [],
+                searchData: [],
+                search: '',
                 selected: {
+                    searchData: {},
                     category_items: [],
                     subcategory_items: [],
                     select_provinsi: [],
@@ -156,6 +163,23 @@
         },
 
         methods: {
+            searchProduct: function() {
+                axios.get('/api/products/search', {
+                    params: {
+                        search: this.search
+                    }
+                })
+                .then((response) => {
+                    this.searchData = response.data;
+                    this.products = this.searchData;
+                    this.loading =  false
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });  
+            },
+
             loadProducts: function () {
                 axios.get('/api/products', {
                         params: this.selected

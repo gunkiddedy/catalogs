@@ -16,4 +16,14 @@ class ProductController extends Controller
         // return $image;
         return ProductResource::collection($products);
     }
+
+    public function search(Request $request)
+    {
+        $products = Product::withFilters()
+            ->where('name', 'like', '%'.$request->search.'%')
+            ->orWhere('company_name', 'like', '%'.$request->search.'%')->paginate(12);
+        // $image = \App\ProductImage::with('product')->get();
+        // return $image;
+        return ProductResource::collection($products);
+    }
 }

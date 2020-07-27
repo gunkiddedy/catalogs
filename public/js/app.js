@@ -2019,6 +2019,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2031,7 +2035,10 @@ __webpack_require__.r(__webpack_exports__);
       select_provinsi: [],
       select_kabupaten: [],
       selected_value: [],
+      searchData: [],
+      search: '',
       selected: {
+        searchData: {},
         category_items: [],
         subcategory_items: [],
         select_provinsi: [],
@@ -2060,40 +2067,40 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    loadProducts: function loadProducts() {
+    searchProduct: function searchProduct() {
       var _this = this;
 
-      axios.get('/api/products', {
-        params: this.selected
+      axios.get('/api/products/search', {
+        params: {
+          search: this.search
+        }
       }).then(function (response) {
-        _this.products = response.data;
+        _this.searchData = response.data;
+        _this.products = _this.searchData;
         _this.loading = false;
+        console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadProvinsis: function loadProvinsis() {
+    loadProducts: function loadProducts() {
       var _this2 = this;
 
-      axios.get('/api/getprovinsis').then(function (response) {
-        _this2.provinsis = response.data.data; // this.select_provinsi = [];
-        // this.select_kabupaten = [];
-
-        _this2.selected_value = [];
+      axios.get('/api/products', {
+        params: this.selected
+      }).then(function (response) {
+        _this2.products = response.data;
         _this2.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadKabupatens: function loadKabupatens() {
+    loadProvinsis: function loadProvinsis() {
       var _this3 = this;
 
-      axios.get('/api/getkabupatens', {
-        params: {
-          provinsi_id: this.selected.select_provinsi
-        }
-      }).then(function (response) {
-        _this3.kabupatens = response.data.data; // this.select_kabupaten = [];
+      axios.get('/api/getprovinsis').then(function (response) {
+        _this3.provinsis = response.data.data; // this.select_provinsi = [];
+        // this.select_kabupaten = [];
 
         _this3.selected_value = [];
         _this3.loading = false;
@@ -2101,37 +2108,53 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    loadCategories: function loadCategories() {
+    loadKabupatens: function loadKabupatens() {
       var _this4 = this;
 
-      axios.get('/api/categories', {
-        params: _.omit(this.selected, 'category_items')
+      axios.get('/api/getkabupatens', {
+        params: {
+          provinsi_id: this.selected.select_provinsi
+        }
       }).then(function (response) {
-        _this4.category_items = response.data.data;
+        _this4.kabupatens = response.data.data; // this.select_kabupaten = [];
+
+        _this4.selected_value = [];
         _this4.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadSubCategories: function loadSubCategories() {
+    loadCategories: function loadCategories() {
       var _this5 = this;
 
-      axios.get('/api/subcategories', {
-        params: _.omit(this.selected, 'subcategory_items')
+      axios.get('/api/categories', {
+        params: _.omit(this.selected, 'category_items')
       }).then(function (response) {
-        _this5.subcategory_items = response.data.data;
+        _this5.category_items = response.data.data;
         _this5.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    getResults: function getResults() {
+    loadSubCategories: function loadSubCategories() {
       var _this6 = this;
+
+      axios.get('/api/subcategories', {
+        params: _.omit(this.selected, 'subcategory_items')
+      }).then(function (response) {
+        _this6.subcategory_items = response.data.data;
+        _this6.loading = false;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getResults: function getResults() {
+      var _this7 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/api/products?page=' + page).then(function (response) {
-        _this6.products = response.data;
-        _this6.loading = false;
+        _this7.products = response.data;
+        _this7.loading = false;
       });
     }
   }
@@ -38975,7 +38998,57 @@ var render = function() {
         "div",
         { staticClass: "col-lg-3 col-md-3 col-sm-6 frontend-sidebar" },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "card border-white" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", {}, [_vm._v("Search here")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group d-flex justify-content-start" },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "form-control mr-1",
+                    attrs: {
+                      type: "search",
+                      placeholder: "write and enter to search"
+                    },
+                    domProps: { value: _vm.search },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.searchProduct($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card border-white" }, [
             _c("div", { staticClass: "card-body" }, [
@@ -39383,25 +39456,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card border-white" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", {}, [_vm._v("Search here")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Product or company" }
-          })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

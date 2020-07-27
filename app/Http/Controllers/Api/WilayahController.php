@@ -17,9 +17,9 @@ class WilayahController extends Controller
 
         // return response()->json($data);
         $provinsis = Provinsi::withCount(['products' => function ($query) {
-                                                            $query->withFilters();}
-                                                            ])->get();
-    
+            $query->withFilters();}
+            ])->get();
+
         return ProvinsiResource::collection($provinsis);
 
         // $categories = Category::withCount([
