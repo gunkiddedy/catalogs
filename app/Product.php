@@ -64,11 +64,11 @@ class Product extends Model
             ->when(count(request()->input('subcategory_items', [])), function ($query) {
                 $query->whereIn('subcategory_id', request()->input('subcategory_items'));
             })
-            ->when(count(request()->input('provinsis', [])), function ($query) {
-                $query->whereIn('provinsi_id', request()->input('provinsis'));
+            ->when(count(request()->input('select_provinsi', [])), function ($query) {
+                $query->whereIn('provinsi_id', request()->input('select_provinsi'));
             })
-            ->when(count(request()->input('kabupatens', [])), function ($query) {
-                $query->whereIn('kabupaten_id', request()->input('kabupatens'));
+            ->when(count(request()->input('select_kabupaten', [])), function ($query) {
+                $query->whereIn('kabupaten_id', request()->input('select_kabupaten'));
             });
     }    
 }

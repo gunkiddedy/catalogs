@@ -2029,7 +2029,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2039,11 +2038,14 @@ __webpack_require__.r(__webpack_exports__);
       subcategory_items: [],
       provinsis: [],
       kabupatens: [],
+      select_provinsi: [],
+      select_kabupaten: [],
+      selected_value: [],
       selected: {
         category_items: [],
         subcategory_items: [],
-        provinsis: [],
-        kabupatens: []
+        select_provinsi: [],
+        select_kabupaten: []
       }
     };
   },
@@ -2084,7 +2086,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get('/api/getprovinsis').then(function (response) {
-        _this2.provinsis = response.data.data; // this.loading = false;
+        _this2.provinsis = response.data.data; // this.select_provinsi = [];
+        // this.select_kabupaten = [];
+
+        _this2.selected_value = [];
+        _this2.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2094,10 +2100,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/getkabupatens', {
         params: {
-          provinsi_id: this.selected.provinsis
+          provinsi_id: this.selected.select_provinsi
         }
       }).then(function (response) {
-        _this3.kabupatens = response.data.data;
+        _this3.kabupatens = response.data.data; // this.select_kabupaten = [];
+
+        _this3.selected_value = [];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -38387,8 +38395,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.selected.provinsis,
-                          expression: "selected.provinsis"
+                          value: _vm.selected.select_provinsi,
+                          expression: "selected.select_provinsi"
                         }
                       ],
                       staticClass: "form-control",
@@ -38405,7 +38413,7 @@ var render = function() {
                               })
                             _vm.$set(
                               _vm.selected,
-                              "provinsis",
+                              "select_provinsi",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -38416,14 +38424,16 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "", selected: "" } }, [
-                        _vm._v("Choose...")
-                      ]),
+                      _c(
+                        "option",
+                        { domProps: { value: _vm.selected_value } },
+                        [_vm._v("All")]
+                      ),
                       _vm._v(" "),
                       _vm._l(_vm.provinsis, function(provinsi, index) {
                         return _c(
                           "option",
-                          { key: index, domProps: { value: provinsi.id } },
+                          { key: index, domProps: { value: [provinsi.id] } },
                           [
                             _vm._v(
                               "\n                                " +
@@ -38454,8 +38464,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.selected.kabupatens,
-                          expression: "selected.kabupatens"
+                          value: _vm.selected.select_kabupaten,
+                          expression: "selected.select_kabupaten"
                         }
                       ],
                       staticClass: "form-control",
@@ -38471,7 +38481,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.selected,
-                            "kabupatens",
+                            "select_kabupaten",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -38480,14 +38490,16 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "", selected: "" } }, [
-                        _vm._v("Choose...")
-                      ]),
+                      _c(
+                        "option",
+                        { domProps: { value: _vm.selected_value } },
+                        [_vm._v("All")]
+                      ),
                       _vm._v(" "),
                       _vm._l(_vm.kabupatens, function(kabupaten, index) {
                         return _c(
                           "option",
-                          { key: index, domProps: { value: kabupaten.id } },
+                          { key: index, domProps: { value: [kabupaten.id] } },
                           [
                             _vm._v(
                               "\n                                " +

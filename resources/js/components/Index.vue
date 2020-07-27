@@ -3,16 +3,15 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 frontend-sidebar">
                 <input type="text" class="form-control mt-3 mb-2" >
-                
                 <div class="category card mb-2">
                     <div class="card-body">
                         <h5 class="mt-2">Provinsi</h5>
                         <div class="form-group">
-                            <select class="form-control" v-model="selected.provinsis" @change="loadKabupatens">
-                                <option value="" selected>Choose...</option>
+                            <select class="form-control" v-model="selected.select_provinsi" @change="loadKabupatens">
+                                <option :value="selected_value">All</option>
                                 <option v-for="(provinsi, index) in provinsis" 
                                     :key="index" 
-                                    :value="provinsi.id">
+                                    :value="[provinsi.id]">
                                     {{ provinsi.name }} ({{ provinsi.products_count }})</option>
                             </select>
                             <!-- <span>Selected: {{ selected.provinsis }}</span> -->
@@ -23,9 +22,9 @@
                     <div class="card-body">
                         <h5 class="mt-2">Kabupaten</h5>
                         <div class="form-group">
-                            <select class="form-control" v-model="selected.kabupatens">
-                                <option value="" selected>Choose...</option>
-                                <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="kabupaten.id">
+                            <select class="form-control" v-model="selected.select_kabupaten">
+                                <option :value="selected_value">All</option>
+                                <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="[kabupaten.id]">
                                     {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
                             </select>
                             <!-- <span>Selected: {{ selected.kabupatens }}</span> -->
@@ -130,11 +129,14 @@
                 subcategory_items: [],
                 provinsis: [],
                 kabupatens: [],
+                select_provinsi: [],
+                select_kabupaten: [],
+                selected_value: [],
                 selected: {
                     category_items: [],
                     subcategory_items: [],
-                    provinsis: [],
-                    kabupatens: []
+                    select_provinsi: [],
+                    select_kabupaten: []
                 }
             }
         },
@@ -181,7 +183,10 @@
                 axios.get('/api/getprovinsis')
                 .then( (response) => {
                     this.provinsis = response.data.data;
-                    // this.loading = false;
+                    // this.select_provinsi = [];
+                    // this.select_kabupaten = [];
+                    this.selected_value = [];
+                    this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -191,11 +196,13 @@
             loadKabupatens: function(){
                 axios.get('/api/getkabupatens', {
                     params: {
-                        provinsi_id: this.selected.provinsis
+                        provinsi_id: this.selected.select_provinsi
                     }
                 })
                 .then((response) => {
                     this.kabupatens = response.data.data;
+                    // this.select_kabupaten = [];
+                    this.selected_value = []
                 })
                 .catch((error) => {
                     console.log(error);
