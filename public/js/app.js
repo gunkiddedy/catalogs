@@ -39220,7 +39220,7 @@ var render = function() {
           {
             staticClass:
               "col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter",
-            staticStyle: { top: "85px" }
+            staticStyle: { top: "85px", "z-index": "999999" }
           },
           [
             _c(
