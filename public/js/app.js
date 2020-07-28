@@ -39249,7 +39249,7 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("hr"),
+        _c("br"),
         _vm._v(" "),
         _c("transition", { attrs: { name: "fade" } }, [
           _vm.isShowFilter

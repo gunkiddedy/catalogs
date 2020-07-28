@@ -13,7 +13,7 @@
                     <p>with : {{windowWidth}}</p> -->
                 </div>
             <!-- </nav> -->
-            <hr>
+            <br>
 
             <transition name="fade">
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
