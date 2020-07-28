@@ -183,20 +183,11 @@
             this.loadProvinsis();
         },
 
-        // computed: {
-        //     detectOrientationChange() {
-        //     switch(window.orientation) {  
-        //         case -90 || 90:
-        //             // landscape
-        //         this.mobile = false;
-        //         break; 
-        //         default:
-        //             // portrait
-        //             this.mobile = true;
-        //             break; 
-        //         }
-        //     }
-        // },
+        computed: {
+            showProducts() {
+                this.isShowProduct = !this.isShowProduct;
+            }
+        },
 
         watch: {
             selected: {
@@ -218,8 +209,7 @@
         methods: {
             showComponent: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
-                //this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
-                !this.showProducts();
+                this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
             },
 
             showProducts(){
