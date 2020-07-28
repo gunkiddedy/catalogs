@@ -2,12 +2,23 @@
     <div class="container-fluid bg-white">
         
         <div class="row" >
-            <div class="col-lg-3 col-md-3 col-sm-6 frontend-sidebar">
+            <!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="top:75px"> -->
+                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter" style="top:85px">
+                    <button @click="showComponent" class="btn btn-sm btn-light float-right" type="button">
+                        <span class="fa fa-filter" style="cursor:pointer;" ></span>
+                        Filter
+                    </button>
+                </div>
+            <!-- </nav> -->
+            <hr>
+
+            <transition name="fade">
+                <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
                 <!-- <div class="card border-white">
                     <div class="card-body"> -->
                         <div class="card border-white">
                             <div class="card-body">
-                                <h5 class="">Search here</h5>
+                                <h5 style="font-weight:bold">Search here</h5>
                                 <div class="form-group d-flex justify-content-start">
                                     <input type="search" 
                                         class="form-control mr-1" 
@@ -19,7 +30,7 @@
                         </div>
                         <div class="card border-white">
                             <div class="card-body">
-                                <h5 class="">Provinsi</h5>
+                                <h5 style="font-weight:bold">Provinsi</h5>
                                 <div class="form-group">
                                     <select class="form-control input-sm" v-model="selected.select_provinsi" @change="loadKabupatens">
                                         <option :value="selected_value">All</option>
@@ -34,7 +45,7 @@
                         </div>
                         <div class="card border-white">
                             <div class="card-body">
-                                <h5 class="">Kabupaten</h5>
+                                <h5 style="font-weight:bold">Kabupaten</h5>
                                 <div class="form-group">
                                     <select class="form-control" v-model="selected.select_kabupaten">
                                         <option :value="selected_value">All</option>
@@ -47,7 +58,7 @@
                         </div>
                         <div class="card border-white">
                             <div class="card-body" >
-                                <h5 class="">Categories</h5>
+                                <h5 style="font-weight:bold">Categories</h5>
                                 <hr>
                                 <div class="custom-control custom-checkbox" v-for="(category, index) in category_items" :key="category.id">
                                     <input class="custom-control-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.category_items">
@@ -59,7 +70,7 @@
                         </div>
                         <div class="card border-white">
                             <div class="card-body" >
-                                <h5 class="">Sub Categories</h5>
+                                <h5 style="font-weight:bold">Sub Categories</h5>
                                 <hr>
                                 <div class="custom-control custom-checkbox" v-for="(subcategory, index) in subcategory_items" :key="subcategory.id">
                                     <input 
@@ -77,38 +88,42 @@
                         </div>
                     <!-- </div>
                 </div> -->
-                
-            </div>
-
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv">
-                <div class="loading" v-if="loading"></div>
-                <div class="row d-flex justify-content-start" id="productsfilter">
-                    <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
-                        <div class="card text-center border-white">
-                            <div class="card-body rspnv-card-body">
-                                <div class="product-info">
-                                    <a :href="'product/detail/'+product.id">
-                                        <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
-                                    </a>
-                                    <div class="">
-                                        <p class="prdct_name">{{ product.name }}</p>
-                                        <hr>
-                                        <h6>
-                                            <a :href="'company/detail/'+product.user_id" class="prdct_company">
-                                                <i class="fa fa-flag mr-1"></i>
-                                                {{ product.company_name }}
-                                            </a>
-                                        </h6>
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
+                    <!-- <p>width : {{ windowWidth }} - height {{ windowHeight}}</p> -->
+                    <div class="loading" v-if="loading"></div>
+                    <div class="row d-flex justify-content-start" id="productsfilter">
+                        <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
+                            <div class="card text-center border-white">
+                                <div class="card-body rspnv-card-body">
+                                    <div class="product-info">
+                                        <a :href="'product/detail/'+product.id">
+                                            <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
+                                        </a>
+                                        <div class="">
+                                            <p class="prdct_name">{{ product.name }}</p>
+                                            <hr>
+                                            <h6>
+                                                <a :href="'company/detail/'+product.user_id" class="prdct_company">
+                                                    <i class="fa fa-flag mr-1"></i>
+                                                    {{ product.company_name }}
+                                                </a>
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2rem;">
+                        <pagination :data="products" @pagination-change-page="getResults"></pagination>
+                    </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2rem;">
-                    <pagination :data="products" @pagination-change-page="getResults"></pagination>
-                </div>
-            </div>
+            </transition>
+            
         </div>
     </div>
 </template>
@@ -117,6 +132,11 @@
     export default {
         data: function() {
             return {
+                isShowProduct: true,
+                isShowFilter: true,
+                windowWidth: 0,
+                windowHeight: 0,
+                // isHide: true,
                 loading: true,
                 products: {},
                 category_items: [],
@@ -144,11 +164,35 @@
             this.loadCategories();
             this.loadSubCategories();
             // this.loadProvinsis();
+            this.$nextTick(function() {
+                window.addEventListener('resize', this.getWindowWidth);
+                window.addEventListener('resize', this.getWindowHeight);
+
+                //Init
+                this.getWindowWidth()
+                this.getWindowHeight()
+            });
+            this.showProducts(); //true show products
         },
 
         created(){
             this.loadProvinsis();
         },
+
+        // computed: {
+        //     detectOrientationChange() {
+        //     switch(window.orientation) {  
+        //         case -90 || 90:
+        //             // landscape
+        //         this.mobile = false;
+        //         break; 
+        //         default:
+        //             // portrait
+        //             this.mobile = true;
+        //             break; 
+        //         }
+        //     }
+        // },
 
         watch: {
             selected: {
@@ -162,7 +206,34 @@
             }
         },
 
+        beforeDestroy() {
+            window.removeEventListener('resize', this.getWindowWidth);
+            window.removeEventListener('resize', this.getWindowHeight);
+        },
+
         methods: {
+            showComponent: function () {
+                this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
+                this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
+            },
+
+            showProducts(){
+                this.isShowProduct = true;
+            },
+
+            getWindowWidth(event) {
+                this.windowWidth = document.documentElement.clientWidth;
+                if(this.windowWidth <= 991){
+                    this.isShowFilter = false; //hide filter when window is <= 991
+                }else{
+                    this.isShowFilter = true; //show filter when window > 991
+                }
+            },
+
+            getWindowHeight(event) {
+                this.windowHeight = document.documentElement.clientHeight;
+            },
+
             searchProduct: function() {
                 axios.get('/api/products/search', {
                     params: {
@@ -263,6 +334,14 @@
 </script>
 
 <style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .loading {
     position: fixed;
     z-index: 1000;

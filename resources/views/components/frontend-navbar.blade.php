@@ -1,49 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top">
     <div class="container-fluid bg-white justify-content-between">
 
+        {{-- <button class="navbar-toggler" type="button">
+            <span class="fa fa-filter" style="font-size:30px;cursor:pointer" >
+            </span>
+        </button>         --}}
+
         {{-- =============================MOBILE VERSION MENUS==================== --}}
         <div id="mySidenav" class="sidenav show-filter">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul class="navbar-nav ml-auto">
                 {{-- link menu for this catalogs --}}
-                <li class="nav-item nav-item-mobile">
-                    <a class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
-                        href="/products"><i class="fa fa-home"></i> Home
-                    </a>
-                </li>
+                <li class="nav-item nav-item-mobile"><a class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
+                        href="/products"><i class="fa fa-home"></i> Home</a></li>
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item nav-item-mobile">
-                        <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}">
-                            <i class="fa fa-key"></i> {{ __('Login') }}
-                        </a>
-                    </li>
+                    <li class="nav-item nav-item-mobile"><a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}"><i class="fa fa-key"></i> {{ __('Login') }}</a></li>
                     @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('register') ? 'active' : ''}}" href="{{ route('register') }}">
-                                <i class="fa fa-anchor"></i> {{ __('Register') }}
-                            </a>
-                        </li>
+                    <li class="nav-item"><a class="nav-link {{ request()->is('register') ? 'active' : ''}}" href="{{ route('register') }}"><i class="fa fa-anchor"></i> {{ __('Register') }}</a>
+                    </li>
                     @endif
                 @else
                     <li class="nav-item nav-item-mobile">
-                        <a href="/profile/{{ Auth::id() }}" class="nav-link">
-                            <i class="fa fa-user"></i> Profile
-                        </a>
+                        <a href="/profile/{{ Auth::id() }}" class="nav-link"><i class="fa fa-user"></i> Profile</a>
                     </li>
-                    <li class="nav-item nav-item-mobile">
-                        <a href="/member" class="nav-link">
-                            <i class="fa fa-truck"></i> My Products
-                        </a>
+                    <li class="nav-item nav-item-mobile"><a href="/member" class="nav-link"><i class="fa fa-cube"></i> My Products</a>
                     </li>
-                    <li class="nav-item nav-item-mobile" style="border-bottom: 1px solid gray">
-                        <a class="nav-link" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fa fa-anchor"></i> {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                    <li class="nav-item nav-item-mobile" style="border-bottom: 1px solid gray"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-anchor"></i> {{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                     </li>
                 @endguest
             </ul>
