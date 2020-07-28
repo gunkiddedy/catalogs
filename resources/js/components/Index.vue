@@ -183,11 +183,11 @@
             this.loadProvinsis();
         },
 
-        computed: {
-            showProducts() {
-                this.isShowProduct = !this.isShowProduct;
-            }
-        },
+        // computed: {
+        //     showProducts() {
+        //         this.isShowProduct = !this.isShowProduct;
+        //     }
+        // },
 
         watch: {
             selected: {
@@ -209,7 +209,12 @@
         methods: {
             showComponent: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
-                this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
+                if(this.isShowFilter == true){
+                    this.isShowProduct = false;
+                }
+                if(this.isShowFilter == false){
+                    this.isShowProduct = true;
+                }
             },
 
             showProducts(){
