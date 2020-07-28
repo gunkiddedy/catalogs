@@ -2122,7 +2122,7 @@ __webpack_require__.r(__webpack_exports__);
       isShowProduct: true,
       isShowFilter: true,
       windowWidth: 0,
-      windowHeight: 0,
+      // windowHeight: 0,
       // isHide: true,
       loading: true,
       products: {},
@@ -2151,13 +2151,11 @@ __webpack_require__.r(__webpack_exports__);
     this.loadSubCategories(); // this.loadProvinsis();
 
     this.$nextTick(function () {
-      window.addEventListener('resize', this.getWindowWidth);
-      window.addEventListener('resize', this.getWindowHeight); //Init
+      window.addEventListener('resize', this.getWindowWidth); // window.addEventListener('resize', this.getWindowHeight);
+      //Init
 
-      this.getWindowWidth();
-      this.getWindowHeight();
-    });
-    this.showProducts(); //true show products
+      this.getWindowWidth(); // this.getWindowHeight()
+    }); //this.showProducts(); //true show products
   },
   created: function created() {
     this.loadProvinsis();
@@ -2188,8 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeDestroy: function beforeDestroy() {
-    window.removeEventListener('resize', this.getWindowWidth);
-    window.removeEventListener('resize', this.getWindowHeight);
+    window.removeEventListener('resize', this.getWindowWidth); // window.removeEventListener('resize', this.getWindowHeight);
   },
   methods: {
     showComponent: function showComponent() {
@@ -2197,9 +2194,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
     },
-    showProducts: function showProducts() {
-      this.isShowProduct = true;
-    },
+    // showProducts(){
+    //     this.isShowProduct = true;
+    // },
     getWindowWidth: function getWindowWidth(event) {
       this.windowWidth = document.documentElement.clientWidth;
 
@@ -2209,9 +2206,9 @@ __webpack_require__.r(__webpack_exports__);
         this.isShowFilter = true; //show filter when window > 991
       }
     },
-    getWindowHeight: function getWindowHeight(event) {
-      this.windowHeight = document.documentElement.clientHeight;
-    },
+    // getWindowHeight(event) {
+    //     this.windowHeight = document.documentElement.clientHeight;
+    // },
     searchProduct: function searchProduct() {
       var _this = this;
 

@@ -135,7 +135,7 @@
                 isShowProduct: true,
                 isShowFilter: true,
                 windowWidth: 0,
-                windowHeight: 0,
+                // windowHeight: 0,
                 // isHide: true,
                 loading: true,
                 products: {},
@@ -166,13 +166,13 @@
             // this.loadProvinsis();
             this.$nextTick(function() {
                 window.addEventListener('resize', this.getWindowWidth);
-                window.addEventListener('resize', this.getWindowHeight);
+                // window.addEventListener('resize', this.getWindowHeight);
 
                 //Init
                 this.getWindowWidth()
-                this.getWindowHeight()
+                // this.getWindowHeight()
             });
-            this.showProducts(); //true show products
+            //this.showProducts(); //true show products
         },
 
         created(){
@@ -208,7 +208,7 @@
 
         beforeDestroy() {
             window.removeEventListener('resize', this.getWindowWidth);
-            window.removeEventListener('resize', this.getWindowHeight);
+            // window.removeEventListener('resize', this.getWindowHeight);
         },
 
         methods: {
@@ -217,9 +217,9 @@
                 this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
             },
 
-            showProducts(){
-                this.isShowProduct = true;
-            },
+            // showProducts(){
+            //     this.isShowProduct = true;
+            // },
 
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
@@ -230,9 +230,9 @@
                 }
             },
 
-            getWindowHeight(event) {
-                this.windowHeight = document.documentElement.clientHeight;
-            },
+            // getWindowHeight(event) {
+            //     this.windowHeight = document.documentElement.clientHeight;
+            // },
 
             searchProduct: function() {
                 axios.get('/api/products/search', {
