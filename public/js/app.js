@@ -39226,7 +39226,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-sm btn-light float-right",
+                staticClass: "btn btn-sm btn-light",
                 attrs: { type: "button" },
                 on: { click: _vm.showComponent }
               },
