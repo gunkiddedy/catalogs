@@ -176,7 +176,7 @@
                 this.getWindowWidth()
                 // this.getWindowHeight()
             });
-            //this.showProducts(); //true show products
+            this.showProducts(); //true show products
         },
 
         created(){
@@ -219,11 +219,12 @@
             showComponent: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
                 //this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
+                !this.showProducts();
             },
 
-            // showProducts(){
-            //     this.isShowProduct = true;
-            // },
+            showProducts(){
+                this.isShowProduct = true;
+            },
 
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
