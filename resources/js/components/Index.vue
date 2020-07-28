@@ -3,16 +3,19 @@
         
         <div class="row" >
             <!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="top:75px"> -->
-                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter" style="top:85px;z-index:999999;">
+                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter" style="top:85px;z-index:9999999;">
                     <button @click="showComponent" class="btn btn-sm btn-light" type="button">
                         <span class="fa fa-filter" style="cursor:pointer;" ></span>
                         Filter
                     </button>
+                    <!-- <p>show filter : {{isShowFilter}}</p>
+                    <p>show product : {{isShowProduct}}</p>
+                    <p>with : {{windowWidth}}</p> -->
                 </div>
             <!-- </nav> -->
             <hr>
 
-            <!-- <transition name="fade"> -->
+            <transition name="fade">
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
                 <!-- <div class="card border-white">
                     <div class="card-body"> -->
@@ -56,8 +59,8 @@
                                     <!-- <span>Selected: {{ selected.kabupatens }}</span> -->
                                 </div>
                             </div>
-                            <p>show filter : {{isShowFilter}}</p>
-                            <p>show product : {{isShowProduct}}</p>
+                            <!-- <p>show filter : {{isShowFilter}}</p>
+                            <p>show product : {{isShowProduct}}</p> -->
                         </div>
                         <div class="card border-white">
                             <div class="card-body" >
@@ -92,12 +95,12 @@
                     <!-- </div>
                 </div> -->
                 </div>
-            <!-- </transition> -->
+            </transition>
             
-            <!-- <transition name="fade"> -->
+            <transition name="fade">
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
                     <!-- <p>width : {{ windowWidth }} - height {{ windowHeight}}</p> -->
-                    <p>show product : {{isShowProduct}}</p>
+                    <!-- <p>show product : {{isShowProduct}}</p> -->
                     <div class="loading" v-if="loading"></div>
                     <div class="row d-flex justify-content-start" id="productsfilter">
                         <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
@@ -126,7 +129,7 @@
                         <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
-            <!-- </transition> -->
+            </transition>
             
         </div>
     </div>
@@ -167,15 +170,16 @@
             this.getResults();
             this.loadCategories();
             this.loadSubCategories();
+            this.getWindowWidth();
             // this.loadProvinsis();
-            this.$nextTick(function() {
-                window.addEventListener('resize', this.getWindowWidth);
+            //this.$nextTick(function() {
+                //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
 
                 //Init
-                this.getWindowWidth()
+                //this.getWindowWidth();
                 // this.getWindowHeight()
-            });
+            //});
             //this.showProducts(); //true show products
         },
 
@@ -221,7 +225,7 @@
             //     this.isShowProduct = true;
             // },
 
-            getWindowWidth(event) {
+            getWindowWidth() {
                 this.windowWidth = document.documentElement.clientWidth;
                 if(this.windowWidth <= 991){
                     this.isShowFilter = false; //hide filter when window is <= 991
@@ -335,14 +339,14 @@
 
 <style scoped>
 
-/* .fade-enter-active, .fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
-} */
+}
 
 /* .fade-leave-active below version 2.1.8 */ 
-/* .fade-enter, .fade-leave-to {
+.fade-enter, .fade-leave-to {
   opacity: 0;
-} */
+}
 
 .loading {
     position: fixed;

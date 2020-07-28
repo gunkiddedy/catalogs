@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="z-index: 999999;">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="z-index: 9999999;">
     <div class="container-fluid bg-white justify-content-between">
 
         {{-- <button class="navbar-toggler" type="button">
