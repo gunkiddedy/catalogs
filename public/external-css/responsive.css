@@ -149,11 +149,12 @@
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: rgb(253, 253, 253);
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
     text-align:left;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 
   
@@ -161,7 +162,7 @@
 .sidenav li a {
     padding: 8px 8px 8px 32px;
     /* text-decoration: ; */
-    font-size: 23px;
+    font-size: 18px;
     color: #fcfafa;
     display: block;
     transition: 0.3s;

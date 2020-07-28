@@ -26,7 +26,7 @@
                     </li>
                     <li class="nav-item nav-item-mobile"><a href="/member" class="nav-link"><i class="fa fa-cube"></i> My Products</a>
                     </li>
-                    <li class="nav-item nav-item-mobile" style="border-bottom: 1px solid gray"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-anchor"></i> {{ __('Logout') }}</a>
+                    <li class="nav-item nav-item-mobile"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-anchor"></i> {{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
