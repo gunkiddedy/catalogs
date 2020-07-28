@@ -3,7 +3,7 @@
         
         <div class="row" >
             <!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="top:75px"> -->
-                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter" style="top:85px;z-index:9999999;">
+                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" style="top:85px;z-index:9999999;">
                     <button @click="showComponent" class="btn btn-sm btn-light" type="button">
                         <span class="fa fa-filter" style="cursor:pointer;" ></span>
                         Filter

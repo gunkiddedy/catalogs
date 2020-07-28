@@ -39223,7 +39223,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter",
+              "col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4",
             staticStyle: { top: "85px", "z-index": "9999999" }
           },
           [
