@@ -4,7 +4,7 @@
         <div class="row" >
             <!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="top:75px"> -->
                 <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" style="top:85px;z-index:9999999;">
-                    <button @click="showComponent" class="btn btn-sm btn-light" type="button">
+                    <button @click="showComponent" class="btn btn-light" type="button">
                         <span class="fa fa-filter" style="cursor:pointer;" ></span>
                         Filter
                     </button>
@@ -94,6 +94,10 @@
                         </div>
                     <!-- </div>
                 </div> -->
+                    <button @click="showComponent" class="btn btn-primary" type="button" style="width:100%">
+                        <span class="fa fa-filter" style="cursor:pointer;" ></span>
+                        Terapkan
+                    </button>
                 </div>
             </transition>
             

@@ -2123,6 +2123,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39230,7 +39234,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-sm btn-light",
+                staticClass: "btn btn-light",
                 attrs: { type: "button" },
                 on: { click: _vm.showComponent }
               },
@@ -39666,7 +39670,24 @@ var render = function() {
                       ],
                       2
                     )
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      staticStyle: { width: "100%" },
+                      attrs: { type: "button" },
+                      on: { click: _vm.showComponent }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "fa fa-filter",
+                        staticStyle: { cursor: "pointer" }
+                      }),
+                      _vm._v("\n                    Terapkan\n                ")
+                    ]
+                  )
                 ]
               )
             : _vm._e()
