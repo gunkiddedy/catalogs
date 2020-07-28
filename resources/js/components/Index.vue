@@ -97,6 +97,7 @@
             <!-- <transition name="fade"> -->
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
                     <!-- <p>width : {{ windowWidth }} - height {{ windowHeight}}</p> -->
+                    <p>show product : {{isShowProduct}}</p>
                     <div class="loading" v-if="loading"></div>
                     <div class="row d-flex justify-content-start" id="productsfilter">
                         <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
