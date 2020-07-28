@@ -2159,8 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
       //Init
 
       this.getWindowWidth(); // this.getWindowHeight()
-    });
-    this.showProducts(); //true show products
+    }); //this.showProducts(); //true show products
   },
   created: function created() {
     this.loadProvinsis();
@@ -2197,9 +2196,9 @@ __webpack_require__.r(__webpack_exports__);
         this.isShowProduct = true;
       }
     },
-    showProducts: function showProducts() {
-      this.isShowProduct = true;
-    },
+    // showProducts(){
+    //     this.isShowProduct = true;
+    // },
     getWindowWidth: function getWindowWidth(event) {
       this.windowWidth = document.documentElement.clientWidth;
 

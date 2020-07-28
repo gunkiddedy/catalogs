@@ -176,7 +176,7 @@
                 this.getWindowWidth()
                 // this.getWindowHeight()
             });
-            this.showProducts(); //true show products
+            //this.showProducts(); //true show products
         },
 
         created(){
@@ -217,9 +217,9 @@
                 }
             },
 
-            showProducts(){
-                this.isShowProduct = true;
-            },
+            // showProducts(){
+            //     this.isShowProduct = true;
+            // },
 
             getWindowWidth(event) {
                 this.windowWidth = document.documentElement.clientWidth;
