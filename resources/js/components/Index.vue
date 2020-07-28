@@ -218,7 +218,7 @@
         methods: {
             showComponent: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
-                this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
+                //this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
             },
 
             // showProducts(){

@@ -2196,8 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showComponent: function showComponent() {
       this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
-
-      this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
+      //this.isShowProduct = !this.isShowProduct; //toggle this products (true) false
     },
     // showProducts(){
     //     this.isShowProduct = true;
