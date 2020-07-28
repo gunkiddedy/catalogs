@@ -12,7 +12,7 @@
             <!-- </nav> -->
             <hr>
 
-            <transition name="fade">
+            <!-- <transition name="fade"> -->
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
                 <!-- <div class="card border-white">
                     <div class="card-body"> -->
@@ -89,9 +89,9 @@
                     <!-- </div>
                 </div> -->
                 </div>
-            </transition>
+            <!-- </transition> -->
             
-            <transition name="fade">
+            <!-- <transition name="fade"> -->
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
                     <!-- <p>width : {{ windowWidth }} - height {{ windowHeight}}</p> -->
                     <div class="loading" v-if="loading"></div>
@@ -122,7 +122,7 @@
                         <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
                 </div>
-            </transition>
+            <!-- </transition> -->
             
         </div>
     </div>
@@ -335,12 +335,14 @@
 
 <style scoped>
 
-.fade-enter-active, .fade-leave-active {
+/* .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+} */
+
+/* .fade-leave-active below version 2.1.8 */ 
+/* .fade-enter, .fade-leave-to {
   opacity: 0;
-}
+} */
 
 .loading {
     position: fixed;
