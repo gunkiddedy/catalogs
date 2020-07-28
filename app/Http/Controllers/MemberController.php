@@ -15,7 +15,8 @@ class MemberController extends Controller
         // $productImages = DB::table('view_product_image')->where('product_id', $id)->get();
         // dd($imagesArray);
         $id = Auth::id();
-        $products = \App\User::find($id)->products;
+        // $products = \App\User::find($id)->products;
+        $products = \App\Product::where('user_id', $id)->orderby('id', 'desc')->paginate(10);
         // dd($productImages);
         return view('member.index',[
             'products' => $products,

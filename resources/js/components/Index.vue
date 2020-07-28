@@ -12,7 +12,7 @@
                                     <input type="search" 
                                         class="form-control mr-1" 
                                         placeholder="write and enter to search"
-                                        v-model="search"
+                                        v-model="keyword"
                                         v-on:keyup.enter="searchProduct">
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
     </div>
 </template>
 
-<script>
+<script defer>
     export default {
         data: function() {
             return {
@@ -127,7 +127,7 @@
                 select_kabupaten: [],
                 selected_value: [],
                 searchData: [],
-                search: '',
+                keyword: '',
                 selected: {
                     searchData: {},
                     category_items: [],
@@ -166,7 +166,7 @@
             searchProduct: function() {
                 axios.get('/api/products/search', {
                     params: {
-                        search: this.search
+                        keyword: this.keyword
                     }
                 })
                 .then((response) => {

@@ -6,7 +6,7 @@
 
 <div class="container bg-white rspnv-container-prdct-detail">
     <div class="row">
-        <div class="col-md-5 col-sm-12 col-xs-12 mb-4">
+        <div class="col-md-4 col-sm-12 col-xs-12 mb-4">
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">
@@ -22,12 +22,11 @@
                 </div> --}}
                 <div class="card-body rspnv-card-body">
                     @if ($user->avatar !== null)
-                        <img class="card-img" 
+                        <img class="img-thumbnail" 
                         src="{{ asset('/storage/'.$user->avatar)}}"
                         alt="user-avatar">
                     @else
                         <img class="img-thumbnail" 
-                            style="width: 50%" 
                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
                             alt="user-avatar">
                     @endif
@@ -60,7 +59,7 @@
                 border: 0;
             }
         </style>
-        <div class="col-md-7 col-sm-12 col-xs-12">
+        <div class="col-md-8 col-sm-12 col-xs-12">
             <table class="table table-sm">
                 <tbody>
                     <tr>
@@ -141,8 +140,12 @@
         </div>
     </div>
 
+    <div id="product">
+        <company-products></company-products>
+    </div>
+
     {{-- SEARCH --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
@@ -153,15 +156,15 @@
                 <input type="search" name="search" id="search" class="form-control" placeholder="Search product...">
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- COMPANY PRODUCTS --}}
     {{-- <div class="row"> --}}
         {{-- <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6 rspnv"> --}}
-            <div class="row d-flex justify-content-start" id="productsXXX">
+            {{-- <div class="row d-flex justify-content-start" id="productsXXX">
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6 pt-3 rspnv-image">
-                    <div class="card text-center">
+                    <div class="card text-center border-white">
                         <div class="card-body rspnv-card-body">
                             <div class="product-info">
                                 @foreach (DB::table('product_images')->where('product_id', $product->id)->limit(1)->get() as $image)
@@ -182,7 +185,7 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
+            </div> --}}
         {{-- </div> --}}
     {{-- </div> --}}
 

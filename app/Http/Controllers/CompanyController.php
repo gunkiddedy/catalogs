@@ -34,4 +34,11 @@ class CompanyController extends Controller
             // 'image' => $image,
         ]);
     }
+
+    // public function search(Request $request)
+    // {
+    //     $company = User::find()->products;
+    //     // $products = Product::where('name', 'like', '%'.$request->search.'%')->paginate(12);
+    //     // $products = User::find('name', 'like', '%'.$request->search.'%')->paginate(12);
+    // }
 }

@@ -1,7 +1,7 @@
-<main class="py-4">
+{{-- <main class="py-4">
     <div class="container">
         <div class="row mx-auto">
-            <div class="col-12 col-md-12 col-lg-2 col-md-2 col-sm-12 pb-2">
+            <div class="col-12 col-md-12 col-lg-2 col-md-2 col-sm-12 pb-2"> --}}
                 <div class="card">
                     <div class="card-header">
                         NAVIGATION
@@ -13,8 +13,8 @@
                         {{-- <a href="/products" class="list-group-item member-navigation">Catalogs</a> --}}
                     </ul>
                 </div>
-            </div>
+            {{-- </div>
             @yield('content')
         </div>
     </div>
-</main>
+</main> --}}

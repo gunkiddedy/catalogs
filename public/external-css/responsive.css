@@ -39,6 +39,11 @@
         font-size: small;
     }
 
+    .nav-item-mobile{
+        /* border-bottom: 1px solid gray; */
+        border-top: 1px solid gray;
+    }
+
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -54,6 +59,14 @@
     }
     .hidden-app-name{
         display: none;
+    }
+    .nav-item-mobile{
+        /* border-bottom: 1px solid gray; */
+        border-top: 1px solid gray;
+    }
+    .nav-item-mobile{
+        /* border-bottom: 1px solid gray; */
+        border-top: 1px solid gray;
     }
 }
 
@@ -71,8 +84,9 @@
     .rspnv-card-body{
         padding: 0.25rem;
     }
-    .show-filter{
-        display: none;
+    .nav-item-mobile{
+        /* border-bottom: 1px solid gray; */
+        border-top: 1px solid gray;
     }
 }
 
@@ -109,32 +123,34 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(248, 246, 246);
+    background-color: rgb(253, 253, 253);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
     text-align:left;
-  }
+}
+
   
-  .sidenav li a {
+
+.sidenav li a {
     padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
+    /* text-decoration: ; */
+    font-size: 23px;
     color: #fcfafa;
     display: block;
     transition: 0.3s;
     margin-left: 20px;;
-  }
+}
     
-  .sidenav .closebtn {
+.sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: 36px;
+    font-size: 40px;
     margin-left: 50px;
-  }
+}
 
-  @media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-  }
+}

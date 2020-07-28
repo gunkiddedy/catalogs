@@ -20,8 +20,27 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $products = Product::withFilters()
-            ->where('name', 'like', '%'.$request->search.'%')
-            ->orWhere('company_name', 'like', '%'.$request->search.'%')->paginate(12);
+            ->where('name', 'like', '%'.$request->keyword.'%')
+            ->orWhere('company_name', 'like', '%'.$request->keyword.'%')->paginate(12);
+        // $image = \App\ProductImage::with('product')->get();
+        // return $image;
+        return ProductResource::collection($products);
+    }
+
+    public function indexCompany($id)
+    {
+        $products = \App\User::find($id)->products->paginate(12);
+        // $image = \App\ProductImage::with('product')->get();
+        // return $image;
+        return ProductResource::collection($products);
+    }
+
+    public function searchCompany(Request $request)
+    {
+        $products = Product::where('user_id', '=', $request->id)
+        ->where(function ($query) {
+            $query->where('name', 'like', '%'.$request->name.'%');
+        })->paginate(12);
         // $image = \App\ProductImage::with('product')->get();
         // return $image;
         return ProductResource::collection($products);
