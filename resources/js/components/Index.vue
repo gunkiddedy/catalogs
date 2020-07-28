@@ -206,10 +206,10 @@
             }
         },
 
-        beforeDestroy() {
-            window.removeEventListener('resize', this.getWindowWidth);
-            // window.removeEventListener('resize', this.getWindowHeight);
-        },
+        // beforeDestroy() {
+        //     window.removeEventListener('resize', this.getWindowWidth);
+        //     window.removeEventListener('resize', this.getWindowHeight);
+        // },
 
         methods: {
             showComponent: function () {

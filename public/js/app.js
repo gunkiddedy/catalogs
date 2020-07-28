@@ -2185,9 +2185,10 @@ __webpack_require__.r(__webpack_exports__);
       deep: true
     }
   },
-  beforeDestroy: function beforeDestroy() {
-    window.removeEventListener('resize', this.getWindowWidth); // window.removeEventListener('resize', this.getWindowHeight);
-  },
+  // beforeDestroy() {
+  //     window.removeEventListener('resize', this.getWindowWidth);
+  //     window.removeEventListener('resize', this.getWindowHeight);
+  // },
   methods: {
     showComponent: function showComponent() {
       this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
