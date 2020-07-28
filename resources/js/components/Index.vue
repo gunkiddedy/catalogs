@@ -16,8 +16,7 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
                 <!-- <div class="card border-white">
                     <div class="card-body"> -->
-                        <p>show filter : {{isShowFilter}}</p>
-                        <p>show product : {{isShowProduct}}</p>
+                        
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 style="font-weight:bold">Search here</h5>
@@ -57,6 +56,8 @@
                                     <!-- <span>Selected: {{ selected.kabupatens }}</span> -->
                                 </div>
                             </div>
+                            <p>show filter : {{isShowFilter}}</p>
+                            <p>show product : {{isShowProduct}}</p>
                         </div>
                         <div class="card border-white">
                             <div class="card-body" >
