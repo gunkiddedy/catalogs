@@ -89,7 +89,10 @@ class ProductController extends Controller
 
             if($request->hasFile('images')) {
 
-                foreach($images as $imagex){}
+                foreach($images as $imagex)
+                // $implode = implode(',', $images);
+                // dd($imagex);
+                // $split[0]
                 // insert to table product
                 $filenamewithextension = $imagex->getClientOriginalName();
             
@@ -100,7 +103,8 @@ class ProductController extends Controller
                 $extension = $imagex->getClientOriginalExtension();
         
                 //filename to store
-                $filenametostore = $filename.'_'.time().'.'.$extension;
+                $filenametostore = $filename.'_'.$user_id.'.'.$extension;
+                // dd($filenametostore);
 
                 $product = Product::create([
                     'name' => $name,
@@ -130,7 +134,8 @@ class ProductController extends Controller
                     $extension = $image->getClientOriginalExtension();
             
                     //filename to store
-                    $filenametostore = $filename.'_'.time().'.'.$extension;
+                    // $filenametostore = $filename.'_'.time().'.'.$extension;
+                    $filenametostore = $filename.'_'.$user_id.'.'.$extension;
             
                     //Upload File
                     $image->storeAs('public/images', $filenametostore);

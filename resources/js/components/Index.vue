@@ -2,17 +2,18 @@
     <div class="container-fluid bg-white">
         
         <div class="row" >
-            <!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top" style="top:75px"> -->
-                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" style="top:85px;z-index:9999999;">
-                    <button @click="showComponent" class="btn btn-light" type="button">
-                        <span class="fa fa-filter" style="cursor:pointer;" ></span>
-                        Filter
+                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" 
+                    style="top:80px;z-index:9999999;">
+                    <button 
+                        style="cursor:pointer;" 
+                        @click="showFilter" 
+                        class="btn btn-sm btn-primary"
+                    ><span class="fa fa-filter"></span> Filter
                     </button>
                     <!-- <p>show filter : {{isShowFilter}}</p>
                     <p>show product : {{isShowProduct}}</p>
                     <p>with : {{windowWidth}}</p> -->
                 </div>
-            <!-- </nav> -->
             <br>
 
             <transition name="fade">
@@ -94,7 +95,7 @@
                         </div>
                     <!-- </div>
                 </div> -->
-                    <button @click="showComponent" class="btn btn-primary" type="button" style="width:100%">
+                    <button @click="showFilter" class="btn btn-primary show_btn_filter" style="width:100%">
                         <span class="fa fa-filter" style="cursor:pointer;" ></span>
                         Terapkan
                     </button>
@@ -143,12 +144,11 @@
     export default {
         data: function() {
             return {
+                loading: true,
                 isShowProduct: true,
                 isShowFilter: true,
                 windowWidth: 0,
                 // windowHeight: 0,
-                // isHide: true,
-                loading: true,
                 products: {},
                 category_items: [],
                 subcategory_items: [],
@@ -215,7 +215,7 @@
         // },
 
         methods: {
-            showComponent: function () {
+            showFilter: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
                 if(this.isShowFilter == true){
                     this.isShowProduct = false;
@@ -252,7 +252,7 @@
                     this.searchData = response.data;
                     this.products = this.searchData;
                     this.loading =  false
-                    console.log(response.data);
+                    // console.log(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -276,10 +276,10 @@
                 axios.get('/api/getprovinsis')
                 .then( (response) => {
                     this.provinsis = response.data.data;
+                    this.loading = false;
                     // this.select_provinsi = [];
                     // this.select_kabupaten = [];
                     this.selected_value = [];
-                    this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -294,9 +294,9 @@
                 })
                 .then((response) => {
                     this.kabupatens = response.data.data;
+                    this.loading =  false;
                     // this.select_kabupaten = [];
                     this.selected_value = [];
-                    this.loading =  false;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -363,10 +363,10 @@
     left: 0;
     bottom: 0;
     right: 0;
-  }
+}
 
   /* Transparent Overlay */
-  .loading:before {
+.loading:before {
     content: '';
     display: block;
     position: fixed;
@@ -376,19 +376,19 @@
     height: 100%;
     background-color: rgba(255,255,255);
     /* background-color: rgba(0,0,0,0.3); */
-  }
+}
 
   /* :not(:required) hides these rules from IE9 and below */
-  .loading:not(:required) {
+.loading:not(:required) {
     /* hide "loading..." text */
     font: 0/0 a;
     color: transparent;
     text-shadow: none;
     background-color: transparent;
     border: 0;
-  }
+}
 
-  .loading:not(:required):after {
+.loading:not(:required):after {
     content: '';
     display: block;
     font-size: 10px;
@@ -403,7 +403,7 @@
     border-radius: 0.5em;
     -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
     box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-  }
+}
 
   /* Animation */
 

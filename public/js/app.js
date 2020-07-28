@@ -2127,15 +2127,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      loading: true,
       isShowProduct: true,
       isShowFilter: true,
       windowWidth: 0,
       // windowHeight: 0,
-      // isHide: true,
-      loading: true,
       products: {},
       category_items: [],
       subcategory_items: [],
@@ -2194,7 +2194,7 @@ __webpack_require__.r(__webpack_exports__);
   //     window.removeEventListener('resize', this.getWindowHeight);
   // },
   methods: {
-    showComponent: function showComponent() {
+    showFilter: function showFilter() {
       this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
 
       if (this.isShowFilter == true) {
@@ -2230,8 +2230,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.searchData = response.data;
         _this.products = _this.searchData;
-        _this.loading = false;
-        console.log(response.data);
+        _this.loading = false; // console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2252,11 +2251,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get('/api/getprovinsis').then(function (response) {
-        _this3.provinsis = response.data.data; // this.select_provinsi = [];
+        _this3.provinsis = response.data.data;
+        _this3.loading = false; // this.select_provinsi = [];
         // this.select_kabupaten = [];
 
         _this3.selected_value = [];
-        _this3.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2269,10 +2268,10 @@ __webpack_require__.r(__webpack_exports__);
           provinsi_id: this.selected.select_provinsi
         }
       }).then(function (response) {
-        _this4.kabupatens = response.data.data; // this.select_kabupaten = [];
+        _this4.kabupatens = response.data.data;
+        _this4.loading = false; // this.select_kabupaten = [];
 
         _this4.selected_value = [];
-        _this4.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -39228,22 +39227,19 @@ var render = function() {
           {
             staticClass:
               "col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4",
-            staticStyle: { top: "85px", "z-index": "9999999" }
+            staticStyle: { top: "80px", "z-index": "9999999" }
           },
           [
             _c(
               "button",
               {
-                staticClass: "btn btn-light",
-                attrs: { type: "button" },
-                on: { click: _vm.showComponent }
+                staticClass: "btn btn-sm btn-primary",
+                staticStyle: { cursor: "pointer" },
+                on: { click: _vm.showFilter }
               },
               [
-                _c("span", {
-                  staticClass: "fa fa-filter",
-                  staticStyle: { cursor: "pointer" }
-                }),
-                _vm._v("\n                    Filter\n                ")
+                _c("span", { staticClass: "fa fa-filter" }),
+                _vm._v(" Filter\n                ")
               ]
             )
           ]
@@ -39675,10 +39671,9 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
+                      staticClass: "btn btn-primary show_btn_filter",
                       staticStyle: { width: "100%" },
-                      attrs: { type: "button" },
-                      on: { click: _vm.showComponent }
+                      on: { click: _vm.showFilter }
                     },
                     [
                       _c("span", {

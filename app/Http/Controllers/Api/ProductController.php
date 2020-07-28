@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::withFilters()->paginate(12);
+        $products = Product::withFilters()->orderBy('id', 'desc')->paginate(12);
         // $image = \App\ProductImage::with('product')->get();
         // return $image;
         return ProductResource::collection($products);
