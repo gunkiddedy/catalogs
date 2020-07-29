@@ -26,7 +26,7 @@
                         <div class="card text-center border-white">
                             <div class="card-body rspnv-card-body">
                                 <div class="product-info">
-                                    <a :href="'product/detail/'+product.id">
+                                    <a :href="'/product/detail/'+product.id">
                                         <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
                                         <!-- {{ product.image_path }} -->
                                     </a>
@@ -34,7 +34,7 @@
                                         <p class="prdct_name">{{ product.name }}</p>
                                         <hr>
                                         <h6>
-                                            <a :href="'company/detail/'+product.user_id" class="prdct_company">
+                                            <a :href="'/company/detail/'+product.user_id" class="prdct_company">
                                                 <i class="fa fa-flag mr-1"></i>{{ product.company_name }}
                                             </a>
                                         </h6>

@@ -39295,7 +39295,7 @@ var render = function() {
                     _c("div", { staticClass: "product-info" }, [
                       _c(
                         "a",
-                        { attrs: { href: "product/detail/" + product.id } },
+                        { attrs: { href: "/product/detail/" + product.id } },
                         [
                           _c("img", {
                             staticClass: "card-img",
@@ -39320,7 +39320,7 @@ var render = function() {
                             {
                               staticClass: "prdct_company",
                               attrs: {
-                                href: "company/detail/" + product.user_id
+                                href: "/company/detail/" + product.user_id
                               }
                             },
                             [
