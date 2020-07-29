@@ -51,6 +51,10 @@
         position: relative;
         z-index: 999999;
     }
+    .sidebar_admin_mobile{
+        max-height: 200px;
+        overflow: scroll;
+    }
 
 }
 

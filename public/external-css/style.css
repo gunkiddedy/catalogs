@@ -22,12 +22,25 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
-
+.prdct_name:hover{
+    color: #3b7cbf;
+}
 .prdct_company {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: small;
 }
+.prdct_company:hover {
+    font-size: 13.5px;
+    color: #3b7cbf;
+}
+
+.img-hover:hover{
+    opacity: 0.7;
+    width: 99.5%;
+}
+
+/*  */
 
 html {
     scroll-behavior: smooth;

@@ -8,6 +8,8 @@ class SubCategory extends Model
 {
     protected $table = 'subcategories';
 
+    protected $fillable = ['name', 'category_id'];
+
     public function products()
     {
         return $this->hasMany(Product::class, 'subcategory_id');

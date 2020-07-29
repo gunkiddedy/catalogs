@@ -40,14 +40,18 @@ Route::get('/company/detail/{id}', 'CompanyController@detail')->name('company.de
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('auth', 'admin');
 
 Route::get('/category', 'CategoryController@index')->name('category.index')->middleware('auth', 'admin');
-Route::get('/category/edit/{id}', 'CategoryController@edit')->name('category.edit')->middleware('auth', 'admin');
-Route::patch('/category/update/{id}', 'CategoryController@update')->name('category.update')->middleware('auth', 'admin');
-Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('category.delete')->middleware('auth', 'admin');
+Route::get('/category/add', 'CategoryController@addCategory')->name('category.add')->middleware('auth', 'admin');
+Route::post('/category/store', 'CategoryController@storeCategory')->name('category.store')->middleware('auth', 'admin');
+Route::get('/category/edit/{id}', 'CategoryController@editCategory')->name('category.edit')->middleware('auth', 'admin');
+Route::patch('/category/update/{id}', 'CategoryController@updateCategory')->name('category.update')->middleware('auth', 'admin');
+// Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('category.delete')->middleware('auth', 'admin');
 
 Route::get('/subcategory', 'CategoryController@index')->name('subcategory.index')->middleware('auth', 'admin');
-Route::get('/subcategory/edit/{id}', 'CategoryController@edit')->name('subcategory.edit')->middleware('auth', 'admin');
-Route::patch('/subcategory/update/{id}', 'CategoryController@update')->name('subcategory.update')->middleware('auth', 'admin');
-Route::delete('/subcategory/delete/{id}', 'CategoryController@destroy')->name('subcategory.delete')->middleware('auth', 'admin');
+Route::get('/subcategory/add', 'CategoryController@addSubCategory')->name('subcategory.add')->middleware('auth', 'admin');
+Route::post('/subcategory/store', 'CategoryController@storeSubCategory')->name('subcategory.store')->middleware('auth', 'admin');
+Route::get('/subcategory/edit/{id}', 'CategoryController@editSubCategory')->name('subcategory.edit')->middleware('auth', 'admin');
+Route::patch('/subcategory/update/{id}', 'CategoryController@updateSubCategory')->name('subcategory.update')->middleware('auth', 'admin');
+// Route::delete('/subcategory/delete/{id}', 'CategoryController@destroy')->name('subcategory.delete')->middleware('auth', 'admin');
 
 Route::get('/provinsi', 'ProvinsiController@index')->name('provinsi.index')->middleware('auth', 'admin');
 Route::get('/provinsi/edit/{id}', 'ProvinsiController@edit')->name('provinsi.edit')->middleware('auth', 'admin');
@@ -74,6 +78,9 @@ Route::get('/contact/edit/{id}', 'AdminController@editContact')->name('contact.e
 Route::patch('/contact/update/{id}', 'AdminController@updateContact')->name('contact.update')->middleware('auth', 'admin');
 
 Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
+Route::get('/users/edit/{id}', 'UserController@edit')->name('user.edit')->middleware('auth', 'admin');
+Route::patch('/users/update/{id}', 'UserController@update')->name('user.update')->middleware('auth', 'admin');
+Route::delete('/users/delete/{id}', 'UserController@destroy')->name('user.delete')->middleware('auth', 'admin');
 
 
 // ============================MEMBER PROFILE ===============================================================================
@@ -88,11 +95,11 @@ Route::get('/member', 'MemberController@index')->name('member.dashboard')->middl
 
 
 // ===============================Member Product==========================================================
-Route::get('/product/add', 'ProductController@create')->middleware('auth', 'member');
-Route::post('/product/store', 'ProductController@store')->name('product.store')->middleware('auth', 'member');
-Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit')->middleware('auth', 'member');
-Route::patch('/product/update/{id}', 'ProductController@update')->name('product.update')->middleware('auth', 'member');
-Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('product.delete')->middleware('auth', 'member');
+Route::get('/product/add', 'ProductController@create')->middleware('auth', 'member', 'active.user');
+Route::post('/product/store', 'ProductController@store')->name('product.store')->middleware('auth', 'member', 'active.user');
+Route::get('/product/edit/{id}', 'ProductController@edit')->name('product.edit')->middleware('auth', 'member', 'active.user');
+Route::patch('/product/update/{id}', 'ProductController@update')->name('product.update')->middleware('auth', 'member', 'active.user');
+Route::delete('/product/delete/{id}', 'ProductController@destroy')->name('product.delete')->middleware('auth', 'member', 'active.user');
 
 
 // Route::get('product/{product}/user/{user}', function ($productId, $userId) {

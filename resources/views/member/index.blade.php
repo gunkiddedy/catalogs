@@ -9,7 +9,13 @@
             <x-member-sidebar></x-member-sidebar>
         </div> --}}
         <div class="col-md-12 col-sm-12">
+
             <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
+
+            @if (Auth::user()->is_active == 0)
+                <span class="alert alert-primary float-right">Anda belum melengkapi profil</span>
+            @endif
+            
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">

@@ -71,6 +71,7 @@ class ProductController extends Controller
         ]); 
 
         DB::transaction(function () use ($request) {
+            
             $user_id = Auth::id();
             $provinsi_id = Auth::user()->provinsi_id;
             $kabupaten_id = Auth::user()->kabupaten_id;

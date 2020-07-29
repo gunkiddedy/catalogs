@@ -9,6 +9,7 @@
                         class="form-control" 
                         placeholder="Search product name..."
                         v-model="keyword"
+                        v-on:keyup.enter="searchProduct"
                         >
                     <div class="input-group-prepend">
                         <div class="input-group-text" type="button" style="cursor:pointer;" @click="searchProduct">Search</div>
@@ -27,7 +28,7 @@
                             <div class="card-body rspnv-card-body">
                                 <div class="product-info">
                                     <a :href="'/product/detail/'+product.id">
-                                        <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
+                                        <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
                                         <!-- {{ product.image_path }} -->
                                     </a>
                                     <div class="mt-2">

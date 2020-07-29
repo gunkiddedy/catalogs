@@ -17,16 +17,31 @@
                         
                         <div class="card border-white">
                             <div class="card-body">
-                                <h5 style="font-weight:bold">Search here</h5>
-                                <div class="form-group d-flex justify-content-start">
+                                <h5 style="font-weight:bold">Search</h5>
+                                <!-- <div class="form-group d-flex justify-content-start">
                                     <input type="search" 
                                         class="form-control mr-1" 
                                         placeholder="write and enter to search"
                                         v-model="keyword"
                                         v-on:keyup.enter="searchProduct">
+                                </div> -->
+                                <div class="input-group mb-2">
+                                    <input 
+                                        type="search" 
+                                        class="form-control" 
+                                        placeholder="product or company"
+                                        v-model="keyword"
+                                        v-on:keyup.enter="searchProduct"
+                                        >
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" type="button" style="cursor:pointer;" @click="searchProduct">
+                                        Search
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 style="font-weight:bold">Provinsi</h5>
@@ -101,7 +116,7 @@
                                 <div class="card-body rspnv-card-body">
                                     <div class="product-info">
                                         <a :href="'product/detail/'+product.id">
-                                            <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
+                                            <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
                                         </a>
                                         <div class="">
                                             <p class="prdct_name">{{ product.name }}</p>

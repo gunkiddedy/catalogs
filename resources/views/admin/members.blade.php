@@ -1,56 +1,97 @@
-@extends('layouts.member')
+@extends('layouts.app')
 
 @section('title', 'member list')
 
 @section ('content')
+<div class="container-fluid bg-white">
+    <div class="row">
 
-<div class="col-12 col-md-12 col-sm-12 col-lg-10">
-    @if(Session::has('success'))
-    <div class="row sccs">
-        <div class="col-12">
-            <div id="charge-message" class="alert alert-success">
-                {{ Session::get('success') }}
+        <x-admin-sidebar></x-admin-sidebar>
+
+        <div class="col-md-10 col-sm-12" style="overflow-x: scroll">
+            @if(Session::has('success'))
+            <div class="row sccs">
+                <div class="col-12">
+                    <div id="charge-message" class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                </div>
+            </div>
+            @endif
+            <div class="row">
+                <div class="col-12">
+                    <h3>Member list</h3>
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Status</th>
+                                {{-- <th scope="col">Kecamatan</th>
+                                <th scope="col">Kabupaten</th>
+                                <th scope="col">Propinsi</th> --}}
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td width="300">
+                                    {{ $user->address }} ,
+                                    {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}},
+                                    {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}},
+                                    {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
+                                </td>
+                                <td>
+                                    @if ($user->is_active == 1)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-warning">Inactive</span>
+                                    @endif
+                                </td>
+                                {{-- <td>
+                                    {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}}
+                                </td>
+                                <td>
+                                    {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}}
+                                </td>
+                                <td>
+                                    {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
+                                </td> --}}
+
+                                <td>
+                                    <div class="d-flex justify-content-start">
+                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary mr-1">
+                                            Edit <i class="fa fa-pencil"></i>
+                                        </a>
+                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                Delete <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form> --}}
+                                    </div>
+                                </td>
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    {{ $users->links() }}
+                </div>
             </div>
         </div>
-    </div>
-    @endif
-    <div class="row">
-        <div class="col-12">
-            <h3>Member list</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Kecamatan</th>
-                        <th scope="col">Kabupaten</th>
-                        <th scope="col">Propinsi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone }}</td>
-                        <td>{{ $user->address }}</td>
-                        <td>
-                            {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}}
-                        </td>
-                        <td>
-                            {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}}
-                        </td>
-                        <td>
-                            {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+
     </div>
 </div>
+
     
 @endsection

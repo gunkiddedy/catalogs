@@ -7,6 +7,11 @@
 {{-- <div class="row"> --}}
 <div class="container bg-white">
     <div class="row" >
+        
+        @if (Auth::user()->role == 'admin')
+            <x-admin-sidebar></x-admin-sidebar>
+        @endif
+
         <div class="col-md-6 col-sm-12 col-xs-12">
             @if(Session::has('success'))
             <div class="row sccs">
@@ -57,7 +62,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12">
             <table class="table table-sm">
                 <tbody>
                     <tr>

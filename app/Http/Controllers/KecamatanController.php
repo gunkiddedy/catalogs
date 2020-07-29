@@ -8,9 +8,9 @@ class KecamatanController extends Controller
 {
     public function index()
     {
-        $kecamatans = \App\Kecamatan::all();
-        $kabupatens = \App\Kabupaten::all();
-        $provinsis = \App\Provinsi::all();
+        $kecamatans = \App\Kecamatan::paginate();
+        $kabupatens = \App\Kabupaten::paginate();
+        $provinsis = \App\Provinsi::paginate();
         // dd($categories);
         return view('admin.kecamatan', [
             'kecamatans' => $kecamatans,

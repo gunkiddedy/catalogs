@@ -1963,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2050,6 +2051,21 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39250,6 +39266,15 @@ var render = function() {
             attrs: { type: "search", placeholder: "Search product name..." },
             domProps: { value: _vm.keyword },
             on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.searchProduct($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -39298,7 +39323,7 @@ var render = function() {
                         { attrs: { href: "/product/detail/" + product.id } },
                         [
                           _c("img", {
-                            staticClass: "card-img",
+                            staticClass: "card-img img-hover",
                             attrs: {
                               src: "/storage/" + product.image_path,
                               alt: "img-product"
@@ -39423,56 +39448,67 @@ var render = function() {
                   _c("div", { staticClass: "card border-white" }, [
                     _c("div", { staticClass: "card-body" }, [
                       _c("h5", { staticStyle: { "font-weight": "bold" } }, [
-                        _vm._v("Search here")
+                        _vm._v("Search")
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "form-group d-flex justify-content-start"
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.keyword,
-                                expression: "keyword"
-                              }
-                            ],
-                            staticClass: "form-control mr-1",
-                            attrs: {
-                              type: "search",
-                              placeholder: "write and enter to search"
-                            },
-                            domProps: { value: _vm.keyword },
-                            on: {
-                              keyup: function($event) {
-                                if (
-                                  !$event.type.indexOf("key") &&
-                                  _vm._k(
-                                    $event.keyCode,
-                                    "enter",
-                                    13,
-                                    $event.key,
-                                    "Enter"
-                                  )
-                                ) {
-                                  return null
-                                }
-                                return _vm.searchProduct($event)
-                              },
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.keyword = $event.target.value
-                              }
+                      _c("div", { staticClass: "input-group mb-2" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.keyword,
+                              expression: "keyword"
                             }
-                          })
-                        ]
-                      )
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "search",
+                            placeholder: "product or company"
+                          },
+                          domProps: { value: _vm.keyword },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.searchProduct($event)
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.keyword = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "input-group-prepend" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-text",
+                              staticStyle: { cursor: "pointer" },
+                              attrs: { type: "button" },
+                              on: { click: _vm.searchProduct }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Search\n                                    "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
@@ -39896,7 +39932,7 @@ var render = function() {
                                       },
                                       [
                                         _c("img", {
-                                          staticClass: "card-img",
+                                          staticClass: "card-img img-hover",
                                           attrs: {
                                             src:
                                               "/storage/" + product.image_path,
