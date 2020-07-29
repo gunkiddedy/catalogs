@@ -72,7 +72,7 @@
                 <div>
                     <img src="{{ asset('assets/box.svg') }}" style="height:50px;" alt="">
                 </div>
-                <div class="pl-3 ml-3 pt-2 hidden-app-name" >
+                <div class="pl-2 pt-2 hidden-app-name" >
                     {{ config('app.name') }}
                 </div>
             </div>
