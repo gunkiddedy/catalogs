@@ -13,7 +13,9 @@
             <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
 
             @if (Auth::user()->is_active == 0)
-                <span class="alert alert-primary float-right">Anda belum melengkapi profil</span>
+                <span class="alert alert-primary float-right">
+                    Anda belum melengkapi profil, silahkan lengkapi dulu <a href="/profile/{{ Auth::id() }}">di sini!</a>
+                </span>
             @endif
             
             @if(Session::has('success'))
