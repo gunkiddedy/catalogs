@@ -10,9 +10,37 @@
         <div id="mySidenav" class="sidenav show-filter">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul class="navbar-nav ml-auto">
-                {{-- link menu for this catalogs --}}
-                <li class="nav-item nav-item-mobile"><a class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
-                        href="/products"><i class="fa fa-home"></i> Home</a></li>
+
+                {{-- <li class="nav-item nav-item-mobile">
+                    <a class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
+                        href="/products"><i class="fa fa-home"></i> Home</a>
+                </li> --}}
+
+                @guest
+                    <li class="nav-item nav-item-mobile">
+                        <a 
+                            class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
+                            href="/products"><i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                @else
+                    @if (Auth::user()->role == 'member')
+                        <li class="nav-item nav-item-mobile">
+                            <a 
+                                class="nav-link {{ request()->is('member') ? 'active' : ''}}" 
+                                href="/member"><i class="fa fa-home"></i> Home
+                            </a>
+                        </li>    
+                    @elseif(Auth::user()->role == 'admin')
+                        <li class="nav-item nav-item-mobile">
+                            <a 
+                                class="nav-link {{ request()->is(['members']) ? 'active' : ''}}" 
+                                href="/members"><i class="fa fa-home"></i> Home
+                            </a>
+                        </li>  
+                    @endif
+                @endguest
+
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item nav-item-mobile"><a class="nav-link {{ request()->is('login') ? 'active' : ''}}" href="{{ route('login') }}"><i class="fa fa-key"></i> {{ __('Login') }}</a></li>
@@ -24,11 +52,11 @@
                     <li class="nav-item nav-item-mobile">
                         <a href="/profile/{{ Auth::id() }}" class="nav-link"><i class="fa fa-user"></i> Profile</a>
                     </li>
-                    @if (Auth::user()->role == 'member')
+                    {{-- @if (Auth::user()->role == 'member')
                     <li class="nav-item nav-item-mobile">
                         <a href="/member" class="nav-link"><i class="fa fa-cube"></i> My Products</a>
                     </li>
-                    @endif
+                    @endif --}}
                     <li class="nav-item nav-item-mobile"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-anchor"></i> {{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
@@ -68,13 +96,32 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                {{-- link menu for this catalogs --}}
-                <li class="nav-item nav-item-mobile">
-                    <a 
-                        class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
-                        href="/products">Home
-                    </a>
-                </li>
+                @guest
+                    <li class="nav-item nav-item-mobile">
+                        <a 
+                            class="nav-link {{ request()->is(['/', 'products']) ? 'active' : ''}}" 
+                            href="/products">Home
+                        </a>
+                    </li>
+                @else
+                    @if (Auth::user()->role == 'member')
+                        <li class="nav-item nav-item-mobile">
+                            <a 
+                                class="nav-link {{ request()->is('member') ? 'active' : ''}}" 
+                                href="/member">Home
+                            </a>
+                        </li>    
+                    @elseif(Auth::user()->role == 'admin')
+                        <li class="nav-item nav-item-mobile">
+                            <a 
+                                class="nav-link {{ request()->is(['members']) ? 'active' : ''}}" 
+                                href="/members">Home
+                            </a>
+                        </li>  
+                    @endif
+                @endguest
+
+                
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item nav-item-mobile">
@@ -95,11 +142,11 @@
                             Profile
                         </a>
                     </li>
-                    @if (Auth::user()->role == 'member')
+                    {{-- @if (Auth::user()->role == 'member')
                     <li class="nav-item nav-item-mobile">
                         <a href="/member" class="nav-link">My Products</a>
                     </li>
-                    @endif
+                    @endif --}}
                     <li class="nav-item nav-item-mobile">
                         <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
