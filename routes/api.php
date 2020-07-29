@@ -28,8 +28,10 @@ Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
 Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/search', 'Api\ProductController@search');
-Route::get('products/company/{id}', 'Api\ProductController@indexCompany');
-Route::get('products/search/company', 'Api\ProductController@searchCompany');
+
+Route::get('products/company/{id}', 'Api\ProductController@companyProducts');
+Route::get('products/company/search/{id}', 'Api\ProductController@searchProductCompany');
+
 Route::get('details', 'Api\ProductDetailsController@index');
 
 // test resource

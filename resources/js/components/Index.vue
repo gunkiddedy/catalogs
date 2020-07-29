@@ -1,18 +1,12 @@
 <template>
     <div class="container-fluid bg-white">
         
-        <div class="row" >
+        <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" 
                     style="top:80px;z-index:9999999;">
-                    <button 
-                        style="cursor:pointer;" 
-                        @click="showFilter" 
-                        class="btn btn-sm btn-primary"
-                    ><span class="fa fa-filter"></span> Filter
+                    <button style="cursor:pointer;" @click="showFilter" class="btn btn-sm btn-primary">
+                        <span class="fa fa-filter"></span> Filter
                     </button>
-                    <!-- <p>show filter : {{isShowFilter}}</p>
-                    <p>show product : {{isShowProduct}}</p>
-                    <p>with : {{windowWidth}}</p> -->
                 </div>
             <br>
 
@@ -44,7 +38,6 @@
                                             :value="[provinsi.id]">
                                             {{ provinsi.name }} ({{ provinsi.products_count }})</option>
                                     </select>
-                                    <!-- <span>Selected: {{ selected.provinsis }}</span> -->
                                 </div>
                             </div>
                         </div>
@@ -57,11 +50,8 @@
                                         <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="[kabupaten.id]">
                                             {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
                                     </select>
-                                    <!-- <span>Selected: {{ selected.kabupatens }}</span> -->
                                 </div>
                             </div>
-                            <!-- <p>show filter : {{isShowFilter}}</p>
-                            <p>show product : {{isShowProduct}}</p> -->
                         </div>
                         <div class="card border-white">
                             <div class="card-body" >
@@ -104,8 +94,6 @@
             
             <transition name="fade">
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
-                    <!-- <p>width : {{ windowWidth }} - height {{ windowHeight}}</p> -->
-                    <!-- <p>show product : {{isShowProduct}}</p> -->
                     <div class="loading" v-if="loading"></div>
                     <div class="row d-flex justify-content-start" id="productsfilter">
                         <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
@@ -140,7 +128,7 @@
     </div>
 </template>
 
-<script defer>
+<script>
     export default {
         data: function() {
             return {
@@ -175,7 +163,6 @@
             this.loadCategories();
             this.loadSubCategories();
             this.getWindowWidth();
-            // this.loadProvinsis();
             //this.$nextTick(function() {
                 //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
@@ -190,12 +177,6 @@
         created(){
             this.loadProvinsis();
         },
-
-        // computed: {
-        //     showProducts() {
-        //         this.isShowProduct = !this.isShowProduct;
-        //     }
-        // },
 
         watch: {
             selected: {
@@ -217,20 +198,19 @@
         methods: {
             showFilter: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
+
                 if(this.isShowFilter == true){
                     this.isShowProduct = false;
                 }
+
                 if(this.isShowFilter == false){
                     this.isShowProduct = true;
                 }
             },
 
-            // showProducts(){
-            //     this.isShowProduct = true;
-            // },
-
             getWindowWidth() {
                 this.windowWidth = document.documentElement.clientWidth;
+
                 if(this.windowWidth <= 991){
                     this.isShowFilter = false; //hide filter when window is <= 991
                 }else{
@@ -277,8 +257,6 @@
                 .then( (response) => {
                     this.provinsis = response.data.data;
                     this.loading = false;
-                    // this.select_provinsi = [];
-                    // this.select_kabupaten = [];
                     this.selected_value = [];
                 })
                 .catch((error) => {
@@ -295,7 +273,6 @@
                 .then((response) => {
                     this.kabupatens = response.data.data;
                     this.loading =  false;
-                    // this.select_kabupaten = [];
                     this.selected_value = [];
                 })
                 .catch((error) => {
