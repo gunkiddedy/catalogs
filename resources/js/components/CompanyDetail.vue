@@ -84,19 +84,23 @@
 
         methods: {
 
-            searchProduct: function() {
+            getCompanyIdFromUrl: function() {
                 let currentUrl = window.location.pathname;
                 let arr = new Array();
                 arr = currentUrl.split("/");
                 let id = arr[3];
-                let url = '/api/products/company/search/'+id;
+                return id;
+            },
+
+            searchProduct: function() {
+                let company_id = this.getCompanyIdFromUrl();
+                let url = '/api/products/company/search/'+company_id;
                 axios.get(url + '?keyword='+ this.keyword)
-                // axios.get('/api/products/company/search/' + id + '&keyword=' + this.keyword)
                 .then((response) => {
                     this.searchData = response.data;
                     this.products = this.searchData;
                     this.loading =  false;
-                    console.log(id);
+                    console.log(company_id);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -104,17 +108,13 @@
             },
 
             loadProducts: function () {
-                let currentUrl = window.location.pathname;
-                let arr = new Array();
-                arr = currentUrl.split("/");
-                let id = arr[3];
-                axios.get('/api/products/company/'+id, {
+                let company_id = this.getCompanyIdFromUrl();
+                axios.get('/api/products/company/'+company_id, {
                         params: this.selected
                 })
-                // axios.get('/api/products/company/' + id)
                 .then((response) => {
                     this.products = response.data;
-                    console.log(response);
+                    console.log(company_id);
                     // this.loading =  false
                 })
                 .catch(function (error) {
@@ -123,11 +123,8 @@
             },
 
             getResults(page = 1) {
-                let currentUrl = window.location.pathname;
-                let arr = new Array();
-                arr = currentUrl.split("/");
-                let id = arr[3];
-                axios.get('/api/products/company/' +id+ '?page=' + page)
+                let company_id = this.getCompanyIdFromUrl();
+                axios.get('/api/products/company/' +company_id+ '?page=' + page)
                 .then((response) => {
                     this.products = response.data;
                     this.loading = false;
