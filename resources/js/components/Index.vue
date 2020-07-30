@@ -14,7 +14,17 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
                 <!-- <div class="card border-white">
                     <div class="card-body"> -->
-                        
+                        <!-- <div class="card border-white">
+                            <div class="card-body">
+                                <treeselect
+                                    :options="options"
+                                    :disable-branch-nodes="true"
+                                    :show-count="true"
+                                    placeholder="Where are you from?"
+                                />
+                            </div>
+                        </div> -->
+
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 style="font-weight:bold">Search</h5>
@@ -147,6 +157,37 @@
     export default {
         data: function() {
             return {
+                // value: null,
+                // options: [ 
+                //     {
+                //         id: 'category a',
+                //         label: 'category a',
+                //         children: [ 
+                //             {
+                //                 id: 'sub category a1',
+                //                 label: 'sub category a1',
+                //             }, 
+                //             {
+                //                 id: 'sub category a2',
+                //                 label: 'sub category a2',
+                //             } 
+                //         ],
+                //     },
+                //     {
+                //         id: 'category b',
+                //         label: 'category b',
+                //         children: [ 
+                //             {
+                //                 id: 'sub category b1',
+                //                 label: 'sub category b1',
+                //             }, 
+                //             {
+                //                 id: 'sub category b2',
+                //                 label: 'sub category b2',
+                //             } 
+                //         ],
+                //     }, 
+                // ],
                 loading: true,
                 isShowProduct: true,
                 isShowFilter: true,
@@ -178,6 +219,7 @@
             this.loadCategories();
             this.loadSubCategories();
             this.getWindowWidth();
+            console.log(this.options);
             //this.$nextTick(function() {
                 //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
