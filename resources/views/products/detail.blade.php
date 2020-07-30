@@ -71,11 +71,10 @@
                                 <h6>
                                     <i class="fa fa-tag" style="color: rgb(250, 229, 135)"></i>
                                     {{ $category->name }}
-                                    <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
+                                    
                                     @if (!empty($subcategory->name))
+                                        <i class="fa fa-tags" style="color: rgb(250, 229, 135)"></i>
                                         {{ $subcategory->name }}
-                                    @else
-                                        -
                                     @endif
                                 </h6>
                                 <h3>
