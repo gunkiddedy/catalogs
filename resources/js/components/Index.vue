@@ -77,7 +77,7 @@
                             <div class="card-body bg-white">
                                 <h5 style="font-weight:bold">Find by Category</h5>
                                 <div id="accordion">
-                                    <div class="card border-white" v-for="cat in DataSource">
+                                    <div class="card border-white" v-for="cat in DataSource" :key="cat.id">
                                         <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
                                             <a 
                                                 href="#" 
@@ -93,9 +93,10 @@
 
                                         <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id" data-parent="#accordion"
                                         >
-                                            <div class="card-body bg-white" v-for="child in cat.children" v-model="subcat"
+                                            <div class="card-body bg-white" v-for="child in cat.children"
+                                            :key="child.id" 
                                             style="padding:0.25rem;margin-left: 2.5rem !important;">
-                                                <span @click="getSubCategory(child.id)">
+                                                <span @click="getSubCategory(child.id)" style="cursor:pointer">
                                                     {{ child.label }} 
                                                 </span>
                                             </div>

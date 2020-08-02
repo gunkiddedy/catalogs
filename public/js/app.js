@@ -2270,6 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -41244,7 +41245,7 @@ var render = function() {
                         _vm._l(_vm.DataSource, function(cat) {
                           return _c(
                             "div",
-                            { staticClass: "card border-white" },
+                            { key: cat.id, staticClass: "card border-white" },
                             [
                               _c(
                                 "div",
@@ -41294,23 +41295,18 @@ var render = function() {
                                   return _c(
                                     "div",
                                     {
+                                      key: child.id,
                                       staticClass: "card-body bg-white",
                                       staticStyle: {
                                         padding: "0.25rem",
                                         "margin-left": "2.5rem !important"
-                                      },
-                                      model: {
-                                        value: _vm.subcat,
-                                        callback: function($$v) {
-                                          _vm.subcat = $$v
-                                        },
-                                        expression: "subcat"
                                       }
                                     },
                                     [
                                       _c(
                                         "span",
                                         {
+                                          staticStyle: { cursor: "pointer" },
                                           on: {
                                             click: function($event) {
                                               return _vm.getSubCategory(
