@@ -41253,7 +41253,11 @@ var render = function() {
                         _vm._l(_vm.DataSource, function(cat) {
                           return _c(
                             "div",
-                            { key: cat.id, staticClass: "card border-white" },
+                            {
+                              key: cat.id,
+                              staticClass: "card border-white",
+                              attrs: { id: "accordion" + cat.id }
+                            },
                             [
                               _c(
                                 "div",
@@ -41313,7 +41317,7 @@ var render = function() {
                                   attrs: {
                                     id: "collapseOne" + cat.id,
                                     "aria-labelledby": "headingOne" + cat.id,
-                                    "data-parent": "#accordion"
+                                    "data-parent": "#accordion" + cat.id
                                   }
                                 },
                                 _vm._l(cat.children, function(child) {

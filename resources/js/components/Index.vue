@@ -77,7 +77,7 @@
                             <div class="card-body bg-white">
                                 <h5 style="font-weight:bold">Find by Category</h5>
                                 <div id="accordion">
-                                    <div class="card border-white" v-for="cat in DataSource" :key="cat.id">
+                                    <div class="card border-white" v-for="cat in DataSource" :key="cat.id" :id="'accordion'+cat.id">
                                         <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
                                             <a 
                                                 href="#" 
@@ -93,7 +93,7 @@
                                             </a>
                                         </div>
 
-                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id" data-parent="#accordion"
+                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id" :data-parent="'#accordion'+cat.id"
                                         >
                                             <div class="card-body bg-white" v-for="child in cat.children"
                                             :key="child.id" 

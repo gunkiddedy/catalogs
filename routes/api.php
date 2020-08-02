@@ -30,6 +30,7 @@ Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/search', 'Api\ProductController@search');
 
+// custom search by category or subcategory
 Route::get('products/subcategory/{id}', 'Api\ProductController@findBySubCategory');
 Route::get('products/category/{id}', 'Api\ProductController@findByCategory');
 
