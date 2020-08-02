@@ -86,7 +86,7 @@
                                                 aria-expanded="true" 
                                                 :aria-controls="'collapseOne'+cat.id"
                                             >
-                                                <span @click="getCategory(cat.id)" style="cursor:pointer">
+                                                <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray">
                                                     {{ cat.label }}
                                                 </span>
                                                 <i class="fa fa-caret-down float-right"></i>
@@ -98,7 +98,7 @@
                                             <div class="card-body bg-white" v-for="child in cat.children"
                                             :key="child.id" 
                                             style="padding:0.25rem;margin-left: 2.5rem !important;">
-                                                <span @click="getSubCategory(child.id)" style="cursor:pointer">
+                                                <span @click="getSubCategory(child.id)" style="cursor:pointer;color:deepskyblue">
                                                     {{ child.label }} 
                                                 </span>
                                             </div>

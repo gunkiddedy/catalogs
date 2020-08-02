@@ -41278,7 +41278,10 @@ var render = function() {
                                       _c(
                                         "span",
                                         {
-                                          staticStyle: { cursor: "pointer" },
+                                          staticStyle: {
+                                            cursor: "pointer",
+                                            color: "gray"
+                                          },
                                           on: {
                                             click: function($event) {
                                               return _vm.getCategory(cat.id)
@@ -41328,7 +41331,10 @@ var render = function() {
                                       _c(
                                         "span",
                                         {
-                                          staticStyle: { cursor: "pointer" },
+                                          staticStyle: {
+                                            cursor: "pointer",
+                                            color: "deepskyblue"
+                                          },
                                           on: {
                                             click: function($event) {
                                               return _vm.getSubCategory(
