@@ -61,7 +61,7 @@ class AdminController extends Controller
         }
         $about->save();
         
-        return redirect('/admin/about')->with('success', 'data updated successfully');
+        return redirect('/about')->with('success', 'data updated successfully');
     }
     // ********************END ABOUT======================================
 
@@ -100,7 +100,7 @@ class AdminController extends Controller
         $contact->company_twitter =  $request->get('company_twitter');
         $contact->save();
         
-        return redirect('/admin/contact')->with('success', 'data updated successfully');
+        return redirect('/contact')->with('success', 'data updated successfully');
     }
     // end CONTACT -==================================
 

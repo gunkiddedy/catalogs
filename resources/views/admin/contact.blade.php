@@ -69,7 +69,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/contact/edit/{{ $contact ? $contact->id : ''}}" class="btn btn-primary text-white">Edit Contact</a>
+                    <a href="/contact/edit/{{ $contact->id}}" class="btn btn-primary text-white">Edit Contact</a>
                 </div>
             </div>
             

@@ -5,7 +5,8 @@
 @section ('content')
 <div class="container-fluid bg-white" style="margin-bottom: 199px;">
     <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <x-admin-sidebar></x-admin-sidebar>
+        <div class="col-md-10 col-sm-12">
             <h3>Add Category</h3>
             <hr>
             <form method="POST" action="{{ route('category.store') }}">
