@@ -30,12 +30,12 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col">Address</th>
+                                {{-- <th scope="col">Address</th> --}}
                                 <th scope="col">Status</th>
                                 {{-- <th scope="col">Kecamatan</th>
                                 <th scope="col">Kabupaten</th>
                                 <th scope="col">Propinsi</th> --}}
-                                {{-- <th scope="col">Aksi</th> --}}
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,12 +44,12 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
-                                <td width="300">
+                                {{-- <td width="300">
                                     {{ $user->address }} ,
                                     {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}},
                                     {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}},
                                     {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
-                                </td>
+                                </td> --}}
                                 <td>
                                     @if ($user->is_active == 1)
                                         <span class="badge badge-success">Active</span>
@@ -67,20 +67,23 @@
                                     {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
                                 </td> --}}
 
-                                {{-- <td>
+                                <td>
                                     <div class="d-flex justify-content-start">
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary mr-1">
+                                        {{-- <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary mr-1">
                                             Edit <i class="fa fa-pencil"></i>
+                                        </a> --}}
+                                        <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
+                                            View <i class="fa fa-eye"></i>
                                         </a>
-                                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                             @csrf 
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">
                                                 Delete <i class="fa fa-trash"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </div>
-                                </td> --}}
+                                </td>
 
                             </tr>
                         @endforeach

@@ -38,7 +38,7 @@
                             <td>{{ $category->name }}</td>
                             <td>
                                 <div class="d-flex justify-content-start">
-                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-primary mr-1">
+                                    <a href="{{ route('category.edit', $category->id) }}" class="text-white btn btn-sm btn-primary mr-1">
                                         Edit <i class="fa fa-pencil"></i>
                                     </a>
                                     {{-- <form action="{{ route('category.delete', $category->id) }}" method="POST">
@@ -93,7 +93,7 @@
                             <td>{{ \App\Category::find($subcategory->category_id)->name  }}</td>
                             <td>
                                 <div class="d-flex justify-content-start">
-                                    <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-sm btn-primary mr-1">
+                                    <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="text-white btn btn-sm btn-primary mr-1">
                                         Edit <i class="fa fa-pencil"></i>
                                     </a>
                                     {{-- <form action="{{ route('subcategory.delete', $subcategory->id) }}" method="POST">
