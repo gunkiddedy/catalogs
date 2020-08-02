@@ -8,7 +8,7 @@
 
         <x-admin-sidebar></x-admin-sidebar>
 
-        <div class="col-md-10 col-sm-12" style="overflow-x: scroll">
+        <div class="col-md-10 col-sm-12">
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">
@@ -18,9 +18,12 @@
                 </div>
             </div>
             @endif
-            <div class="row">
-                <div class="col-12">
+
+            <div class="card">
+                <div class="card-header">
                     <h3>Member list</h3>
+                </div>
+                <div class="card-body" style="overflow: scroll">
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr>
@@ -32,7 +35,7 @@
                                 {{-- <th scope="col">Kecamatan</th>
                                 <th scope="col">Kabupaten</th>
                                 <th scope="col">Propinsi</th> --}}
-                                <th scope="col">Aksi</th>
+                                {{-- <th scope="col">Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -64,30 +67,32 @@
                                     {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
                                 </td> --}}
 
-                                <td>
+                                {{-- <td>
                                     <div class="d-flex justify-content-start">
                                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary mr-1">
                                             Edit <i class="fa fa-pencil"></i>
                                         </a>
-                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                             @csrf 
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">
                                                 Delete <i class="fa fa-trash"></i>
                                             </button>
-                                        </form> --}}
+                                        </form>
                                     </div>
-                                </td>
+                                </td> --}}
 
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    {{ $users->links() }}
+                <div class="card-footer">
+                    <div>
+                        {{ $users->links() }}
+                    </div>
                 </div>
-            </div>
+            </div>                
         </div>
 
     </div>

@@ -3,7 +3,7 @@
 @section('title', 'about')
 
 @section('content')
-<div class="container">
+<<div class="container-fluid bg-white">
     <div class="row">
         <x-admin-sidebar></x-admin-sidebar>
 

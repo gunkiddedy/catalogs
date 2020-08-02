@@ -3,7 +3,7 @@
 @section('title', 'edit user')
 
 @section ('content')
-<div class="container">
+<div class="container-fluid bg-white">
     <div class="row">
         <x-admin-sidebar></x-admin-sidebar>
 
@@ -49,7 +49,7 @@
                                     id="is_active2" 
                                     value="0" {{ $user->is_active == 0 ? 'checked' : ''}}>
                                     <label class="form-check-label" for="is_active2">
-                                      Incomplete
+                                      Inactive
                                     </label>
 
                                 </div>

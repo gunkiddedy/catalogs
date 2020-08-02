@@ -3,7 +3,7 @@
 @section('title', 'add category')
 
 @section ('content')
-<div class="container bg-white" style="margin-bottom: 199px;">
+<div class="container-fluid bg-white" style="margin-bottom: 199px;">
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <h3>Add Category</h3>

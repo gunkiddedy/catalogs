@@ -16,25 +16,18 @@
                     <div class="card-body"> -->
                         <!-- <div class="card border-white">
                             <div class="card-body">
-                                <treeselect
+                                <treeselect 
                                     :options="options"
-                                    :disable-branch-nodes="true"
-                                    :show-count="true"
-                                    placeholder="Where are you from?"
+                                    v-model="value"
+                                    search-nested
                                 />
+                                value {{ value }}
                             </div>
                         </div> -->
 
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 style="font-weight:bold">Search</h5>
-                                <!-- <div class="form-group d-flex justify-content-start">
-                                    <input type="search" 
-                                        class="form-control mr-1" 
-                                        placeholder="write and enter to search"
-                                        v-model="keyword"
-                                        v-on:keyup.enter="searchProduct">
-                                </div> -->
                                 <div class="input-group mb-2">
                                     <input 
                                         type="search" 
@@ -157,37 +150,9 @@
     export default {
         data: function() {
             return {
-                // value: null,
-                // options: [ 
-                //     {
-                //         id: 'category a',
-                //         label: 'category a',
-                //         children: [ 
-                //             {
-                //                 id: 'sub category a1',
-                //                 label: 'sub category a1',
-                //             }, 
-                //             {
-                //                 id: 'sub category a2',
-                //                 label: 'sub category a2',
-                //             } 
-                //         ],
-                //     },
-                //     {
-                //         id: 'category b',
-                //         label: 'category b',
-                //         children: [ 
-                //             {
-                //                 id: 'sub category b1',
-                //                 label: 'sub category b1',
-                //             }, 
-                //             {
-                //                 id: 'sub category b2',
-                //                 label: 'sub category b2',
-                //             } 
-                //         ],
-                //     }, 
-                // ],
+                // value: [],
+                // options: [],
+                // apy_category: [],
                 loading: true,
                 isShowProduct: true,
                 isShowFilter: true,
@@ -219,7 +184,7 @@
             this.loadCategories();
             this.loadSubCategories();
             this.getWindowWidth();
-            console.log(this.options);
+            // this.apiCategories();
             //this.$nextTick(function() {
                 //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
@@ -253,6 +218,18 @@
         // },
 
         methods: {
+            // apiCategories: function() {
+            //     axios.get('/api/mapingcategories')
+            //     .then((response) => {
+            //         this.options = response.data;
+            //         this.loading =  false
+            //         // console.log(response.data);
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            // },
+
             showFilter: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
 

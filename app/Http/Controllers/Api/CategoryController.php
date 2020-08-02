@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Category;
+use App\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -25,50 +26,32 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
-    // [ 
-    //     {
-    //         id: 'category a',
-    //         label: 'category a',
-    //         children: [ 
-    //             {
-    //                 id: 'sub category a1',
-    //                 label: 'sub category a1',
-    //             }, 
-    //             {
-    //                 id: 'sub category a2',
-    //                 label: 'sub category a2',
-    //             } 
-    //         ],
-    //     },
-    //     {
-    //         id: 'category b',
-    //         label: 'category b',
-    //         children: [ 
-    //             {
-    //                 id: 'sub category b1',
-    //                 label: 'sub category b1',
-    //             }, 
-    //             {
-    //                 id: 'sub category b2',
-    //                 label: 'sub category b2',
-    //             } 
-    //         ],
-    //     }, 
-    // ],
-
     public function mapingCategory()
     {
-        $cats = DB::select('SELECT c.id,c.name AS cat_name,sc.id AS sub_id,sc.name AS subcat_name
-        FROM categories c
-        JOIN subcategories sc ON c.id=sc.category_id
-        ORDER BY sc.category_id');
-
-        $arr = array();
-
-        foreach($cats as $cat){
-            $arr[] = $cat;
+        $categories = Category::all();
+        
+        foreach($categories as $cat){
+            $arrCat[] = [
+                'id' => $cat->id,
+                'label' => $cat->name,
+                'children' => $this->findSubCategory($cat->id)
+            ];
         }
 
-        return response()->json($arr);
+        $arrayCategory = $arrCat;
+
+
+        return response()->json($arrayCategory);
+    }
+
+    public function findSubCategory($id)
+    {
+        $subcategories = Category::find($id)->subcategories;
+        $children = array();
+        foreach($subcategories as $subcat){
+            $children[] = ['id' => $subcat->id, 'label' => $subcat->name];
+        }
+
+        return $children;
     }
 }

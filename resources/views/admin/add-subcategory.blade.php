@@ -3,10 +3,10 @@
 @section('title', 'add sub category')
 
 @section ('content')
-<div class="container bg-white" style="margin-bottom: 199px;">
+<div class="container-fluid bg-white" style="margin-bottom: 199px;">
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <h3>Add Category</h3>
+            <h3>Add Sub Category</h3>
             <hr>
             <form method="POST" action="{{ route('subcategory.store') }}">
                 @csrf 
@@ -16,7 +16,7 @@
                     <div class="col-12">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="name" >Name</label>
+                                <label for="name" > Sub Category Name</label>
                                 <input placeholder="Sub name" type="text" class="form-control " name="name" autofocus>
                                 @error('name')
                                     <div class="text-danger">
@@ -25,7 +25,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="name" >Category</label>
+                                <label for="name" >Category Name</label>
                                 <select name="category_id" id="category_id" class="form-control">
                                     @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
