@@ -3,8 +3,8 @@
         
         <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" 
-                    style="top:80px;z-index:9999999;">
-                    <button style="cursor:pointer;" @click="showFilter" class="btn btn-sm btn-primary">
+                    style="top:85px; z-index:9999999;">
+                    <button style="cursor:pointer;" @click="showFilter" class="btn btn-primary">
                         <span class="fa fa-filter"></span> Filter
                     </button>
                 </div>

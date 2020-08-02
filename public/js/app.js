@@ -44841,13 +44841,13 @@ var render = function() {
           {
             staticClass:
               "col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4",
-            staticStyle: { top: "80px", "z-index": "9999999" }
+            staticStyle: { top: "85px", "z-index": "9999999" }
           },
           [
             _c(
               "button",
               {
-                staticClass: "btn btn-sm btn-primary",
+                staticClass: "btn btn-primary",
                 staticStyle: { cursor: "pointer" },
                 on: { click: _vm.showFilter }
               },
