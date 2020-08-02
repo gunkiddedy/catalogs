@@ -29,7 +29,9 @@ Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
 Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/search', 'Api\ProductController@search');
+
 Route::get('products/subcategory/{id}', 'Api\ProductController@findBySubCategory');
+Route::get('products/category/{id}', 'Api\ProductController@findByCategory');
 
 Route::get('products/company/{id}', 'Api\ProductController@companyProducts');
 Route::get('products/company/search/{id}', 'Api\ProductController@searchProductCompany');

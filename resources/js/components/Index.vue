@@ -86,7 +86,9 @@
                                                 aria-expanded="true" 
                                                 :aria-controls="'collapseOne'+cat.id"
                                             >
-                                                {{ cat.label }}
+                                                <span @click="getCategory(cat.id)" style="cursor:pointer">
+                                                    {{ cat.label }}
+                                                </span>
                                                 <i class="fa fa-caret-down float-right"></i>
                                             </a>
                                         </div>
@@ -256,12 +258,19 @@
         // },
 
         methods: {
+            getCategory: function(id){
+                axios.get('/api/products/category/' + id)
+                .then((response) => {
+                    this.searchData = response.data;
+                    this.products = this.searchData;
+                    this.loading =  false
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
+
             getSubCategory: function(id){
-                // axios.get('/api/products/subcategory' , {
-                //     params: {
-                //         subcat: id
-                //     }
-                // })
                 axios.get('/api/products/subcategory/' + id)
                 .then((response) => {
                     this.searchData = response.data;

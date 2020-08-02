@@ -2271,6 +2271,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2338,15 +2340,10 @@ __webpack_require__.r(__webpack_exports__);
   //     window.removeEventListener('resize', this.getWindowHeight);
   // },
   methods: {
-    getSubCategory: function getSubCategory(id) {
+    getCategory: function getCategory(id) {
       var _this = this;
 
-      // axios.get('/api/products/subcategory' , {
-      //     params: {
-      //         subcat: id
-      //     }
-      // })
-      axios.get('/api/products/subcategory/' + id).then(function (response) {
+      axios.get('/api/products/category/' + id).then(function (response) {
         _this.searchData = response.data;
         _this.products = _this.searchData;
         _this.loading = false;
@@ -2354,12 +2351,23 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
       });
     },
-    apiCategories: function apiCategories() {
+    getSubCategory: function getSubCategory(id) {
       var _this2 = this;
 
-      axios.get('/api/mapingcategories').then(function (response) {
-        _this2.DataSource = response.data;
+      axios.get('/api/products/subcategory/' + id).then(function (response) {
+        _this2.searchData = response.data;
+        _this2.products = _this2.searchData;
         _this2.loading = false;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    apiCategories: function apiCategories() {
+      var _this3 = this;
+
+      axios.get('/api/mapingcategories').then(function (response) {
+        _this3.DataSource = response.data;
+        _this3.loading = false;
         console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -2389,54 +2397,54 @@ __webpack_require__.r(__webpack_exports__);
     //     this.windowHeight = document.documentElement.clientHeight;
     // },
     searchProduct: function searchProduct() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/products/search', {
         params: {
           keyword: this.keyword
         }
       }).then(function (response) {
-        _this3.searchData = response.data;
-        _this3.products = _this3.searchData;
-        _this3.loading = false; // console.log(response.data);
+        _this4.searchData = response.data;
+        _this4.products = _this4.searchData;
+        _this4.loading = false; // console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadProducts: function loadProducts() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/api/products', {
         params: this.selected
       }).then(function (response) {
-        _this4.products = response.data;
-        _this4.loading = false;
+        _this5.products = response.data;
+        _this5.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadProvinsis: function loadProvinsis() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('/api/getprovinsis').then(function (response) {
-        _this5.provinsis = response.data.data;
-        _this5.loading = false;
-        _this5.selected_value = [];
+        _this6.provinsis = response.data.data;
+        _this6.loading = false;
+        _this6.selected_value = [];
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadKabupatens: function loadKabupatens() {
-      var _this6 = this;
+      var _this7 = this;
 
       axios.get('/api/getkabupatens', {
         params: {
           provinsi_id: this.selected.select_provinsi
         }
       }).then(function (response) {
-        _this6.kabupatens = response.data.data;
-        _this6.loading = false;
-        _this6.selected_value = [];
+        _this7.kabupatens = response.data.data;
+        _this7.loading = false;
+        _this7.selected_value = [];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2466,12 +2474,12 @@ __webpack_require__.r(__webpack_exports__);
     //     });
     // },
     getResults: function getResults() {
-      var _this7 = this;
+      var _this8 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/api/products?page=' + page).then(function (response) {
-        _this7.products = response.data;
-        _this7.loading = false;
+        _this8.products = response.data;
+        _this8.loading = false;
       });
     }
   }
@@ -41267,11 +41275,25 @@ var render = function() {
                                       }
                                     },
                                     [
-                                      _vm._v(
-                                        "\n                                            " +
-                                          _vm._s(cat.label) +
-                                          "\n                                            "
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { cursor: "pointer" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.getCategory(cat.id)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(cat.label) +
+                                              "\n                                            "
+                                          )
+                                        ]
                                       ),
+                                      _vm._v(" "),
                                       _c("i", {
                                         staticClass:
                                           "fa fa-caret-down float-right"

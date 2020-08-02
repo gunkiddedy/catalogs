@@ -27,6 +27,17 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function findByCategory($id)
+    {
+        // $products = \App\SubCategory::find($id)->products->paginate(12);
+
+        $products = Product::withFilters()->where('category_id', '=', $id)->paginate(12);
+
+        return ProductResource::collection($products);
+        
+        // dd($products);
+    }
+
     public function findBySubCategory($id)
     {
         // $products = \App\SubCategory::find($id)->products->paginate(12);
