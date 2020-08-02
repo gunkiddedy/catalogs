@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- <div class="row"> --}}
-<div class="container bg-white">
+<div class="container-fluid bg-white">
     <div class="row" >
         
         @if (Auth::user()->role == 'admin')
