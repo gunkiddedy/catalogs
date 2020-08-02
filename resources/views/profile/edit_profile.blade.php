@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputCity">Phone</label>
-                        <input value="{{ old('phone') ?? $user->phone }}" type="text" class="form-control" id="" name="phone">
+                        <input value="{{ old('phone') ?? $user->phone }}" type="number" class="form-control" id="" name="phone">
                         @error('phone')
                             <div class="alert text-danger">
                                 {{ $message }}
@@ -107,8 +107,8 @@
                 </div>
         
                 <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input value="{{ old('address') ?? $user->address }}" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
+                    <label for="address">Address</label>
+                    <input value="{{ old('address') ?? $user->address }}" type="text" class="form-control" id="address" placeholder="1234 Main St" name="address">
                     @error('address')
                         <div class="alert text-danger">
                             {{ $message }}
@@ -117,8 +117,10 @@
                 </div>
         
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Additional Info</label>
-                    <textarea class="form-control" id="" rows="3" name="additional_info">{{ old('additional_info') ?? $user->additional_info }}</textarea>
+                    <label for="additional_info">Additional Info</label>
+                    <textarea class="form-control" id="additional_info" rows="3" name="additional_info">
+                        {{ old('additional_info') ?? $user->additional_info }}
+                    </textarea>
                 </div>
         
                 <button type="submit" class="btn btn-primary">Update profile</button>

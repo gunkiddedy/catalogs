@@ -2,14 +2,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// import CompanyDetail from './components/CompanyDetail.vue';
+import {BadgerAccordion, BadgerAccordionItem} from 'vue-badger-accordion'
 
-// import the component
-import Treeselect from '@riophae/vue-treeselect'
-// import the styles
-import '@riophae/vue-treeselect/dist/vue-treeselect.css'
-
-Vue.component('treeselect', Treeselect);
+Vue.component('BadgerAccordion', BadgerAccordion)
+Vue.component('BadgerAccordionItem', BadgerAccordionItem)
 
 Vue.component('index-page', require('./components/Index.vue').default);
 Vue.component('admin-sidebar', require('./components/AdminSidebar.vue').default);

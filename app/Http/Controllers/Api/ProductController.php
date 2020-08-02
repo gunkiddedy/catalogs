@@ -17,6 +17,7 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    // search product name or company name in home page
     public function search(Request $request)
     {
         $products = Product::withFilters()
@@ -26,6 +27,19 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function findBySubCategory($id)
+    {
+        // $products = \App\SubCategory::find($id)->products->paginate(12);
+
+        $products = Product::withFilters()->where('subcategory_id', '=', $id)->paginate(12);
+
+        return ProductResource::collection($products);
+        
+        // dd($products);
+    }
+
+
+    // show products by company (user_id)
     public function companyProducts($id)
     {
         $products = Product::where('user_id', $id)->orderBy('id', 'desc')->paginate(8);
@@ -33,23 +47,13 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    // search product in company detail page
     public function searchProductCompany(Request $request, $id)
     {
-        // $products = Product::where('user_id', $id)
-        //     ->orWhere('name', 'like', '%'.Request('keyword').'%')
-        //     ->orderBy('id', 'desc')->paginate(8);
-
         $products = DB::table('products')->where([
             ['user_id', '=', $id],
             ['name', 'like', '%'.$request->keyword.'%']
         ])->paginate(8);
-
-        // $products = DB::table('products')
-        //     ->where('user_id', '=', $id)
-        //     ->orWhere(function($query) {
-        //         $query->where('name', 'like', '%'.$request->keyword.'%')
-        //               ->where('brand', 'like', '%'.$request->keyword.'%');
-        //     })->paginate(8);
 
         return ProductResource::collection($products);
     }

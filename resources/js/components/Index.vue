@@ -59,6 +59,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card border-white">
                             <div class="card-body">
                                 <h5 style="font-weight:bold">Kabupaten</h5>
@@ -71,7 +72,40 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card border-white">
+                            <div class="card-body bg-white">
+                                <h5 style="font-weight:bold">Find by Category</h5>
+                                <div id="accordion">
+                                    <div class="card border-white" v-for="cat in DataSource">
+                                        <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
+                                            <a 
+                                                href="#" 
+                                                data-toggle="collapse" 
+                                                :data-target="'#collapseOne'+cat.id" 
+                                                aria-expanded="true" 
+                                                :aria-controls="'collapseOne'+cat.id"
+                                            >
+                                                {{ cat.label }}
+                                                <i class="fa fa-caret-down float-right"></i>
+                                            </a>
+                                        </div>
+
+                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id" data-parent="#accordion"
+                                        >
+                                            <div class="card-body bg-white" v-for="child in cat.children" v-model="subcat"
+                                            style="padding:0.25rem;margin-left: 2.5rem !important;">
+                                                <span @click="getSubCategory(child.id)">
+                                                    {{ child.label }} 
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="card border-white">
                             <div class="card-body" >
                                 <h5 style="font-weight:bold">Categories</h5>
                                 <hr>
@@ -100,7 +134,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     <!-- </div>
                 </div> -->
                     <button @click="showFilter" class="btn btn-primary show_btn_filter" style="width:100%">
@@ -150,9 +184,11 @@
     export default {
         data: function() {
             return {
+                show_child: false,
                 // value: [],
                 // options: [],
                 // apy_category: [],
+                DataSource: [],
                 loading: true,
                 isShowProduct: true,
                 isShowFilter: true,
@@ -168,6 +204,7 @@
                 selected_value: [],
                 searchData: [],
                 keyword: '',
+                subcat: '',
                 selected: {
                     searchData: {},
                     category_items: [],
@@ -181,10 +218,10 @@
         mounted() {
             this.loadProducts();
             this.getResults();
-            this.loadCategories();
-            this.loadSubCategories();
+            // this.loadCategories();
+            // this.loadSubCategories();
             this.getWindowWidth();
-            // this.apiCategories();
+            this.apiCategories();
             //this.$nextTick(function() {
                 //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
@@ -203,8 +240,8 @@
         watch: {
             selected: {
                 handler: function () {
-                    this.loadCategories();
-                    this.loadSubCategories();
+                    // this.loadCategories();
+                    // this.loadSubCategories();
                     this.loadProducts();
                     this.loadProvinsis();
                 },
@@ -218,17 +255,34 @@
         // },
 
         methods: {
-            // apiCategories: function() {
-            //     axios.get('/api/mapingcategories')
-            //     .then((response) => {
-            //         this.options = response.data;
-            //         this.loading =  false
-            //         // console.log(response.data);
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
-            // },
+            getSubCategory: function(id){
+                // axios.get('/api/products/subcategory' , {
+                //     params: {
+                //         subcat: id
+                //     }
+                // })
+                axios.get('/api/products/subcategory/' + id)
+                .then((response) => {
+                    this.searchData = response.data;
+                    this.products = this.searchData;
+                    this.loading =  false
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
+
+            apiCategories: function() {
+                axios.get('/api/mapingcategories')
+                .then((response) => {
+                    this.DataSource = response.data;
+                    this.loading =  false
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
 
             showFilter: function () {
                 this.isShowFilter = !this.isShowFilter; //toggle this filter (false) true
@@ -314,31 +368,31 @@
                 });
             },
 
-            loadCategories: function () {
-                axios.get('/api/categories', {
-                    params: _.omit(this.selected, 'category_items')
-                })
-                .then((response) => {
-                    this.category_items = response.data.data;
-                    this.loading = false;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
+            // loadCategories: function () {
+            //     axios.get('/api/categories', {
+            //         params: _.omit(this.selected, 'category_items')
+            //     })
+            //     .then((response) => {
+            //         this.category_items = response.data.data;
+            //         this.loading = false;
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            // },
 
-            loadSubCategories: function () {
-                axios.get('/api/subcategories', {
-                        params: _.omit(this.selected, 'subcategory_items')
-                })
-                .then((response) => {
-                    this.subcategory_items = response.data.data;
-                    this.loading = false;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
+            // loadSubCategories: function () {
+            //     axios.get('/api/subcategories', {
+            //             params: _.omit(this.selected, 'subcategory_items')
+            //     })
+            //     .then((response) => {
+            //         this.subcategory_items = response.data.data;
+            //         this.loading = false;
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            // },
 
             getResults(page = 1) {
                 axios.get('/api/products?page=' + page)

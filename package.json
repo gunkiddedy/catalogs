@@ -24,10 +24,13 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "@riophae/vue-treeselect": "^0.4.0",
+        "@progress/kendo-theme-default": "^4.20.0",
+        "@progress/kendo-ui": "^2020.2.617",
         "laravel-vue-pagination": "^2.3.1",
         "vue-axios": "^2.1.5",
+        "vue-badger-accordion": "^1.1.6",
         "vue-router": "^3.3.4",
-        "vue-sweetalert2": "^3.0.6"
+        "vue-sweetalert2": "^3.0.6",
+        "vuesax": "^3.11.17"
     }
 }

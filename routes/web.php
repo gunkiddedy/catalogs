@@ -26,6 +26,8 @@ Route::get('/about', 'PageController@about');
 Route::get('/contact', 'PageController@contact');
 Route::get('/guest', 'ProductController@index');
 Route::get('/products', 'ProductController@index');
+Route::get('/products/subcategory/{id}', 'ProductController@findBySubCategory');
+
 // Route::get('/products', function(){
 //     dd(\App\Product::with('user')->first());
 // });

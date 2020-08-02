@@ -20,6 +20,13 @@ class ProductController extends Controller
         return view('products.index', ['products' => $products]);
     }
 
+    public function findBySubCategory($id)
+    {
+        $products = \App\SubCategory::find($id=555)->products;
+
+        dd($products);
+    }
+
     // public function index()
     // {
     //     $products = Product::withFilters()->get();

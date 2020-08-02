@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-12 col-xs-12">
             <table class="table table-sm">
                 <tbody>
                     <tr>
