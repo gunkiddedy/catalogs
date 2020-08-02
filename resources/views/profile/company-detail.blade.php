@@ -22,11 +22,11 @@
                 </div> --}}
                 <div class="card-body rspnv-card-body">
                     @if ($user->avatar !== null)
-                        <img class="img-thumbnail" 
+                        <img class="card-img" 
                         src="{{ asset('/storage/'.$user->avatar)}}"
                         alt="user-avatar">
                     @else
-                        <img class="img-thumbnail" 
+                        <img class="card-img" 
                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
                             alt="user-avatar">
                     @endif
