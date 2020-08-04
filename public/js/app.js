@@ -2190,14 +2190,14 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     checkNilaiTKDN: _.debounce(function () {
-      var regex = /[+-]?([0-9]*[.])?[0-9]+/;
+      var regex = /\d{2}(\.\d{2})?$/;
       var value = regex.test(this.nilai_tkdn);
 
       if (value == false) {
         this.nilai_tkdn = null;
         this.isError_nil = true;
         this.isSuccess_nil = false;
-        this.errors_nilai_tkdn = 'format tidak valid! example(0.00 atau 99.99)';
+        this.errors_nilai_tkdn = 'format tidak valid! example(0.00 atau 100.00)';
       } else {
         this.isSuccess_nil = true;
         this.isError_nil = false;
@@ -41459,7 +41459,7 @@ var render = function() {
   return _c("div", { staticClass: "row col-md-10" }, [
     _c(
       "div",
-      { staticClass: "col-md-12 mb-2" },
+      { staticClass: "col-md-12 mb-1" },
       [
         _c("div", { staticClass: "custom-control custom-checkbox" }, [
           _c("input", {
@@ -41540,7 +41540,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-md-12 mb-2" },
+      { staticClass: "col-md-12 mb-1" },
       [
         _c("div", { staticClass: "custom-control custom-checkbox" }, [
           _c("input", {

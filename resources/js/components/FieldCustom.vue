@@ -1,7 +1,7 @@
 <template>
 
     <div class="row col-md-10">
-        <div class="col-md-12 mb-2">
+        <div class="col-md-12 mb-1">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" @change="showSNI">
                 <label class="custom-control-label" for="sni">SNI</label>
@@ -22,7 +22,7 @@
             </transition>
         </div>
 
-        <div class="col-md-12 mb-2">
+        <div class="col-md-12 mb-1">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" value="1" @change="showTKDN">
                 <label class="custom-control-label" for="tkdn">TKDN</label>
@@ -100,13 +100,13 @@
 
         methods: {
             checkNilaiTKDN: _.debounce(function () {
-                let regex = /[+-]?([0-9]*[.])?[0-9]+/;
+                let regex = /\d{2}(\.\d{2})?$/;
                 let value = regex.test(this.nilai_tkdn);
                 if(value == false){
                     this.nilai_tkdn = null;
                     this.isError_nil = true;
                     this.isSuccess_nil = false;
-                    this.errors_nilai_tkdn = 'format tidak valid! example(0.00 atau 99.99)';
+                    this.errors_nilai_tkdn = 'format tidak valid! example(0.00 atau 100.00)';
                 }else{
                     this.isSuccess_nil = true;
                     this.isError_nil = false;
