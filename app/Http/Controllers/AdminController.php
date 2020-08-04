@@ -25,6 +25,47 @@ class AdminController extends Controller
         ]);
     }
 
+    public function productRequire()
+    {
+        $products = \App\Product::orderBy('id', 'desc')->paginate(10);
+        return view('admin.product-require', [
+            'products' =>$products
+        ]);
+    }
+
+    public function productRequireDetail($id)
+    {
+        $product = \App\Product::find($id);
+        $images = \App\ProductImage::where('product_id', $id)->with('product')->get();
+        $company = \App\Product::find($id)->user;
+        $category = \App\Product::find($id)->category;
+        $subcategory = \App\Product::find($id)->subcategory;
+        
+        return view('admin.product-require-detail', [
+            'product' => $product,
+            'images' => $images,
+            'company' => $company,
+            'category' => $category,
+            'subcategory' => $subcategory,
+        ]);
+    }
+
+    public function productRequireEdit ($id)
+    {
+        $product  = \App\Product::find($id);
+        // dd($product);
+        return view('admin.product-require-edit', ['product' => $product]);
+    }
+
+    public function productRequireUpdate(Request $request, $id)
+    {    
+        $product = \App\Product::find($id);
+        $product->is_active = $request->get('is_active');
+        $product->save();
+        
+        return redirect('/product-require')->with('success', 'data updated successfully');
+    }
+
     // ABOUT======================================
     public function about()
     {

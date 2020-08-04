@@ -15,18 +15,24 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('brand');
+            $table->integer('user_id');
+            $table->string('name')->nullable();
+            $table->mediumText('description')->nullable();
+            $table->integer('category_id')->default(99);
+            $table->integer('subcategory_id')->default(99);
+            $table->integer('sni')->default(0);
+            $table->string('nomor_sni')->nullable();
+            $table->integer('tkdn')->default(0);
+            $table->float('nilai_tkdn')->nullable();
+            $table->string('nomor_sertifikat_tkdn')->nullable();
+            $table->string('nomor_laporan_tkdn')->nullable();
             $table->integer('price');
-            $table->longText('description');
-            $table->unsignedBigInteger('user_id');
-            //$table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('category_id')->default(99);
-            //$table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('subcategory_id')->default(99);
-            // $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->string('hs_code');
-            $table->boolean('sni');
+            $table->string('company_name')->nullable();
+            $table->integer('provinsi_id');
+            $table->integer('kabupaten_id');
+            $table->integer('kecamatan_id');
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

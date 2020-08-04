@@ -12,7 +12,7 @@
                 @csrf 
                 @method('POST')
                 <div class="row ">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name" >Product Name</label>
@@ -23,10 +23,15 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="brand" >Brand</label>
-                                <input type="text" name="brand" placeholder="Enter brand name" class="form-control">
-                                @error('brand')
+                        </div>
+                    </div>
+
+                    <div class="col-10">
+                        <label for="price" >Product Description</label>
+                        <div class="form-group">
+                            <div>
+                                <textarea name="description" rows="3" class="form-control"></textarea>
+                                @error('description')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
@@ -34,8 +39,49 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="product" class="row col-md-12">
+                        <field-custom></field-custom>
+                    </div>
+
+                    {{-- <div class="row col-10">
+                        <div class="col-10 mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" >
+                                <label class="custom-control-label" for="sni">SNI</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input placeholder="nomor sni" type="text" class="form-control " name="nomor_sni">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-10 mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" value="1" >
+                                <label class="custom-control-label" for="tkdn">TKDN</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input placeholder="nilai_tkdn" type="text" class="form-control " name="nilai_tkdn">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input placeholder="nomor_sertifikat_tkdn" type="text" class="form-control " name="nomor_sertifikat_tkdn">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input placeholder="nomor_laporan_tkdn" type="text" class="form-control " name="nomor_laporan_tkdn">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+
         
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="price" >Price</label>
@@ -58,7 +104,7 @@
                         </div>
                     </div>
         
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="category_id" >Category</label>
@@ -86,32 +132,11 @@
                         </div>
                     </div>
                     
-                    <div class="col-12">
-                        <label for="price" >Product Description</label>
-                        <div class="form-group">
-                            <div>
-                                <textarea name="description" rows="10" class="form-control"></textarea>
-                                @error('description')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
+                    
         
-                    <div class="col-12 mb-2">
-                        {{-- <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="sni" value="1" name="sni">
-                            <label class="form-check-label" for="inlineCheckbox1">SNI</label>
-                        </div> --}}
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" >
-                            <label class="custom-control-label" for="sni">SNI</label>
-                        </div>
-                    </div>
+                    
         
-                    <div class="col-12">
+                    <div class="col-10">
                         <label for="photos">Choose images</label>
                         <div class="form-group">
                             <input type="file" name="images[]" id="images" multiple>
@@ -119,7 +144,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary" style="float: right">Submit product</button>
+                <button type="submit" class="btn btn-primary">Submit product</button>
             
             </form>
         </div>

@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::withFilters()->orderBy('id', 'desc')->paginate(12);
+        $products = Product::withFilters()->where('is_active', '1')->orderBy('id', 'desc')->paginate(12);
 
         return ProductResource::collection($products);
     }
@@ -53,7 +53,7 @@ class ProductController extends Controller
     // show products by company (user_id)
     public function companyProducts($id)
     {
-        $products = Product::where('user_id', $id)->orderBy('id', 'desc')->paginate(8);
+        $products = Product::where(['user_id' => $id, 'is_active' => 1])->orderBy('id', 'desc')->paginate(8);
 
         return ProductResource::collection($products);
     }

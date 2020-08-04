@@ -13,20 +13,70 @@
                 @csrf 
                 @method('PATCH')
                 <div class="row ">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-8">
                                 <label for="name" >Product Name</label>
-                                <input placeholder="Enter product name" type="text" class="form-control " name="name" value="{{ $product->name }}" required autocomplete="name" autofocus>
+                                <input placeholder="Enter product name" type="text" class="form-control " name="name" value="{{ $product->name }}" required autocomplete="name">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="brand" >Brand</label>
-                                <input placeholder="Enter brand" type="text" class="form-control " name="brand" value="{{ $product->brand }}" required autocomplete="name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="col-10">
+                        <label for="price" >Product Description</label>
+                        <div class="form-group">
+                            <div>
+                                <textarea name="description"  cols="30" rows="5" class="form-control">{{ $product->description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-10 mb-2">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="sni" class="custom-control-input" name="sni" 
+                            value="1" {{ $product->sni == 1 ? 'checked' : ''}}
+                            >
+                            <label class="custom-control-label" for="sni">SNI</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input 
+                                        placeholder="nomor sni" 
+                                        type="text" class="form-control " 
+                                        name="nomor_sni"
+                                        value="{{ $product->nomor_sni }}"
+                                        >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-10 mb-2">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" 
+                                value="1" {{ $product->tkdn == 1 ? 'checked' : ''}} 
+                                >
+                            <label class="custom-control-label" for="tkdn">TKDN</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input placeholder="nilai_tkdn" type="text" class="form-control " name="nilai_tkdn"
+                                    value={{ $product->nilai_tkdn }}
+                                    >
+                                </div>
+                                <div class="col-md-4">
+                                    <input placeholder="nomor_sertifikat_tkdn" type="text" class="form-control " name="nomor_sertifikat_tkdn" value={{ $product->nomor_sertifikat_tkdn }} >
+                                </div>
+                                <div class="col-md-4">
+                                    <input placeholder="nomor_laporan_tkdn" type="text" class="form-control " name="nomor_laporan_tkdn" value={{ $product->nomor_laporan_tkdn }}>
+                                </div>
                             </div>
                         </div>
                     </div>
         
-                    <div class="col-12">
+                    <div class="col-8">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="price" >HS Code</label>
@@ -39,7 +89,7 @@
                         </div>
                     </div>
         
-                    <div class="col-12">
+                    <div class="col-8">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="category_id" >Category</label>
@@ -62,16 +112,9 @@
                         </div>
                     </div>
                     
-                    <div class="col-12">
-                        <label for="price" >Product Description</label>
-                        <div class="form-group">
-                            <div>
-                                <textarea name="description"  cols="30" rows="5" class="form-control">{{ $product->description }}</textarea>
-                            </div>
-                        </div>
-                    </div>
+                    
         
-                    <div class="col-12 mb-2">
+                    {{-- <div class="col-10 mb-2">
                         <div class="form-check form-check-inline">
                             <input 
                                 class="form-check-input" 
@@ -79,7 +122,7 @@
                                 value="{{ $product->sni }}" {{ $product->sni == 1 ? 'checked' : ''}} name="sni">
                             <label class="form-check-label" for="inlineCheckbox1">SNI</label>
                         </div>
-                    </div>
+                    </div> --}}
         
                     {{-- <div class="col-12">
                         <div class="form-group">
@@ -92,7 +135,7 @@
         
                 </div>
                 
-                <button type="submit" class="btn btn-success" style="float: right">Update product</button>
+                <button type="submit" class="btn btn-success">Update product</button>
             
             </form>
         </div>

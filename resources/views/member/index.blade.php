@@ -13,9 +13,14 @@
             <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
 
             @if (Auth::user()->is_active == 0)
-                <span class="alert alert-primary float-right">
-                    Anda belum melengkapi profil, silahkan lengkapi dulu <a href="/profile/{{ Auth::id() }}">di sini!</a>
-                </span>
+            <div class="row">
+                <div class="col-md-12 mt-4 mb-4 col-sm-12 col-xs-12">
+                    <p class="alert alert-primary">
+                        Anda belum melengkapi profil atau anda baru saja merubah data profile, silahkan lengkapi dulu 
+                        <a href="/profile/{{ Auth::id() }}">di sini!</a> atau menunggu konfirmasi dari admin
+                    </p>
+                </div>
+            </div>
             @endif
             
             @if(Session::has('success'))
@@ -33,10 +38,8 @@
                     <table class="table table-hover striped" style="overflow: scroll">
                         <thead>
                             <th>Name</th>
-                            <th>Brand</th>
-                            {{-- <th>Category</th> --}}
-                            {{-- <th>Sub Cat</th> --}}
                             <th>Image</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
@@ -44,13 +47,17 @@
                             @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->brand }}</td>
-                                {{-- <td>{{ $product->category_name }}</td> --}}
-                                {{-- <td>{{ $product->subcategory_name }}</td> --}}
                                 <td>
-                                @foreach (DB::table('view_product_images')->where('product_id', $product->id)->get() as $image)
-                                    <img src="{{ asset('/storage/'.$image->image_path) }}" alt="images" width="60" height="60" class="img-thumbnail">
-                                @endforeach
+                                    @foreach (DB::table('view_product_images')->where('product_id', $product->id)->get() as $image)
+                                        <img src="{{ asset('/storage/'.$image->image_path) }}" alt="images" width="60" height="60" class="img-thumbnail">
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @if ($product->is_active == 1)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-warning">Inactive</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="row">

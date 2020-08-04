@@ -15,9 +15,8 @@ class CreateKabupatensTable extends Migration
     {
         Schema::create('kabupatens', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('provinsi_id');
+            $table->integer('provinsi_id');
             $table->string('name');
-            // $table->foreign('provinsi_id')->references('id')->on('provinsis')->onDelete('cascade');
             $table->timestamps();
         });
     }

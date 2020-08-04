@@ -69,10 +69,9 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'brand' => 'required',
+            'description'=> 'required|min:20',
             'price' => 'required',
             'hs_code' => 'required|min:3',
-            'description'=> 'required|min:20',
             'category_id' => 'required',
             'images' => 'required',
         ]); 
@@ -85,23 +84,22 @@ class ProductController extends Controller
             $kecamatan_id = Auth::user()->kecamatan_id;
             $company = Auth::user()->name;
             $name = $request->name;
-            $brand = $request->brand;
-            $price = $request->price;
             $description = $request->description;
+            $sni = $request->sni;
+            $nomor_sni = $request->nomor_sni;
+            $tkdn = $request->tkdn;
+            $nilai_tkdn = $request->nilai_tkdn;
+            $nomor_sertifikat_tkdn = $request->nomor_sertifikat_tkdn;
+            $nomor_laporan_tkdn = $request->nomor_laporan_tkdn;
+            $price = $request->price;
+            $hs_code = $request->hs_code;
             $category_id = $request->category_id;
             $subcategory_id = $request->subcategory_id;
-            $hs_code = $request->hs_code;
-            $sni = $request->sni;
 
             $images = $request->images;
 
             if($request->hasFile('images')) {
-
                 foreach($images as $imagex)
-                // $implode = implode(',', $images);
-                // dd($imagex);
-                // $split[0]
-                // insert to table product
                 $filenamewithextension = $imagex->getClientOriginalName();
             
                 //get filename without extension
@@ -112,13 +110,18 @@ class ProductController extends Controller
         
                 //filename to store
                 $filenametostore = $filename.'_'.$user_id.'.'.$extension;
-                // dd($filenametostore);
 
                 $product = Product::create([
                     'name' => $name,
-                    'brand' => $brand,
-                    'price' => $price,
                     'description' => $description,
+                    'sni' => $sni,
+                    'nomor_sni' => $nomor_sni,
+                    'tkdn' => $tkdn,
+                    'nilai_tkdn' => $nilai_tkdn,
+                    'nomor_sertifikat_tkdn' => $nomor_sertifikat_tkdn,
+                    'nomor_laporan_tkdn' => $nomor_laporan_tkdn,
+                    'price' => $price,
+                    'hs_code' => $hs_code,
                     'category_id' => $category_id,
                     'subcategory_id' => $subcategory_id,
                     'user_id' => $user_id,
@@ -126,8 +129,7 @@ class ProductController extends Controller
                     'provinsi_id' => $provinsi_id,
                     'kabupaten_id' => $kabupaten_id,
                     'kecamatan_id' => $kecamatan_id,
-                    'hs_code' => $hs_code,
-                    'sni' => $sni,
+                    
                     'image_path' => 'images/'.$filenametostore
                 ]);
 
@@ -201,7 +203,6 @@ class ProductController extends Controller
     {    
         $request->validate([
             'name' => 'required',
-            'brand' => 'required',
             'price' => 'required',
             'description' => 'required',
             'hs_code' => 'required',
@@ -209,16 +210,25 @@ class ProductController extends Controller
         ]);
 
         $product = Product::find($id);
-        $product->name =  $request->get('name');
-        $product->brand =  $request->get('brand');
-        $product->price =  $request->get('price');
-        $product->hs_code =  $request->get('hs_code');
-        $product->category_id =  $request->get('category_id');
-        $product->subcategory_id =  $request->get('subcategory_id');
+        $product->name = $request->get('name');
         $product->description = $request->get('description');
 
+        $product->sni = $request->get('sni');
+        $product->nomor_sni =  $request->get('nomor_sni');
+
+        $product->tkdn = $request->get('tkdn');
+        $product->nilai_tkdn = $request->get('nilai_tkdn');
+        $product->nomor_sertifikat_tkdn = $request->get('nomor_sertifikat_tkdn');
+        $product->nomor_laporan_tkdn = $request->get('nomor_laporan_tkdn');
+
+        $product->price = $request->get('price');
+        $product->hs_code = $request->get('hs_code');
+        $product->category_id = $request->get('category_id');
+        $product->subcategory_id = $request->get('subcategory_id');
+        $product->is_active = 0;
+
         $images = $request->file('images');
-        
+        // dd($product);
         $product->save();
         
         // check if has image
@@ -232,10 +242,6 @@ class ProductController extends Controller
             foreach($images as $image) {
                 $filename = $image->getClientOriginalName();
                 $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
-                // ProductImage::where('product_id', $id)->update([
-                //     'name' => $product->name,
-                //     'image_path' => $path,
-                // ]);
                 DB::table('product_images')
                 ->updateOrInsert(
                     ['name' => $product->name],

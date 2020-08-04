@@ -69,11 +69,11 @@
 
                                 <td>
                                     <div class="d-flex justify-content-start">
-                                        {{-- <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary mr-1">
-                                            Edit <i class="fa fa-pencil"></i>
-                                        </a> --}}
+                                        <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
                                         <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
-                                            View <i class="fa fa-eye"></i>
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                         {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                             @csrf 

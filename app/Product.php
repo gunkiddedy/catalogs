@@ -9,9 +9,12 @@ class Product extends Model
     // protected $table = 'products';
     
     protected $fillable = [
-                        'name', 'brand', 'price', 'description', 'category_id',
-                        'subcategory_id', 'user_id', 'company_name', 'provinsi_id', 'kabupaten_id', 
-                        'kecamatan_id', 'hs_code', 'sni', 'image_path'
+                        'name', 'price', 'description', 'category_id',
+                        'subcategory_id', 'user_id', 'company_name', 
+                        'provinsi_id', 'kabupaten_id', 
+                        'kecamatan_id', 'hs_code', 'sni', 'nomor_sni', 
+                        'tkdn', 'nilai_tkdn', 'nomor_sertifikat_tkdn', 
+                        'nomor_laporan_tkdn', 'image_path', 'is_active'
                     ];
 
     public function user()

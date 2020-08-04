@@ -198,8 +198,8 @@
                 windowWidth: 0,
                 // windowHeight: 0,
                 products: {},
-                category_items: [],
-                subcategory_items: [],
+                // category_items: [],
+                // subcategory_items: [],
                 provinsis: [],
                 kabupatens: [],
                 select_provinsi: [],
@@ -210,8 +210,8 @@
                 subcat: '',
                 selected: {
                     searchData: {},
-                    category_items: [],
-                    subcategory_items: [],
+                    // category_items: [],
+                    // subcategory_items: [],
                     select_provinsi: [],
                     select_kabupaten: []
                 }
@@ -287,7 +287,7 @@
                 .then((response) => {
                     this.DataSource = response.data;
                     this.loading =  false
-                    console.log(response.data);
+                    // console.log(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);

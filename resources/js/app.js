@@ -9,7 +9,9 @@ Vue.component('BadgerAccordionItem', BadgerAccordionItem)
 
 Vue.component('index-page', require('./components/Index.vue').default);
 Vue.component('admin-sidebar', require('./components/AdminSidebar.vue').default);
+Vue.component('field-custom', require('./components/FieldCustom.vue').default);
 Vue.component('company-products', require('./components/CompanyDetail.vue').default);
+Vue.component('wilayah', require('./components/Wilayah.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 const app = new Vue({

@@ -5,14 +5,14 @@
 @section('content')
 
 {{-- <div class="row"> --}}
-<div class="container-fluid bg-white">
+<div class="container bg-white">
     <div class="row" >
         
         @if (Auth::user()->role == 'admin')
             <x-admin-sidebar></x-admin-sidebar>
         @endif
 
-        <div class="col-md-6 col-sm-12 col-xs-12">
+        {{-- <div class="col-md-6 col-sm-12 col-xs-12">
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">
@@ -60,9 +60,20 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12">
+
+            @if(Session::has('success'))
+                <div class="row sccs">
+                    <div class="col-12">
+                        <div id="charge-message" class="alert alert-success">
+                        {{ Session::get('success') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <table class="table table-sm">
                 <tbody>
                     <tr>
@@ -83,21 +94,17 @@
                     </tr>
                     <tr>
                         <th scope="row">Address</th>
-                        @if (!empty($user->address))
-                            <td>{{ $user->address }}</td>
+                        @if (!empty($user->address) || !empty($propinsi) || !empty($propinsi))
+                            <td>
+                                {{ $user->address.', ' }}
+                                {{ $kabupaten->name.', ' }}
+                                {{ $provinsi->name }}
+                            </td>
                         @else
                             <td>-</td>
                         @endif
                     </tr>
-                    <tr>
-                        <th scope="row">Tkdn</th>
-                        @if (!empty($user->tkdn))
-                            <td>{{ $user->tkdn }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr>
-                    <tr>
+                    {{-- <tr>
                         <th scope="row">Provinsi</th>
                         @if (!empty($provinsi))
                             <td>{{ $provinsi->name }}</td>
@@ -112,19 +119,19 @@
                         @else
                             <td>-</td>
                         @endif
-                    </tr>
-                    <tr>
+                    </tr> --}}
+                    {{-- <tr>
                         <th scope="row">Kecamatan</th>
                         @if (!empty($kecamatan))
                             <td>{{ $kecamatan->name }}</td>
                         @else
                             <td>-</td>
                         @endif
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th scope="row">Zipcode</th>
-                        @if (!empty($kecamatan))
-                            <td>{{ $kecamatan->zipcode }}</td>
+                        @if (!empty($user->zipcode))
+                            <td>{{ $user->zipcode }}</td>
                         @else
                             <td>-</td>
                         @endif
@@ -137,10 +144,18 @@
                             <td>-</td>
                         @endif
                     </tr>
+                    <tr>
+                        <th scope="row">Additional Info</th>
+                        @if (!empty($user->additional_info))
+                            <td>{{ $user->additional_info }}</td>
+                        @else
+                            <td>-</td>
+                        @endif
+                    </tr>
                 </tbody>
             </table>
             <div>
-                <a href="/profile/edit/{{ Auth::id() }}" style="float: right" class="btn btn-primary text-white">Edit Profile</a>
+                <a href="/profile/edit/{{ Auth::id() }}" class="btn btn-primary text-white">Edit Profile</a>
             </div>
         </div>
     </div>

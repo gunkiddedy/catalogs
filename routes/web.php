@@ -80,6 +80,12 @@ Route::get('/contact/edit/{id}', 'AdminController@editContact')->name('contact.e
 Route::patch('/contact/update/{id}', 'AdminController@updateContact')->name('contact.update')->middleware('auth', 'admin');
 
 Route::get('/members', 'AdminController@memberList')->name('member.list')->middleware('auth', 'admin');
+
+Route::get('/product-require', 'AdminController@productRequire')->name('product.require')->middleware('auth', 'admin');
+Route::get('/product-require/detail/{id}', 'AdminController@productRequireDetail')->name('product-require.detail')->middleware('auth', 'admin');
+Route::get('/product-require/edit/{id}', 'AdminController@productRequireEdit')->name('product-require.edit')->middleware('auth', 'admin');
+Route::patch('/product-require/update/{id}', 'AdminController@productRequireUpdate')->name('product-require.update')->middleware('auth', 'admin');
+
 Route::get('/users/edit/{id}', 'UserController@edit')->name('user.edit')->middleware('auth', 'admin');
 Route::patch('/users/update/{id}', 'UserController@update')->name('user.update')->middleware('auth', 'admin');
 Route::delete('/users/delete/{id}', 'UserController@destroy')->name('user.delete')->middleware('auth', 'admin');

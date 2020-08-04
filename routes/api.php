@@ -27,6 +27,11 @@ Route::get('search', 'Api\SearchController@search');
 // Route::get('kabupatens', 'Api\KabupatenController@index');
 Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
 Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');
+
+Route::get('getprovinsisx', 'Api\WilayahController@getProvinsix');
+Route::get('getkabupatensx', 'Api\WilayahController@getKabupatenx');
+Route::get('getkecamatansx', 'Api\WilayahController@getKecamatanx');
+
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/search', 'Api\ProductController@search');
 

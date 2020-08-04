@@ -17,19 +17,19 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->string('role')->default('member');
             $table->string('phone')->nullable();
-            $table->string('tkdn')->nullable();
+            $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->integer('is_active')->default(0);
+            $table->string('role')->default('member');
             $table->integer('provinsi_id')->nullable();
             $table->integer('kabupaten_id')->nullable();
             $table->integer('kecamatan_id')->nullable();
-            $table->mediumText('address')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zipcode')->nullable();
             $table->string('nib')->nullable();
             $table->string('additional_info')->nullable();
-            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

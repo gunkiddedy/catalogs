@@ -107,7 +107,7 @@
             {{-- COMPANY NAME, PROV, KAB --}}
             <div class="card-body rspnv-card-body">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12 mb-5">
+                    {{-- <div class="col-md-4 col-sm-4 col-xs-12 mb-5">
                         <div>
                             @if ($company->avatar !== null)
                             <img class="img-thumbnail"
@@ -119,7 +119,7 @@
                                     alt="user-avatar">
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-8 col-sm-8 col-xs-12 mb-5">
                         <h3>
                             <a href="/company/detail/{{ $company->id }}">{{ $company->name }}</a>
