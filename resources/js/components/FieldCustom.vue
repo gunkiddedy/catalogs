@@ -1,7 +1,7 @@
 <template>
 
     <div class="row col-md-12">
-        <div class="col-md-12 mb-1">
+        <div class="col-md-12">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" @change="showSNI">
                 <label class="custom-control-label" for="sni">SNI</label>
@@ -22,7 +22,7 @@
             </transition>
         </div>
 
-        <div class="col-md-12 mb-1">
+        <div class="col-md-12">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" value="1" @change="showTKDN">
                 <label class="custom-control-label" for="tkdn">TKDN</label>
@@ -53,6 +53,35 @@
                 </div>
             </transition>
         </div>
+
+        <div class="col-md-12 mt-2">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="category_id" >Category</label>
+                    <select class="form-control" required name="category_id" id="category_id" v-model="select_category"
+                    @change="loadSubCategory">
+                        <option :value="selected_value">Choose...</option>
+                            <option 
+                            v-for="(cat, i) in categories" 
+                            :value="cat.id"
+                            :key="i"
+                            >{{cat.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="subcategory_id" >Sub Category</label>
+                    <select class="form-control" name="subcategory_id" id="subcategory_id" v-model="select_subcategory">
+                        <option :value="selected_value">Choose...</option>
+                            <option
+                            v-for="(subc, i) in subcategories"
+                            :key="i" 
+                            :value="subc.id"
+                            >{{subc.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -81,7 +110,12 @@
                 isSuccess_ser: false,
                 isError_ser: true,
                 isSuccess_lap: false,
-                isError_lap: true
+                isError_lap: true,
+                categories: [],
+                subcategories: [],
+                select_category: '',
+                select_subcategory: '',
+                selected_value: []
             }
         },
 
@@ -98,7 +132,38 @@
         //     }
         // },
 
+        created(){
+            this.loadCategory();
+        },
+
         methods: {
+            loadCategory: function(){
+                axios.get('/api/getcategories')
+                .then( (response) => {
+                    this.categories = response.data;
+                    console.log(response.data);
+                    this.selected_value = [];
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+
+            loadSubCategory: function(){
+                axios.get('/api/getsubcategories', {
+                    params: {
+                        category_id: this.select_category
+                    }
+                })
+                .then((response) => {
+                    this.subcategories = response.data;
+                    this.selected_value = [];
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+
             checkNilaiTKDN: _.debounce(function () {
                 let regex = /\d{2}(\.\d{2})?$/;
                 // let regex = /[\w\.\,\/\:]+/g;

@@ -24,6 +24,10 @@ Route::get('mapingcategories', 'Api\CategoryController@mapingCategory');
 Route::get('categories', 'Api\CategoryController@index');
 Route::get('subcategories', 'Api\SubCategoryController@index');
 Route::get('search', 'Api\SearchController@search');
+
+Route::get('getcategories', 'Api\CategoryController@getCategory');
+Route::get('getsubcategories', 'Api\CategoryController@getSubCategory');
+
 // Route::get('kabupatens', 'Api\KabupatenController@index');
 Route::get('getprovinsis', 'Api\WilayahController@getProvinsi');
 Route::get('getkabupatens', 'Api\WilayahController@getKabupaten');

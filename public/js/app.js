@@ -2149,6 +2149,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2173,7 +2202,12 @@ __webpack_require__.r(__webpack_exports__);
       isSuccess_ser: false,
       isError_ser: true,
       isSuccess_lap: false,
-      isError_lap: true
+      isError_lap: true,
+      categories: [],
+      subcategories: [],
+      select_category: '',
+      select_subcategory: '',
+      selected_value: []
     };
   },
   // computed: {
@@ -2188,7 +2222,35 @@ __webpack_require__.r(__webpack_exports__);
   //         // return regex.test(this.nomor_sni);
   //     }
   // },
+  created: function created() {
+    this.loadCategory();
+  },
   methods: {
+    loadCategory: function loadCategory() {
+      var _this = this;
+
+      axios.get('/api/getcategories').then(function (response) {
+        _this.categories = response.data;
+        console.log(response.data);
+        _this.selected_value = [];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadSubCategory: function loadSubCategory() {
+      var _this2 = this;
+
+      axios.get('/api/getsubcategories', {
+        params: {
+          category_id: this.select_category
+        }
+      }).then(function (response) {
+        _this2.subcategories = response.data;
+        _this2.selected_value = [];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     checkNilaiTKDN: _.debounce(function () {
       var regex = /\d{2}(\.\d{2})?$/; // let regex = /[\w\.\,\/\:]+/g;
 
@@ -41452,7 +41514,7 @@ var render = function() {
   return _c("div", { staticClass: "row col-md-12" }, [
     _c(
       "div",
-      { staticClass: "col-md-12 mb-1" },
+      { staticClass: "col-md-12" },
       [
         _c("div", { staticClass: "custom-control custom-checkbox" }, [
           _c("input", {
@@ -41533,7 +41595,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-md-12 mb-1" },
+      { staticClass: "col-md-12" },
       [
         _c("div", { staticClass: "custom-control custom-checkbox" }, [
           _c("input", {
@@ -41702,7 +41764,110 @@ var render = function() {
         ])
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12 mt-2" }, [
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "category_id" } }, [_vm._v("Category")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.select_category,
+                  expression: "select_category"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { required: "", name: "category_id", id: "category_id" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.select_category = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.loadSubCategory
+                ]
+              }
+            },
+            [
+              _c("option", { domProps: { value: _vm.selected_value } }, [
+                _vm._v("Choose...")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.categories, function(cat, i) {
+                return _c("option", { key: i, domProps: { value: cat.id } }, [
+                  _vm._v(_vm._s(cat.name))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "subcategory_id" } }, [
+            _vm._v("Sub Category")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.select_subcategory,
+                  expression: "select_subcategory"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "subcategory_id", id: "subcategory_id" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.select_subcategory = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { domProps: { value: _vm.selected_value } }, [
+                _vm._v("Choose...")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.subcategories, function(subc, i) {
+                return _c("option", { key: i, domProps: { value: subc.id } }, [
+                  _vm._v(_vm._s(subc.name))
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

@@ -108,7 +108,7 @@
                         </div>
                     </div>
         
-                    <div class="col-10">
+                    {{-- <div class="col-10">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="category_id" >Category</label>
@@ -134,7 +134,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     
                     
         

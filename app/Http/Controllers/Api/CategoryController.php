@@ -54,4 +54,17 @@ class CategoryController extends Controller
 
         return $children;
     }
+
+    public function getCategory()
+    {
+        $categories = Category::all();
+        return response()->json($categories);
+    }
+
+    public function getSubCategory(Request $request)
+    {
+        $subcategories = SubCategory::where('category_id', $request->category_id)->get();
+        return response()->json($subcategories);
+    }
+
 }
