@@ -78,7 +78,8 @@ class ProfileController extends Controller
 
         DB::table('products')->where('user_id', $id)->update(['company_name' => $request->get('name')]);
         
-        return redirect()->route('profile.show', $id)->with('success', 'data updated successfully!');
+        // return redirect()->route('profile.show', $id)->with('success', 'data updated successfully!');
+        return redirect()->route('company.detail', $id)->with('success', 'data updated successfully!');
     }
 
     public function updateAvatar(Request $request, $id)

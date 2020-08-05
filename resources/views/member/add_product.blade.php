@@ -85,7 +85,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="price" >Price</label>
-                                <input type="text" name="price" placeholder="Enter price" class="form-control">
+                                {{-- <input type="number" name="price" placeholder="Enter price" class="form-control"> --}}
+                                <input type="text" name="price"
+                                    class="form-control" 
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+                                    />
                                 @error('price')
                                     <div class="text-danger">
                                         {{ $message }}

@@ -2190,7 +2190,8 @@ __webpack_require__.r(__webpack_exports__);
   // },
   methods: {
     checkNilaiTKDN: _.debounce(function () {
-      var regex = /\d{2}(\.\d{2})?$/;
+      var regex = /\d{2}(\.\d{2})?$/; // let regex = /[\w\.\,\/\:]+/g;
+
       var value = regex.test(this.nilai_tkdn);
 
       if (value == false) {
@@ -2205,16 +2206,20 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return; // return regex.test(this.nomor_sni);
-    }, 2000),
+    }, 3000),
     checkSertiTKDN: _.debounce(function () {
-      var regex = /(\w{6}-?)(\d{6}-?.?)(\w{3}-?.?)(\d{3})$/;
+      // let regex = /(\w{6}-?)(\d{6}-?.?)(\w{3}-?.?)(\d{3})$/;
+      // let regex = /[\w\.\,\/\:]+/g;
+      // let regex = .replace(new RegExp(/[^\w\.\/\:\,\']+/, "g"), "");
+      var regex = /^\S[\w\.\-\/\:]+\S$/;
       var value = regex.test(this.nomor_sertifikat_tkdn);
 
       if (value == false) {
-        this.nomor_sertifikat_tkdn = null;
+        this.nomor_sertifikat_tkdn = null; // this.nomor_sertifikat_tkdn = this.nomor_sertifikat_tkdn.replace(/[^\w\.\/\:\,\']+/, "g", "");
+
         this.isError_ser = true;
         this.isSuccess_ser = false;
-        this.errors_nomor_sertifikat_tkdn = 'format tidak valid! example(ASDASD-123123.asd/123)';
+        this.errors_nomor_sertifikat_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
       } else {
         this.isSuccess_ser = true;
         this.isError_ser = false;
@@ -2222,16 +2227,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return; // return regex.test(this.nomor_sni);
-    }, 2000),
+    }, 3000),
     checkLapTKDN: _.debounce(function () {
-      var regex = /(\w{2}\d{3}-?.?)(\w{2}\d{2})$/;
+      // let regex = /(\w{2}\d{3}-?.?)(\w{2}\d{2})$/;
+      // let regex = /[\w\.\,\/\:]+/g;
+      var regex = /^\S[\w\.\-\/\:]+\S$/;
       var value = regex.test(this.nomor_laporan_tkdn);
 
       if (value == false) {
-        this.nomor_laporan_tkdn = null;
+        this.nomor_laporan_tkdn = null; // this.nomor_laporan_tkdn = this.nomor_laporan_tkdn.replace(/[^\w\.\/\:\,\']+/, "g", "");
+
         this.isError_lap = true;
         this.isSuccess_lap = false;
-        this.errors_nomor_laporan_tkdn = 'format tidak valid! example(AS123-ss28)';
+        this.errors_nomor_laporan_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
       } else {
         this.isSuccess_lap = true;
         this.isError_lap = false;
@@ -2239,16 +2247,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return; // return regex.test(this.nomor_sni);
-    }, 2000),
+    }, 3000),
     checkSNI: _.debounce(function () {
-      var regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;
+      // let regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;
+      // let regex = /[\w\.\,\/\:]+/g;
+      var regex = /^\S[\w\.\-\/\:]+\S$/;
       var value = regex.test(this.nomor_sni);
 
       if (value == false) {
-        this.nomor_sni = null;
+        this.nomor_sni = null; // this.nomor_sni = this.nomor_sni.replace(/[^\w\.\/\:\,\']+/, "g", "");
+
         this.isError = true;
         this.isSuccess = false;
-        this.errors = 'format tidak valid! example(123456:123133-99)';
+        this.errors = 'invalid! No Spaces (leading, trailing, in between)';
       } else {
         this.isSuccess = true;
         this.isError = false;
@@ -2256,7 +2267,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return; // return regex.test(this.nomor_sni);
-    }, 2000),
+    }, 3000),
     showSNI: function showSNI() {
       this.show_sni = !this.show_sni;
       this.required = 'required'; // var regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;

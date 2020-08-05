@@ -6,7 +6,7 @@
 
 <div class="container bg-white rspnv-container-prdct-detail">
     <div class="row">
-        <div class="col-md-4 col-sm-12 col-xs-12 mb-4">
+        {{-- <div class="col-md-4 col-sm-12 col-xs-12 mb-4">
             @if(Session::has('success'))
             <div class="row sccs">
                 <div class="col-12">
@@ -16,11 +16,11 @@
                 </div>
             </div>
             @endif
-            <div class="card">
+            <div class="card"> --}}
                 {{-- <div class="card-header">
                     {{ Auth::user()->role=='admin' ? 'Admin ' : 'Member '}}Profile
                 </div> --}}
-                <div class="card-body rspnv-card-body">
+                {{-- <div class="card-body rspnv-card-body">
                     @if ($user->avatar !== null)
                         <img class="card-img" 
                         src="{{ asset('/storage/'.$user->avatar)}}"
@@ -29,7 +29,7 @@
                         <img class="card-img" 
                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" 
                             alt="user-avatar">
-                    @endif
+                    @endif --}}
                     {{-- <p class="card-text mt-2">
                         <span class="badge badge-secondary">Additional info</span><br>
                         <div class="alert alert-primary">
@@ -40,7 +40,7 @@
                             @endif
                         </div>
                     </p> --}}
-                </div>
+                {{-- </div> --}}
                 {{-- <div class="card-footer">
                     <form action="{{ route('avatar.update', Auth::id()) }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -51,15 +51,24 @@
                         </div>
                     </form>
                 </div> --}}
-            </div>
-        </div>
+            {{-- </div>
+        </div> --}}
         <style>
             .table td,
             .table th {
                 border: 0;
             }
         </style>
-        <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            @if(Session::has('success'))
+            <div class="row sccs">
+                <div class="col-12">
+                    <div id="charge-message" class="alert alert-success">
+                    {{ Session::get('success') }}
+                    </div>
+                </div>
+            </div>
+            @endif
             <table class="table table-sm">
                 <tbody>
                     <tr>
@@ -124,6 +133,17 @@
                             <td></td>
                         @endif
                     </tr>
+                    @guest
+                        <tr><td>&nbsp;</td></tr>
+                    @else
+                        @if (Auth::user()->role == 'member')
+                        <tr>
+                            <td>
+                                <a href="/profile/edit/{{ $user->id }}" class="btn btn-success"><i class="fa fa-user"></i> Edit Profile</a>
+                            </td>
+                        </tr>
+                        @endif
+                    @endguest
                     {{-- <tr>
                         <th scope="row">Nib</th>
                         @if (!empty($user->nib))
@@ -140,7 +160,7 @@
         </div>
     </div>
 
-    <div id="product">
+    <div id="product" style="margin-bottom: 140px;">
         <company-products></company-products>
     </div>
 

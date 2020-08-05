@@ -21,7 +21,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>Member list</h3>
+                    <h3>Users list</h3>
                 </div>
                 <div class="card-body" style="overflow: scroll">
                     <table class="table table-striped table-sm">
@@ -69,11 +69,18 @@
 
                                 <td>
                                     <div class="d-flex justify-content-start">
-                                        <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
+                                        <form method="POST" action="{{ route('user.update', $user->id) }}">
+                                            @csrf 
+                                            @method('PATCH')
+                                            {{-- <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-success mr-1">
+                                                <i class="fa fa-thumbs-up"></i> Approve
+                                            </a> --}}
+                                            <input type="hidden" name="is_active" value="1">
+                                            <button type="submit" class="mr-1 btn btn-sm btn-success">
+                                                <i class="fa fa-thumbs-up"></i> Approve</button>
+                                        </form>
                                         <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
-                                            <i class="fa fa-eye"></i>
+                                            <i class="fa fa-eye"></i> View
                                         </a>
                                         {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                             @csrf 

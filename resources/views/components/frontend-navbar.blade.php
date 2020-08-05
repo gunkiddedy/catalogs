@@ -49,9 +49,15 @@
                     </li>
                     @endif
                 @else
-                    <li class="nav-item nav-item-mobile">
-                        <a href="/profile/{{ Auth::id() }}" class="nav-link"><i class="fa fa-user"></i> Profile</a>
-                    </li>
+                    @if(Auth::user()->role== 'member')
+                        <li class="nav-item nav-item-mobile">
+                            <a href="/company/detail/{{ Auth::id() }}" class="nav-link"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                    @else
+                        <li class="nav-item nav-item-mobile">
+                            <a href="/profile/{{ Auth::id() }}" class="nav-link"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                    @endif
                     {{-- @if (Auth::user()->role == 'member')
                     <li class="nav-item nav-item-mobile">
                         <a href="/member" class="nav-link"><i class="fa fa-cube"></i> My Products</a>
@@ -137,11 +143,20 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item nav-item-mobile">
+                    @if(Auth::user()->role== 'member')
+                        <li class="nav-item nav-item-mobile">
+                            <a href="/company/detail/{{ Auth::id() }}" class="nav-link">Profile</a>
+                        </li>
+                    @else
+                        <li class="nav-item nav-item-mobile">
+                            <a href="/profile/{{ Auth::id() }}" class="nav-link">Profile</a>
+                        </li>
+                    @endif
+                    {{-- <li class="nav-item nav-item-mobile">
                         <a href="/profile/{{ Auth::id() }}" class="nav-link">
                             Profile
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- @if (Auth::user()->role == 'member')
                     <li class="nav-item nav-item-mobile">
                         <a href="/member" class="nav-link">My Products</a>
