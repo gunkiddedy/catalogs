@@ -41456,7 +41456,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row col-md-10" }, [
+  return _c("div", { staticClass: "row col-md-12" }, [
     _c(
       "div",
       { staticClass: "col-md-12 mb-1" },
@@ -41572,7 +41572,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        placeholder: "nilai_tkdn",
+                        placeholder: "nilai tkdn",
                         type: "text",
                         required: _vm.required,
                         name: "nilai_tkdn"
@@ -41620,7 +41620,7 @@ var render = function() {
                       ],
                       staticClass: "form-control ",
                       attrs: {
-                        placeholder: "nomor_sertifikat_tkdn",
+                        placeholder: "nomor sertifikat tkdn",
                         type: "text",
                         required: _vm.required,
                         name: "nomor_sertifikat_tkdn"
@@ -41668,7 +41668,7 @@ var render = function() {
                       ],
                       staticClass: "form-control ",
                       attrs: {
-                        placeholder: "nomor_laporan_tkdn",
+                        placeholder: "nomor laporan tkdn",
                         type: "text",
                         required: _vm.required,
                         name: "nomor_laporan_tkdn"

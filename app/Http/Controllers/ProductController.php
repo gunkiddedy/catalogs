@@ -77,26 +77,36 @@ class ProductController extends Controller
         ]); 
 
         DB::transaction(function () use ($request) {
-            
+
+            // $regexSNI = '/(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/';
+            // $regexLapTKDN = '/(\w{2}\d{3}-?.?)(\w{2}\d{2})$/';
+            // $regexSertiTKDN = '/(\w{6}-?)(\d{6}-?.?)(\w{3}-?.?)(\d{3})$/';
+            // $regexNilaiTKDN = '/\d{2}(\.\d{2})?$/';
+
             $user_id = Auth::id();
             $provinsi_id = Auth::user()->provinsi_id;
             $kabupaten_id = Auth::user()->kabupaten_id;
             $kecamatan_id = Auth::user()->kecamatan_id;
             $company = Auth::user()->name;
+            
             $name = $request->name;
             $description = $request->description;
+
             $sni = $request->sni;
             $nomor_sni = $request->nomor_sni;
             $tkdn = $request->tkdn;
             $nilai_tkdn = $request->nilai_tkdn;
             $nomor_sertifikat_tkdn = $request->nomor_sertifikat_tkdn;
             $nomor_laporan_tkdn = $request->nomor_laporan_tkdn;
+
             $price = $request->price;
             $hs_code = $request->hs_code;
             $category_id = $request->category_id;
             $subcategory_id = $request->subcategory_id;
-
+            
             $images = $request->images;
+
+            
 
             if($request->hasFile('images')) {
                 foreach($images as $imagex)

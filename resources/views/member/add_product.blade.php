@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <div id="product" class="row col-md-12">
+                    <div id="product" class="row col-md-10">
                         <field-custom></field-custom>
                     </div>
 

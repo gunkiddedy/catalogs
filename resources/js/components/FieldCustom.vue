@@ -1,6 +1,6 @@
 <template>
 
-    <div class="row col-md-10">
+    <div class="row col-md-12">
         <div class="col-md-12 mb-1">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" @change="showSNI">
@@ -32,19 +32,19 @@
                 <div class="form-group mt-2" v-if="show_tkdn">
                     <div class="row">
                         <div class="col-md-4">
-                            <input placeholder="nilai_tkdn" type="text" class="form-control" :required="required" name="nilai_tkdn" v-model="nilai_tkdn" @keyup="checkNilaiTKDN">
+                            <input placeholder="nilai tkdn" type="text" class="form-control" :required="required" name="nilai_tkdn" v-model="nilai_tkdn" @keyup="checkNilaiTKDN">
                             <span class="badge" v-bind:class="{'badge-success': isSuccess_nil, 'text-danger': isError_nil}">
                                 {{ errors_nilai_tkdn }}
                             </span>
                         </div>
                         <div class="col-md-4">
-                            <input placeholder="nomor_sertifikat_tkdn" type="text" :required="required" class="form-control " name="nomor_sertifikat_tkdn" v-model="nomor_sertifikat_tkdn" @keyup="checkSertiTKDN">
+                            <input placeholder="nomor sertifikat tkdn" type="text" :required="required" class="form-control " name="nomor_sertifikat_tkdn" v-model="nomor_sertifikat_tkdn" @keyup="checkSertiTKDN">
                             <span class="badge" v-bind:class="{'badge-success': isSuccess_ser, 'text-danger': isError_ser}">
                                 {{ errors_nomor_sertifikat_tkdn }}
                             </span>
                         </div>
                         <div class="col-md-4">
-                            <input placeholder="nomor_laporan_tkdn" type="text" class="form-control " :required="required" name="nomor_laporan_tkdn" v-model="nomor_laporan_tkdn" @keyup="checkLapTKDN">
+                            <input placeholder="nomor laporan tkdn" type="text" class="form-control " :required="required" name="nomor_laporan_tkdn" v-model="nomor_laporan_tkdn" @keyup="checkLapTKDN">
                             <span class="badge ml-4" v-bind:class="{'badge-success': isSuccess_lap, 'text-danger': isError_lap}">
                                 {{ errors_nomor_laporan_tkdn }}
                             </span>
