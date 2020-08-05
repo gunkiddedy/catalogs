@@ -32,6 +32,7 @@ class CreateProductsTable extends Migration
             $table->integer('provinsi_id');
             $table->integer('kabupaten_id');
             $table->integer('kecamatan_id');
+            $table->integer('is_active')->default(0);
             $table->string('image_path')->nullable();
             $table->timestamps();
         });
