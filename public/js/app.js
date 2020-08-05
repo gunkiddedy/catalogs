@@ -41213,7 +41213,7 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/product-require" }
                 },
-                [_vm._v("Product Require")]
+                [_vm._v("Product Approval")]
               ),
               _vm._v(" "),
               _c(

@@ -6,7 +6,7 @@
         <transition name="fade">
             <ul class="list-group" v-if="show_sidebar">
                 <a href="/members" class="list-group-item member-navigation">Users</a>
-                <a href="/product-require" class="list-group-item member-navigation">Product Require</a>
+                <a href="/product-require" class="list-group-item member-navigation">Product Approval</a>
                 <a href="/category" class="list-group-item member-navigation">Category</a>
                 <a href="/provinsi" class="list-group-item member-navigation">Provinsi</a>
                 <a href="/kabupaten" class="list-group-item member-navigation">Kabupaten</a>
