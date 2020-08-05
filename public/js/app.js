@@ -41250,24 +41250,6 @@ var render = function() {
                   attrs: { href: "/kecamatan" }
                 },
                 [_vm._v("Kecamatan")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item member-navigation",
-                  attrs: { href: "/about" }
-                },
-                [_vm._v("About")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "list-group-item member-navigation",
-                  attrs: { href: "/contact" }
-                },
-                [_vm._v("Contact")]
               )
             ])
           : _vm._e()
