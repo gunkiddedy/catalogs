@@ -16,7 +16,7 @@ class CheckActiveUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->is_active == 0) {
+        if (Auth::user()->is_active == 0 || Auth::user()->phone == '' || Auth::user()->provinsi_id == '') {
             return redirect('/member');
         }
 

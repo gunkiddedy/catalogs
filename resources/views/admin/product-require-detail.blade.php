@@ -156,8 +156,8 @@
                         {{ $company->email }} | {{ $company->phone }}
                     </h6>
                     <h6>
-                        {{ $kabupaten_name ? $kabupaten_name : ''}}, 
-                        {{ $provinsi_name ? $provinsi_name : ''}}
+                        {{ \App\User::find($company->id)->kabupaten->name ? \App\User::find($company->id)->kabupaten->name : '' }}, 
+                        {{ \App\User::find($company->id)->provinsi->name ? \App\User::find($company->id)->provinsi->name : '' }}
                     </h6>
                 </div>
             </div>
