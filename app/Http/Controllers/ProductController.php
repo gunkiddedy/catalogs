@@ -77,36 +77,24 @@ class ProductController extends Controller
         ]); 
 
         DB::transaction(function () use ($request) {
-
-            // $regexSNI = '/(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/';
-            // $regexLapTKDN = '/(\w{2}\d{3}-?.?)(\w{2}\d{2})$/';
-            // $regexSertiTKDN = '/(\w{6}-?)(\d{6}-?.?)(\w{3}-?.?)(\d{3})$/';
-            // $regexNilaiTKDN = '/\d{2}(\.\d{2})?$/';
-
             $user_id = Auth::id();
             $provinsi_id = Auth::user()->provinsi_id;
             $kabupaten_id = Auth::user()->kabupaten_id;
             $kecamatan_id = Auth::user()->kecamatan_id;
             $company = Auth::user()->name;
-            
             $name = $request->name;
             $description = $request->description;
-
             $sni = $request->sni;
             $nomor_sni = $request->nomor_sni;
             $tkdn = $request->tkdn;
             $nilai_tkdn = $request->nilai_tkdn;
             $nomor_sertifikat_tkdn = $request->nomor_sertifikat_tkdn;
             $nomor_laporan_tkdn = $request->nomor_laporan_tkdn;
-
             $price = $request->price;
             $hs_code = $request->hs_code;
             $category_id = $request->category_id;
             $subcategory_id = $request->subcategory_id;
-            
             $images = $request->images;
-
-            
 
             if($request->hasFile('images')) {
                 foreach($images as $imagex)
@@ -219,50 +207,96 @@ class ProductController extends Controller
             'category_id' => 'required'
         ]);
 
-        $product = Product::find($id);
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
+        $images = $request->images;
+        $user_id = Auth::id();
 
-        $product->sni = $request->get('sni');
-        $product->nomor_sni =  $request->get('nomor_sni');
-
-        $product->tkdn = $request->get('tkdn');
-        $product->nilai_tkdn = $request->get('nilai_tkdn');
-        $product->nomor_sertifikat_tkdn = $request->get('nomor_sertifikat_tkdn');
-        $product->nomor_laporan_tkdn = $request->get('nomor_laporan_tkdn');
-
-        $product->price = $request->get('price');
-        $product->hs_code = $request->get('hs_code');
-        $product->category_id = $request->get('category_id');
-        $product->subcategory_id = $request->get('subcategory_id');
-        $product->is_active = 0;
-
-        $images = $request->file('images');
-        // dd($product);
-        $product->save();
-        
-        // check if has image
         if($request->hasFile('images')) {
+            //delete image on table product_images firts--------------
             $imgp = DB::table('product_images')->where('product_id', $id)->get();
             for($i=0; $i<count($imgp); $i++){
                 if($imgp[$i]->image_path){
                     Storage::delete('/public/'.$imgp[$i]->image_path);
                 }
             }
+            // ------------------------------------------------------
+
+            // get index 0 of images array---------------------------
+            foreach($images as $imagex){}
+            $filenamewithextension = $imagex->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $extension = $imagex->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.$user_id.'.'.$extension;
+
+            $product = Product::find($id);
+            $product->name = $request->get('name');
+            $product->description = $request->get('description');
+            $product->sni = $request->get('sni');
+            $product->nomor_sni =  $request->get('nomor_sni');
+            $product->tkdn = $request->get('tkdn');
+            $product->nilai_tkdn = $request->get('nilai_tkdn');
+            $product->nomor_sertifikat_tkdn = $request->get('nomor_sertifikat_tkdn');
+            $product->nomor_laporan_tkdn = $request->get('nomor_laporan_tkdn');
+            $product->price = $request->get('price');
+            $product->hs_code = $request->get('hs_code');
+            $product->category_id = $request->get('category_id');
+            $product->subcategory_id = $request->get('subcategory_id');
+            $product->is_active = 0;
+            $product->image_path = 'images/'.$filenametostore;
+            $product->save();
+
+            // delete product_images first, then insert with the new images
+            DB::table('product_images')->where('product_id', '=', $id)->delete();
+
+            // ---------------------------------------------------------
+
+
             foreach($images as $image) {
-                $filename = $image->getClientOriginalName();
-                $path = $image->storeAs('images', $product->id.'-'.$filename, 'public');
-                DB::table('product_images')
-                ->updateOrInsert(
-                    ['name' => $product->name],
-                    ['image_path' => $path]
-                );
+                $filenamewithextension = $image->getClientOriginalName();
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $filenametostore = $filename.'_'.$user_id.'.'.$extension;
+                $image->storeAs('public/images', $filenametostore);        
+                $imagePath = public_path('storage/images/'.$filenametostore);
+                $imgSave = Image::make($imagePath)->fit(300);
+                $imgSave->save($imagePath);
+                
+                // DB::table('product_images')->where('product_id', $id)->update([
+                //     'name' => $request->get('name'),
+                //     'image_path' => 'images/'.$filenametostore,
+                // ]);
+                
+
+                ProductImage::create([
+                    'name' => $request->get('name'),
+                    'product_id' => $id,
+                    'image_path' => 'images/'.$filenametostore,
+                ]);
             }
         }
         else{
             DB::table('product_images')->where('product_id', $id)->update([
                 'name' => $product->name
             ]);
+
+            $product = Product::find($id);
+            $product->name = $request->get('name');
+            $product->description = $request->get('description');
+
+            $product->sni = $request->get('sni');
+            $product->nomor_sni =  $request->get('nomor_sni');
+
+            $product->tkdn = $request->get('tkdn');
+            $product->nilai_tkdn = $request->get('nilai_tkdn');
+            $product->nomor_sertifikat_tkdn = $request->get('nomor_sertifikat_tkdn');
+            $product->nomor_laporan_tkdn = $request->get('nomor_laporan_tkdn');
+
+            $product->price = $request->get('price');
+            $product->hs_code = $request->get('hs_code');
+            $product->category_id = $request->get('category_id');
+            $product->subcategory_id = $request->get('subcategory_id');
+            $product->is_active = 0;
+            $product->save();
+
         }
 
         return redirect('/member')->with('success', 'product '.$product->name.' updated successfully');

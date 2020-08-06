@@ -138,7 +138,15 @@
         
                 </div>
                 
-                <button type="submit" class="btn btn-success mt-4 float-right">Update product</button>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group justify-content-between mt-4 float-right">
+                            <button type="submit" class="btn btn-primary">Update product</button>
+                            <a href="/member" class="btn btn-warning">Cancel</a>
+                        </div>
+                    </div>
+                </div>
             
             </form>
         </div>

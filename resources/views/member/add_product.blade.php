@@ -149,8 +149,14 @@
                         </div>
                     </div> --}}
                 {{-- </div> --}}
-                
-                <button type="submit" class="btn btn-primary mt-4 float-right">Submit product</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group justify-content-between mt-4 float-right">
+                            <button type="submit" class="btn btn-primary">Submit product</button>
+                            <a href="/member" class="btn btn-warning">Cancel</a>
+                        </div>
+                    </div>
+                </div>
             
             </form>
         </div>
