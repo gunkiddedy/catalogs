@@ -2206,8 +2206,7 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       subcategories: [],
       select_category: '',
-      select_subcategory: '',
-      selected_value: []
+      select_subcategory: ''
     };
   },
   // computed: {
@@ -2231,8 +2230,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/getcategories').then(function (response) {
         _this.categories = response.data;
-        console.log(response.data);
-        _this.selected_value = [];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2246,7 +2243,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this2.subcategories = response.data;
-        _this2.selected_value = [];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2268,68 +2264,69 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return; // return regex.test(this.nomor_sni);
-    }, 3000),
-    checkSertiTKDN: _.debounce(function () {
-      // let regex = /(\w{6}-?)(\d{6}-?.?)(\w{3}-?.?)(\d{3})$/;
+    }, 2000),
+    checkSertiTKDN: _.debounce(function (check_value) {
       // let regex = /[\w\.\,\/\:]+/g;
-      // let regex = .replace(new RegExp(/[^\w\.\/\:\,\']+/, "g"), "");
-      var regex = /^\S[\w\.\-\/\:]+\S$/;
-      var value = regex.test(this.nomor_sertifikat_tkdn);
-
-      if (value == false) {
-        this.nomor_sertifikat_tkdn = null; // this.nomor_sertifikat_tkdn = this.nomor_sertifikat_tkdn.replace(/[^\w\.\/\:\,\']+/, "g", "");
-
-        this.isError_ser = true;
-        this.isSuccess_ser = false;
-        this.errors_nomor_sertifikat_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
-      } else {
-        this.isSuccess_ser = true;
-        this.isError_ser = false;
-        this.errors_nomor_sertifikat_tkdn = 'format valid';
-      }
+      // let replaceWith = /[^\w\.\/\:\,\']+/, "g";
+      // let regex = /^\S[\w\.\-\/\:]+\S$/;
+      var searchRegExp = /[^\w\.\/\:\,\-]+/;
+      var valid = check_value.replace(searchRegExp, '');
+      this.nomor_sertifikat_tkdn = valid;
+      console.log(valid); // if(value == false){
+      //     this.nomor_sertifikat_tkdn = null;
+      //     this.isError_ser = true;
+      //     this.isSuccess_ser = false;
+      //     this.errors_nomor_sertifikat_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
+      // }else{
+      //     this.isSuccess_ser = true;
+      //     this.isError_ser = false;
+      //     this.errors_nomor_sertifikat_tkdn = 'format valid';
+      // }
+      // return
+      // return regex.test(this.nomor_sni);
+    }, 2000),
+    checkLapTKDN: _.debounce(function (check_value) {
+      var searchRegExp = /[^\w\.\/\:\,\-]+/;
+      var valid = check_value.replace(searchRegExp, '');
+      this.nomor_laporan_tkdn = valid; // let regex = /(\w{2}\d{3}-?.?)(\w{2}\d{2})$/;
+      // let regex = /[\w\.\,\/\:]+/g;
+      // let regex = /^\S[\w\.\-\/\:]+\S$/;
+      // let value = regex.test(this.nomor_laporan_tkdn);
+      // if(value == false){
+      //     this.nomor_laporan_tkdn = null;
+      //     // this.nomor_laporan_tkdn = this.nomor_laporan_tkdn.replace(/[^\w\.\/\:\,\']+/, "g", "");
+      //     this.isError_lap = true;
+      //     this.isSuccess_lap = false;
+      //     this.errors_nomor_laporan_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
+      // }else{
+      //     this.isSuccess_lap = true;
+      //     this.isError_lap = false;
+      //     this.errors_nomor_laporan_tkdn = 'format valid';
+      // }
 
       return; // return regex.test(this.nomor_sni);
-    }, 3000),
-    checkLapTKDN: _.debounce(function () {
-      // let regex = /(\w{2}\d{3}-?.?)(\w{2}\d{2})$/;
+    }, 2000),
+    checkSNI: _.debounce(function (check_value) {
+      var searchRegExp = /[^\w\.\/\:\,\-]+/;
+      var valid = check_value.replace(searchRegExp, '');
+      this.nomor_sni = valid; // let regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;
       // let regex = /[\w\.\,\/\:]+/g;
-      var regex = /^\S[\w\.\-\/\:]+\S$/;
-      var value = regex.test(this.nomor_laporan_tkdn);
-
-      if (value == false) {
-        this.nomor_laporan_tkdn = null; // this.nomor_laporan_tkdn = this.nomor_laporan_tkdn.replace(/[^\w\.\/\:\,\']+/, "g", "");
-
-        this.isError_lap = true;
-        this.isSuccess_lap = false;
-        this.errors_nomor_laporan_tkdn = 'invalid! No Spaces (leading, trailing, in between)';
-      } else {
-        this.isSuccess_lap = true;
-        this.isError_lap = false;
-        this.errors_nomor_laporan_tkdn = 'format valid';
-      }
+      // let regex = /^\S[\w\.\-\/\:]+\S$/;
+      // let value = regex.test(this.nomor_sni);
+      // if(value == false){
+      //     this.nomor_sni = null;
+      //     // this.nomor_sni = this.nomor_sni.replace(/[^\w\.\/\:\,\']+/, "g", "");
+      //     this.isError = true;
+      //     this.isSuccess = false;
+      //     this.errors = 'invalid! No Spaces (leading, trailing, in between)';
+      // }else{
+      //     this.isSuccess = true;
+      //     this.isError = false;
+      //     this.errors = 'format valid';
+      // }
 
       return; // return regex.test(this.nomor_sni);
-    }, 3000),
-    checkSNI: _.debounce(function () {
-      // let regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;
-      // let regex = /[\w\.\,\/\:]+/g;
-      var regex = /^\S[\w\.\-\/\:]+\S$/;
-      var value = regex.test(this.nomor_sni);
-
-      if (value == false) {
-        this.nomor_sni = null; // this.nomor_sni = this.nomor_sni.replace(/[^\w\.\/\:\,\']+/, "g", "");
-
-        this.isError = true;
-        this.isSuccess = false;
-        this.errors = 'invalid! No Spaces (leading, trailing, in between)';
-      } else {
-        this.isSuccess = true;
-        this.isError = false;
-        this.errors = 'format valid';
-      }
-
-      return; // return regex.test(this.nomor_sni);
-    }, 3000),
+    }, 2000),
     showSNI: function showSNI() {
       this.show_sni = !this.show_sni;
       this.required = 'required'; // var regex = /(\d{6}-?:?)(\d{6}-?.?)(\d{2})$/;
@@ -41556,7 +41553,9 @@ var render = function() {
                         },
                         domProps: { value: _vm.nomor_sni },
                         on: {
-                          keyup: _vm.checkSNI,
+                          keyup: function($event) {
+                            return _vm.checkSNI(_vm.nomor_sni)
+                          },
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -41634,7 +41633,9 @@ var render = function() {
                       },
                       domProps: { value: _vm.nilai_tkdn },
                       on: {
-                        keyup: _vm.checkNilaiTKDN,
+                        keyup: function($event) {
+                          return _vm.checkNilaiTKDN(_vm.nilai_tkdn)
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -41682,7 +41683,9 @@ var render = function() {
                       },
                       domProps: { value: _vm.nomor_sertifikat_tkdn },
                       on: {
-                        keyup: _vm.checkSertiTKDN,
+                        keyup: function($event) {
+                          return _vm.checkSertiTKDN(_vm.nomor_sertifikat_tkdn)
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -41730,7 +41733,9 @@ var render = function() {
                       },
                       domProps: { value: _vm.nomor_laporan_tkdn },
                       on: {
-                        keyup: _vm.checkLapTKDN,
+                        keyup: function($event) {
+                          return _vm.checkLapTKDN(_vm.nomor_laporan_tkdn)
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -41804,7 +41809,7 @@ var render = function() {
               }
             },
             [
-              _c("option", { domProps: { value: _vm.selected_value } }, [
+              _c("option", { attrs: { value: "", selected: "selected" } }, [
                 _vm._v("Choose...")
               ]),
               _vm._v(" "),
@@ -41853,7 +41858,7 @@ var render = function() {
               }
             },
             [
-              _c("option", { domProps: { value: _vm.selected_value } }, [
+              _c("option", { attrs: { value: "", selected: "selected" } }, [
                 _vm._v("Choose...")
               ]),
               _vm._v(" "),
