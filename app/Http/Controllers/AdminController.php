@@ -45,8 +45,6 @@ class AdminController extends Controller
             'product' => $product,
             'images' => $images,
             'company' => $company,
-            'kabupaten_name' => $kabupaten_name,
-            'provinsi_name' => $provinsi_name,
             'category' => $category,
             'subcategory' => $subcategory,
         ]);
