@@ -80,7 +80,25 @@
                             <h6>Hs Code : {{ $product->hs_code }}</h6>
                         </div>
                         <div class="card-footer bg-white">
+                            @if ($product->is_active == 0)
                             <form method="POST" action="{{ route('product-require.update', $product->id) }}">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="is_active" value="1">
+                                <button type="submit" class="btn btn-success ml-2"><i class="fa fa-level-up"></i> Approve</button>
+                                <a href="/product-require" class="btn btn-primary text-white ml-2">Back</a>
+                            </form>
+                            @else
+                            <form method="POST" action="{{ route('product-require.update', $product->id) }}">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="is_active" value="0">
+                                <button type="submit" class="btn btn-warning ml-2"><i class="fa fa-level-down"></i> Set to inactive</button>
+                                <a href="/product-require" class="btn btn-primary text-white ml-2">Back</a>
+                            </form>
+                            @endif
+
+                            {{-- <form method="POST" action="{{ route('product-require.update', $product->id) }}">
                                 @csrf
                                 @method('PATCH')
                                 <div class="row d-flex justify-content-start">
@@ -114,11 +132,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-success ml-2">Update</button>
+                                        <button type="submit" class="btn btn-success ml-2">Approve</button>
                                         <a href="/product-require" class="btn btn-primary text-white ml-2">Back</a>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
                         </div>
                     </div>
                 </div>

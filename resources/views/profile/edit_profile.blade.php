@@ -127,6 +127,7 @@
                 </div>
         
                 <button type="submit" class="btn btn-primary">Update profile</button>
+                <a class="btn btn-success" href="/company/detail/{{ $user->id }}">Cancel</a>
             </form>
         </div>
     </div>

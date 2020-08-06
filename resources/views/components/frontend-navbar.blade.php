@@ -28,7 +28,7 @@
                         <li class="nav-item nav-item-mobile">
                             <a 
                                 class="nav-link {{ request()->is('member') ? 'active' : ''}}" 
-                                href="/member"><i class="fa fa-home"></i> Home
+                                href="/member"><i class="fa fa-home"></i> Product
                             </a>
                         </li>    
                     @elseif(Auth::user()->role == 'admin')
@@ -114,7 +114,7 @@
                         <li class="nav-item nav-item-mobile">
                             <a 
                                 class="nav-link {{ request()->is('member') ? 'active' : ''}}" 
-                                href="/member">Home
+                                href="/member">Product
                             </a>
                         </li>    
                     @elseif(Auth::user()->role == 'admin')

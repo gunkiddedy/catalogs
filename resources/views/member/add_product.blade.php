@@ -16,7 +16,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name" >Product Name</label>
-                                <input placeholder="Product name" type="text" class="form-control " name="name" value="" autofocus>
+                                <input placeholder="Product name" 
+                                    value="{{ old('name') }}"
+                                    type="text" class="form-control " name="name" value="" autofocus>
                                 @error('name')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -30,7 +32,7 @@
                         <label for="price" >Product Description</label>
                         <div class="form-group">
                             <div>
-                                <textarea name="description" rows="3" class="form-control"></textarea>
+                                <textarea name="description" rows="3" class="form-control">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -86,7 +88,7 @@
                             <div class="form-group col-md-6">
                                 <label for="price" >Price</label>
                                 {{-- <input type="number" name="price" placeholder="Enter price" class="form-control"> --}}
-                                <input type="text" name="price"
+                                <input type="text" name="price" value="{{ old('price') }}"
                                     class="form-control" 
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
                                     />
@@ -98,7 +100,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="hs_code" >HS Code</label>
-                                <input type="text" name="hs_code" placeholder="Enter Hs Code" class="form-control">
+                                <input type="text" name="hs_code" value="{{ old('hs_code') }}" placeholder="Enter Hs Code" class="form-control">
                                 @error('hs_code')
                                     <div class="text-danger">
                                         {{ $message }}

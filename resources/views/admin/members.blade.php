@@ -68,6 +68,7 @@
                                 </td> --}}
 
                                 <td>
+                                    @if($user->is_active == 0)
                                     <div class="d-flex justify-content-start">
                                         <form method="POST" action="{{ route('user.update', $user->id) }}">
                                             @csrf 
@@ -77,7 +78,7 @@
                                             </a> --}}
                                             <input type="hidden" name="is_active" value="1">
                                             <button type="submit" class="mr-1 btn btn-sm btn-success">
-                                                <i class="fa fa-thumbs-up"></i> Approve</button>
+                                                <i class="fa fa-level-up"></i> Approve</button>
                                         </form>
                                         <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
                                             <i class="fa fa-eye"></i> View
@@ -90,6 +91,30 @@
                                             </button>
                                         </form> --}}
                                     </div>
+                                    @elseif($user->is_active == 1)
+                                    <div class="d-flex justify-content-start">
+                                        <form method="POST" action="{{ route('user.update', $user->id) }}">
+                                            @csrf 
+                                            @method('PATCH')
+                                            {{-- <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-success mr-1">
+                                                <i class="fa fa-thumbs-up"></i> Approve
+                                            </a> --}}
+                                            <input type="hidden" name="is_active" value="0">
+                                            <button type="submit" class="mr-1 btn btn-sm btn-warning">
+                                                <i class="fa fa-level-down"></i> Set to inactive</button>
+                                        </form>
+                                        <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                Delete <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form> --}}
+                                    </div>
+                                    @endif
                                 </td>
 
                             </tr>

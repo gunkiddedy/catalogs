@@ -10,17 +10,18 @@
         </div> --}}
         <div class="col-md-12 col-sm-12">
 
-            <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
-
+            
             @if (Auth::user()->is_active == 0)
             <div class="row">
                 <div class="col-md-12 mt-4 mb-4 col-sm-12 col-xs-12">
                     <p class="alert alert-primary">
-                        Anda belum melengkapi profil atau anda baru saja merubah data profile, silahkan lengkapi dulu 
-                        <a href="/profile/{{ Auth::id() }}">di sini!</a> atau menunggu konfirmasi dari admin
+                        Akun anda masih dalam proses review, mohon ditunggu sampai proses review selesai. Terima kasih
+                        {{-- <a href="/profile/{{ Auth::id() }}">di sini!</a> --}}
                     </p>
                 </div>
             </div>
+            @else
+            <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
             @endif
             
             @if(Session::has('success'))
@@ -56,7 +57,7 @@
                                     @if ($product->is_active == 1)
                                         <span class="badge badge-success">Published</span>
                                     @else
-                                        <span class="badge badge-warning">Draft</span>
+                                        <span class="badge badge-danger text-white">Sedang di review</span>
                                     @endif
                                 </td>
                                 <td>
