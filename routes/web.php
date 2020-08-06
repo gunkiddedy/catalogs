@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
+// Route::get('sni', 'Api\TkdnSniController@getSNI');
 
 
 // Route::view('/', 'index');

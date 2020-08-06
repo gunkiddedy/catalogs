@@ -57,21 +57,25 @@
                                     @if ($product->is_active == 1)
                                         <span class="badge badge-success">Published</span>
                                     @else
-                                        <span class="badge badge-danger text-white">Sedang di review</span>
+                                        <span class="badge badge-secondary text-white">Sedang di review</span>
                                     @endif
                                 </td>
                                 <td>
                                     <div class="row">
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary mr-1">
-                                            Edit <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <form action="{{ route('product.delete', $product->id) }}" method="POST">
-                                            @csrf 
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-warning">
-                                                Delete <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @if ($product->is_active == 1)
+                                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary mr-1">
+                                                Edit <i class="fa fa-pencil"></i>
+                                            </a>  
+                                            <form action="{{ route('product.delete', $product->id) }}" method="POST">
+                                                @csrf 
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-warning">
+                                                    Delete <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @else
+                                        <p><span class="badge badge-success"><i class="fa fa-rocket"></i></span></p>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

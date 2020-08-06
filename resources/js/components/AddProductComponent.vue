@@ -1,13 +1,32 @@
 <template>
 
-    <div class="row col-md-12">
+    <div class="row">
         <div class="col-md-12">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" @change="showSNI">
-                <label class="custom-control-label" for="sni">SNI</label>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="name" >Product Name</label>
+                    <input placeholder="Product name" required
+                        type="text" class="form-control " name="name" value="" autofocus>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="price" >Product Description</label>
+                <textarea name="description" rows="3" class="form-control" required></textarea>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="sni" class="custom-control-input" name="sni" value="1" @change="showSNI">
+                    <label class="custom-control-label" for="sni">SNI</label>
+                </div>
             </div>
             <transition name="fade">
-                <div class="form-group mt-2" v-if="show_sni">
+                <div class="form-group" v-if="show_sni">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12">
                             <input placeholder="nomor sni" type="text" class="form-control" :required="required" name="nomor_sni" v-model="nomor_sni" @keyup="checkSNI(nomor_sni)"
@@ -23,14 +42,16 @@
         </div>
 
         <div class="col-md-12">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" value="1" @change="showTKDN">
-                <label class="custom-control-label" for="tkdn">TKDN</label>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" value="1" @change="showTKDN">
+                    <label class="custom-control-label" for="tkdn">TKDN</label>
+                </div>
             </div>
             <transition name="fade">
 
-                <div class="form-group mt-2" v-if="show_tkdn">
-                    <div class="row">
+                <div class="form-group" v-if="show_tkdn">
+                    <div class="row d-flex justify-content-between">
                         <div class="col-md-4">
                             <input placeholder="nilai tkdn" type="text" class="form-control" :required="required" name="nilai_tkdn" v-model="nilai_tkdn" @keyup="checkNilaiTKDN(nilai_tkdn)">
                             <span class="badge" v-bind:class="{'badge-success': isSuccess_nil, 'text-danger': isError_nil}">
@@ -54,7 +75,22 @@
             </transition>
         </div>
 
-        <div class="col-md-12 mt-2">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="hs_code" >HS Code</label>
+                    <input type="text" name="hs_code" placeholder="Enter Hs Code" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="price" >Price</label>
+                    <input type="text" name="price" placeholder="Enter price" required
+                        class="form-control" 
+                        />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="category_id" >Category</label>
@@ -81,7 +117,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-md-12">
+            <label for="photos">Choose images ( you can select multiple with ctrl+click image )</label>
+            <div class="form-group">
+                <input type="file" name="images[]" id="images" multiple>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -197,7 +238,7 @@
                 //     this.isError_ser = false;
                 //     this.errors_nomor_sertifikat_tkdn = 'format valid';
                 // }
-                // return
+                return
                 // return regex.test(this.nomor_sni);
             },2000),
 

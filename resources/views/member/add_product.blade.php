@@ -5,16 +5,17 @@
 @section ('content')
 <div class="container bg-white">
     <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-10">
             <h3>Add Product</h3>
             <hr>
             <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                 @csrf 
                 @method('POST')
-                <div class="row ">
-                    <div class="col-10">
+                {{-- <div class="row"> --}}
+
+                    {{-- <div class="col-10">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="name" >Product Name</label>
                                 <input placeholder="Product name" 
                                     value="{{ old('name') }}"
@@ -28,22 +29,20 @@
                         </div>
                     </div>
 
-                    <div class="col-10">
-                        <label for="price" >Product Description</label>
+                    <div class="col-md-10">
                         <div class="form-group">
-                            <div>
-                                <textarea name="description" rows="3" class="form-control">{{ old('description') }}</textarea>
-                                @error('description')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            <label for="price" >Product Description</label>
+                            <textarea name="description" rows="3" class="form-control">{{ old('description') }}</textarea>
+                            @error('description')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div id="product" class="row col-md-10">
-                        <field-custom></field-custom>
+                    <div id="product">
+                        <add-product />
                     </div>
 
                     {{-- <div class="row col-10">
@@ -83,21 +82,8 @@
                     </div> --}}
 
         
-                    <div class="col-10">
+                    {{-- <div class="col-10">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="price" >Price</label>
-                                {{-- <input type="number" name="price" placeholder="Enter price" class="form-control"> --}}
-                                <input type="text" name="price" value="{{ old('price') }}"
-                                    class="form-control" 
-                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
-                                    />
-                                @error('price')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
                             <div class="form-group col-md-6">
                                 <label for="hs_code" >HS Code</label>
                                 <input type="text" name="hs_code" value="{{ old('hs_code') }}" placeholder="Enter Hs Code" class="form-control">
@@ -107,8 +93,21 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="price" >Price</label>
+                                <input type="text" name="price" value="{{ old('price') }}"
+                                    placeholder="Enter price"
+                                    class="form-control" 
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+                                    />
+                                @error('price')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    </div> --}}
         
                     {{-- <div class="col-10">
                         <div class="form-row">
@@ -141,16 +140,17 @@
                     
         
                     
-        
-                    <div class="col-10">
-                        <label for="photos">Choose images</label>
-                        <div class="form-group">
-                            <input type="file" name="images[]" id="images" multiple>
+                    {{-- <div class="row">
+                        <div class="col-10">
+                            <label for="photos">Choose images ( you can select multiple with ctrl+click image )</label>
+                            <div class="form-group">
+                                <input type="file" name="images[]" id="images" multiple>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div> --}}
+                {{-- </div> --}}
                 
-                <button type="submit" class="btn btn-primary">Submit product</button>
+                <button type="submit" class="btn btn-primary mt-4 float-right">Submit product</button>
             
             </form>
         </div>

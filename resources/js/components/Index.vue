@@ -77,35 +77,7 @@
                         <div class="card border-white">
                             <div class="card-body bg-white">
                                 <h5 style="font-weight:bold">Find by Category</h5>
-                                <button class="accordion">
-                                        1
-                                </button>
-                                <div class="accordion-content">
-                                    <p>
-                                        1
-                                    </p>
-                                </div>
-                                <button class="accordion">
-                                        1
-                                </button>
-                                <div class="accordion-content">
-                                    <p>
-                                        1
-                                    </p>
-                                </div>
-                                <!-- new accordion -->
-                                <div v-for="cat in DataSource" :key="cat.id">
-                                    <button class="accordion" @click="showChild">
-                                        {{ cat.label }}
-                                    </button>
-                                    <div class="accordion-content" v-if="isOpen">
-                                        <p v-for="child in cat.children" :key="child.id">
-                                            {{ child.label }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- end new accordion -->
-
+                                
                                 <div id="accordion">
                                     <div class="card border-white" v-for="cat in DataSource" :key="cat.id" :id="'accordion'+cat.id">
                                         <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
@@ -240,7 +212,6 @@
                 searchData: [],
                 keyword: '',
                 subcat: '',
-                isOpen: false,
                 selected: {
                     searchData: {},
                     // category_items: [],
@@ -292,28 +263,25 @@
         // },
 
         methods: {
-            showChild(){
-                this.isOpen  =true;
+
+            getAccordion(){
+                var accordions = document.getElementsByClassName("accordion");
+
+                for (var i = 0; i < accordions.length; i++) {
+                    accordions[i].onclick = function() {
+                        this.classList.toggle('is-open');
+
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            // accordion is currently open, so close it
+                            content.style.maxHeight = null;
+                        } else {
+                            // accordion is currently closed, so open it
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    }
+                }
             },
-
-            // getAccordion(){
-            //     var accordions = document.getElementsByClassName("accordion");
-
-            //     for (var i = 0; i < accordions.length; i++) {
-            //         accordions[i].onclick = function() {
-            //             this.classList.toggle('is-open');
-
-            //             var content = this.nextElementSibling;
-            //             if (content.style.maxHeight) {
-            //                 // accordion is currently open, so close it
-            //                 content.style.maxHeight = null;
-            //             } else {
-            //                 // accordion is currently closed, so open it
-            //                 content.style.maxHeight = content.scrollHeight + "px";
-            //             }
-            //         }
-            //     }
-            // },
             
             getCategory: function(id){
                 axios.get('/api/products/category/' + id)

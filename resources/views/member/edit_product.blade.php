@@ -5,7 +5,7 @@
 @section ('content')
 <div class="container bg-white">
     <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-10">
             <h3>Edit Product</h3>
             <hr>
             <form method="POST" action="{{ route('product.update', $product->id) }}" 
@@ -13,16 +13,16 @@
                 @csrf 
                 @method('PATCH')
                 <div class="row ">
-                    <div class="col-10">
+                    <div class="col-md-12">
                         <div class="form-row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-12">
                                 <label for="name" >Product Name</label>
                                 <input placeholder="Enter product name" type="text" class="form-control " name="name" value="{{ $product->name }}" required autocomplete="name">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-10">
+                    <div class="col-md-12">
                         <label for="price" >Product Description</label>
                         <div class="form-group">
                             <div>
@@ -31,7 +31,11 @@
                         </div>
                     </div>
 
-                    <div class="col-10 mb-2">
+                    <div id="product" style="width: 100%">
+                        <edit-product/>
+                    </div>
+
+                    {{-- <div class="col-md-12 mb-2">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="sni" class="custom-control-input" name="sni" 
                             value="1" {{ $product->sni == 1 ? 'checked' : ''}}
@@ -40,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <input 
                                         placeholder="nomor sni" 
                                         type="text" class="form-control " 
@@ -52,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="col-10 mb-2">
+                    <div class="col-md-12 mb-2">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="tkdn" class="custom-control-input" name="tkdn" 
                                 value="1" {{ $product->tkdn == 1 ? 'checked' : ''}} 
@@ -74,9 +78,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
         
-                    <div class="col-8">
+                    <div class="col-md-12">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="price" >HS Code</label>
@@ -89,7 +93,7 @@
                         </div>
                     </div>
         
-                    <div class="col-8">
+                    <div class="col-md-12">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="category_id" >Category</label>
@@ -113,29 +117,28 @@
                     </div>
                     
                     
-        
-                    {{-- <div class="col-10 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input 
-                                class="form-check-input" 
-                                type="checkbox" id="sni" 
-                                value="{{ $product->sni }}" {{ $product->sni == 1 ? 'checked' : ''}} name="sni">
-                            <label class="form-check-label" for="inlineCheckbox1">SNI</label>
+                    <div class="col-md-12 mt-4">
+                        <div class="card">
+                            <div class="card-body">
+                                @foreach (DB::table('view_product_images')->where('product_id', $product->id)->get() as $image)
+                                    <img src="{{ asset('/storage/'.$image->image_path) }}" alt="images" width="60" height="60" class="img-thumbnail">
+                                @endforeach
+                            </div>
                         </div>
-                    </div> --}}
+                    </div>
         
-                    {{-- <div class="col-12">
+                    <div class="col-12 mt-4">
                         <div class="form-group">
         
                             <label class="form-check-label" for="inlineCheckbox1">
-                                Update images <span class="text-danger">(*skip if no need to update)</span></label>
+                                Update images <span class="text-danger">(*skip if no need to update the image)</span></label>
                             <input type="file" id="images" name="images[]"  multiple>
                         </div>
-                    </div> --}}
+                    </div>
         
                 </div>
                 
-                <button type="submit" class="btn btn-success">Update product</button>
+                <button type="submit" class="btn btn-success mt-4 float-right">Update product</button>
             
             </form>
         </div>
