@@ -38,6 +38,10 @@ class AdminController extends Controller
         $product = \App\Product::find($id);
         $images = \App\ProductImage::where('product_id', $id)->with('product')->get();
         $company = \App\Product::find($id)->user;
+        // dd($company);
+        $kabupaten_name = \App\User::find($id)->kabupaten->name;
+        $provinsi_name = \App\User::find($id)->provinsi->name;
+
         $category = \App\Product::find($id)->category;
         $subcategory = \App\Product::find($id)->subcategory;
         
@@ -45,6 +49,8 @@ class AdminController extends Controller
             'product' => $product,
             'images' => $images,
             'company' => $company,
+            'kabupaten_name' => $kabupaten_name,
+            'provinsi_name' => $provinsi_name,
             'category' => $category,
             'subcategory' => $subcategory,
         ]);

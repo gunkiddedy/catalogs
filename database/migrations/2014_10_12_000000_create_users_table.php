@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('is_active')->default(0);
             $table->string('role')->default('member');
-            $table->integer('provinsi_id')->nullable();
-            $table->integer('kabupaten_id')->nullable();
-            $table->integer('kecamatan_id')->nullable();
+            $table->integer('provinsi_id')->nullable()->default(11);
+            $table->integer('kabupaten_id')->nullable()->default(1101);
+            $table->integer('kecamatan_id')->nullable()->default(1101010);
             $table->string('address')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('nib')->nullable();

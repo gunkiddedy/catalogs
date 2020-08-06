@@ -54,9 +54,9 @@
                                 </td>
                                 <td>
                                     @if ($product->is_active == 1)
-                                        <span class="badge badge-success">Active</span>
+                                        <span class="badge badge-success">Published</span>
                                     @else
-                                        <span class="badge badge-warning">Inactive</span>
+                                        <span class="badge badge-warning">Draft</span>
                                     @endif
                                 </td>
                                 <td>

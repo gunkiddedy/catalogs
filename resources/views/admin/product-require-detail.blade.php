@@ -98,7 +98,7 @@
                                                     value="1" {{ $product->is_active == 1 ? 'checked' : ''}}>
                 
                                                     <label class="form-check-label mr-4" for="is_active1">
-                                                      Active
+                                                      Publish
                                                     </label>
                 
                                                     <input
@@ -108,7 +108,7 @@
                                                     id="is_active2" 
                                                     value="0" {{ $product->is_active == 0 ? 'checked' : ''}}>
                                                     <label class="form-check-label" for="is_active2">
-                                                      Inactive
+                                                      Draft
                                                     </label>
                 
                                                 </div>
@@ -156,8 +156,8 @@
                         {{ $company->email }} | {{ $company->phone }}
                     </h6>
                     <h6>
-                        {{ \App\User::find($company->id)->kabupaten->name ? \App\User::find($company->id)->kabupaten->name : '' }}, 
-                        {{ \App\User::find($company->id)->provinsi->name ? \App\User::find($company->id)->provinsi->name : '' }}
+                        {{ $kabupaten_name ? $kabupaten_name : ''}}, 
+                        {{ $provinsi_name ? $provinsi_name : ''}}
                     </h6>
                 </div>
             </div>
