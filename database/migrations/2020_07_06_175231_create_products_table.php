@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->mediumText('description');
-            $table->integer('category_id')->nullable();
-            $table->integer('subcategory_id')->nullable();
+            $table->integer('category_id');
+            $table->integer('subcategory_id')->default(99);
             $table->integer('sni')->default(0);
             $table->string('nomor_sni')->nullable();
             $table->integer('tkdn')->default(0);
