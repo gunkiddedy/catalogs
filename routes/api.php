@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('getdata/{id}', 'Api\GetDataProductController@getData');
+Route::get('getdatauser/{id}', 'Api\GetDataProductController@getDataUser');
 
 Route::get('mapingcategories', 'Api\CategoryController@mapingCategory');
 

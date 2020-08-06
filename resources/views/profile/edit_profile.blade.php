@@ -68,8 +68,9 @@
 
                 
         
-                <div class="form-row">
-                    <div class="form-group col-md-12">
+                <div id="product">
+                    <provi-kabu/>
+                    {{-- <div class="form-group col-md-12">
                         <label for="email">Provinsi</label>
                         <select class="form-control" name="provinsi_id">
                             @foreach ($provinsi as $prop)
@@ -82,6 +83,7 @@
                             </div>
                         @enderror
                     </div>
+
                     <div class="form-group col-md-12">
                         <label for="inputCity">Kabupaten</label>
                         <select class="form-control" name="kabupaten_id">
@@ -94,7 +96,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
+                    </div> --}}
+
                     {{-- <div class="form-group col-md-12">
                         <label for="inputCity">Kecamatan</label>
                         <select class="form-control" name="kecamatan_id">

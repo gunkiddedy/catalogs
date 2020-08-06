@@ -12,4 +12,10 @@ class GetDataProductController extends Controller
         $SNI = \App\Product::find($id);
         return response()->json($SNI);
     }
+
+    public function getDataUser($id)
+    {
+        $user = \App\User::find($id);
+        return response()->json($user);
+    }
 }
