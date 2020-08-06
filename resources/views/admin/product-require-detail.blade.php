@@ -156,10 +156,8 @@
                         {{ $company->email }} | {{ $company->phone }}
                     </h6>
                     <h6>
-                        @if (\App\User::find($company->id)->kabupaten->name !== '')
-                            {{ \App\User::find($company->id)->kabupaten->name ? \App\User::find($company->id)->kabupaten->name : '' }}, 
-                            {{ \App\User::find($company->id)->provinsi->name ? \App\User::find($company->id)->provinsi->name : '' }}
-                        @endif
+                        {{ \App\User::find($company->id)->kabupaten->name ? \App\User::find($company->id)->kabupaten->name : '' }}, 
+                        {{ \App\User::find($company->id)->provinsi->name ? \App\User::find($company->id)->provinsi->name : '' }}
                     </h6>
                 </div>
             </div>
