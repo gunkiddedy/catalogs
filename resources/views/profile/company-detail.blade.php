@@ -78,10 +78,10 @@
                     <tr>
                         {{-- <th scope="row">Address</th> --}}
                             <td>
-                                {{ $user ? $user->address : '-' }}
-                                {{ $kecamatan ? $kecamatan->name : '' }}
-                                {{ $kabupaten ? $kabupaten->name : '' }}
-                                {{ $provinsi ? $provinsi->name : '' }}
+                                {{ $user ? $user->address : '' }}
+                                {{ $kecamatan ? $kecamatan->name.', ' : '' }}
+                                {{ $kabupaten ? $kabupaten->name.', ' : '' }}
+                                {{ $provinsi ? $provinsi->name.', ' : '' }}
                                 {{ $kecamatan ? $kecamatan->zipcode : '' }}
                             </td>
                     </tr>
