@@ -57,7 +57,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
 {{-- product detail image --}}
 <script src="{{ asset('external-js/simpleGal.js') }}"></script>
 <script>
@@ -67,23 +66,6 @@
 </script>
 
 <script>
-    // function openNav() {
-    //   document.getElementById("mySidenav").style.width = "100%";
-    // }
-    
-    // function closeNav() {
-    //   document.getElementById("mySidenav").style.width = "0";
-    // }
-    // function openNav() {
-    // document.getElementById("mySidenav").style.width = "250px";
-    // document.getElementById("main").style.marginLeft = "250px";
-    // }
-
-    // function closeNav() {
-    // document.getElementById("mySidenav").style.width = "0";
-    // document.getElementById("main").style.marginLeft= "0";
-    // }
-
     function openNav() {
         document.getElementById("mySidenav").style.width = "70%";
     }
@@ -92,9 +74,6 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 </script>
-
-{{-- custom js style --}}
-{{-- <script src="{{ asset('external-js/style.js') }}"></script> --}}
 
 </html>
 

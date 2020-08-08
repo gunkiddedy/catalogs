@@ -73,30 +73,71 @@
                             </div>
                         </div>
 
-                        <!-- ACCORDION -->
+                        <!-- <div id="vue">
+                            <div v-for="item, i in items">
+                                <span v-if="!closedItems[i]">
+                                {{item.content}}
+                                </span>
+                                <button @click="$set(closedItems, i, !closedItems[i])">
+                                    {{closedItems[i] ? 'Open' : 'Close'}}
+                                </button>
+                            </div>
+                        </div> -->
+                        <!--  -->
+
                         <div class="card border-white">
                             <div class="card-body bg-white">
                                 <h5 style="font-weight:bold">Find by Category</h5>
-                                
+                                <div id="accordion">
+                                    <div class="card border-white" v-for="(cat, index) in DataSource" :key="index">
+                                        <div class="card-header bg-white" style="padding:0.25rem">
+                                            <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray" >
+                                                {{ cat.label }}
+                                            </span>
+                                            <i 
+                                                @click="$set(closedItems, index, !closedItems[index])"
+                                                class="fa fa-angle-down float-right" style="cursor:pointer"
+                                            >
+                                            </i>
+                                        </div>
+                                        <div v-if="closedItems[index]">
+                                            <div 
+                                                class="card-body bg-white" 
+                                                v-for="(child, indexs) in cat.children" 
+                                                :key="indexs" 
+                                                style="padding:0.25rem;margin-left: 2.5rem !important;"
+                                            >
+                                                <span @click="getSubCategory(child.id)" style="cursor:pointer;color:deepskyblue">
+                                                    {{ child.label }} 
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ACCORDION -->
+                        <!-- <div class="card border-white">
+                            <div class="card-body bg-white">
+                                <h5 style="font-weight:bold">Find by Category</h5>
                                 <div id="accordion">
                                     <div class="card border-white" v-for="cat in DataSource" :key="cat.id" :id="'accordion'+cat.id">
                                         <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
                                             <a 
-                                                href="#" 
+                                                :href="'#collapseOne'+cat.id"
                                                 data-toggle="collapse" 
-                                                :data-target="'#collapseOne'+cat.id" 
                                                 aria-expanded="true" 
                                                 :aria-controls="'collapseOne'+cat.id"
                                             >
                                                 <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray">
                                                     {{ cat.label }}
                                                 </span>
-                                                <i class="fa fa-caret-down float-right"></i>
+                                                <i class="fa fa-angle-down float-right"></i>
                                             </a>
                                         </div>
 
-                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id" :data-parent="'#accordion'+cat.id"
-                                        >
+                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id">
                                             <div class="card-body bg-white" v-for="child in cat.children"
                                             :key="child.id" 
                                             style="padding:0.25rem;margin-left: 2.5rem !important;">
@@ -108,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- END ACCORDION -->
 
 
@@ -162,7 +203,7 @@
                                         <a :href="'product/detail/'+product.id">
                                             <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
                                         </a>
-                                        <div class="">
+                                        <div class="mt-3">
                                             <p class="prdct_name">{{ product.name }}</p>
                                             <hr>
                                             <h6>
@@ -191,19 +232,14 @@
     export default {
         data: function() {
             return {
-                show_child: false,
-                // value: [],
-                // options: [],
-                // apy_category: [],
                 DataSource: [],
+                closedItems: [],
                 loading: true,
                 isShowProduct: true,
                 isShowFilter: true,
                 windowWidth: 0,
                 // windowHeight: 0,
                 products: {},
-                // category_items: [],
-                // subcategory_items: [],
                 provinsis: [],
                 kabupatens: [],
                 select_provinsi: [],
@@ -214,8 +250,6 @@
                 subcat: '',
                 selected: {
                     searchData: {},
-                    // category_items: [],
-                    // subcategory_items: [],
                     select_provinsi: [],
                     select_kabupaten: []
                 }
@@ -442,45 +476,7 @@
 </script>
 
 <style scoped>
-/* accordion style */
-button.accordion {
-  width: 100%;
-  /* background-color: whitesmoke; */
-  border: none;
-  outline: none;
-  text-align: left;
-  padding: 15px 20px;
-  font-size: 18px;
-  color: #444;
-  cursor: pointer;
-  transition: background-color 0.2s linear;
-}
 
-button.accordion:after {
-  content: '\f055';
-  font-family: "fontawesome";
-  font-size: 14px;
-  float: right;
-}
-
-button.accordion.is-open:after {
-  content: '\f056';
-}
-
-button.accordion:hover, button.accordion.is-open {
-  background-color: #ddd;
-}
-
-.accordion-content {
-  background-color: white;
-  border-left: 1px solid whitesmoke;
-  border-right: 1px solid whitesmoke;
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-in-out;
-}
-/* end accordion style */
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;

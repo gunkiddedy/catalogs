@@ -2825,22 +2825,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      show_child: false,
-      // value: [],
-      // options: [],
-      // apy_category: [],
       DataSource: [],
+      closedItems: [],
       loading: true,
       isShowProduct: true,
       isShowFilter: true,
       windowWidth: 0,
       // windowHeight: 0,
       products: {},
-      // category_items: [],
-      // subcategory_items: [],
       provinsis: [],
       kabupatens: [],
       select_provinsi: [],
@@ -2851,8 +2887,6 @@ __webpack_require__.r(__webpack_exports__);
       subcat: '',
       selected: {
         searchData: {},
-        // category_items: [],
-        // subcategory_items: [],
         select_provinsi: [],
         select_kabupaten: []
       }
@@ -8624,7 +8658,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* accordion style */\nbutton.accordion[data-v-bb962f12] {\r\n  width: 100%;\r\n  /* background-color: whitesmoke; */\r\n  border: none;\r\n  outline: none;\r\n  text-align: left;\r\n  padding: 15px 20px;\r\n  font-size: 18px;\r\n  color: #444;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s linear;\n}\nbutton.accordion[data-v-bb962f12]:after {\r\n  content: '\\F055';\r\n  font-family: \"fontawesome\";\r\n  font-size: 14px;\r\n  float: right;\n}\nbutton.accordion.is-open[data-v-bb962f12]:after {\r\n  content: '\\F056';\n}\nbutton.accordion[data-v-bb962f12]:hover, button.accordion.is-open[data-v-bb962f12] {\r\n  background-color: #ddd;\n}\n.accordion-content[data-v-bb962f12] {\r\n  background-color: white;\r\n  border-left: 1px solid whitesmoke;\r\n  border-right: 1px solid whitesmoke;\r\n  padding: 0 20px;\r\n  max-height: 0;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-in-out;\n}\r\n/* end accordion style */\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\r\n", ""]);
 
 // exports
 
@@ -43074,116 +43108,103 @@ var render = function() {
                       _c(
                         "div",
                         { attrs: { id: "accordion" } },
-                        _vm._l(_vm.DataSource, function(cat) {
+                        _vm._l(_vm.DataSource, function(cat, index) {
                           return _c(
                             "div",
-                            {
-                              key: cat.id,
-                              staticClass: "card border-white",
-                              attrs: { id: "accordion" + cat.id }
-                            },
+                            { key: index, staticClass: "card border-white" },
                             [
                               _c(
                                 "div",
                                 {
                                   staticClass: "card-header bg-white",
-                                  staticStyle: { padding: "0.25rem" },
-                                  attrs: { id: "headingOne" + cat.id }
+                                  staticStyle: { padding: "0.25rem" }
                                 },
                                 [
                                   _c(
-                                    "a",
+                                    "span",
                                     {
-                                      attrs: {
-                                        href: "#",
-                                        "data-toggle": "collapse",
-                                        "data-target": "#collapseOne" + cat.id,
-                                        "aria-expanded": "true",
-                                        "aria-controls": "collapseOne" + cat.id
+                                      staticStyle: {
+                                        cursor: "pointer",
+                                        color: "gray"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.getCategory(cat.id)
+                                        }
                                       }
                                     },
                                     [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: {
-                                            cursor: "pointer",
-                                            color: "gray"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.getCategory(cat.id)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                                " +
-                                              _vm._s(cat.label) +
-                                              "\n                                            "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("i", {
-                                        staticClass:
-                                          "fa fa-caret-down float-right"
-                                      })
+                                      _vm._v(
+                                        "\n                                            " +
+                                          _vm._s(cat.label) +
+                                          "\n                                        "
+                                      )
                                     ]
-                                  )
+                                  ),
+                                  _vm._v(" "),
+                                  _c("i", {
+                                    staticClass: "fa fa-angle-down float-right",
+                                    staticStyle: { cursor: "pointer" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.$set(
+                                          _vm.closedItems,
+                                          index,
+                                          !_vm.closedItems[index]
+                                        )
+                                      }
+                                    }
+                                  })
                                 ]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "collapse",
-                                  attrs: {
-                                    id: "collapseOne" + cat.id,
-                                    "aria-labelledby": "headingOne" + cat.id,
-                                    "data-parent": "#accordion" + cat.id
-                                  }
-                                },
-                                _vm._l(cat.children, function(child) {
-                                  return _c(
+                              _vm.closedItems[index]
+                                ? _c(
                                     "div",
-                                    {
-                                      key: child.id,
-                                      staticClass: "card-body bg-white",
-                                      staticStyle: {
-                                        padding: "0.25rem",
-                                        "margin-left": "2.5rem !important"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "span",
+                                    _vm._l(cat.children, function(
+                                      child,
+                                      indexs
+                                    ) {
+                                      return _c(
+                                        "div",
                                         {
+                                          key: indexs,
+                                          staticClass: "card-body bg-white",
                                           staticStyle: {
-                                            cursor: "pointer",
-                                            color: "deepskyblue"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.getSubCategory(
-                                                child.id
-                                              )
-                                            }
+                                            padding: "0.25rem",
+                                            "margin-left": "2.5rem !important"
                                           }
                                         },
                                         [
-                                          _vm._v(
-                                            "\n                                                " +
-                                              _vm._s(child.label) +
-                                              " \n                                            "
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: {
+                                                cursor: "pointer",
+                                                color: "deepskyblue"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.getSubCategory(
+                                                    child.id
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(child.label) +
+                                                  " \n                                            "
+                                              )
+                                            ]
                                           )
                                         ]
                                       )
-                                    ]
+                                    }),
+                                    0
                                   )
-                                }),
-                                0
-                              )
+                                : _vm._e()
                             ]
                           )
                         }),
@@ -43265,7 +43286,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("div", {}, [
+                                    _c("div", { staticClass: "mt-3" }, [
                                       _c("p", { staticClass: "prdct_name" }, [
                                         _vm._v(_vm._s(product.name))
                                       ]),
