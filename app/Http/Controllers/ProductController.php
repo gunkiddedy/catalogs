@@ -274,9 +274,9 @@ class ProductController extends Controller
             }
         }
         else{
-            DB::table('product_images')->where('product_id', $id)->update([
-                'name' => $product->name
-            ]);
+            // DB::table('product_images')->where('product_id', $id)->update([
+            //     'name' => $product->name
+            // ]);
 
             $product = Product::find($id);
             $product->name = $request->get('name');
@@ -296,6 +296,15 @@ class ProductController extends Controller
             $product->subcategory_id = $request->get('subcategory_id');
             $product->is_active = 0;
             $product->save();
+
+            // $productImage = ProductImage::find($id);
+            // $productImage->name = $request->get('name');
+            // $productImage->save();
+
+            DB::table('product_images')->where('product_id', $id)->update([
+                'name' => $product->name
+            ]);
+    
 
         }
 
