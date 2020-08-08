@@ -43155,70 +43155,65 @@ var render = function() {
                             "col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image"
                         },
                         [
-                          _c(
-                            "div",
-                            { staticClass: "card text-center border-white" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "card-body rspnv-card-body" },
-                                [
-                                  _c("div", { staticClass: "product-info" }, [
-                                    _c(
-                                      "a",
-                                      {
+                          _c("div", { staticClass: "card text-center" }, [
+                            _c(
+                              "div",
+                              { staticClass: "card-body rspnv-card-body" },
+                              [
+                                _c("div", { staticClass: "product-info" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "product/detail/" + product.id
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticClass: "card-img img-hover",
                                         attrs: {
-                                          href: "product/detail/" + product.id
+                                          src: "/storage/" + product.image_path,
+                                          alt: "img-product"
                                         }
-                                      },
-                                      [
-                                        _c("img", {
-                                          staticClass: "card-img img-hover",
-                                          attrs: {
-                                            src:
-                                              "/storage/" + product.image_path,
-                                            alt: "img-product"
-                                          }
-                                        })
-                                      ]
-                                    ),
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mt-3" }, [
+                                    _c("p", { staticClass: "prdct_name" }, [
+                                      _vm._v(_vm._s(product.name))
+                                    ]),
                                     _vm._v(" "),
-                                    _c("div", { staticClass: "mt-3" }, [
-                                      _c("p", { staticClass: "prdct_name" }, [
-                                        _vm._v(_vm._s(product.name))
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("hr"),
-                                      _vm._v(" "),
-                                      _c("h6", [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass: "prdct_company",
-                                            attrs: {
-                                              href:
-                                                "company/detail/" +
-                                                product.user_id
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-flag mr-1"
-                                            }),
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(product.company_name) +
-                                                "\n                                            "
-                                            )
-                                          ]
-                                        )
-                                      ])
+                                    _c("hr"),
+                                    _vm._v(" "),
+                                    _c("h6", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "prdct_company",
+                                          attrs: {
+                                            href:
+                                              "company/detail/" +
+                                              product.user_id
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-flag mr-1"
+                                          }),
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(product.company_name) +
+                                              "\n                                            "
+                                          )
+                                        ]
+                                      )
                                     ])
                                   ])
-                                ]
-                              )
-                            ]
-                          )
+                                ])
+                              ]
+                            )
+                          ])
                         ]
                       )
                     }),
