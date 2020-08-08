@@ -29,17 +29,16 @@
                                 <div class="product-info">
                                     <a :href="'/product/detail/'+product.id">
                                         <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
-                                        <!-- {{ product.image_path }} -->
                                     </a>
-                                    <div class="mt-2">
-                                        <p class="prdct_name">{{ product.name }}</p>
-                                        <hr>
-                                        <h6>
-                                            <a :href="'/company/detail/'+product.user_id" class="prdct_company">
-                                                <i class="fa fa-flag mr-1"></i>{{ product.company_name }}
-                                            </a>
-                                        </h6>
-                                    </div>
+                                </div>
+                                <div class="card-footer" style="background-color:#f7f7f7 !important">
+                                    <p class="prdct_name">{{ product.name }}</p>
+                                    <h6>
+                                        <a :href="'company/detail/'+product.user_id" class="prdct_company">
+                                            <i class="fa fa-flag mr-1"></i>
+                                            {{ product.company_name }}
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
