@@ -14,7 +14,7 @@
                         @change="showSNI"
                         :value="sni"
                     >
-                    <p>{{ nomor_sni }}</p>
+                    <!-- <p>{{ nomor_sni }}</p> -->
                     <label class="custom-control-label" for="sni">SNI</label>
                 </div>
             </div>

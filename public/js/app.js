@@ -42532,8 +42532,6 @@ var render = function() {
               on: { change: _vm.showSNI }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.nomor_sni))]),
-            _vm._v(" "),
             _c(
               "label",
               { staticClass: "custom-control-label", attrs: { for: "sni" } },
