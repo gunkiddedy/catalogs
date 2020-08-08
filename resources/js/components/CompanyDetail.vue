@@ -24,7 +24,7 @@
                 <div class="loading" v-if="loading"></div>
                 <div class="row d-flex justify-content-start">
                     <div class="col-md-3 col-sm-6 col-6 pt-3 rspnv-image" v-for="product in products.data" :key="product.id">
-                        <div class="card text-center border-white">
+                        <div class="card text-center">
                             <div class="card-body rspnv-card-body">
                                 <div class="product-info">
                                     <a :href="'/product/detail/'+product.id">

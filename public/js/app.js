@@ -42351,7 +42351,7 @@ var render = function() {
                 staticClass: "col-md-3 col-sm-6 col-6 pt-3 rspnv-image"
               },
               [
-                _c("div", { staticClass: "card text-center border-white" }, [
+                _c("div", { staticClass: "card text-center" }, [
                   _c("div", { staticClass: "card-body rspnv-card-body" }, [
                     _c("div", { staticClass: "product-info" }, [
                       _c(
