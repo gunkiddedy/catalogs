@@ -2789,83 +2789,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2875,7 +2798,6 @@ __webpack_require__.r(__webpack_exports__);
       isShowProduct: true,
       isShowFilter: true,
       windowWidth: 0,
-      // windowHeight: 0,
       products: {},
       provinsis: [],
       kabupatens: [],
@@ -2894,9 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadProducts();
-    this.getResults(); // this.loadCategories();
-    // this.loadSubCategories();
-
+    this.getResults();
     this.getWindowWidth();
     this.apiCategories();
     this.getAccordion(); //this.$nextTick(function() {
@@ -2906,7 +2826,6 @@ __webpack_require__.r(__webpack_exports__);
     //this.getWindowWidth();
     // this.getWindowHeight()
     //});
-    //this.showProducts(); //true show products
   },
   created: function created() {
     this.loadProvinsis();
@@ -2914,37 +2833,13 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     selected: {
       handler: function handler() {
-        // this.loadCategories();
-        // this.loadSubCategories();
         this.loadProducts();
         this.loadProvinsis();
       },
       deep: true
     }
   },
-  // beforeDestroy() {
-  //     window.removeEventListener('resize', this.getWindowWidth);
-  //     window.removeEventListener('resize', this.getWindowHeight);
-  // },
   methods: {
-    getAccordion: function getAccordion() {
-      var accordions = document.getElementsByClassName("accordion");
-
-      for (var i = 0; i < accordions.length; i++) {
-        accordions[i].onclick = function () {
-          this.classList.toggle('is-open');
-          var content = this.nextElementSibling;
-
-          if (content.style.maxHeight) {
-            // accordion is currently open, so close it
-            content.style.maxHeight = null;
-          } else {
-            // accordion is currently closed, so open it
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-        };
-      }
-    },
     getCategory: function getCategory(id) {
       var _this = this;
 
@@ -2972,7 +2867,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/mapingcategories').then(function (response) {
         _this3.DataSource = response.data;
-        _this3.loading = false; // console.log(response.data);
+        _this3.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2997,9 +2892,6 @@ __webpack_require__.r(__webpack_exports__);
         this.isShowFilter = true; //show filter when window > 991
       }
     },
-    // getWindowHeight(event) {
-    //     this.windowHeight = document.documentElement.clientHeight;
-    // },
     searchProduct: function searchProduct() {
       var _this4 = this;
 
@@ -3053,7 +2945,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    // loadCategories: function () {
+    getResults: function getResults() {
+      var _this8 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/products?page=' + page).then(function (response) {
+        _this8.products = response.data;
+        _this8.loading = false;
+      });
+    } // loadCategories: function () {
     //     axios.get('/api/categories', {
     //         params: _.omit(this.selected, 'category_items')
     //     })
@@ -3077,15 +2977,7 @@ __webpack_require__.r(__webpack_exports__);
     //         console.log(error);
     //     });
     // },
-    getResults: function getResults() {
-      var _this8 = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/api/products?page=' + page).then(function (response) {
-        _this8.products = response.data;
-        _this8.loading = false;
-      });
-    }
   }
 });
 
@@ -8658,7 +8550,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n      transform: rotate(0deg);\n}\n100% {\r\n      transform: rotate(360deg);\n}\n}\r\n", ""]);
+exports.push([module.i, "\n.show_subcat[data-v-bb962f12]{\r\n    transition: 0.2s ease-in-out;\n}\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\r\n", ""]);
 
 // exports
 
@@ -42870,7 +42762,7 @@ var render = function() {
               },
               [
                 _c("span", { staticClass: "fa fa-filter" }),
-                _vm._v(" Filter\n                ")
+                _vm._v(" Filter\n            ")
               ]
             )
           ]
@@ -42944,7 +42836,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                    Search\n                                    "
+                                "\n                                Search\n                                "
                               )
                             ]
                           )
@@ -43012,7 +42904,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                                    " +
                                       _vm._s(provinsi.name) +
                                       " (" +
                                       _vm._s(provinsi.products_count) +
@@ -43083,7 +42975,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                                    " +
                                       _vm._s(kabupaten.name) +
                                       " (" +
                                       _vm._s(kabupaten.products_count) +
@@ -43116,7 +43008,8 @@ var render = function() {
                               _c(
                                 "div",
                                 {
-                                  staticClass: "card-header bg-white",
+                                  staticClass:
+                                    "card-header bg-white border-white",
                                   staticStyle: { padding: "0.25rem" }
                                 },
                                 [
@@ -43135,9 +43028,9 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                            " +
+                                        "\n                                        " +
                                           _vm._s(cat.label) +
-                                          "\n                                        "
+                                          "\n                                    "
                                       )
                                     ]
                                   ),
@@ -43158,54 +43051,58 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _vm.closedItems[index]
-                                ? _c(
-                                    "div",
-                                    _vm._l(cat.children, function(
-                                      child,
-                                      indexs
-                                    ) {
-                                      return _c(
-                                        "div",
-                                        {
-                                          key: indexs,
-                                          staticClass: "card-body bg-white",
-                                          staticStyle: {
-                                            padding: "0.25rem",
-                                            "margin-left": "2.5rem !important"
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticStyle: {
-                                                cursor: "pointer",
-                                                color: "deepskyblue"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.getSubCategory(
-                                                    child.id
-                                                  )
+                              _c("transition", { attrs: { name: "fade" } }, [
+                                _vm.closedItems[index]
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "show_subcat" },
+                                      _vm._l(cat.children, function(
+                                        child,
+                                        indexs
+                                      ) {
+                                        return _c(
+                                          "div",
+                                          {
+                                            key: indexs,
+                                            staticClass: "card-body bg-white",
+                                            staticStyle: {
+                                              padding: "0.25rem",
+                                              "margin-left": "2.5rem !important"
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticStyle: {
+                                                  cursor: "pointer",
+                                                  color: "deepskyblue"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.getSubCategory(
+                                                      child.id
+                                                    )
+                                                  }
                                                 }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                " +
-                                                  _vm._s(child.label) +
-                                                  " \n                                            "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    }),
-                                    0
-                                  )
-                                : _vm._e()
-                            ]
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                                " +
+                                                    _vm._s(child.label) +
+                                                    " \n                                            "
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  : _vm._e()
+                              ])
+                            ],
+                            1
                           )
                         }),
                         0

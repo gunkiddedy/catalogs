@@ -2,105 +2,90 @@
     <div class="container-fluid bg-white">
         
         <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" 
-                    style="top:85px; z-index:9999999;">
-                    <button style="cursor:pointer;" @click="showFilter" class="btn btn-primary">
-                        <span class="fa fa-filter"></span> Filter
-                    </button>
-                </div>
+
+            <!-- BUTTON FILTER ON MOBILE VIEW -->
+            <div class="col-md-12 col-sm-12 col-xs-12 fixed-top show_btn_filter mb-4" 
+                style="top:85px; z-index:9999999;">
+                <button style="cursor:pointer;" @click="showFilter" class="btn btn-primary">
+                    <span class="fa fa-filter"></span> Filter
+                </button>
+            </div>
+
             <br>
 
             <transition name="fade">
                 <div class="col-lg-3 col-md-12 col-sm-12 mt-4 open-filter" v-if="isShowFilter">
-                <!-- <div class="card border-white">
-                    <div class="card-body"> -->
-                        <!-- <div class="card border-white">
-                            <div class="card-body">
-                                <treeselect 
-                                    :options="options"
-                                    v-model="value"
-                                    search-nested
-                                />
-                                value {{ value }}
-                            </div>
-                        </div> -->
 
-                        <div class="card border-white">
-                            <div class="card-body">
-                                <h5 style="font-weight:bold">Search</h5>
-                                <div class="input-group mb-2">
-                                    <input 
-                                        type="search" 
-                                        class="form-control" 
-                                        placeholder="product or company"
-                                        v-model="keyword"
-                                        v-on:keyup.enter="searchProduct"
-                                        >
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text" type="button" style="cursor:pointer;" @click="searchProduct">
-                                        Search
-                                        </div>
+                    <!-- SEARCH  -->
+                    <div class="card border-white">
+                        <div class="card-body">
+                            <h5 style="font-weight:bold">Search</h5>
+                            <div class="input-group mb-2">
+                                <input 
+                                    type="search" 
+                                    class="form-control" 
+                                    placeholder="product or company"
+                                    v-model="keyword"
+                                    v-on:keyup.enter="searchProduct"
+                                    >
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text" type="button" style="cursor:pointer;" @click="searchProduct">
+                                    Search
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="card border-white">
-                            <div class="card-body">
-                                <h5 style="font-weight:bold">Provinsi</h5>
-                                <div class="form-group">
-                                    <select class="form-control input-sm" v-model="selected.select_provinsi" @change="loadKabupatens">
-                                        <option :value="selected_value">All</option>
-                                        <option v-for="(provinsi, index) in provinsis" 
-                                            :key="index" 
-                                            :value="[provinsi.id]">
-                                            {{ provinsi.name }} ({{ provinsi.products_count }})</option>
-                                    </select>
-                                </div>
+                    <!-- PROVINSI -->
+                    <div class="card border-white">
+                        <div class="card-body">
+                            <h5 style="font-weight:bold">Provinsi</h5>
+                            <div class="form-group">
+                                <select class="form-control input-sm" v-model="selected.select_provinsi" @change="loadKabupatens">
+                                    <option :value="selected_value">All</option>
+                                    <option v-for="(provinsi, index) in provinsis" 
+                                        :key="index" 
+                                        :value="[provinsi.id]">
+                                        {{ provinsi.name }} ({{ provinsi.products_count }})</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="card border-white">
-                            <div class="card-body">
-                                <h5 style="font-weight:bold">Kabupaten</h5>
-                                <div class="form-group">
-                                    <select class="form-control" v-model="selected.select_kabupaten">
-                                        <option :value="selected_value">All</option>
-                                        <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="[kabupaten.id]">
-                                            {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
-                                    </select>
-                                </div>
+                    <!-- KABUPATEN -->
+                    <div class="card border-white">
+                        <div class="card-body">
+                            <h5 style="font-weight:bold">Kabupaten</h5>
+                            <div class="form-group">
+                                <select class="form-control" v-model="selected.select_kabupaten">
+                                    <option :value="selected_value">All</option>
+                                    <option v-for="(kabupaten, index) in kabupatens" :key="index" :value="[kabupaten.id]">
+                                        {{ kabupaten.name }} ({{ kabupaten.products_count }})</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- <div id="vue">
-                            <div v-for="item, i in items">
-                                <span v-if="!closedItems[i]">
-                                {{item.content}}
-                                </span>
-                                <button @click="$set(closedItems, i, !closedItems[i])">
-                                    {{closedItems[i] ? 'Open' : 'Close'}}
-                                </button>
-                            </div>
-                        </div> -->
-                        <!--  -->
+                    <!-- CATEGORY FILTER-->
+                    <div class="card border-white">
+                        <div class="card-body bg-white">
+                            <h5 style="font-weight:bold">Find by Category</h5>
+                            <div id="accordion">
+                                <div class="card border-white" v-for="(cat, index) in DataSource" :key="index">
 
-                        <div class="card border-white">
-                            <div class="card-body bg-white">
-                                <h5 style="font-weight:bold">Find by Category</h5>
-                                <div id="accordion">
-                                    <div class="card border-white" v-for="(cat, index) in DataSource" :key="index">
-                                        <div class="card-header bg-white" style="padding:0.25rem">
-                                            <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray" >
-                                                {{ cat.label }}
-                                            </span>
-                                            <i 
-                                                @click="$set(closedItems, index, !closedItems[index])"
-                                                class="fa fa-angle-down float-right" style="cursor:pointer"
-                                            >
-                                            </i>
-                                        </div>
-                                        <div v-if="closedItems[index]">
+                                    <!-- CATEGORY -->
+                                    <div class="card-header bg-white border-white" style="padding:0.25rem">
+                                        <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray" >
+                                            {{ cat.label }}
+                                        </span>
+                                        <i @click="$set(closedItems, index, !closedItems[index])" class="fa fa-angle-down float-right" style="cursor:pointer">
+                                        </i>
+                                    </div>
+
+                                    <!-- SHOW SUBCATEGORY -->
+                                    <transition name="fade">
+                                        <div v-if="closedItems[index]" class="show_subcat">
                                             <div 
                                                 class="card-body bg-white" 
                                                 v-for="(child, indexs) in cat.children" 
@@ -112,79 +97,13 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </transition>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- ACCORDION -->
-                        <!-- <div class="card border-white">
-                            <div class="card-body bg-white">
-                                <h5 style="font-weight:bold">Find by Category</h5>
-                                <div id="accordion">
-                                    <div class="card border-white" v-for="cat in DataSource" :key="cat.id" :id="'accordion'+cat.id">
-                                        <div class="card-header bg-white" :id="'headingOne'+cat.id" style="padding:0.25rem">
-                                            <a 
-                                                :href="'#collapseOne'+cat.id"
-                                                data-toggle="collapse" 
-                                                aria-expanded="true" 
-                                                :aria-controls="'collapseOne'+cat.id"
-                                            >
-                                                <span @click="getCategory(cat.id)" style="cursor:pointer;color:gray">
-                                                    {{ cat.label }}
-                                                </span>
-                                                <i class="fa fa-angle-down float-right"></i>
-                                            </a>
-                                        </div>
-
-                                        <div :id="'collapseOne'+cat.id" class="collapse" :aria-labelledby="'headingOne'+cat.id">
-                                            <div class="card-body bg-white" v-for="child in cat.children"
-                                            :key="child.id" 
-                                            style="padding:0.25rem;margin-left: 2.5rem !important;">
-                                                <span @click="getSubCategory(child.id)" style="cursor:pointer;color:deepskyblue">
-                                                    {{ child.label }} 
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- END ACCORDION -->
-
-
-                        <!-- <div class="card border-white">
-                            <div class="card-body" >
-                                <h5 style="font-weight:bold">Categories</h5>
-                                <hr>
-                                <div class="custom-control custom-checkbox" v-for="(category, index) in category_items" :key="category.id">
-                                    <input class="custom-control-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.category_items">
-                                    <label class="custom-control-label" :for="'category'+index">
-                                        {{ category.name }} ({{ category.products_count }})
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-white">
-                            <div class="card-body" >
-                                <h5 style="font-weight:bold">Sub Categories</h5>
-                                <hr>
-                                <div class="custom-control custom-checkbox" v-for="(subcategory, index) in subcategory_items" :key="subcategory.id">
-                                    <input 
-                                        class="custom-control-input" 
-                                        type="checkbox" 
-                                        :value="subcategory.id" 
-                                        :id="'subcategory'+index" 
-                                        v-model="selected.subcategory_items"
-                                    >
-                                    <label class="custom-control-label" :for="'subcategory'+index">
-                                        {{ subcategory.name }} ({{ subcategory.products_count }})
-                                    </label>
-                                </div>
-                            </div>
-                        </div> -->
-                    <!-- </div>
-                </div> -->
+                    </div>
+                    
+                    <!-- BUTTON TERAPKAN -->
                     <button @click="showFilter" class="btn btn-primary show_btn_filter" style="width:100%">
                         <span class="fa fa-filter" style="cursor:pointer;" ></span>
                         Terapkan
@@ -192,6 +111,7 @@
                 </div>
             </transition>
             
+            <!-- PRODUCTS -->
             <transition name="fade">
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
                     <div class="loading" v-if="loading"></div>
@@ -218,9 +138,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- SHOW PAGINATION -->
                     <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2rem;">
                         <pagination :data="products" @pagination-change-page="getResults"></pagination>
                     </div>
+
                 </div>
             </transition>
             
@@ -238,7 +161,6 @@
                 isShowProduct: true,
                 isShowFilter: true,
                 windowWidth: 0,
-                // windowHeight: 0,
                 products: {},
                 provinsis: [],
                 kabupatens: [],
@@ -259,8 +181,6 @@
         mounted() {
             this.loadProducts();
             this.getResults();
-            // this.loadCategories();
-            // this.loadSubCategories();
             this.getWindowWidth();
             this.apiCategories();
             this.getAccordion();
@@ -272,7 +192,6 @@
                 //this.getWindowWidth();
                 // this.getWindowHeight()
             //});
-            //this.showProducts(); //true show products
         },
 
         created(){
@@ -282,8 +201,6 @@
         watch: {
             selected: {
                 handler: function () {
-                    // this.loadCategories();
-                    // this.loadSubCategories();
                     this.loadProducts();
                     this.loadProvinsis();
                 },
@@ -291,31 +208,7 @@
             }
         },
 
-        // beforeDestroy() {
-        //     window.removeEventListener('resize', this.getWindowWidth);
-        //     window.removeEventListener('resize', this.getWindowHeight);
-        // },
-
         methods: {
-
-            getAccordion(){
-                var accordions = document.getElementsByClassName("accordion");
-
-                for (var i = 0; i < accordions.length; i++) {
-                    accordions[i].onclick = function() {
-                        this.classList.toggle('is-open');
-
-                        var content = this.nextElementSibling;
-                        if (content.style.maxHeight) {
-                            // accordion is currently open, so close it
-                            content.style.maxHeight = null;
-                        } else {
-                            // accordion is currently closed, so open it
-                            content.style.maxHeight = content.scrollHeight + "px";
-                        }
-                    }
-                }
-            },
             
             getCategory: function(id){
                 axios.get('/api/products/category/' + id)
@@ -346,7 +239,6 @@
                 .then((response) => {
                     this.DataSource = response.data;
                     this.loading =  false
-                    // console.log(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -374,10 +266,6 @@
                     this.isShowFilter = true; //show filter when window > 991
                 }
             },
-
-            // getWindowHeight(event) {
-            //     this.windowHeight = document.documentElement.clientHeight;
-            // },
 
             searchProduct: function() {
                 axios.get('/api/products/search', {
@@ -437,6 +325,14 @@
                 });
             },
 
+            getResults(page = 1) {
+                axios.get('/api/products?page=' + page)
+                .then((response) => {
+                    this.products = response.data;
+                    this.loading = false;
+                });
+            }
+
             // loadCategories: function () {
             //     axios.get('/api/categories', {
             //         params: _.omit(this.selected, 'category_items')
@@ -463,20 +359,15 @@
             //     });
             // },
 
-            getResults(page = 1) {
-                axios.get('/api/products?page=' + page)
-                .then((response) => {
-                    this.products = response.data;
-                    this.loading = false;
-                });
-            }            
         }
     }
 
 </script>
 
 <style scoped>
-
+.show_subcat{
+    transition: 0.2s ease-in-out;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
@@ -542,68 +433,70 @@
 
   /* Animation */
 
-  @-webkit-keyframes spinner {
+@-webkit-keyframes spinner {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  @-moz-keyframes spinner {
+}
+
+@-moz-keyframes spinner {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  @-o-keyframes spinner {
+}
+
+@-o-keyframes spinner {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
   }
   @keyframes spinner {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 </style>
