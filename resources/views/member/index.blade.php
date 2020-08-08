@@ -61,22 +61,28 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="row">
-                                        @if ($product->is_active == 1)
-                                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary mr-1">
-                                                Edit <i class="fa fa-pencil"></i>
-                                            </a>  
-                                            <form action="{{ route('product.delete', $product->id) }}" method="POST">
-                                                @csrf 
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-warning">
-                                                    Delete <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        @else
-                                        <p><span class="badge badge-success"><i class="fa fa-rocket"></i></span></p>
-                                        @endif
-                                    </div>
+                                    @if (Auth::user()->is_active == 1)
+                                        <div class="row">
+                                            @if ($product->is_active == 1)
+                                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary mr-1">
+                                                    Edit <i class="fa fa-pencil"></i>
+                                                </a>  
+                                                <form action="{{ route('product.delete', $product->id) }}" method="POST">
+                                                    @csrf 
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-warning">
+                                                        Delete <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <p><span class="badge badge-success"><i class="fa fa-rocket"></i></span></p>
+                                            @endif
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <p><span class="badge badge-success"><i class="fa fa-rocket"></i></span></p>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

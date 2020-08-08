@@ -95,6 +95,19 @@
                                 <hr>
                                 <h6>Hs Code : {{ $product->hs_code }}</h6>
                             </div>
+                            @guest
+                                <div></div>
+                            @else
+                            <div class="card-footer bg-white">
+                                <form action="{{ route('product.delete', $product->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger float-right">
+                                        <i class="fa fa-trash"></i> Delete Product
+                                    </button>
+                                </form>
+                            </div>
+                            @endguest
                         </div>
                     </div>
                     {{-- ====================================END PRODUCT DESC --}}
