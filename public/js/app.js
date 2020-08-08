@@ -42380,7 +42380,8 @@ var render = function() {
                           {
                             staticClass: "card-footer",
                             staticStyle: {
-                              "background-color": "#f7f7f7 !important"
+                              "background-color":
+                                "rgba(243, 242, 244, 0.42) !important"
                             }
                           },
                           [
@@ -43203,7 +43204,8 @@ var render = function() {
                               {
                                 staticClass: "card-footer",
                                 staticStyle: {
-                                  "background-color": "#f7f7f7 !important"
+                                  "background-color":
+                                    "rgba(243, 242, 244, 0.42) !important"
                                 }
                               },
                               [

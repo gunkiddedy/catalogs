@@ -32,7 +32,7 @@
                                         <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
                                     </a>
                                 </div>
-                                <div class="card-footer" style="background-color:#f7f7f7 !important">
+                                <div class="card-footer" style="background-color:rgba(243, 242, 244, 0.42) !important">
                                     <p class="prdct_name">{{ product.name }}</p>
                                     <h6>
                                         <a :href="'company/detail/'+product.user_id" class="prdct_company">
