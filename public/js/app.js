@@ -43368,6 +43368,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control input-sm",
+          attrs: { name: "provinsi_id" },
           on: {
             change: [
               function($event) {
@@ -43421,6 +43422,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          attrs: { name: "kabupaten_id" },
           on: {
             change: function($event) {
               var $$selectedVal = Array.prototype.filter

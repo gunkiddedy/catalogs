@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input value="{{ old('address') ?? $user->address }}" type="text" class="form-control" id="address" placeholder="1234 Main St" name="address">
+                    <input value="{{ old('address') ?? $user->address }}" type="text" class="form-control" id="address" placeholder="enter address" name="address">
                     @error('address')
                         <div class="alert text-danger">
                             {{ $message }}
@@ -116,7 +116,7 @@
                 <div class="form-group">
                     <label for="zipcode">Zipcode</label>
                     <input value="{{ old('zipcode') ?? $user->zipcode }}" type="number" 
-                    class="form-control" id="zipcode" placeholder="55892" name="zipcode">
+                    class="form-control" id="zipcode" placeholder="enter zipcode" name="zipcode">
                     @error('zipcode')
                         <div class="alert text-danger">
                             {{ $message }}
@@ -128,9 +128,12 @@
                     <label for="additional_info">Additional Info</label>
                     <textarea class="form-control" id="additional_info" rows="3" name="additional_info">{{ old('additional_info') ?? $user->additional_info }}</textarea>
                 </div>
-        
-                <button type="submit" class="btn btn-primary">Update profile</button>
-                <a class="btn btn-success" href="/company/detail/{{ $user->id }}">Cancel</a>
+                
+                <div class="form-group float-right mt-4">
+                    <button type="submit" class="btn btn-primary">Update profile</button>
+                    <a class="btn btn-success" href="/company/detail/{{ $user->id }}">Cancel</a>
+
+                </div>
             </form>
         </div>
     </div>

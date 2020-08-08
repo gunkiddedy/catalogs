@@ -75,7 +75,7 @@ class ProfileController extends Controller
         $users->nib =  $request->get('nib');
         $users->additional_info =  $request->get('additional_info');
         $users->save();
-
+        
         DB::table('products')->where('user_id', $id)->update(['company_name' => $request->get('name')]);
         
         // return redirect()->route('profile.show', $id)->with('success', 'data updated successfully!');

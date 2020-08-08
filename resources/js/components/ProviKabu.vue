@@ -2,7 +2,7 @@
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="email">Provinsi</label>
-            <select class="form-control input-sm" v-model="select_provinsi" @change="loadKabupatens">
+            <select class="form-control input-sm" v-model="select_provinsi" @change="loadKabupatens" name="provinsi_id">
                 <option :value="value_prov" selected>All</option>
                 <option v-for="(provinsi, index) in provinsis" 
                     :key="index" 
@@ -14,7 +14,7 @@
 
         <div class="form-group col-md-12">
             <label for="inputCity">Kabupaten</label>
-            <select class="form-control" v-model="select_kabupaten">
+            <select class="form-control" v-model="select_kabupaten" name="kabupaten_id">
                 <option :value="value_kab" selected>All</option>
                 <option 
                     v-for="(kabupaten, index) in kabupatens" 
