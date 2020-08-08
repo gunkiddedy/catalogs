@@ -43177,39 +43177,45 @@ var render = function() {
                                         }
                                       })
                                     ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "mt-3" }, [
-                                    _c("p", { staticClass: "prdct_name" }, [
-                                      _vm._v(_vm._s(product.name))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("hr"),
-                                    _vm._v(" "),
-                                    _c("h6", [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "prdct_company",
-                                          attrs: {
-                                            href:
-                                              "company/detail/" +
-                                              product.user_id
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-flag mr-1"
-                                          }),
-                                          _vm._v(
-                                            "\n                                                " +
-                                              _vm._s(product.company_name) +
-                                              "\n                                            "
-                                          )
-                                        ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "card-footer",
+                                staticStyle: {
+                                  "background-color": "#f7f7f7 !important"
+                                }
+                              },
+                              [
+                                _c("p", { staticClass: "prdct_name" }, [
+                                  _vm._v(_vm._s(product.name))
+                                ]),
+                                _vm._v(" "),
+                                _c("h6", [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "prdct_company",
+                                      attrs: {
+                                        href:
+                                          "company/detail/" + product.user_id
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fa fa-flag mr-1"
+                                      }),
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(product.company_name) +
+                                          "\n                                    "
                                       )
-                                    ])
-                                  ])
+                                    ]
+                                  )
                                 ])
                               ]
                             )
