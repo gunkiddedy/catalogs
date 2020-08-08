@@ -123,7 +123,6 @@
                                         <a :href="'product/detail/'+product.id">
                                             <img class="card-img img-hover" :src="'/storage/'+product.image_path" alt="img-product">
                                         </a>
-                                        
                                     </div>
                                 </div>
                                 <div class="card-footer" style="background-color:#f7f7f7 !important">

@@ -2307,6 +2307,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2635,7 +2637,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -42285,149 +42286,157 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-group mb-2" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.keyword,
-                expression: "keyword"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "search", placeholder: "Search product name..." },
-            domProps: { value: _vm.keyword },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "input-group mb-2" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.keyword,
+                  expression: "keyword"
                 }
-                return _vm.searchProduct($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Search product name..." },
+              domProps: { value: _vm.keyword },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.searchProduct($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.keyword = $event.target.value
                 }
-                _vm.keyword = $event.target.value
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group-prepend" }, [
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group-prepend" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "input-group-text",
+                  staticStyle: { cursor: "pointer" },
+                  attrs: { type: "button" },
+                  on: { click: _vm.searchProduct }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12 rspnv" }, [
+            _vm.loading ? _c("div", { staticClass: "loading" }) : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row d-flex justify-content-start" },
+              _vm._l(_vm.products.data, function(product) {
+                return _c(
+                  "div",
+                  {
+                    key: product.id,
+                    staticClass: "col-md-3 col-sm-6 col-6 pt-3 rspnv-image"
+                  },
+                  [
+                    _c("div", { staticClass: "card text-center" }, [
+                      _c("div", { staticClass: "card-body rspnv-card-body" }, [
+                        _c("div", { staticClass: "product-info" }, [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "/product/detail/" + product.id }
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "card-img img-hover",
+                                attrs: {
+                                  src: "/storage/" + product.image_path,
+                                  alt: "img-product"
+                                }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "card-footer",
+                            staticStyle: {
+                              "background-color": "#f7f7f7 !important"
+                            }
+                          },
+                          [
+                            _c("p", { staticClass: "prdct_name" }, [
+                              _vm._v(_vm._s(product.name))
+                            ]),
+                            _vm._v(" "),
+                            _c("h6", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "prdct_company",
+                                  attrs: {
+                                    href: "company/detail/" + product.user_id
+                                  }
+                                },
+                                [
+                                  _c("i", { staticClass: "fa fa-flag mr-1" }),
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(product.company_name) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
-                staticClass: "input-group-text",
-                staticStyle: { cursor: "pointer" },
-                attrs: { type: "button" },
-                on: { click: _vm.searchProduct }
+                staticClass: "col-md-12 col-sm-12 col-xs-12",
+                staticStyle: { "padding-top": "2rem" }
               },
-              [_vm._v("Search")]
+              [
+                _c("pagination", {
+                  attrs: { data: _vm.products },
+                  on: { "pagination-change-page": _vm.getResults }
+                })
+              ],
+              1
             )
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12 rspnv" }, [
-        _vm.loading ? _c("div", { staticClass: "loading" }) : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row d-flex justify-content-start" },
-          _vm._l(_vm.products.data, function(product) {
-            return _c(
-              "div",
-              {
-                key: product.id,
-                staticClass: "col-md-3 col-sm-6 col-6 pt-3 rspnv-image"
-              },
-              [
-                _c("div", { staticClass: "card text-center" }, [
-                  _c("div", { staticClass: "card-body rspnv-card-body" }, [
-                    _c("div", { staticClass: "product-info" }, [
-                      _c(
-                        "a",
-                        { attrs: { href: "/product/detail/" + product.id } },
-                        [
-                          _c("img", {
-                            staticClass: "card-img img-hover",
-                            attrs: {
-                              src: "/storage/" + product.image_path,
-                              alt: "img-product"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "card-footer",
-                        staticStyle: {
-                          "background-color": "#f7f7f7 !important"
-                        }
-                      },
-                      [
-                        _c("p", { staticClass: "prdct_name" }, [
-                          _vm._v(_vm._s(product.name))
-                        ]),
-                        _vm._v(" "),
-                        _c("h6", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "prdct_company",
-                              attrs: {
-                                href: "company/detail/" + product.user_id
-                              }
-                            },
-                            [
-                              _c("i", { staticClass: "fa fa-flag mr-1" }),
-                              _vm._v(
-                                "\n                                        " +
-                                  _vm._s(product.company_name) +
-                                  "\n                                    "
-                              )
-                            ]
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-md-12 col-sm-12 col-xs-12",
-            staticStyle: { "padding-top": "2rem" }
-          },
-          [
-            _c("pagination", {
-              attrs: { data: _vm.products },
-              on: { "pagination-change-page": _vm.getResults }
-            })
-          ],
-          1
-        )
-      ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
