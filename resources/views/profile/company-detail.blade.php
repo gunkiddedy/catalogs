@@ -69,91 +69,96 @@
                 </div>
             </div>
             @endif
-            <table class="table table-sm">
-                <tbody>
-                    <tr>
-                        {{-- <th scope="row">Company Name</th> --}}
-                        <td colspan="2"><h3>{{ $user->name }}</h3></td>
-                    </tr>
-                    <tr>
-                        {{-- <th scope="row">Address</th> --}}
-                            <td>
-                                {{ $user ? $user->address : '' }}
-                                {{ $kecamatan ? $kecamatan->name.', ' : '' }}
-                                {{ $kabupaten ? $kabupaten->name.', ' : '' }}
-                                {{ $provinsi ? $provinsi->name.', ' : '' }}
-                                {{ $kecamatan ? $kecamatan->zipcode : '' }}
-                            </td>
-                    </tr>
-                    <tr>
-                        {{-- <th scope="row">Phone / Email</th> --}}
-                        <td>
-                            {{ $user ? $user->phone : ''}} - 
-                            {{ $user ? $user->email : ''}}
-                        </td>
-                    </tr>
-
-                    {{-- <tr>
-                        <th scope="row">Tkdn</th>
-                        @if (!empty($user->tkdn))
-                            <td>{{ $user->tkdn }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr> --}}
-                    {{-- <tr>
-                        <th scope="row">Provinsi</th>
-                        @if (!empty($provinsi))
-                            <td>{{ $provinsi->name }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <th scope="row">Kabupaten</th>
-                        @if (!empty($kabupaten))
-                            <td>{{ $kabupaten->name }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <th scope="row">Kecamatan / Zipcode</th>
-                        @if ( !empty($kecamatan) || !empty($kecamatan->zipcode))
-                            <td>{{ $kecamatan->name }} / {{ $kecamatan->zipcode }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr> --}}
-                    <tr>
-                        {{-- <th scope="row">Additional info</th> --}}
-                        @if ( !empty($user->additional_info))
-                            <td>{{ $user->additional_info }}</td>
-                        @else
-                            <td></td>
-                        @endif
-                    </tr>
-                    @guest
-                        <tr><td>&nbsp;</td></tr>
-                    @else
-                        @if (Auth::user()->role == 'member')
-                        <tr>
-                            <td>
-                                <a href="/profile/edit/{{ $user->id }}" class="btn btn-success"><i class="fa fa-user"></i> Edit Profile</a>
-                            </td>
-                        </tr>
-                        @endif
-                    @endguest
-                    {{-- <tr>
-                        <th scope="row">Nib</th>
-                        @if (!empty($user->nib))
-                            <td>{{ $user->nib }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr> --}}
-                </tbody>
-            </table>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                {{-- <th scope="row">Company Name</th> --}}
+                                <td colspan="2"><h3>{{ $user->name }}</h3></td>
+                            </tr>
+                            <tr>
+                                {{-- <th scope="row">Address</th> --}}
+                                    <td>
+                                        {{ $user ? $user->address : '' }}
+                                        {{ $kecamatan ? $kecamatan->name.', ' : '' }}
+                                        {{ $kabupaten ? $kabupaten->name.', ' : '' }}
+                                        {{ $provinsi ? $provinsi->name.', ' : '' }}
+                                        {{ $kecamatan ? $kecamatan->zipcode : '' }}
+                                    </td>
+                            </tr>
+                            <tr>
+                                {{-- <th scope="row">Phone / Email</th> --}}
+                                <td>
+                                    {{ $user ? $user->phone : ''}} - 
+                                    {{ $user ? $user->email : ''}}
+                                </td>
+                            </tr>
+        
+                            {{-- <tr>
+                                <th scope="row">Tkdn</th>
+                                @if (!empty($user->tkdn))
+                                    <td>{{ $user->tkdn }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr> --}}
+                            {{-- <tr>
+                                <th scope="row">Provinsi</th>
+                                @if (!empty($provinsi))
+                                    <td>{{ $provinsi->name }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr>
+                            <tr>
+                                <th scope="row">Kabupaten</th>
+                                @if (!empty($kabupaten))
+                                    <td>{{ $kabupaten->name }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr>
+                            <tr>
+                                <th scope="row">Kecamatan / Zipcode</th>
+                                @if ( !empty($kecamatan) || !empty($kecamatan->zipcode))
+                                    <td>{{ $kecamatan->name }} / {{ $kecamatan->zipcode }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr> --}}
+                            <tr>
+                                {{-- <th scope="row">Additional info</th> --}}
+                                @if ( !empty($user->additional_info))
+                                    <td>{{ $user->additional_info }}</td>
+                                @else
+                                    <td></td>
+                                @endif
+                            </tr>
+                            @guest
+                                <tr><td>&nbsp;</td></tr>
+                            @else
+                                @if (Auth::user()->role == 'member')
+                                <tr>
+                                    <td>
+                                        <a href="/profile/edit/{{ $user->id }}" class="btn btn-success"><i class="fa fa-user"></i> Edit Profile</a>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endguest
+                            {{-- <tr>
+                                <th scope="row">Nib</th>
+                                @if (!empty($user->nib))
+                                    <td>{{ $user->nib }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr> --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
             {{-- <div>
                 <a href="/profile/edit/{{ Auth::id() }}" style="float: right" class="btn btn-primary text-white">Edit Profile</a>
             </div> --}}
