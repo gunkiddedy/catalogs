@@ -89,7 +89,10 @@ Route::patch('/product-require/update/{id}', 'AdminController@productRequireUpda
 
 Route::get('/users/edit/{id}', 'UserController@edit')->name('user.edit')->middleware('auth', 'admin');
 Route::patch('/users/update/{id}', 'UserController@update')->name('user.update')->middleware('auth', 'admin');
-Route::delete('/users/delete/{id}', 'UserController@destroy')->name('user.delete')->middleware('auth', 'admin');
+Route::delete('/users/delete/{id}', 'UserController@userDestroy')->name('user.delete')->middleware('auth', 'admin');
+
+Route::get('/blacklist', 'UserController@emailBlacklist')->name('blacklist.list')->middleware('auth', 'admin');
+Route::delete('/blacklist/delete/{id}', 'UserController@emailDestroy')->name('blacklist.delete')->middleware('auth', 'admin');
 
 
 // ============================MEMBER PROFILE ===============================================================================

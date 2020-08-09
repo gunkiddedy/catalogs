@@ -11,6 +11,7 @@
                 <a href="/provinsi" class="list-group-item member-navigation">Provinsi</a>
                 <a href="/kabupaten" class="list-group-item member-navigation">Kabupaten</a>
                 <a href="/kecamatan" class="list-group-item member-navigation">Kecamatan</a>
+                <a href="/blacklist" class="list-group-item member-navigation">Black List</a>
                 <!-- <a href="/about" class="list-group-item member-navigation">About</a>
                 <a href="/contact" class="list-group-item member-navigation">Contact</a> -->
             </ul>

@@ -2,10 +2,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import {BadgerAccordion, BadgerAccordionItem} from 'vue-badger-accordion'
-
-Vue.component('BadgerAccordion', BadgerAccordion)
-Vue.component('BadgerAccordionItem', BadgerAccordionItem)
 
 Vue.component('index-page', require('./components/Index.vue').default);
 Vue.component('admin-sidebar', require('./components/AdminSidebar.vue').default);

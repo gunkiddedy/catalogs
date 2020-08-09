@@ -22,6 +22,7 @@
             </div>
             @else
             <a href="/product/add" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Product</a>
+            <span class="float-right badge badge-primary">Hallo, {{ Auth::user()->name }}</span>
             @endif
             
             @if(Session::has('success'))

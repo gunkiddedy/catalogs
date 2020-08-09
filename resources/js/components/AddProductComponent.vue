@@ -117,9 +117,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <label for="photos">Choose images ( you can select multiple with ctrl+click image )</label>
-            <div class="form-group">
+        <div class="col-md-12 mt-4">
+            <label for="photos">Upload images product <span class="text-danger">( *you can upload multiple images with ctrl + click image )</span></label>
+            <div class="form-group mt-4">
                 <input type="file" name="images[]" id="images" multiple>
             </div>
         </div>
