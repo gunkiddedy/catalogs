@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-header">
                     Provinsi
-                    <a href="" class="btn btn-sm btn-success float-right text-white">Add Provinsi</a>
+                    {{-- <a href="" class="btn btn-sm btn-success float-right text-white">Add Provinsi</a> --}}
                 </div>
                 <div class="card-body">
                     <table class="table table-sm">

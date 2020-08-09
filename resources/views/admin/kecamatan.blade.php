@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header">
                     Kecamatan
-                    <a href="" class="btn btn-sm btn-success float-right text-white">Add Kecamatan</a>
+                    {{-- <a href="" class="btn btn-sm btn-success float-right text-white">Add Kecamatan</a> --}}
                 </div>
                 <div class="card-body">
                     <table class="table table-sm">
