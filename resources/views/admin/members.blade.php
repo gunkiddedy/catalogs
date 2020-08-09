@@ -7,7 +7,7 @@
     <div class="row">
 
         <x-admin-sidebar></x-admin-sidebar>
-
+        
         <div class="col-md-10 col-sm-12">
             @if(Session::has('success'))
             <div class="row sccs">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             @endif
-
+            
             <div class="card">
                 <div class="card-header">
                     <h3>Users list</h3>
