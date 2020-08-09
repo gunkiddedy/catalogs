@@ -3,7 +3,7 @@
 @section('title', 'Member index')
 
 @section ('content')
-<div class="container bg-white">
+<div class="container bg-white" style="min-height:400px;">
     <div class="row">
         {{-- <div class="col-md-2 col-sm-12">
             <x-member-sidebar></x-member-sidebar>
