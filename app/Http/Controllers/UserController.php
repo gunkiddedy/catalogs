@@ -43,7 +43,7 @@ class UserController extends Controller
         // get email user
         $email = $user->email;
         $name = $user->name;
-        // dd($email);
+        // dd($name);
         
         $blacklist->user_id = $id;
         $blacklist->name = $name;
@@ -56,11 +56,9 @@ class UserController extends Controller
         foreach($product as $p)
             $product_id_user[] = $p->id;
 
-        // dd($product_id_user);
-
         $images = \App\ProductImage::where('product_id', $id)->get();
-        // DELETE IMAGE FROM local storage
         foreach($images as $image){
+            // DELETE IMAGE FROM local storage
             Storage::disk('public')->delete($image->image_path);
         }
         

@@ -80,7 +80,7 @@
                                             <button type="submit" class="mr-1 btn btn-sm btn-success">
                                                 <i class="fa fa-level-up"></i> Approve</button>
                                         </form>
-                                        <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-primary mr-1">
+                                        <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-secondary mr-1">
                                             <i class="fa fa-eye"></i> View
                                         </a>
                                         {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
