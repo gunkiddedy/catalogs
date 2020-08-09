@@ -4,63 +4,12 @@
 
 @section('content')
 
-{{-- <div class="row"> --}}
 <div class="container bg-white">
     <div class="row" >
         
         @if (Auth::user()->role == 'admin')
             <x-admin-sidebar></x-admin-sidebar>
         @endif
-
-        {{-- <div class="col-md-6 col-sm-12 col-xs-12">
-            @if(Session::has('success'))
-            <div class="row sccs">
-                <div class="col-12">
-                    <div id="charge-message" class="alert alert-success">
-                    {{ Session::get('success') }}
-                    </div>
-                </div>
-            </div>
-            @endif
-            <div class="card">
-                <div class="card-header">
-                    {{ Auth::user()->role=='admin' ? 'Admin ' : 'Member '}}Profile
-                </div>
-                <div class="card-body">
-                    @if (Auth::user()->avatar !== null)
-                        <img class="img-thumbnail" 
-                        style="width: 50%" 
-                        src="{{ asset('/storage/'.$user->avatar)}}"
-                        alt="user-avatar">
-                    @else
-                        <img class="img-thumbnail" 
-                            style="width: 50%" 
-                            src="{{ asset('/storage/images/default-avatar.png') }}" 
-                            alt="user-avatar">
-                    @endif
-                    <p class="card-text mt-2">
-                        <span class="badge badge-secondary">Additional info</span><br>
-                        <div class="alert alert-primary">
-                            @if (!empty($user->additional_info))
-                                {{ $user->additional_info }}
-                            @else
-                                <p>No info found</p>
-                            @endif
-                        </div>
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <form action="{{ route('avatar.update', Auth::id()) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PATCH')
-                        <div class="d-flex justify-content-between">
-                            <input type="file" name="avatar" id="avatar">
-                            <button type="submit" class="btn btn-warning">Update Avatar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> --}}
 
         <div class="col-md-10 col-sm-12 col-xs-12">
 
@@ -73,8 +22,8 @@
                     </div>
                 </div>
             @endif
-
-            <table class="table table-sm">
+            
+            <table class="table table-sm border-white">
                 <tbody>
                     <tr>
                         <th scope="row">Name</th>
@@ -104,30 +53,6 @@
                             <td>-</td>
                         @endif
                     </tr>
-                    {{-- <tr>
-                        <th scope="row">Provinsi</th>
-                        @if (!empty($provinsi))
-                            <td>{{ $provinsi->name }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <th scope="row">Kabupaten</th>
-                        @if (!empty($kabupaten))
-                            <td>{{ $kabupaten->name }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr> --}}
-                    {{-- <tr>
-                        <th scope="row">Kecamatan</th>
-                        @if (!empty($kecamatan))
-                            <td>{{ $kecamatan->name }}</td>
-                        @else
-                            <td>-</td>
-                        @endif
-                    </tr> --}}
                     <tr>
                         <th scope="row">Zipcode</th>
                         @if (!empty($user->zipcode))
@@ -145,7 +70,7 @@
                         @endif
                     </tr>
                     <tr>
-                        <th scope="row">Additional Info</th>
+                        <th scope="row" style="width:200px;">Additional Info</th>
                         @if (!empty($user->additional_info))
                             <td>{{ $user->additional_info }}</td>
                         @else
@@ -160,5 +85,4 @@
         </div>
     </div>
 </div>
-    
 @endsection
