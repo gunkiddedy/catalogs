@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function emailBlacklist()
     {
-        $emails = \App\Blacklist::paginate(10);
+        $emails = \App\BlackList::paginate(10);
         return view('admin.blacklist', ['emails' => $emails]);
     }
 
