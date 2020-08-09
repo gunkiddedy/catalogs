@@ -2229,6 +2229,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40836,7 +40845,7 @@ var render = function() {
             attrs: { href: "#" },
             on: { click: _vm.showSidebar }
           },
-          [_vm._v("NAVIGATION")]
+          [_c("i", { staticClass: "fa fa-bars" }), _vm._v(" MENUS")]
         )
       ]),
       _vm._v(" "),
@@ -40849,7 +40858,7 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/members" }
                 },
-                [_vm._v("Users")]
+                [_c("i", { staticClass: "fa fa-group" }), _vm._v(" Users")]
               ),
               _vm._v(" "),
               _c(
@@ -40858,7 +40867,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/product-require" }
                 },
-                [_vm._v("Product Approval")]
+                [
+                  _c("i", { staticClass: "fa fa-handshake-o" }),
+                  _vm._v(" Product Approval")
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -40867,7 +40879,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/category" }
                 },
-                [_vm._v("Category")]
+                [
+                  _c("i", { staticClass: "fa fa-bookmark" }),
+                  _vm._v(" Category")
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -40876,7 +40891,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/provinsi" }
                 },
-                [_vm._v("Provinsi")]
+                [
+                  _c("i", { staticClass: "fa fa-location-arrow" }),
+                  _vm._v(" Provinsi")
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -40885,7 +40903,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/kabupaten" }
                 },
-                [_vm._v("Kabupaten")]
+                [
+                  _c("i", { staticClass: "fa fa-location-arrow" }),
+                  _vm._v(" Kabupaten")
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -40894,7 +40915,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/kecamatan" }
                 },
-                [_vm._v("Kecamatan")]
+                [
+                  _c("i", { staticClass: "fa fa-location-arrow" }),
+                  _vm._v(" Kecamatan")
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -40903,7 +40927,10 @@ var render = function() {
                   staticClass: "list-group-item member-navigation",
                   attrs: { href: "/blacklist" }
                 },
-                [_vm._v("Black List")]
+                [
+                  _c("i", { staticClass: "fa fa-gavel" }),
+                  _vm._v(" Black List\n            ")
+                ]
               )
             ])
           : _vm._e()
