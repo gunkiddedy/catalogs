@@ -52,8 +52,8 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-start">
-                                            <a href="{{ route('product-require.detail', $item->id) }}" class="text-white btn btn-sm btn-primary mr-1">
-                                                <i class="fa fa-eye"></i>
+                                            <a href="{{ route('product-require.detail', $item->id) }}" class="text-white btn btn-sm btn-secondary mr-1">
+                                                <i class="fa fa-eye"></i> View
                                             </a>
                                             <a href="mailto:{{ \App\User::find($item->user_id)->email }}" class="btn btn-primary btn-sm text-white">
                                                 <i class="fa fa-envelope"></i> {{ \App\User::find($item->user_id)->email }}
