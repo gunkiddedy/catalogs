@@ -17,7 +17,7 @@ class AdminController extends Controller
 
     public function memberList()
     {
-        $users = \App\User::where('role', 'member')->paginate(10);
+        $users = \App\User::where('role', 'member')->orderBy('id', 'desc')->paginate(10);
         // $kecamatan = \App\User::find(1)->kecamatan->name;
         // dd($kecamatan);
         return view('admin.members', [

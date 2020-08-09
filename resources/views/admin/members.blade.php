@@ -30,11 +30,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
-                                {{-- <th scope="col">Address</th> --}}
                                 <th scope="col">Status</th>
-                                {{-- <th scope="col">Kecamatan</th>
-                                <th scope="col">Kabupaten</th>
-                                <th scope="col">Propinsi</th> --}}
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -44,12 +40,6 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
-                                {{-- <td width="300">
-                                    {{ $user->address }} ,
-                                    {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}},
-                                    {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}},
-                                    {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
-                                </td> --}}
                                 <td>
                                     @if ($user->is_active == 1)
                                         <span class="badge badge-success">Active</span>
@@ -57,39 +47,20 @@
                                         <span class="badge badge-warning">Inactive</span>
                                     @endif
                                 </td>
-                                {{-- <td>
-                                    {{ \App\User::find($user->id)->kecamatan ? \App\User::find($user->id)->kecamatan->name : '-'}}
-                                </td>
-                                <td>
-                                    {{ \App\User::find($user->id)->kabupaten ? \App\User::find($user->id)->kabupaten->name : '-'}}
-                                </td>
-                                <td>
-                                    {{ \App\User::find($user->id)->provinsi ? \App\User::find($user->id)->provinsi->name : '-'}}
-                                </td> --}}
-
                                 <td>
                                     @if($user->is_active == 0)
                                     <div class="d-flex justify-content-start">
-                                        <form method="POST" action="{{ route('user.update', $user->id) }}">
-                                            @csrf 
-                                            @method('PATCH')
-                                            {{-- <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-success mr-1">
-                                                <i class="fa fa-thumbs-up"></i> Approve
-                                            </a> --}}
-                                            <input type="hidden" name="is_active" value="1">
-                                            <button type="submit" class="mr-1 btn btn-sm btn-success">
-                                                <i class="fa fa-level-up"></i> Approve</button>
-                                        </form>
                                         <a href="{{ route('company.detail', $user->id) }}" class="text-white btn btn-sm btn-secondary mr-1">
                                             <i class="fa fa-eye"></i> View
                                         </a>
-                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                        <form method="POST" action="{{ route('user.update', $user->id) }}">
                                             @csrf 
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                Delete <i class="fa fa-trash"></i>
+                                            @method('PATCH')
+                                            <input type="hidden" name="is_active" value="1">
+                                            <button type="submit" class="mr-1 btn btn-sm btn-success">
+                                                <i class="fa fa-level-up"></i> Approve
                                             </button>
-                                        </form> --}}
+                                        </form>
                                     </div>
                                     @elseif($user->is_active == 1)
                                     <div class="d-flex justify-content-start">
@@ -99,9 +70,6 @@
                                         <form method="POST" action="{{ route('user.update', $user->id) }}">
                                             @csrf 
                                             @method('PATCH')
-                                            {{-- <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-success mr-1">
-                                                <i class="fa fa-thumbs-up"></i> Approve
-                                            </a> --}}
                                             <input type="hidden" name="is_active" value="0">
                                             <button type="submit" class="mr-1 btn btn-sm btn-warning">
                                                 <i class="fa fa-level-down"></i> Set to inactive</button>
@@ -109,22 +77,12 @@
                                         <form method="POST" action="{{ route('user.delete', $user->id) }}">
                                             @csrf 
                                             @method('DELETE')
-                                            {{-- <a href="{{ route('user.edit', $user->id) }}" class="text-white btn btn-sm btn-success mr-1">
-                                                <i class="fa fa-thumbs-up"></i> Approve
-                                            </a> --}}
                                             <button type="submit" class="mr-1 btn btn-sm btn-danger">
                                                 <i class="fa fa-trash"></i> Remove and Blacklist</button>
                                         </form>
                                         <a href="mailto:{{ $user->email }}" class="btn btn-primary btn-sm text-white">
-                                            <i class="fa fa-envelope"></i> {{ $user->email }}</a>
-
-                                        {{-- <form action="{{ route('user.delete', $user->id) }}" method="POST">
-                                            @csrf 
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                Delete <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form> --}}
+                                            <i class="fa fa-envelope"></i> {{ $user->email }}
+                                        </a>
                                     </div>
                                     @endif
                                 </td>
