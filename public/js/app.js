@@ -2799,6 +2799,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2828,8 +2855,8 @@ __webpack_require__.r(__webpack_exports__);
     this.loadProducts();
     this.getResults();
     this.getWindowWidth();
-    this.apiCategories();
-    this.getAccordion(); //this.$nextTick(function() {
+    this.apiCategories(); // this.getAccordion();
+    //this.$nextTick(function() {
     //window.addEventListener('resize', this.getWindowWidth);
     // window.addEventListener('resize', this.getWindowHeight);
     //Init
@@ -7725,7 +7752,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.show_subcat[data-v-bb962f12]{\r\n    transition: 0.2s ease-in-out;\n}\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n/* IMAGE SLIDE-UP */\n*[data-v-bb962f12] {\r\n\t box-sizing: border-box;\n}\n.grid[data-v-bb962f12] {\r\n\t display: grid;\r\n\t grid-template-columns: repeat(auto-fit, 15rem);\r\n\t gap: 2rem;\n}\n.item[data-v-bb962f12] {\r\n\t position: relative;\r\n\t height: 21rem;\r\n\t background-color: lightGrey;\r\n\t overflow-y: hidden;\r\n     box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);\n}\n.front-title[data-v-bb962f12] {\r\n\t margin: 0;\r\n\t display: block;\r\n     background-color:#fff;\r\n     padding: 0.3rem 0 0 1rem;\r\n     display: grid;\n}\n.item a[data-v-bb962f12] {\r\n\t position: absolute;\r\n\t top: 0;\r\n\t left: 0;\r\n\t width: 100%;\r\n\t height: 100%;\r\n\t z-index: 1;\n}\n.item a:hover ~ .item__overlay[data-v-bb962f12], .item a:focus ~ .item__overlay[data-v-bb962f12] {\r\n\t transform: translate3d(0, 0, 0);\n}\nimg[data-v-bb962f12] {\r\n\t width: 100%;\r\n\t height: 100%;\r\n\t display: block;\r\n     -o-object-fit: cover;\r\n        object-fit: cover;\n}\n.item__overlay[data-v-bb962f12] {\r\n\t display: flex;\r\n\t flex-direction: column;\r\n\t justify-content: center;\r\n\t height: 100%;\r\n\t position: absolute;\r\n\t width: 100%;\r\n\t top: 0;\r\n\t transition: transform 300ms;\r\n\t background-color: #fff;\r\n     transform: translate3d(0, calc(100% - 3.5rem), 0);\n}\n.item__body[data-v-bb962f12] {\r\n\t flex-grow: 1;\r\n\t padding: 1rem;\n}\n.item__body p[data-v-bb962f12] {\r\n\t margin: 0;\n}\r\n \r\n/* END IMAGE SLIDE-UP */\n.show_subcat[data-v-bb962f12]{\r\n    transition: 0.2s ease-in-out;\n}\n.fade-enter-active[data-v-bb962f12], .fade-leave-active[data-v-bb962f12] {\r\n  transition: opacity .5s;\n}\r\n\r\n/* .fade-leave-active below version 2.1.8 */\n.fade-enter[data-v-bb962f12], .fade-leave-to[data-v-bb962f12] {\r\n  opacity: 0;\n}\n.loading[data-v-bb962f12] {\r\n    position: fixed;\r\n    z-index: 1000;\r\n    height: 2em;\r\n    width: 2em;\r\n    overflow: visible;\r\n    margin: auto;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    right: 0;\n}\r\n\r\n  /* Transparent Overlay */\n.loading[data-v-bb962f12]:before {\r\n    content: '';\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(255,255,255);\r\n    /* background-color: rgba(0,0,0,0.3); */\n}\r\n\r\n  /* :not(:required) hides these rules from IE9 and below */\n.loading[data-v-bb962f12]:not(:required) {\r\n    /* hide \"loading...\" text */\r\n    font: 0/0 a;\r\n    color: transparent;\r\n    text-shadow: none;\r\n    background-color: transparent;\r\n    border: 0;\n}\n.loading[data-v-bb962f12]:not(:required):after {\r\n    content: '';\r\n    display: block;\r\n    font-size: 10px;\r\n    width: 1em;\r\n    height: 1em;\r\n    margin-top: -0.5em;\r\n    -webkit-animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    animation: spinner-data-v-bb962f12 1500ms infinite linear;\r\n    border-radius: 0.5em;\r\n    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;\n}\r\n\r\n  /* Animation */\n@-webkit-keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes spinner-data-v-bb962f12 {\n0% {\r\n        transform: rotate(0deg);\n}\n100% {\r\n        transform: rotate(360deg);\n}\n}\r\n", ""]);
 
 // exports
 
@@ -41847,71 +41874,106 @@ var render = function() {
                             "col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image"
                         },
                         [
-                          _c("div", { staticClass: "card text-center" }, [
-                            _c(
-                              "div",
-                              { staticClass: "card-body rspnv-card-body" },
-                              [
-                                _c("div", { staticClass: "product-info" }, [
+                          _c("div", { staticClass: "grid" }, [
+                            _c("div", { staticClass: "item" }, [
+                              _c("a", {
+                                attrs: {
+                                  href: "product/detail/" + product.id,
+                                  "aria-labelledby": product.id
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                staticClass: "card-img",
+                                attrs: {
+                                  src: "/storage/" + product.image_path,
+                                  alt: "img-product"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "item__overlay" }, [
+                                _c("div", { staticClass: "front-title" }, [
                                   _c(
-                                    "a",
+                                    "span",
                                     {
+                                      staticStyle: { "font-weight": "bold" },
                                       attrs: {
-                                        href: "product/detail/" + product.id
+                                        id: product.id,
+                                        "aria-hidden": "true"
                                       }
                                     },
-                                    [
-                                      _c("img", {
-                                        staticClass: "card-img img-hover",
-                                        attrs: {
-                                          src: "/storage/" + product.image_path,
-                                          alt: "img-product"
-                                        }
-                                      })
-                                    ]
+                                    [_vm._v(_vm._s(product.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "gray",
+                                        "font-size": "14px"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(product.company_name))]
                                   )
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "card-footer",
-                                staticStyle: {
-                                  "background-color":
-                                    "rgba(243, 242, 244, 0.42) !important"
-                                }
-                              },
-                              [
-                                _c("p", { staticClass: "prdct_name" }, [
-                                  _vm._v(_vm._s(product.name))
                                 ]),
                                 _vm._v(" "),
-                                _c("h6", [
+                                _c("div", { staticClass: "item__body" }, [
                                   _c(
-                                    "a",
+                                    "span",
                                     {
-                                      staticClass: "prdct_company",
-                                      attrs: {
-                                        href:
-                                          "company/detail/" + product.user_id
+                                      staticStyle: {
+                                        "font-size": "13px",
+                                        color: "gray"
                                       }
                                     },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-flag mr-1"
-                                      }),
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(product.company_name) +
-                                          "\n                                    "
+                                    [_vm._v("Jakarta Barat")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "fa fa-globe" }),
+                                  _vm._v(" "),
+                                  product.sni
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-primary" },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-check"
+                                          }),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(product.sni) +
+                                              "\n                                        "
+                                          )
+                                        ]
                                       )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
+                                    : _c(
+                                        "span",
+                                        {
+                                          staticClass:
+                                            "badge badge-warning text-white"
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-close"
+                                          }),
+                                          _vm._v(
+                                            " not trusted seller\n                                        "
+                                          )
+                                        ]
+                                      )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary mb-2 ml-3 mr-3"
+                                  },
+                                  [_vm._v("Visit")]
+                                )
+                              ])
+                            ])
                           ])
                         ]
                       )

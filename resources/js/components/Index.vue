@@ -116,7 +116,7 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 rspnv" v-if="isShowProduct">
                     <div class="loading" v-if="loading"></div>
                     <div class="row d-flex justify-content-start" id="productsfilter">
-                        <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
+                        <!-- <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
                             <div class="card text-center">
                                 <div class="card-body rspnv-card-body">
                                     <div class="product-info">
@@ -135,7 +135,34 @@
                                     </h6>
                                 </div>
                             </div>
+                        </div> -->
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 pt-3 col-6 rspnv-image" v-for="product in products.data" :key="product.id">
+                            <div class="grid">
+                                <div class="item">
+                                    <a :href="'product/detail/'+product.id" :aria-labelledby="product.id"></a>
+                                    <img class="card-img" :src="'/storage/'+product.image_path" alt="img-product">
+                                    <div class="item__overlay">
+                                        <div class="front-title">
+                                            <span style="font-weight:bold;" :id="product.id" aria-hidden="true">{{ product.name }}</span>
+                                            <span style="color:gray;font-size:14px;">{{ product.company_name }}</span>
+                                        </div>
+                                        <div class="item__body">
+                                            <span style="font-size:13px;color:gray;">Jakarta Barat</span><br>
+                                            <i class="fa fa-globe"></i> 
+                                            <span v-if="product.sni" class="badge badge-primary">
+                                                <i class="fa fa-check"></i> {{ product.sni }}
+                                            </span>
+                                            <span v-else class="badge badge-warning text-white">
+                                                <i class="fa fa-close"></i> not trusted seller
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-primary mb-2 ml-3 mr-3">Visit</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                     <!-- SHOW PAGINATION -->
@@ -182,7 +209,7 @@
             this.getResults();
             this.getWindowWidth();
             this.apiCategories();
-            this.getAccordion();
+            // this.getAccordion();
             //this.$nextTick(function() {
                 //window.addEventListener('resize', this.getWindowWidth);
                 // window.addEventListener('resize', this.getWindowHeight);
@@ -364,6 +391,69 @@
 </script>
 
 <style scoped>
+
+/* IMAGE SLIDE-UP */
+* {
+	 box-sizing: border-box;
+}
+ .grid {
+	 display: grid;
+	 grid-template-columns: repeat(auto-fit, 15rem);
+	 gap: 2rem;
+}
+ .item {
+	 position: relative;
+	 height: 21rem;
+	 background-color: lightGrey;
+	 overflow-y: hidden;
+     box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);
+}
+.front-title {
+	 margin: 0;
+	 display: block;
+     background-color:#fff;
+     padding: 0.3rem 0 0 1rem;
+     display: grid;
+}
+ .item a {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 z-index: 1;
+}
+ .item a:hover ~ .item__overlay, .item a:focus ~ .item__overlay {
+	 transform: translate3d(0, 0, 0);
+}
+ img {
+	 width: 100%;
+	 height: 100%;
+	 display: block;
+     object-fit: cover;
+}
+ .item__overlay {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 height: 100%;
+	 position: absolute;
+	 width: 100%;
+	 top: 0;
+	 transition: transform 300ms;
+	 background-color: #fff;
+     transform: translate3d(0, calc(100% - 3.5rem), 0);
+}
+ .item__body {
+	 flex-grow: 1;
+	 padding: 1rem;
+}
+ .item__body p {
+	 margin: 0;
+}
+ 
+/* END IMAGE SLIDE-UP */
+
 .show_subcat{
     transition: 0.2s ease-in-out;
 }
