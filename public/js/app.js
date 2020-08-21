@@ -41941,9 +41941,7 @@ var render = function() {
                                             staticClass: "fa fa-check"
                                           }),
                                           _vm._v(
-                                            " " +
-                                              _vm._s(product.sni) +
-                                              "\n                                        "
+                                            " trusted suplier\n                                        "
                                           )
                                         ]
                                       )
@@ -41958,7 +41956,7 @@ var render = function() {
                                             staticClass: "fa fa-close"
                                           }),
                                           _vm._v(
-                                            " not trusted seller\n                                        "
+                                            " not trusted suplier\n                                        "
                                           )
                                         ]
                                       )

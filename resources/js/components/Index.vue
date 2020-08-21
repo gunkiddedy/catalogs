@@ -151,10 +151,10 @@
                                             <span style="font-size:13px;color:gray;">Jakarta Barat</span><br>
                                             <i class="fa fa-globe"></i> 
                                             <span v-if="product.sni" class="badge badge-primary">
-                                                <i class="fa fa-check"></i> {{ product.sni }}
+                                                <i class="fa fa-check"></i> trusted suplier
                                             </span>
                                             <span v-else class="badge badge-warning text-white">
-                                                <i class="fa fa-close"></i> not trusted seller
+                                                <i class="fa fa-close"></i> not trusted suplier
                                             </span>
                                         </div>
                                         <button class="btn btn-primary mb-2 ml-3 mr-3">Visit</button>
